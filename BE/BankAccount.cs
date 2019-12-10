@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class BankAccount
+   public class BankAccount
     {
         int BankNumber;
         int BranchNumber;
         int BankAccountNumber;
-        string BankName;
+         public string BankName;
         string BranchAddress;
         string BranchCity;
         string ToString;
