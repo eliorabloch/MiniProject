@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace DS
 {
-    class DataSource
+    public class DataSource
     {
-        static List <>
+        public static List<GuestRequest> requestList;
+        public static List<HostingUnit> unitList;
+        public static List<Order> orderList;
+
     }
 }

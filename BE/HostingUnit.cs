@@ -8,7 +8,7 @@ namespace BE
 {
    public class HostingUnit
     {
-        int HostingUnitKey;
+        public int HostingUnitKey;
         Host Owner;
         string HostingUnitName;
         bool[,] Diary;

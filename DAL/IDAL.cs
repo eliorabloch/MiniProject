@@ -9,17 +9,16 @@ namespace DAL
 {
     public interface IDAL
     {
-        void addRequst(GuestRequest newRequest);
-        void addRequest(GuestRequest newRequest);
+        void addRequest(GuestRequest newRequest);//מוסיף דרישת אירוח חדשה
         void updateRequest(GuestRequest update);
-        void addUnit(HostingUnit newUnit);
+        void addUnit(HostingUnit newUnit);//הוספת יחידת אירוח
         void deleteUnit(HostingUnit delUnit);
         void updateUnit(HostingUnit update);
-        void addOrder(Order newOrder);
+        void addOrder(Order newOrder);//מוסיף הזמנה לרשימה
         void updateOrder(Order update);
-        void unitList(List<HostingUnit> unitsList);
-        void customerList(List<GuestRequest> customersList);
-        void orderList(List<Order> ordersList);
-        List <string> bankList(List <BankAccount> bankLists);
+        List<HostingUnit> getUnitsList ();// מחזיר רשימת אירוח
+        List<GuestRequest> getCustomersList ();// מחזיר רשימת בקשות אירוח
+        List<Order> getOrdersList();//מחזיר רשימת הזמנות
+        List <string> getBankList(List <BankAccount> bankLists);
     }
 }

@@ -11,7 +11,7 @@ namespace BE
         int BankNumber;
         public int BranchNumber;
         int BankAccountNumber;
-        string BankName;
+        public string BankName;
         string BranchAddress;
         string BranchCity;
         string ToString;
