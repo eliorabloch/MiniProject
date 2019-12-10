@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-     public class Order
+    public class Order
     {
         int HostingUnitKey;
         int GuestRequestKey;

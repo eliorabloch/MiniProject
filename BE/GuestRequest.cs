@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class GuestRequest
+   public class GuestRequest
     {
         int GuestRequestKey;
         string PrivateName;
