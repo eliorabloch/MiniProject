@@ -9,13 +9,12 @@ namespace BE
     class GuestRequest
     {
         int GuestRequestKey;
-        string  PrivateName;
+        string PrivateName;
         string FamilyName;
         string MailAddress;
         string Status;
-
         DateTime RegistrationDate;
-            DateTime EntryDate;
+        DateTime EntryDate;
         DateTime ReleaseDate;
         string Area;
         string SubArea;
@@ -25,7 +24,7 @@ namespace BE
         string Pool;
         string Jacuzz;
         string Garden;
-       string ChildrensAttractions;
+        string ChildrensAttractions;
         string ToString;
     }
 }

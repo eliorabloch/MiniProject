@@ -8,5 +8,13 @@ namespace BE
 {
     class Host
     {
+        int HostKey;
+        string PrivateName;
+        string FamilyName;
+        string PhoneNumber;
+        string MailAddress;
+        BankAccount BankAccuont;
+        bool CollectionClearance;
+        string ToString;
     }
 }
