@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DALList .cs" />
     <Compile Include="factoryDAL.cs" />
     <Compile Include="IDAL.cs" />
     <Compile Include="imp_Dal.cs" />

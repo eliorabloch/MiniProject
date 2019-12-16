@@ -8,15 +8,27 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class imp_Dal:IDAL 
+   public class imp_Dal : IDAL
     {
+        // סינגלטון
+        private static imp_Dal instance = null;//שדה שבו נגדיר את המופע הראשון שלנו
+        public static imp_Dal getInstance()//פונקציה סטטית שדואגת לייצר את המופע שלנו פעם אחת בלבד.
+        {
+            if (instance == null)
+            {
+                instance = new imp_Dal();
+            }
+            return instance;
+        }
+        private imp_Dal() { }//constractor
         public void addRequest(GuestRequest newRequest)//מוסיף דרישת אירוח חדשה
         {
             DataSource.requestList.Add(newRequest);
         }
         public void updateRequest(GuestRequest update)
         {
-           
+            
+
         }
         public void updateUnit(HostingUnit update)
         {
@@ -47,15 +59,15 @@ namespace DAL
             DataSource.orderList.Add(newOrder);
         }
 
-        public void deleteUnit(HostingUnit delUnit)
+        public void deleteUnit(HostingUnit delUnit)//מוחק את כל היחידה
         {
             getUnitsList().RemoveAll(x => x.HostingUnitKey == delUnit.HostingUnitKey);
         }
 
         public List<string> getBankList(List<BankAccount> bankLists)// מחזיר מתוך רשימה של חשבונות בנקים רק את שמות הבנקים על ידי שימוש בlinq 
         {
-           var newBankLists = bankLists.Select(x=>x.BankName).ToList();
-           return newBankLists;
+            var newBankLists = bankLists.Select(x => x.BankName).ToList();
+            return newBankLists;
         }
     }
 

@@ -12,7 +12,7 @@ namespace DAL
         {
             switch (typeDAL)
             {
-                case "List": return DALList.Instance;
+                case "List": return imp_Dal.getInstance();
                 //  case "XML": return DAL_XML.Instance;
                 default: return null;
             }

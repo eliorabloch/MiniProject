@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    enum UnitType
+   public enum UnitType
     {
         Tzimer, HostingUnit, HotelRoom, Tent
     }
-    enum Areas
+   public enum Areas
     {
         South, North, Center, Jerusalem
     }
-    enum OrderStatus
+    public enum OrderStatus
     {
         NotHandled, SentMail, ClosedRequest, ConfirmedClosedRequest
     }
 
-    enum RequestStatus
+   public  enum RequestStatus
     {
         Open, ClosedDeal, ExpiredRequest
     }

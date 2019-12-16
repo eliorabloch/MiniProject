@@ -8,5 +8,7 @@ namespace BE
 {
     class Configuration
     {
+        public static string TypeDAL = ConfigurationSettings.AppSettings.Get("TypeDS");
     }
+
 }
