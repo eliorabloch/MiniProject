@@ -9,7 +9,7 @@ namespace BE
     public class Order
     {
         int ID;
-        public static int HostingUnitKey = 10000001;
+        public int HostingUnitKey;
         int GuestRequestKey { get; set; }
         static int tempOrderKey = 20000001;
          int OrderKey { get; set; }

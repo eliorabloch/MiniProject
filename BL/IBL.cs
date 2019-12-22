@@ -19,33 +19,16 @@ namespace BL
         List<GuestRequest> getCustomersList();// מחזיר רשימת בקשות אירוח
         List<Order> getOrdersList();//מחזיר רשימת הזמנות
         List<string> getBankList(List<BankBranch> bankLists);
-    }
-    public void InvalidDate(List<GuestRequest> getCustomersList)//פונקציה שבודקת האם יום הכניסה קודם ליום היציאה
-    {
-        foreach (var item in getCustomersList)
-        {
-           // if ((GuestRequest.EntryDate.day > GuestRequest.RealeseDate.day) && (GuestRequest.EntryDate.month == GuestRequest.RealeseDate.month))|| (GuestRequest.EntryDate.month > GuestRequest.RealeseDate.month);
-           // { break; }
-           // else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(" Sorry, invalid input, please try again. ");
-                Console.ResetColor();
-                Console.WriteLine("Please enter the date you want to reserve.");
-                Console.WriteLine("the format must be yyyy-mm-dd");
-                Console.WriteLine();
-                Console.WriteLine("please enter the date you want to leave.");
-                Console.WriteLine("the format must be yyyy-mm-dd");
-                Console.WriteLine();
-
-
-            }
-        }
+        bool availableDate(HostingUnit H, GuestRequest G);
+        bool availableDate(HostingUnit H, DateTime d, int amount);
+        void sendOrder(Host h, Order o);
+        List<HostingUnit> availableUnit(List<HostingUnit> getUnitList, DateTime date, int amount);
+        int amountOfDays(DateTime D1, DateTime D2);
+        List<Order> howManyOrders(int amountOfDays, List<Order> orderList);
+        int amountOfOrders(HostingUnit h, List<Order> orderList);
     }
 
-    public void AvailableDates(List<GuestRequest> getCustomersList)//פונקציה שבודקת האם התאריכים שמישהו רוצה לשהות במקום מסויים פנויים
-    {
 
-    }
+
 
 }
