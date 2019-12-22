@@ -14,6 +14,5 @@ namespace BE
         public string BranchAddress { get; set; }
         public string BranchCity { get; set; }
         public string ToString { get; set; }
-
     }
 };

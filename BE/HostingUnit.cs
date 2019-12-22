@@ -10,9 +10,8 @@ namespace BE
     {
         int ID;
         public int HostingUnitKey;
-
         Host Owner { get; set; }
-         public string HostingUnitName { get; set; }
+        public string HostingUnitName { get; set; }
         public bool[,] Diary { get; set; }
         public string toString { get; set; }
         public bool Pool;
@@ -22,8 +21,7 @@ namespace BE
         public Areas Area;
         string SubArea;
         public UnitType Type;
-
-        public HostingUnit() { }
+        public HostingUnit() { }//defult constructor
         public void FillMatrix(bool[,] d)//Filing the dairy with false valuse
         {
             for (int i = 0; i < 12; i++)//This for fills the array with false values
@@ -34,8 +32,5 @@ namespace BE
                 }
             }
         }
-       
-
-
     }
 }

@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-   public class Configuration
+    public class Configuration
     {
         public static string TypeDAL = ConfigurationSettings.AppSettings.Get("TypeDS");
         public static int GuasteRequestId = 100000000;
         public static int HostingUnitId = 100000000;
-        
     }
-
 }

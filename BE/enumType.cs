@@ -18,7 +18,6 @@ namespace BE
     {
         NotHandled, SentMail, ClosedRequest, ConfirmedClosedRequest
     }
-
    public  enum RequestStatus
     {
         Open, ClosedDeal, ExpiredRequest

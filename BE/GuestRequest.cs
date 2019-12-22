@@ -8,7 +8,6 @@ namespace BE
 {
     public class GuestRequest
     {
-
         public int GuestRequestKey { get; set; }
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
@@ -28,25 +27,15 @@ namespace BE
         public hotelAdditions Garden { get; set; }
         public hotelAdditions ChildrensAttractions { get; set; }
         public string toString { get; set; }
-
-        public GuestRequest() { }
+        public GuestRequest() { }// defualt constructor
         public override string ToString()
         {
             toString = "";
             toString += "this is your request information: \n";
-            toString
-                += $"entry date: {EntryDate} \n";
+            toString += $"entry date: {EntryDate} \n";
             toString += $"Realese date: {ReleaseDate} \n";
             return toString;
-
-
         }
-
-
-
-
-
-
     }
 }
 

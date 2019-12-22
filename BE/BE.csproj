@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankBranch.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="enumType.cs" />
     <Compile Include="GuestRequest.cs" />

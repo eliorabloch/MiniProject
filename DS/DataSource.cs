@@ -12,6 +12,5 @@ namespace DS
         public static List<GuestRequest> requestList;
         public static List<HostingUnit> unitList;
         public static List<Order> orderList;
-
     }
 }

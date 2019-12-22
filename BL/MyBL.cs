@@ -19,7 +19,6 @@ namespace BL
             get { return instance; }
         }
         #endregion
-
         static IDAL myDAL;
 
         static MyBL()
@@ -28,31 +27,27 @@ namespace BL
             //string TypeDAL = "List";
             myDAL = factoryDAL.getDAL(TypeDAL);
         }
-        public void InvalidDate(GuestRequest gr)//פונקציה שבודקת האם יום הכניסה קודם ליום היציאה
-        {
 
+        void InvalidDate(GuestRequest gr)//פונקציה שבודקת האם יום הכניסה קודם ליום היציאה
+        {
             // if (!(((gr.EntryDate.Day < gr.ReleaseDate.Day) && (gr.EntryDate.Month == gr.ReleaseDate.Month)) || (gr.EntryDate.Month < gr.ReleaseDate.Month)))
             if (gr.EntryDate < gr.ReleaseDate)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(" Sorry, invalid date, please try again. ");
+                Console.WriteLine(" Sorry, invalid date, please try again.");
                 Console.ResetColor();
                 Console.WriteLine("Please enter the date you want to reserve.");
-                Console.WriteLine("the format must be yyyy-mm-dd");
+                Console.WriteLine("The format must be yyyy-mm-dd.");
                 Console.WriteLine();
-                Console.WriteLine("please enter the date you want to leave.");
-                Console.WriteLine("the format must be yyyy-mm-dd");
+                Console.WriteLine("Please enter the date you want to leave.");
+                Console.WriteLine("The format must be yyyy-mm-dd.");
                 Console.WriteLine();
-
-
             }
-
-
         }
-        List<HostingUnit> availableUnit(List<HostingUnit> getUnitList, DateTime date, int amount)
-        {
 
-            List<HostingUnit> mylist = new List<HostingUnit>;
+        List<HostingUnit> availableUnit(List<HostingUnit> getUnitList, DateTime date, int amount)//פונקציה שמחזירה רשימה של יחידות אירוח שפנויות בתאריך מסויים
+        {
+            List<HostingUnit> mylist = new List<HostingUnit>();
             foreach (var item in getUnitList)
             {
                 if (availableDate(item, date, amount))
@@ -61,18 +56,17 @@ namespace BL
                 }
             }
             return mylist;
-
-
         }
-        void sendOrder(Host h, Order o)//
+
+        void sendOrder(Host H, Order O)//אם הלקוח חתם על טופס הרשאה של הבנק המארח יוכל לשלוח לו הזמנה
         {
-            if (h.CollectionClearance)
+            if (H.CollectionClearance)
             {
-                o.Status = OrderStatus.SentMail;
+                O.Status = OrderStatus.SentMail;
             }
-
         }
-        bool availableDate(HostingUnit H, DateTime d, int amount)
+
+        bool availableDate(HostingUnit H, DateTime d, int amount)//פונקציה שמוודאת התאריכים שהוזמנו פנויים ביחידה שאליה שיבצו את ההזמנה
         {
             DateTime release = d.AddDays(amount);
             while (d < release)
@@ -85,7 +79,6 @@ namespace BL
             }
             return true;
         }
-
 
         bool availableDate(HostingUnit H, GuestRequest G)
         {
@@ -100,30 +93,31 @@ namespace BL
             }
             return true;
         }
-        int amountOfDays(DateTime D1, DateTime D2)
-        {
+
+        int amountOfDays(DateTime D1, DateTime D2)//פונקציה שמקבלת שני תאריכים ובודקת מה ההפרש ביניהם
+        {//צריך לטפל באיתחול הדיפולטיבי של D2 שיהיה NOW
             int amount = 0;
             if (D1.Month == D2.Month)
             { amount = D2.Day - D1.Day; }
             else amount = (D2.Day - D1.Day) + 31;
-
             return amount;
         }
-        List<Order> howManyOrders(int amountOfDays, List<Order> orderList)
+
+        List<Order> howManyOrders(int amountOfDays, List<Order> orderList)//פונקציה שמחזירה רשימה של הזמנות שהזמו שעבר ממתי שהם אושרו או שנשלח מייל ללקוח שווה למספר הימים שקיבלנו
         {
             List<Order> myList = new List<Order>();
             myList = null;
             int amount = 0;
             int monthAmount = 0;
-
             foreach (var item in orderList)
             {
                 if (item.CreateDate.Month == DateTime.Now.Month)
                 {
                     amount = (DateTime.Now.Day - item.CreateDate.Day);
-
                     if (amount >= amountOfDays)
+                    {
                         myList.Add(item);
+                    }
                 }
                 else
                 {
@@ -133,11 +127,10 @@ namespace BL
                         myList.Add(item);
                 }
             }
-
             return myList;
-
         }
-        int amountOfOrders(HostingUnit h,List<Order> orderList)
+
+        int amountOfOrders(HostingUnit h,List<Order> orderList)//פונקציה שמקבלת דרישת לקוח, ומחזירה את מספר ההזמנות שנשלחו אליו
         {
             int sum = 0;
             foreach(var item in orderList)
@@ -155,8 +148,103 @@ namespace BL
 
 
 
-    }
 
+        //הוספתי את מה שהוא ביקש על הפונקציות- צריך לבדוק אם צריך לממש את זה שוב
+        public void addRequest(GuestRequest newRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void updateRequest(GuestRequest update)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void addUnit(HostingUnit newUnit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void deleteUnit(HostingUnit delUnit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void updateUnit(HostingUnit update)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void addOrder(Order newOrder)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void updateOrder(Order update)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<HostingUnit> getUnitsList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<GuestRequest> getCustomersList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Order> getOrdersList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> getBankList(List<BankBranch> bankLists)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IBL.availableDate(HostingUnit H, GuestRequest G)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IBL.availableDate(HostingUnit H, DateTime D, int amount)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IBL.sendOrder(Host H, Order O)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<HostingUnit> IBL.availableUnit(List<HostingUnit> getUnitList, DateTime date, int amount)
+        {
+            throw new NotImplementedException();
+        }
+
+        int IBL.amountOfDays(DateTime D1, DateTime D2)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Order> IBL.howManyOrders(int amountOfDays, List<Order> orderList)
+        {
+            throw new NotImplementedException();
+        }
+
+        int IBL.amountOfOrders(HostingUnit H, List<Order> orderList)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IBL.InvalidDate(GuestRequest gr)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
 
 
