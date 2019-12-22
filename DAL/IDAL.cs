@@ -19,6 +19,6 @@ namespace DAL
         List<HostingUnit> getUnitsList ();// מחזיר רשימת אירוח
         List<GuestRequest> getCustomersList ();// מחזיר רשימת בקשות אירוח
         List<Order> getOrdersList();//מחזיר רשימת הזמנות
-        List <string> getBankList(List <BankAccount> bankLists);
+        List <string> getBankList(List <BankBranch> bankLists);
     }
 }

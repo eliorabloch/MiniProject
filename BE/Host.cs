@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Host
+     public class Host
     {
-        int HostKey { get; set; }
-        string PrivateName { get; set; }
-        string FamilyName { get; set; }
-        string PhoneNumber { get; set; }
-        string MailAddress { get; set; }
-        BankAccount BankAccuont { get; set; }
-        bool CollectionClearance { get; set; }
-        string toString { get; set; }
+        
+       public int HostKey { get; set; }
+        public string PrivateName { get; set; }
+        public string FamilyName { get; set; }
+        public string PhoneNumber { get; set; }
+        public  string MailAddress { get; set; }
+        public BankBranch BankAccuont { get; set; }
+        public bool CollectionClearance { get; set; }
+        public string toString { get; set; }
         public List<HostingUnit> HostingUnitCollection { get; set; }
 
         public override string ToString()

@@ -8,12 +8,22 @@ namespace BE
 {
    public class HostingUnit
     {
-        
+        int ID;
         public int HostingUnitKey;
+
         Host Owner { get; set; }
-        string HostingUnitName { get; set; }
-        bool[,] Diary { get; set; }
-        string toString { get; set; }
+         public string HostingUnitName { get; set; }
+        public bool[,] Diary { get; set; }
+        public string toString { get; set; }
+        public bool Pool;
+        public bool Jacuzz;
+        public  bool Garden;
+        public  bool ChildrensAttractions;
+        public Areas Area;
+        string SubArea;
+        public UnitType Type;
+
+        public HostingUnit() { }
         public void FillMatrix(bool[,] d)//Filing the dairy with false valuse
         {
             for (int i = 0; i < 12; i++)//This for fills the array with false values
@@ -24,21 +34,7 @@ namespace BE
                 }
             }
         }
-        public HostingUnit(Order newOrder)//Constructor.
-        {
-            Diary = new bool[12, 31];// Matrix of hotel capacity.
-            FillMatrix(Diary);
-            HostingUnitKey = Order.HostingUnitKey;
-          //  HostingUnitKey++;  
-            
-        }
-        public HostingUnit()//Constructor.
-        {
-            Diary = new bool[12, 31];// Matrix of hotel capacity.
-            FillMatrix(Diary);
-            
-
-        }
+       
 
 
     }

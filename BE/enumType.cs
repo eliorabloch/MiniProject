@@ -23,4 +23,8 @@ namespace BE
     {
         Open, ClosedDeal, ExpiredRequest
     }
+    public enum hotelAdditions
+    {
+        neccesery, possible,notintersted
+    }
 }
