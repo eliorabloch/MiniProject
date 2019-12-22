@@ -24,9 +24,9 @@ namespace BL
     {
         foreach (var item in getCustomersList)
         {
-            if ((GuestRequest.EntryDate.day > GuestRequest.RealeseDate.day) && (GuestRequest.EntryDate.month == GuestRequest.RealeseDate.month))|| (GuestRequest.EntryDate.month > GuestRequest.RealeseDate.month);
-            { break; }
-            else
+           // if ((GuestRequest.EntryDate.day > GuestRequest.RealeseDate.day) && (GuestRequest.EntryDate.month == GuestRequest.RealeseDate.month))|| (GuestRequest.EntryDate.month > GuestRequest.RealeseDate.month);
+           // { break; }
+           // else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(" Sorry, invalid input, please try again. ");
