@@ -58,12 +58,14 @@ namespace BL
             return mylist;
         }
 
-        void sendOrder(Host H, Order O)//אם הלקוח חתם על טופס הרשאה של הבנק המארח יוכל לשלוח לו הזמנה
+        bool sendOrder(Host H, Order O)//אם הלקוח חתם על טופס הרשאה של הבנק המארח יוכל לשלוח לו הזמנה
         {
             if (H.CollectionClearance)
             {
                 O.Status = OrderStatus.SentMail;
+                return true;
             }
+            return false;
         }
 
         bool availableDate(HostingUnit H, DateTime d, int amount)//פונקציה שמוודאת התאריכים שהוזמנו פנויים ביחידה שאליה שיבצו את ההזמנה

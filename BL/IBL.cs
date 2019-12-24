@@ -21,7 +21,7 @@ namespace BL
         List<string> getBankList(List<BankBranch> bankLists);
         bool availableDate(HostingUnit H, GuestRequest G);
         bool availableDate(HostingUnit H, DateTime D, int amount);
-        void sendOrder(Host H, Order O);
+        bool sendOrder(Host H, Order O);
         List<HostingUnit> availableUnit(List<HostingUnit> getUnitList, DateTime date, int amount);
         int amountOfDays(DateTime D1, DateTime D2);
         List<Order> howManyOrders(int amountOfDays, List<Order> orderList);

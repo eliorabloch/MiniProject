@@ -1,5 +1,6 @@
 ﻿using System;
 using BE;
+using BL;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace Main
             gr.PrivateName = Console.ReadLine();
             Console.WriteLine("Please enter your family name:");
             gr.FamilyName = Console.ReadLine();
-            Console.WriteLine("Please enter your E-mail:");
+            Console.WriteLine("Please enter your E-mail address:");
             gr.MailAddress = Console.ReadLine();
             gr.RegistrationDate = DateTime.Now.Date;
             gr.Status = "Active";
@@ -86,13 +87,13 @@ namespace Main
                 default:
                     break;
             }
-            Console.WriteLine("Please enter a sub area in the area u have chosen:");
+            Console.WriteLine("Please enter a sub area in the area you have chosen:");
             gr.SubArea = Console.ReadLine();
             Console.WriteLine("Please choose the type of hosting unit you want to stay at:");
-            Console.WriteLine("1- for  Tzimer");
-            Console.WriteLine("2- for HostingUnit");
-            Console.WriteLine("3- for HotelRoom");
-            Console.WriteLine("4- for  Tent");
+            Console.WriteLine("1- for tzimer");
+            Console.WriteLine("2- for hosting unit");
+            Console.WriteLine("3- for hotel room");
+            Console.WriteLine("4- for tent");
             string typeAnswer = Console.ReadLine();
             switch (typeAnswer)
             {
@@ -112,14 +113,14 @@ namespace Main
                     break;
 
             }
-            Console.WriteLine("Please enter the number of adults :");
+            Console.WriteLine("Please enter the number of adults you are:");
             gr.Adults = Console.ReadLine();
-            Console.WriteLine("Please enter the number of children :");
+            Console.WriteLine("Please enter the number of children you have:");
             gr.Children = Console.ReadLine();
             Console.WriteLine(" Do you want a pool?");
             Console.WriteLine("1- neccesery");
             Console.WriteLine("2- possible");
-            Console.WriteLine("3- notinterstid");
+            Console.WriteLine("3- not intersted");
             string poolanswer = Console.ReadLine();
             switch (poolanswer)
             {
@@ -136,7 +137,7 @@ namespace Main
             Console.WriteLine(" Do you want a jaccuz?");
             Console.WriteLine("1- neccesery");
             Console.WriteLine("2- possible");
-            Console.WriteLine("3- notinterstid");
+            Console.WriteLine("3- not intersted");
             string jaccuzAnswer = Console.ReadLine();
             switch (jaccuzAnswer)
             {
@@ -153,7 +154,7 @@ namespace Main
             Console.WriteLine(" Do you want a garden?");
             Console.WriteLine("1- neccesery");
             Console.WriteLine("2- possible");
-            Console.WriteLine("3- notinterstid");
+            Console.WriteLine("3- not intersted");
             string gardenAnswer = Console.ReadLine();
             switch (gardenAnswer)
             {
@@ -167,10 +168,10 @@ namespace Main
                     gr.Garden = hotelAdditions.notintersted;
                     break;
             }
-            Console.WriteLine(" Do you want  ChildrensAttractions? :");
+            Console.WriteLine(" Do you want a attractions for childrens?:");
             Console.WriteLine("1- neccesery");
             Console.WriteLine("2- possible");
-            Console.WriteLine("3- notinterstid");
+            Console.WriteLine("3- not intersted");
             string ChildrensAttractionsanswer = Console.ReadLine();
             switch (ChildrensAttractionsanswer)
             {
@@ -220,10 +221,10 @@ namespace Main
             Console.WriteLine("Please enter a sub area for your hosting unit:");
             gr.SubArea = Console.ReadLine();
             Console.WriteLine("Please choose the type of unit you want to build:");
-            Console.WriteLine("1- for Tzimer");
-            Console.WriteLine("2- for HostingUnit");
-            Console.WriteLine("3- for HotelRoom");
-            Console.WriteLine("4- for Tent");
+            Console.WriteLine("1- for tzimer");
+            Console.WriteLine("2- for hosting unit");
+            Console.WriteLine("3- for hotel room");
+            Console.WriteLine("4- for tent");
             string typeAnswer1 = Console.ReadLine();
             switch (typeAnswer1)
             {
@@ -272,7 +273,7 @@ namespace Main
             {
                 hu.Garden = true;
             }
-            Console.WriteLine("Do you have a ChildrensAttractions ? Please answer 1 if so, and 0 if not. ");
+            Console.WriteLine("Do you have an attractions for childrens ? Please answer 1 if so, and 0 if not. ");
             poolGardenAttracyionslAnswer = Console.ReadLine();
             if (poolGardenAttracyionslAnswer == "0")
             {
@@ -282,12 +283,13 @@ namespace Main
             {
                 hu.ChildrensAttractions = true;
             }
-      //  } אמור להיות הסוגר של האיתחול של hostingUnit
+            //  } אמור להיות הסוגר של האיתחול של hostingUnit
+
             Host H = new Host()
             {
                 Console.WriteLine("please enter your ID");
-            string answer5 = Console.ReadLine();
-            H.HostKey = int.Parse(answer5);
+            string idAnswer = Console.ReadLine();
+            H.HostKey = int.Parse(idAnswer);
             Console.WriteLine("Please enter your private name:");
             H.PrivateName = Console.ReadLine();
             Console.WriteLine("Please enter your family name:");
@@ -296,6 +298,7 @@ namespace Main
             H.MailAddress = Console.ReadLine();
             Console.WriteLine("Please enter your phone number:");
             gr.MailAddress = Console.ReadLine();
+            //}סוגר איתחול של host
 
             BankBranch bb = new BankBranch()
             {
@@ -311,8 +314,11 @@ namespace Main
             bb.BranchCity = Console.ReadLine();
 
             Order o = new Order()
-            { Console.WriteLine("Please eter yout guest request key:");
-                o.GuestRequestKey =int.Parse( Console.ReadLine());
+            {
+                Console.WriteLine("Please eter yout hosting unit key:");
+            o.HostingUnitKey = int.Parse(Console.ReadLine());
+            Console.WriteLine("Please eter yout guest request key:");
+            o.GuestRequestKey = int.Parse(Console.ReadLine());
             Console.WriteLine("Please enter your order key: ");
             o.OrderKey = int.Parse(Console.ReadLine());
             Console.WriteLine("Please enter your status: ");
@@ -320,8 +326,8 @@ namespace Main
             Console.WriteLine("2- for a sent mail case.");
             Console.WriteLine("3- for closed request.");
             Console.WriteLine("4- for confirmed closed request.");
-            string orderAnswer1 = Console.ReadLine();
-            switch (orderAnswer1)
+            string orderAnswer = Console.ReadLine();
+            switch (orderAnswer)
             {
                 case "1":
                     o.Status = OrderStatus.NotHandled;
@@ -338,11 +344,14 @@ namespace Main
                 default:
                     break;
             }
-            //} סוגר של איתחול ההזמנה Order
             Console.WriteLine("Please enter your create date: ");
             o.CreateDate = DateTime.Now;
             Console.WriteLine("Please enter your order date: ");
-            
+            if (sendOrder(H, o))
+            {
+                o.OrderDate= 
+            }
+            //} סוגר של איתחול order
         }
     }
 }
