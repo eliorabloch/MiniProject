@@ -8,7 +8,15 @@ namespace BE
 {
     public class GuestRequest
     {
-        public int GuestRequestKey { get; set; }
+        private int guestRequestKey;
+        public int GuestRequestKey
+        {
+            get { return guestRequestKey; }
+            private set
+            {
+                guestRequestKey = Configuration.GuasteRequestId++;
+            }
+        }
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
         public string MailAddress { get; set; }

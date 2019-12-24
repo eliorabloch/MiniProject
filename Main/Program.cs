@@ -189,7 +189,7 @@ namespace Main
 
             HostingUnit hu = new HostingUnit()
             {
-                hu.GuestRequestKey = Configuration.HostingUnitId;
+                hu.HostingUnitKey = Configuration.HostingUnitId;
             Configuration.HostingUnitId++;
             hu.Diary = new bool[12, 31];// Matrix of hotel capacity.
             hu.FillMatrix(hu.Diary);
