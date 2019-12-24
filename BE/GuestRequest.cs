@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class GuestRequest
+    public class GuestRequest : ICloneable
     {
         private int guestRequestKey;
         public int GuestRequestKey
@@ -20,20 +20,19 @@ namespace BE
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
         public string MailAddress { get; set; }
-        public string unitType;
-        public string Status{get;set;}
+        public RequestStatus Status {get;set;}
         public DateTime RegistrationDate { get; set; }
         public DateTime EntryDate { get; set; }
         public DateTime ReleaseDate { get; set; }
         public Areas Area { get; set; }
         public string SubArea { get; set; }
         public UnitType Type { get; set; }
-        public string Adults { get; set; }
-        public string Children { get; set; }
-        public hotelAdditions Pool { get; set; }
-        public hotelAdditions Jacuzz { get; set; }
-        public hotelAdditions Garden { get; set; }
-        public hotelAdditions ChildrensAttractions { get; set; }
+        public uint Adults { get; set; }
+        public uint Children { get; set; }
+        public Options Pool { get; set; }
+        public Options Jacuzz { get; set; }
+        public Options Garden { get; set; }
+        public Options ChildrensAttractions { get; set; }
         public string toString { get; set; }
         public GuestRequest() { }// defualt constructor
         public override string ToString()
@@ -43,6 +42,11 @@ namespace BE
             toString += $"entry date: {EntryDate} \n";
             toString += $"Realese date: {ReleaseDate} \n";
             return toString;
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 }

@@ -24,88 +24,173 @@ namespace DAL
 
         private imp_Dal() { }//constractor
 
-        public void addRequest(GuestRequest newRequest)//מוסיף דרישת אירוח חדשה
+        #region Guest Requst
+
+        public List<GuestRequest> GetGuestRequestList()//מחזיר רשימת בקשות אירוח
         {
-            DataSource.requestList.Add(newRequest);
+            return (from gr in DataSource.requestList
+                   select (GuestRequest)gr.Clone()).ToList();
         }
 
-        public void updateRequest(GuestRequest update)//פונקציה שמשנה את הסטטוס של הבקשה- פעילה או לא
+        public GuestRequest GetRequest(int id)
         {
-            Console.WriteLine("Please choose a new status to your order:");
-            if (update.Status == "Active")
+            return (GuestRequest)GetGuestRequestList().FirstOrDefault(x=>x.GuestRequestKey == id).Clone();
+        }
+
+        public void AddRequest(GuestRequest newRequest)//מוסיף דרישת אירוח חדשה
+        {
+            if(GetGuestRequestList().Any(x => x.GuestRequestKey == newRequest.GuestRequestKey))
             {
-                update.Status = "NotActive";
+                throw new Exception($"Guest Request with the ID: {newRequest.GuestRequestKey} - already exists!");
             }
-            update.Status = "Active";
+            DataSource.requestList.Add((GuestRequest)newRequest.Clone());
         }
 
-        public void updateUnit(HostingUnit update)
+        public void UpdateRequest(GuestRequest updatedRequest)//פונקציה שמשנה את הסטטוס של הבקשה- פעילה או לא
         {
-           
+            DataSource.requestList = (from x in GetGuestRequestList()
+                                   let Status = updatedRequest.Status
+                                   where x.GuestRequestKey == updatedRequest.GuestRequestKey
+                                   select (GuestRequest)x.Clone()).ToList();
         }
 
-        public void updateOrder(Order update)//פונקציה שמעדכנת את הסטטוס של ההזמנה לפי מה שהמארח יחליט לשנות
+        public void DeleteRequest(GuestRequest newRequest)
         {
-            Console.WriteLine("Please choose a new status to your order:");
-            Console.WriteLine("1- for not handled order.");
-            Console.WriteLine("2- for a sent mail case. ");
-            Console.WriteLine("3- if the order is closed.");
-            Console.WriteLine("4- if the order us confirmed and closed.");
-            Console.WriteLine();
-            string orderAnswer = Console.ReadLine();
-            switch (orderAnswer)
+            GetGuestRequestList().RemoveAll(x => x.GuestRequestKey == newRequest.GuestRequestKey);
+        }
+
+        #endregion
+
+        #region Hosting Units
+
+        public List<HostingUnit> GetUnitsList()//מחזיר רשימת אירוח
+        {
+            return (from gr in DataSource.unitList
+                    select (HostingUnit)gr.Clone()).ToList();
+        }
+
+        public HostingUnit GetUnit(int id)
+        {
+            return (HostingUnit)DataSource.unitList.FirstOrDefault(x => x.HostingUnitKey == id).Clone();
+        }
+
+        public void AddUnit(HostingUnit newUnit)//הוספת יחידית אירוח
+        {
+            if (GetUnitsList().Any(x => x.HostingUnitKey == newUnit.HostingUnitKey))
             {
-                case "1":
-                    update.Status = OrderStatus.NotHandled;
-                    break;
-                case "2":
-                    update.Status = OrderStatus.SentMail;
-                    break;
-                case "3":
-                    update.Status = OrderStatus.ClosedRequest;
-                    break;
-                case "4":
-                    update.Status = OrderStatus.ConfirmedClosedRequest;
-                    break;
-                default:
-                    break;
+                throw new Exception($"Hosting Unit with the ID: {newUnit.HostingUnitKey} - already exists!");
             }
-        }
-        public List<HostingUnit> getUnitsList()//מחזיר רשימת אירוח
-        {
-            return DataSource.unitList;
+            DataSource.unitList.Add((HostingUnit)newUnit.Clone());
         }
 
-        public List<GuestRequest> getCustomersList()//מחזיר רשימת בקשות אירוח
+        public void UpdateUnit(HostingUnit updatedUnit)
         {
-            return DataSource.requestList;
+            DataSource.unitList = DataSource.unitList
+               .Select(x => {
+                   if(x.HostingUnitKey == updatedUnit.HostingUnitKey)
+                   {
+                       x = updatedUnit;
+                   }
+                    return (HostingUnit)x.Clone();
+               })
+               .ToList();
         }
 
-        public List<Order> getOrdersList()//מחזיר רשימת הזמנות
+        public void DeleteUnit(HostingUnit delUnit)//מוחק את כל היחידה
         {
-            return DataSource.orderList;
+            GetUnitsList().RemoveAll(x => x.HostingUnitKey == delUnit.HostingUnitKey);
+        }
+        #endregion
+
+        #region Orders
+
+        public List<Order> GetOrdersList()//מחזיר רשימת הזמנות
+        {
+            return (from d in DataSource.orderList
+                    select (Order)d.Clone()).ToList();
         }
 
-        public void addUnit(HostingUnit newUnit)//הוספת יחידית אירוח
+        public Order GetOrder(int id)
         {
-            DataSource.unitList.Add(newUnit);
+            return (Order)DataSource.orderList.FirstOrDefault(x => x.OrderKey == id).Clone();
         }
 
-        public void addOrder(Order newOrder)//מוסיף הזמנה לרשימה
+        public void AddOrder(Order newOrder)//מוסיף הזמנה לרשימה
         {
-            DataSource.orderList.Add(newOrder);
+            if (GetOrdersList().Any(x => x.OrderKey == newOrder.OrderKey))
+            {
+                throw new Exception($"Order with the ID: {newOrder.OrderKey} - already exists!");
+            }
+            DataSource.orderList.Add((Order)newOrder.Clone());
         }
 
-        public void deleteUnit(HostingUnit delUnit)//מוחק את כל היחידה
+        public void UpdateOrder(Order updatedOrder)//פונקציה שמעדכנת את הסטטוס של ההזמנה לפי מה שהמארח יחליט לשנות
         {
-            getUnitsList().RemoveAll(x => x.HostingUnitKey == delUnit.HostingUnitKey);
+            DataSource.orderList = (from order in GetOrdersList()
+                                   let Status = updatedOrder.Status
+                                    where order.OrderKey == updatedOrder.OrderKey 
+                                   select (Order)order.Clone()).ToList();
         }
 
-        public List<string> getBankList(List<BankBranch> bankLists)// מחזיר מתוך רשימה של חשבונות בנקים רק את שמות הבנקים על ידי שימוש בlinq 
+
+        public void DeleteOrder(Order order)
         {
-            var newBankLists = bankLists.Select(x => x.BankName).ToList();
-            return newBankLists;
+            DataSource.orderList.RemoveAll(x => x.OrderKey == order.OrderKey);
         }
 
+        #endregion
+
+        public List<BankBranch> GetBankList()// מחזיר מתוך רשימה של חשבונות בנקים רק את שמות הבנקים על ידי שימוש בlinq 
+        {
+            return new List<BankBranch>
+            {
+                new BankBranch
+                {
+                    BankName = "Leumi",
+                    BankNumber = 1,
+                    BranchAddress = "Rechavia",
+                    BranchCity = "Jerusalem",
+                    BranchNumber = 123
+                },
+                 new BankBranch
+                {
+                    BankName = "Leumi",
+                    BankNumber = 1,
+                    BranchAddress = "Rechavia",
+                    BranchCity = "Jerusalem",
+                    BranchNumber = 123
+                },
+                  new BankBranch
+                {
+                    BankName = "Leumi",
+                    BankNumber = 1,
+                    BranchAddress = "Rechavia",
+                    BranchCity = "Jerusalem",
+                    BranchNumber = 123
+                },
+                   new BankBranch
+                {
+                    BankName = "Leumi",
+                    BankNumber = 1,
+                    BranchAddress = "Rechavia",
+                    BranchCity = "Jerusalem",
+                    BranchNumber = 123
+                },
+                    new BankBranch
+                {
+                    BankName = "Leumi",
+                    BankNumber = 1,
+                    BranchAddress = "Rechavia",
+                    BranchCity = "Jerusalem",
+                    BranchNumber = 123
+                }
+            };
+        }
+
+
+
+    
+
+       
     }
 }

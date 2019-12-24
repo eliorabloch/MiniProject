@@ -20,9 +20,9 @@ namespace BE
     }
    public  enum RequestStatus
     {
-        Open, ClosedDeal, ExpiredRequest
+        Active, ClosedDeal, ExpiredRequest
     }
-    public enum hotelAdditions
+    public enum Options
     {
         neccesery, possible,notintersted
     }

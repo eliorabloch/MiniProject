@@ -25,7 +25,7 @@ namespace BL
         {
             string TypeDAL = ConfigurationSettings.AppSettings.Get("TypeDS");
             //string TypeDAL = "List";
-            myDAL = factoryDAL.getDAL(TypeDAL);
+            myDAL = factoryDAL.GetDAL(TypeDAL);
         }
 
         void InvalidDate(GuestRequest gr)//פונקציה שבודקת האם יום הכניסה קודם ליום היציאה

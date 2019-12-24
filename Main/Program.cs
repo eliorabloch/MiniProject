@@ -125,13 +125,13 @@ namespace Main
             switch (poolanswer)
             {
                 case "1":
-                    gr.Pool = hotelAdditions.neccesery;
+                    gr.Pool = Options.neccesery;
                     break;
                 case "2":
-                    gr.Pool = hotelAdditions.possible;
+                    gr.Pool = Options.possible;
                     break;
                 case "3":
-                    gr.Pool = hotelAdditions.notintersted;
+                    gr.Pool = Options.notintersted;
                     break;
             }
             Console.WriteLine(" Do you want a jaccuz?");
@@ -142,13 +142,13 @@ namespace Main
             switch (jaccuzAnswer)
             {
                 case "1":
-                    gr.Jacuzz = hotelAdditions.neccesery;
+                    gr.Jacuzz = Options.neccesery;
                     break;
                 case "2":
-                    gr.Jacuzz = hotelAdditions.possible;
+                    gr.Jacuzz = Options.possible;
                     break;
                 case "3":
-                    gr.Jacuzz = hotelAdditions.notintersted;
+                    gr.Jacuzz = Options.notintersted;
                     break;
             }
             Console.WriteLine(" Do you want a garden?");
@@ -159,13 +159,13 @@ namespace Main
             switch (gardenAnswer)
             {
                 case "1":
-                    gr.Garden = hotelAdditions.neccesery;
+                    gr.Garden = Options.neccesery;
                     break;
                 case "2":
-                    gr.Garden = hotelAdditions.possible;
+                    gr.Garden = Options.possible;
                     break;
                 case "3":
-                    gr.Garden = hotelAdditions.notintersted;
+                    gr.Garden = Options.notintersted;
                     break;
             }
             Console.WriteLine(" Do you want a attractions for childrens?:");
@@ -176,13 +176,13 @@ namespace Main
             switch (ChildrensAttractionsanswer)
             {
                 case "1":
-                    gr.ChildrensAttractions = hotelAdditions.neccesery;
+                    gr.ChildrensAttractions = Options.neccesery;
                     break;
                 case "2":
-                    gr.ChildrensAttractions = hotelAdditions.possible;
+                    gr.ChildrensAttractions = Options.possible;
                     break;
                 case "3":
-                    gr.ChildrensAttractions = hotelAdditions.notintersted;
+                    gr.ChildrensAttractions = Options.notintersted;
                     break;
             }
             // } סןגר של מחלקת geustRequest

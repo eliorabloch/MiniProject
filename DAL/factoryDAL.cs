@@ -8,7 +8,7 @@ namespace DAL
 {
     public class factoryDAL
     {
-        public static IDAL getDAL(string typeDAL)
+        public static IDAL GetDAL(string typeDAL)
         {
             switch (typeDAL)
             {

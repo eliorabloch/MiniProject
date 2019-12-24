@@ -8,22 +8,22 @@ namespace BE
 {
      public class Host
     {
-        public int HostKey { get; set; }
+        public string HostKey { get; set; }
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
         public string PhoneNumber { get; set; }
         public  string MailAddress { get; set; }
         public BankBranch BankAccuont { get; set; }
         public bool CollectionClearance { get; set; }
+        public uint BankAccountNumber { get;set;}
         public string toString { get; set; }
-        public List<HostingUnit> HostingUnitCollection { get; set; }
         public override string ToString()
         {
            toString = "";
-            foreach (var item in HostingUnitCollection)
-            {
-               toString += item + "\n";
-            }
+            //foreach (var item in HostingUnitCollection)
+            //{
+            //   toString += item + "\n";
+            //}
             return toString;
         }
         public Host() { }//defult constructor

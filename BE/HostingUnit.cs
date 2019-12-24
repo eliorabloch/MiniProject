@@ -6,13 +6,33 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-   public class HostingUnit
+   public class HostingUnit : ICloneable
     {
         int ID;
-        public int HostingUnitKey;
+        private int hostingUnitKey;
+        public int HostingUnitKey
+        {
+            private set
+            {
+                hostingUnitKey = Configuration.HostingUnitId++;
+            }
+            get
+            {
+                return hostingUnitKey;
+            }
+        }
         Host Owner { get; set; }
         public string HostingUnitName { get; set; }
-        public bool[,] Diary { get; set; }
+        private bool[,] diary;
+        public bool[,] Diary {
+            set {
+                diary = createMatrix();
+            }
+            get
+            {
+                return diary;
+            }
+        }
         public string toString { get; set; }
         public bool Pool;
         public bool Jacuzz;
@@ -22,15 +42,22 @@ namespace BE
         string SubArea;
         public UnitType Type;
         public HostingUnit() { }//defult constructor
-        public void FillMatrix(bool[,] d)//Filing the dairy with false valuse
+        private bool[,] createMatrix()//Filing the dairy with false valuse
         {
+            bool[,] d = new bool[12, 31];
             for (int i = 0; i < 12; i++)//This for fills the array with false values
             {
                 for (int j = 1; j < 31; j++)
                 {
-                    Diary[i, j] = false;
+                    d[i, j] = false;
                 }
             }
+            return d;
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 }
