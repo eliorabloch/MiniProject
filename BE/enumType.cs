@@ -16,14 +16,14 @@ namespace BE
     }
     public enum OrderStatus
     {
-        NotHandled, SentMail, ClosedRequest, ConfirmedClosedRequest
+        NotHandled, SentMail, ClosedRequestCanceled, ClosedRequestDoneDeal
     }
-   public  enum RequestStatus
+   public enum RequestStatus
     {
-        Active, ClosedDeal, ExpiredRequest
+        Open, ClosedDeal, ExpiredRequest
     }
     public enum Options
     {
-        neccesery, possible,notintersted
+        neccesery, possible, notintersted
     }
 }

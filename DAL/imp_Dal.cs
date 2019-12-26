@@ -41,7 +41,7 @@ namespace DAL
         {
             if(GetGuestRequestList().Any(x => x.GuestRequestKey == newRequest.GuestRequestKey))
             {
-                throw new Exception($"Guest Request with the ID: {newRequest.GuestRequestKey} - already exists!");
+                throw new TzimerException($"Guest Request with the ID: {newRequest.GuestRequestKey} - already exists!", "dal");
             }
             DataSource.requestList.Add((GuestRequest)newRequest.Clone());
         }
@@ -78,7 +78,7 @@ namespace DAL
         {
             if (GetUnitsList().Any(x => x.HostingUnitKey == newUnit.HostingUnitKey))
             {
-                throw new Exception($"Hosting Unit with the ID: {newUnit.HostingUnitKey} - already exists!");
+                throw new TzimerException($"Hosting Unit with the ID: {newUnit.HostingUnitKey} - already exists!", "dal");
             }
             DataSource.unitList.Add((HostingUnit)newUnit.Clone());
         }
@@ -119,7 +119,7 @@ namespace DAL
         {
             if (GetOrdersList().Any(x => x.OrderKey == newOrder.OrderKey))
             {
-                throw new Exception($"Order with the ID: {newOrder.OrderKey} - already exists!");
+                throw new TzimerException($"Order with the ID: {newOrder.OrderKey} - already exists!", "dal");
             }
             DataSource.orderList.Add((Order)newOrder.Clone());
         }

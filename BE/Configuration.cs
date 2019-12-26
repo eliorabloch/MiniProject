@@ -13,5 +13,7 @@ namespace BE
         public static int GuasteRequestId = 100000000;
         public static int HostingUnitId = 100000000;
         public static int OrderId = 100000000;
+        public static double Commissin = 10;
+        public static double Profits = 0;
     }
 }

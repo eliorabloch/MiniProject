@@ -38,7 +38,7 @@ namespace DS
                     MailAddress = "a@a.com",
                     Pool = Options.possible,
                     RegistrationDate = DateTime.Now,
-                    Status = RequestStatus.Active,
+                    Status = RequestStatus.Open,
                     SubArea = "Tel-Aviv",
                     Type = UnitType.HostingUnit
                 },
@@ -57,7 +57,7 @@ namespace DS
                     MailAddress = "a@a.com",
                     Pool = Options.possible,
                     RegistrationDate = DateTime.Now,
-                    Status = RequestStatus.Active,
+                    Status = RequestStatus.Open,
                     SubArea = "Tel-Aviv",
                     Type = UnitType.HostingUnit
                 },
@@ -76,7 +76,7 @@ namespace DS
                     MailAddress = "a@a.com",
                     Pool = Options.possible,
                     RegistrationDate = DateTime.Now,
-                    Status = RequestStatus.Active,
+                    Status = RequestStatus.Open,
                     SubArea = "Tel-Aviv",
                     Type = UnitType.HostingUnit
                 },
@@ -95,7 +95,7 @@ namespace DS
                     MailAddress = "a@a.com",
                     Pool = Options.possible,
                     RegistrationDate = DateTime.Now,
-                    Status = RequestStatus.Active,
+                    Status = RequestStatus.Open,
                     SubArea = "Tel-Aviv",
                     Type = UnitType.HostingUnit
                 }

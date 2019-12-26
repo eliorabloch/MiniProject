@@ -1,4 +1,5 @@
 ﻿using BE;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,24 +9,42 @@ namespace BL
 {
     public interface IBL
     {
-        void addRequest(GuestRequest newRequest);//מוסיף דרישת אירוח חדשה
-        void updateRequest(GuestRequest update);//עידכון דרישת לקוח- עידכון סטטוס
-        void addUnit(HostingUnit newUnit);//הוספת יחידת אירוח
-        void deleteUnit(HostingUnit delUnit);//מחיקת יחידת אירוח שלמה
-        void updateUnit(HostingUnit update);//עידכון יחידת אירוח לפי כל השדות שלה
-        void addOrder(Order newOrder);//מוסיף הזמנה לרשימה
-        void updateOrder(Order update);//עידכון הזמנה לפי סטטוס
-        List<HostingUnit> getUnitsList();// מחזיר רשימת אירוח
-        List<GuestRequest> getCustomersList();// מחזיר רשימת בקשות אירוח
-        List<Order> getOrdersList();//מחזיר רשימת הזמנות
-        List<string> getBankList(List<BankBranch> bankLists);
-        bool availableDate(HostingUnit H, GuestRequest G);
-        bool availableDate(HostingUnit H, DateTime D, int amount);
-        bool sendOrder(Host H, Order O);
-        List<HostingUnit> availableUnit(List<HostingUnit> getUnitList, DateTime date, int amount);
-        int amountOfDays(DateTime D1, DateTime D2);
-        List<Order> howManyOrders(int amountOfDays, List<Order> orderList);
-        int amountOfOrders(HostingUnit H, List<Order> orderList);
-        void InvalidDate(GuestRequest gr);
+        // Mirror of DAL functions
+        GuestRequest GetRequest(int id);
+        void AddRequest(GuestRequest newRequest);//מוסיף דרישת אירוח חדשה
+        void UpdateRequest(GuestRequest update);
+        void DeleteRequest(GuestRequest newRequest);//מוסיף דרישת אירוח חדשה
+
+        HostingUnit GetUnit(int id);
+        void AddUnit(HostingUnit newUnit);//הוספת יחידת אירוח
+        void UpdateUnit(HostingUnit update);
+        void DeleteUnit(HostingUnit delUnit);
+
+        Order GetOrder(int id);
+        void AddOrder(Order newOrder);//מוסיף הזמנה לרשימה
+        void UpdateOrder(Order update);
+        void DeleteOrder(Order update);
+
+        List<HostingUnit> GetUnitsList();// מחזיר רשימת אירוח
+        List<GuestRequest> GetGuestRequestList();// מחזיר רשימת בקשות אירוח
+        List<Order> GetOrdersList();//מחזיר רשימת הזמנות
+        List<BankBranch> GetBankList();
+
+
+
+        // BL new  function
+        bool AvailableDate(HostingUnit h, GuestRequest g);
+        List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys);
+        bool SendOrder(Host h, Order o);
+         double AmountOfDays(DateTime start, DateTime end);
+        List<Order> GetOldOrders(int amountOfDays);
+        List<GuestRequest> GetAllGuestRequest(Predicate<GuestRequest> condition);
+        int GetNumOfOrders(GuestRequest gr);
+        int GetNumOfSentOrders(HostingUnit hu);
+
+        List<List<GuestRequest>> GroupGuestRequestByAreas();
+        List<List<GuestRequest>> GroupGuestRequestByNumOfAtendees();
+        List<List<Host>> GroupHostsByNumOfUnits();
+
     }
 }

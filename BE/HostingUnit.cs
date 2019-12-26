@@ -21,7 +21,7 @@ namespace BE
                 return hostingUnitKey;
             }
         }
-        Host Owner { get; set; }
+        public Host Owner { get; set; }
         public string HostingUnitName { get; set; }
         private bool[,] diary;
         public bool[,] Diary {

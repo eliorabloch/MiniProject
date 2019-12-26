@@ -336,10 +336,10 @@ namespace Main
                     o.Status = OrderStatus.SentMail;
                     break;
                 case "3":
-                    o.Status = OrderStatus.ClosedRequest;
+                    o.Status = OrderStatus.ClosedRequestCanceled;
                     break;
                 case "4":
-                    o.Status = OrderStatus.ConfirmedClosedRequest;
+                    o.Status = OrderStatus.ClosedRequestDoneDeal;
                     break;
                 default:
                     break;
