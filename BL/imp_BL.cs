@@ -30,7 +30,6 @@ namespace BL
             dal = factoryDAL.GetDAL(TypeDAL);
         }
 
-
         #region Gusets Requsts
 
         public GuestRequest GetRequest(int id)
@@ -106,7 +105,6 @@ namespace BL
         }
 
         #endregion
-
 
         #region Hosting Units
 
@@ -222,8 +220,6 @@ namespace BL
        
         #endregion
 
-
-
         public List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys)
         {
 
@@ -303,7 +299,6 @@ namespace BL
             return isDatesAvilable(h, start, end);
         }
 
-
         public double AmountOfDays(DateTime start, DateTime end)//פונקציה שמקבלת שני תאריכים ובודקת מה ההפרש ביניהם
         {//צריך לטפל באיתחול הדיפולטיבי של D2 שיהיה NOW
             end = end == null ? DateTime.Now : end;
@@ -314,7 +309,6 @@ namespace BL
         {
             return isDatesAvilable(h, g.EntryDate, g.ReleaseDate);
         }
-
 
         public List<GuestRequest> GetAllGuestRequest(Predicate<GuestRequest> condition)
         {
@@ -360,11 +354,18 @@ namespace BL
             return sum;
         }
 
-
         public List<List<GuestRequest>> GroupGuestRequestByAreas()
         {
             return (from gr in GetGuestRequestList()
                        group gr by gr.Area into g
+                       select g.ToList()).ToList();
+
+        }
+
+        List<List<HostingUnit>> GroupHostingUnitsByArea()
+         {
+            return (from hu in GetUnitsList()
+                       group hu by hu.Area into g
                        select g.ToList()).ToList();
 
         }
@@ -393,14 +394,16 @@ namespace BL
         {
             return GetUnitsList().Sum(x => x.Owner.HostKey == owner.HostKey ? 1 : 0);
         }
-
        
         public void DeleteOrder(Order update)
         {
             
         }
 
-       
+        List<List<HostingUnit>> IBL.GroupHostingUnitsByArea()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-     public class Host
+     public class Host: ICloneable
     {
         public string HostKey { get; set; }
         public string PrivateName { get; set; }
@@ -26,6 +26,12 @@ namespace BE
             //}
             return toString;
         }
+
+        public object Clone()
+        {
+            throw new MemberAccessException();
+        }
+
         public Host() { }//defult constructor
     }
 }

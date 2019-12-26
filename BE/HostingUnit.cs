@@ -54,7 +54,6 @@ namespace BE
             }
             return d;
         }
-
         public object Clone()
         {
             return MemberwiseClone();

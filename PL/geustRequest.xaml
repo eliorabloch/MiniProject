@@ -1,0 +1,85 @@
+﻿<Window x:Class="PL.geustRequest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="geustRequest" Height="450" Width="800">
+    <Grid Margin="-2,0,2.333,-0.333">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="402*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
+        <ComboBox Margin="22,47,640,323">
+            <ComboBoxItem Content="neccesery " />
+            <ComboBoxItem Content="possible" />
+            <ComboBoxItem Content="notintersted" />
+        </ComboBox>
+        <ComboBox Margin="22,110,678,260" RenderTransformOrigin="-2.158,-0.998">
+            <ComboBoxItem Content="neccesery" />
+            <ComboBoxItem Content="possible" />
+            <ComboBoxItem Content="notintersted" />
+        </ComboBox>
+        <ComboBox Margin="22,179,660,195">
+            <ComboBoxItem Content="neccesery" />
+            <ComboBoxItem Content="possible" />
+            <ComboBoxItem Content="notintersted" />
+        </ComboBox>
+        <ComboBox Margin="23,230,660,140">
+            <ComboBoxItem Content="neccesery" />
+            <ComboBoxItem Content="possible" />
+            <ComboBoxItem Content="notintersted" />
+        </ComboBox>
+        <ComboBox Margin="18,285,640,86">
+            <ComboBoxItem Content="Open" />
+            <ComboBoxItem Content="ClosedDeal" />
+            <ComboBoxItem Content="ExpiredRequest" />
+        </ComboBox>
+        <ComboBox Margin="22,364,640,10">
+            <ComboBoxItem Content="Tzimer" />
+            <ComboBoxItem Content="HostingUnit" />
+            <ComboBoxItem Content="HotelRoom" />
+            <ComboBoxItem Content="Tent" />
+        </ComboBox>
+        <Label Content="Pool" HorizontalAlignment="Left" Margin="40,10,0,0"  FontWeight="Black" VerticalAlignment="Top" Width="42" Height="26"/>
+        <Label Content="Jacuzz" HorizontalAlignment="Left" Margin="40,77,0,0" FontWeight="Black" VerticalAlignment="Top" Height="26" Width="49"/>
+        <Label Content="Garden" HorizontalAlignment="Left" Margin="40,147,0,0" FontWeight="Black" VerticalAlignment="Top" Height="27" Width="53"/>
+        <Label Content="ChildrensAttractions" HorizontalAlignment="Left" FontWeight="Black" Margin="22,204,0,0" VerticalAlignment="Top" Height="26" Width="132"/>
+        <Label Content="Status" HorizontalAlignment="Left" FontWeight="Black" Margin="40,262,0,0" VerticalAlignment="Top" Height="26" Width="47"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="632,36,0,0"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.169,0.755" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Private name" HorizontalAlignment="Left" Margin="644,10,0,0" FontWeight="Black" VerticalAlignment="Top" Height="26" Width="93"/>
+        <Label Content="Family name" HorizontalAlignment="Left" Margin="644,64,0,0" FontWeight="Black" VerticalAlignment="Top" Height="26" Width="94"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="632,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="127"/>
+        <Label Content="Mail address" HorizontalAlignment="Left" Margin="644,122,0,0" FontWeight="Black" VerticalAlignment="Top" Height="26" Width="101"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="641,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Registration date" HorizontalAlignment="Left" FontWeight="Black" Margin="632,175,0,0" VerticalAlignment="Top" Height="27" Width="128"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="640,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Entry date" HorizontalAlignment="Left" FontWeight="Black" Margin="658,224,0,0" VerticalAlignment="Top" Height="26" Width="88"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="642,249,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Release date" HorizontalAlignment="Left" FontWeight="Black" Margin="658,271,0,0" VerticalAlignment="Top" Height="26" Width="99"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="641,293,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Sub area" HorizontalAlignment="Left" FontWeight="Black" Margin="660,313,0,0" VerticalAlignment="Top" Height="26" Width="78"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="644,334,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Adults" HorizontalAlignment="Left" FontWeight="Black" Margin="701,364,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.848,14.097"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="744,367,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="43"/>
+        <Label Content="Children" HorizontalAlignment="Left" FontWeight="Black" Margin="615,362,0,0" VerticalAlignment="Top" Height="30" Width="63" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.135"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox HorizontalAlignment="Left" Margin="668,370,0,14" TextWrapping="Wrap" Text="" Width="34" TextChanged="TextBox_TextChanged_1"/>
+        <Label Content="Type" FontWeight="Black" HorizontalAlignment="Left" Margin="53,320,0,0" VerticalAlignment="Top"/>
+        <Button Content="save" HorizontalAlignment="Left" Margin="319,36,0,0" VerticalAlignment="Top" Width="93" Height="54"/>
+
+
+    </Grid>
+</Window>

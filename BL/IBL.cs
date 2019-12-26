@@ -45,6 +45,6 @@ namespace BL
         List<List<GuestRequest>> GroupGuestRequestByAreas();
         List<List<GuestRequest>> GroupGuestRequestByNumOfAtendees();
         List<List<Host>> GroupHostsByNumOfUnits();
-
+        List<List<HostingUnit>> GroupHostingUnitsByArea();
     }
 }

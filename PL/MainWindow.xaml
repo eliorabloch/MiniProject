@@ -6,8 +6,24 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <ListBox x:Name="lb_HostingUnits" HorizontalAlignment="Left" ItemsSource="{Binding}" Height="100" Margin="125,74,0,0" VerticalAlignment="Top" Width="100"/>
+    <Border Padding="10">
+        <StackPanel RenderTransformOrigin="0.504,0.776">
+            <Grid Height="202" Margin="0,0,0.2,0">
 
-    </Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+
+
+                </Grid.ColumnDefinitions>
+
+
+                <Button Grid.Column="0" Content="HostingUnit" Margin="0,0,0.2,147" Click="Button_Click_3"/>
+                <Button Content="GuestRequest" Margin="4.6,0,1.8,147" Grid.Column="1" Click="Button_Click_4"/>
+                <Button Grid.Column="2" Content="Host" Margin="2.2,0,-1.8,147" Click="Button_Click_5"/>
+            </Grid>
+        </StackPanel>
+    </Border>
 </Window>
