@@ -24,7 +24,10 @@ namespace DAL
             return instance;
         }
 
-        private imp_Dal() { }//constractor
+        private imp_Dal()
+        {
+            DataSource.Init();
+        }//constractor
 
         #region Guest Requst
 
@@ -45,6 +48,7 @@ namespace DAL
             {
                 throw new TzimerException($"Guest Request with the ID: {newRequest.GuestRequestKey} - already exists!", "dal");
             }
+            newRequest.GuestRequestKey = Configuration.GuestRequestId++;
             DataSource.requestList.Add((GuestRequest)newRequest.Clone());
         }
 
@@ -82,6 +86,7 @@ namespace DAL
             {
                 throw new TzimerException($"Hosting Unit with the ID: {newUnit.HostingUnitKey} - already exists!", "dal");
             }
+            newUnit.HostingUnitKey = Configuration.HostingUnitId++;
             DataSource.unitList.Add((HostingUnit)newUnit.Clone());
         }
 
@@ -123,6 +128,7 @@ namespace DAL
             {
                 throw new TzimerException($"Order with the ID: {newOrder.OrderKey} - already exists!", "dal");
             }
+            newOrder.OrderKey = Configuration.OrderId++;
             DataSource.orderList.Add((Order)newOrder.Clone());
         }
 

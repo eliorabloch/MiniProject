@@ -8,18 +8,10 @@ namespace BE
 {
    public class HostingUnit : ICloneable
     {
-        int ID;
-        private int hostingUnitKey;
         public int HostingUnitKey
         {
-            private set
-            {
-                hostingUnitKey = Configuration.HostingUnitId++;
-            }
-            get
-            {
-                return hostingUnitKey;
-            }
+            set;
+            get;
         }
         public Host Owner { get; set; }
         public string HostingUnitName { get; set; }
@@ -38,7 +30,7 @@ namespace BE
         public  bool Garden;
         public  bool ChildrensAttractions;
         public Areas Area;
-        string SubArea;
+        public string SubArea;
         public UnitType Type;
         public HostingUnit() { }//defult constructor
         private bool[,] createMatrix()//Filing the dairy with false valuse
@@ -57,12 +49,11 @@ namespace BE
         {
             return MemberwiseClone();
         }
-        public string toString { get; set; }
         public override string ToString()//A print function that prints all the details of the class
         {
-            toString = "";
+            string toString = "";
             toString += "this is your hostingUnit information: \n";
-            toString += $"Hosting unit key: {hostingUnitKey} \n";
+            toString += $"Hosting unit key: {HostingUnitKey} \n";
             toString += $"Owner: {Owner} \n";
             toString += $"Hosting unit name: {HostingUnitName} \n";
             toString += $"Pool?: {Pool} \n";

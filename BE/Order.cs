@@ -20,10 +20,9 @@ namespace BE
         public DateTime CreateDate { get; set; }
         public DateTime OrderDate { get; set; }
         public Order() { }//defult constructor
-        public string toString { get; set; }
         public override string ToString()//A print function that prints all the details of the class
         {
-            toString = "";
+            string toString = "";
             toString += "this is your order information: \n";
             toString += $"Hosting unit key: {HostingUnitKey} \n";
             toString += $"Guest request key: {GuestRequestKey} \n";

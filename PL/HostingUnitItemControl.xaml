@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="PL.HostingUnitItemControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PL"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="700">
+    <Grid x:Name="UserControlContainer">
+        <TextBlock x:Name="HostinUnitNameTextBlock" HorizontalAlignment="Left" Height="48" Margin="26,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" FontSize="20"/>
+        <Label x:Name="HostingUnitKeyLable" Content="" HorizontalAlignment="Left" Margin="260,28,0,0" VerticalAlignment="Top" Height="50" Width="186" Foreground="#FFA8A8A8"/>
+        <Button x:Name="EditHostinUnitBtn" Content="Edit" HorizontalAlignment="Left" Margin="505,28,0,0" VerticalAlignment="Top" Width="65" Height="48" Click="EditHostinUnitBtn_Click"/>
+        <Button x:Name="DeleteHostingUnitBtn" Content="Delete" HorizontalAlignment="Left" Margin="615,28,0,0" VerticalAlignment="Top" Width="60" Height="48" Click="DeleteHostingUnitBtn_Click"/>
+
+    </Grid>
+</UserControl>

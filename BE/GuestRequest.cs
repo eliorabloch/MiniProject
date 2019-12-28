@@ -8,14 +8,9 @@ namespace BE
 {
     public class GuestRequest : ICloneable
     {
-        private int guestRequestKey;
         public int GuestRequestKey
         {
-            get { return guestRequestKey; }
-            private set
-            {
-                guestRequestKey = Configuration.GuasteRequestId++;
-            }
+            get; set;
         }
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
@@ -34,10 +29,9 @@ namespace BE
         public Options Garden { get; set; }
         public Options ChildrensAttractions { get; set; }
         public GuestRequest() { }// defualt constructor
-        public string toString { get; set; }
         public override string ToString()//A print function that prints all the details of the class
         {
-            toString = "";
+            string toString = "";
             toString += "this is your guest request information: \n";
             toString += $"Private name: {PrivateName} \n";
             toString += $"Family name: {FamilyName} \n";

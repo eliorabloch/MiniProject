@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    class ImpBL : IBL
+    public class ImpBL : IBL
     {
         #region Singleton
         private static readonly ImpBL instance = new ImpBL();

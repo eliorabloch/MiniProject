@@ -15,16 +15,16 @@ namespace DS
 
         public DataSource()
         {
-            init();
         }
 
-        private static void init()
+        public static void Init()
         {
             // init guest requests
             requestList = new List<GuestRequest>
             {
                 new GuestRequest
                 {
+                    GuestRequestKey = Configuration.GuestRequestId++,
                     Adults = 3,
                     Area = Areas.Center,
                     Children = 9,
@@ -44,6 +44,7 @@ namespace DS
                 },
                 new GuestRequest
                 {
+                                        GuestRequestKey = Configuration.GuestRequestId++,
                     Adults = 5,
                     Area = Areas.Jerusalem,
                     Children = 9,
@@ -63,6 +64,7 @@ namespace DS
                 },
                 new GuestRequest
                 {
+                                        GuestRequestKey = Configuration.GuestRequestId++,
                     Adults = 2,
                     Area = Areas.North,
                     Children = 5,
@@ -82,6 +84,7 @@ namespace DS
                 },
                 new GuestRequest
                 {
+                                        GuestRequestKey = Configuration.GuestRequestId++,
                     Adults = 2,
                     Area = Areas.South,
                     Children = 1,
@@ -106,37 +109,45 @@ namespace DS
             {
                 new HostingUnit
                 {
+                    HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = true,
                     ChildrensAttractions = false,
                     HostingUnitName = "Hello kiti",
+                    SubArea = "ttt",
                     Jacuzz = true,
                     Type = UnitType.HostingUnit
                 },
                  new HostingUnit
                 {
+                                         HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = true,
                     ChildrensAttractions = false,
                     HostingUnitName = "Sami",
+                                        SubArea = "ttt",
                     Jacuzz = true,
                     Type = UnitType.Tent
                 },
                   new HostingUnit
                 {
+                                          HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = true,
                     ChildrensAttractions = false,
                     HostingUnitName = "Blue sky",
+                                        SubArea = "ttt",
                     Jacuzz = true,
                     Type = UnitType.Tzimer
                 },
                    new HostingUnit
                 {
+                                           HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = true,
                     ChildrensAttractions = false,
                     HostingUnitName = "Eliel hotel",
+                                        SubArea = "ttt",
                     Jacuzz = true,
                     Type = UnitType.HotelRoom
                 }
@@ -148,6 +159,7 @@ namespace DS
             {
                 new Order
                 {
+                    OrderKey = Configuration.OrderId++,
                     CreateDate = DateTime.Now,
                     GuestRequestKey = 100000000,
                     HostingUnitKey = 100000000,
@@ -155,6 +167,7 @@ namespace DS
                 },
                  new Order
                 {
+                                         OrderKey = Configuration.OrderId++,
                     CreateDate = DateTime.Now,
                     GuestRequestKey = 100000001,
                     HostingUnitKey = 100000001,

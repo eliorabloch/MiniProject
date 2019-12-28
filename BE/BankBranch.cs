@@ -15,7 +15,7 @@ namespace BE
         public string BranchCity { get; set; }
         public override string ToString()//A print function that prints all the details of the class
         {
-            toString = "";
+            string toString = "";
             toString += "this is your bank branch information: \n";
             toString += $"Bank number: {BankNumber} \n";
             toString += $"Bank name: {BankName} \n";
