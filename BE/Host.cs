@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Host : ICloneable
+     public class Host : ICloneable
     {
         public string HostKey { get; set; }
         public string PrivateName { get; set; }

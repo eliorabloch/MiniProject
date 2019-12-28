@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class BankBranch
+    public class BankBranch : ICloneable
     {
         public int BankNumber { get; set; }
         public string BankName { get; set; }
         public int BranchNumber { get; set; }
         public string BranchAddress { get; set; }
         public string BranchCity { get; set; }
-        public string toString { get; set; }
         public override string ToString()//A print function that prints all the details of the class
         {
             toString = "";
@@ -24,6 +23,10 @@ namespace BE
             toString += $"Branch address: {BranchAddress} \n";
             toString += $"Branch city: {BranchCity} \n";
             return toString;
+        }
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 };

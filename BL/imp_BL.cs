@@ -383,6 +383,13 @@ namespace BL
                     group h by getNumOfUnits(h) into g
                     select g.ToList()).ToList();
         }
+         public List<List<HostingUnit>> GroupHostingUnitssByArea()
+        {
+            return (from hu in GetUnitsList()
+                    group hu by hu.Area into g
+                    select g.ToList()).ToList();
+
+        }
 
         private List<Host> getHostsList()//A function that returns a list of hosting units sorted by host.
         {
