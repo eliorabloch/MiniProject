@@ -47,62 +47,60 @@ namespace DS
                     Adults = 5,
                     Area = Areas.Jerusalem,
                     Children = 9,
-                    ChildrensAttractions = Options.neccesery,
+                    ChildrensAttractions = Options.possible,
                     EntryDate = new DateTime(2020, 1, 1),
                     ReleaseDate = new DateTime(2020, 1, 4),
-                    FamilyName = "Bloch",
-                    PrivateName = "Eli",
+                    FamilyName = "Orenstein",
+                    PrivateName = "Liel",
                     Garden = Options.notintersted,
                     Jacuzz =  Options.possible,
-                    MailAddress = "a@a.com",
+                    MailAddress = "l@a.com",
                     Pool = Options.possible,
                     RegistrationDate = DateTime.Now,
                     Status = RequestStatus.Open,
-                    SubArea = "Tel-Aviv",
-                    Type = UnitType.HostingUnit
+                    SubArea = "Ramot",
+                    Type = UnitType.HotelRoom
                 },
                 new GuestRequest
                 {
-                    Adults = 3,
-                    Area = Areas.Center,
-                    Children = 9,
+                    Adults = 2,
+                    Area = Areas.North,
+                    Children = 5,
                     ChildrensAttractions = Options.neccesery,
-                    EntryDate = new DateTime(2020, 1, 1),
-                    ReleaseDate = new DateTime(2020, 1, 4),
+                    EntryDate = new DateTime(2020,2, 1),
+                    ReleaseDate = new DateTime(2020, 2, 4),
                     FamilyName = "Bloch",
-                    PrivateName = "Eli",
+                    PrivateName = "Yinon",
                     Garden = Options.notintersted,
                     Jacuzz =  Options.possible,
-                    MailAddress = "a@a.com",
+                    MailAddress = "a@mmm.com",
                     Pool = Options.possible,
                     RegistrationDate = DateTime.Now,
-                    Status = RequestStatus.Open,
-                    SubArea = "Tel-Aviv",
-                    Type = UnitType.HostingUnit
+                    Status = RequestStatus.ExpiredRequest,
+                    SubArea = "Tzfat",
+                    Type = UnitType.Tzimer
                 },
                 new GuestRequest
                 {
-                    Adults = 3,
-                    Area = Areas.Center,
-                    Children = 9,
-                    ChildrensAttractions = Options.neccesery,
-                    EntryDate = new DateTime(2020, 1, 1),
-                    ReleaseDate = new DateTime(2020, 1, 4),
-                    FamilyName = "Bloch",
-                    PrivateName = "Eli",
-                    Garden = Options.notintersted,
-                    Jacuzz =  Options.possible,
+                    Adults = 2,
+                    Area = Areas.South,
+                    Children = 1,
+                    ChildrensAttractions = Options.notintersted,
+                    EntryDate = new DateTime(2020, 3, 3),
+                    ReleaseDate = new DateTime(2020, 4, 6),
+                    FamilyName = "Fridman",
+                    PrivateName = "Ronit",
+                    Garden = Options.possible,
+                    Jacuzz =  Options.notintersted,
                     MailAddress = "a@a.com",
                     Pool = Options.possible,
                     RegistrationDate = DateTime.Now,
-                    Status = RequestStatus.Open,
-                    SubArea = "Tel-Aviv",
-                    Type = UnitType.HostingUnit
+                    Status = RequestStatus.ClosedDeal,
+                    SubArea = "Eilat",
+                    Type = UnitType.Tent
                 }
             };
-
-
-
+            
             // init hosting units list
             unitList = new List<HostingUnit>
             {
@@ -120,27 +118,27 @@ namespace DS
                     Area = Areas.Center,
                     Pool = true,
                     ChildrensAttractions = false,
-                    HostingUnitName = "Hello kiti",
+                    HostingUnitName = "Sami",
                     Jacuzz = true,
-                    Type = UnitType.HostingUnit
+                    Type = UnitType.Tent
                 },
                   new HostingUnit
                 {
                     Area = Areas.Center,
                     Pool = true,
                     ChildrensAttractions = false,
-                    HostingUnitName = "Hello kiti",
+                    HostingUnitName = "Blue sky",
                     Jacuzz = true,
-                    Type = UnitType.HostingUnit
+                    Type = UnitType.Tzimer
                 },
                    new HostingUnit
                 {
                     Area = Areas.Center,
                     Pool = true,
                     ChildrensAttractions = false,
-                    HostingUnitName = "Hello kiti",
+                    HostingUnitName = "Eliel hotel",
                     Jacuzz = true,
-                    Type = UnitType.HostingUnit
+                    Type = UnitType.HotelRoom
                 }
             };
 

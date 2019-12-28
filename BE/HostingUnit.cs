@@ -33,7 +33,6 @@ namespace BE
                 return diary;
             }
         }
-        public string toString { get; set; }
         public bool Pool;
         public bool Jacuzz;
         public  bool Garden;
@@ -57,6 +56,22 @@ namespace BE
         public object Clone()
         {
             return MemberwiseClone();
+        }
+        public string toString { get; set; }
+        public override string ToString()//A print function that prints all the details of the class
+        {
+            toString = "";
+            toString += "this is your hostingUnit information: \n";
+            toString += $"Hosting unit key: {hostingUnitKey} \n";
+            toString += $"Owner: {Owner} \n";
+            toString += $"Hosting unit name: {HostingUnitName} \n";
+            toString += $"Pool?: {Pool} \n";
+            toString += $"Jacuzz?: {Jacuzz} \n";
+            toString += $"Garden?: {Garden} \n";
+            toString += $"Childrens attractions?: {ChildrensAttractions} \n";
+            toString += $"Area: {Area} \n";
+            toString += $"Sub area: {SubArea} \n";
+            return toString;
         }
     }
 }

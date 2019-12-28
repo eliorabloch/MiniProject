@@ -13,6 +13,17 @@ namespace BE
         public int BranchNumber { get; set; }
         public string BranchAddress { get; set; }
         public string BranchCity { get; set; }
-        public string ToString { get; set; }
+        public string toString { get; set; }
+        public override string ToString()//A print function that prints all the details of the class
+        {
+            toString = "";
+            toString += "this is your bank branch information: \n";
+            toString += $"Bank number: {BankNumber} \n";
+            toString += $"Bank name: {BankName} \n";
+            toString += $"Branch number: {BranchNumber} \n";
+            toString += $"Branch address: {BranchAddress} \n";
+            toString += $"Branch city: {BranchCity} \n";
+            return toString;
+        }
     }
 };

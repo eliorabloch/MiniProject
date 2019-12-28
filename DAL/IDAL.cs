@@ -10,23 +10,24 @@ namespace DAL
     public interface IDAL
     {
         GuestRequest GetRequest(int id);
-        void AddRequest(GuestRequest newRequest);//מוסיף דרישת אירוח חדשה
-        void UpdateRequest(GuestRequest update);
-        void DeleteRequest(GuestRequest newRequest);//מוסיף דרישת אירוח חדשה
+        void AddRequest(GuestRequest newRequest);//A function that adds a new hosting requirement
+        void UpdateRequest(GuestRequest update);//A function that updates a hosting requirement
+        void DeleteRequest(GuestRequest newRequest);//A function that deletes a new hosting requirement
 
         HostingUnit GetUnit(int id);
-        void AddUnit(HostingUnit newUnit);//הוספת יחידת אירוח
-        void UpdateUnit(HostingUnit update);
-        void DeleteUnit(HostingUnit delUnit);
+        void AddUnit(HostingUnit newUnit);//A function that adds a hosting unit
+        void UpdateUnit(HostingUnit update);//A function that updates a hosting unit.
+        void DeleteUnit(HostingUnit delUnit);//A function that deletes a hosting unit.
 
         Order GetOrder(int id);
-        void AddOrder(Order newOrder);//מוסיף הזמנה לרשימה
-        void UpdateOrder(Order update);
-        void DeleteOrder(Order update);
+        void AddOrder(Order newOrder);//A function that adds an order to the list.
+        void UpdateOrder(Order update);//Function that updates an order.
+        void DeleteOrder(Order update);//Function that deletes an order.
 
-        List<HostingUnit> GetUnitsList ();// מחזיר רשימת אירוח
-        List<GuestRequest> GetGuestRequestList ();// מחזיר רשימת בקשות אירוח
-        List<Order> GetOrdersList();//מחזיר רשימת הזמנות
-        List<BankBranch> GetBankList();
+        List<HostingUnit> GetUnitsList();// A function that returns a hosting unit list.
+        List<GuestRequest> GetGuestRequestList();// A function that returns a list of hosting requests
+        List<Order> GetOrdersList();//Function that returns an order list.
+        List<BankBranch> GetBankList(); //A function that returns a list of banks.
+
     }
 }

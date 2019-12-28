@@ -13,7 +13,7 @@ namespace BL
     {
         #region Singleton
         private static readonly ImpBL instance = new ImpBL();
-
+        //Using Singleton makes sure that no new instance of the class is ever created but only one instance.
         public static ImpBL Instance
         {
             get { return instance; }
@@ -48,7 +48,6 @@ namespace BL
             dal.AddRequest(newRequest);
         }
 
-
         public void UpdateRequest(GuestRequest updatedRequest)
         {
             validGuestRequest(updatedRequest);
@@ -63,15 +62,15 @@ namespace BL
             dal.UpdateRequest(updatedRequest);
         }
 
-        static Func<int, GuestRequest> getGuestRequestIfExists = delegate (int id)
-         {
-             var oldReq = dal.GetRequest(id);
-             if (oldReq == null)
-             {
-                 throw new TzimerException($"Cannot find Requst with ID: {id}", "bl");
-             }
-             return oldReq;
-         };
+        static Func<int, GuestRequest> getGuestRequestIfExists = delegate (int id)//A delegate function that accepts any guest request and checks by its ID whether it already exists, if it does not throw an exception, else returns the request.
+        {
+            var oldReq = dal.GetRequest(id);
+            if (oldReq == null)
+            {
+                throw new TzimerException($"Cannot find Requst with ID: {id}", "bl");
+            }
+            return oldReq;
+        };
 
         public void DeleteRequest(GuestRequest request)
         {
@@ -79,13 +78,14 @@ namespace BL
             dal.DeleteRequest(request);
         }
 
-        private void validGuestRequest(GuestRequest newRequest)
+        private void validGuestRequest(GuestRequest newRequest)//Function that checks the integrity of the guest request.
         {
+            //Check that the vacation start date is at least one day earlier than the vacation end date.
             if ((newRequest.ReleaseDate - newRequest.EntryDate).TotalDays < 1)
             {
                 throw new TzimerException("Sorry, the dates you choose are invalid, entry must be before leave!", "bl");
             }
-
+            //If one of the fields is empty, you will send an exception and request a refill.
             if (string.IsNullOrEmpty(newRequest.FamilyName))
             {
                 throw new TzimerException("Please enter your family name", "bl");
@@ -98,6 +98,7 @@ namespace BL
             {
                 throw new TzimerException("Please enter your e-mail address", "bl");
             }
+            //If the number of adults is equal to 0, an exception is sent.
             if (newRequest.Adults == 0)
             {
                 throw new TzimerException("Cannot set request with zero adults!", "bl");
@@ -108,7 +109,7 @@ namespace BL
 
         #region Hosting Units
 
-        static Func<int, HostingUnit> getHostingUnitsIfExists = delegate (int id)
+        static Func<int, HostingUnit> getHostingUnitsIfExists = delegate (int id)//A delegate function that accepts any hosting unit and checks by its ID whether it already exists, if it does not throw an exception, else returns the unit.
         {
             var oldUnit = dal.GetUnit(id);
             if (oldUnit == null)
@@ -120,7 +121,6 @@ namespace BL
 
         public HostingUnit GetUnit(int id)
         {
-
             return getHostingUnitsIfExists(id);
         }
 
@@ -146,12 +146,12 @@ namespace BL
             dal.DeleteUnit(delUnit);
         }
 
-        private static bool isHaveOpenOrder(HostingUnit unit)
+        private static bool isHaveOpenOrder(HostingUnit unit)//A function that goes through the order list and checks for an open order.
         {
             return dal.GetOrdersList().Any(x => x.HostingUnitKey == unit.HostingUnitKey && (x.Status == OrderStatus.NotHandled || x.Status == OrderStatus.SentMail));
         }
 
-        private void validHostingUnit(HostingUnit newUnit)
+        private void validHostingUnit(HostingUnit newUnit)//If the hosting unit does not have a name - we will throw an error asking you to re-enter the unit name.
         {
             if (string.IsNullOrEmpty(newUnit.HostingUnitName))
             {
@@ -159,7 +159,7 @@ namespace BL
             }
         }
 
-        public List<HostingUnit> GetUnitsList()
+        public List<HostingUnit> GetUnitsList()//A function that returns the hosting unit list.
         {
             return dal.GetUnitsList();
         }
@@ -220,14 +220,13 @@ namespace BL
        
         #endregion
 
-        public List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys)
+        public List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys)//A function that accepts a date and number of vacation days and returns the list of all available accommodation units on that date.
         {
-
             DateTime end = start.AddDays(amountOfDAys);
             return GetUnitsList().Where(x => isDatesAvilable(x, start, end)).ToList();
         }
 
-        void updateDatesAvilable(HostingUnit unit, GuestRequest req)
+        void updateDatesAvilable(HostingUnit unit, GuestRequest req)//t If a vacant unit is on a particular date and the guest wants to be in this unit - the matrix will change the days in the unit to be occupied.
         {
             DateTime tempDate = req.EntryDate;
             while (tempDate < req.ReleaseDate)
@@ -248,22 +247,22 @@ namespace BL
             });
         }
 
-        public List<GuestRequest> GetGuestRequestList()
+        public List<GuestRequest> GetGuestRequestList()//A function that returns the geust request list.
         {
             return dal.GetGuestRequestList();
         }
 
-        public List<Order> GetOrdersList()
+        public List<Order> GetOrdersList()//A function that returns the orders list.
         {
             return dal.GetOrdersList();
         }
 
-        public List<BankBranch> GetBankList()
+        public List<BankBranch> GetBankList()//A function that returns the banks list.
         {
            return dal.GetBankList();
         }
 
-        public bool SendOrder(Host h, Order o)//אם הלקוח חתם על טופס הרשאה של הבנק המארח יוכל לשלוח לו הזמנה
+        public bool SendOrder(Host h, Order o)//A function that checks whether an order can be sent to a customer. Only if the client has signed a host bank authorization form can he send an order.
         {
             if (h.CollectionClearance)
             {
@@ -279,7 +278,7 @@ namespace BL
             // TODO: send request in SMTP to Mail server
         }
 
-        bool isDatesAvilable(HostingUnit unit, DateTime start, DateTime end)
+        bool isDatesAvilable(HostingUnit unit, DateTime start, DateTime end)//A function that checks for a particular unit is available on certain dates.
         {
             DateTime tempDate = start;
             while (tempDate < end)
@@ -293,14 +292,14 @@ namespace BL
             return true;
         }
 
-        bool availableDate(HostingUnit h, DateTime start, int amount)//פונקציה שמוודאת התאריכים שהוזמנו פנויים ביחידה שאליה שיבצו את ההזמנה
+        bool availableDate(HostingUnit h, DateTime start, int amount)//A function that makes sure the booked dates are free in the unit we placed the order.
         {
             DateTime end = start.AddDays(amount);
             return isDatesAvilable(h, start, end);
         }
 
-        public double AmountOfDays(DateTime start, DateTime end)//פונקציה שמקבלת שני תאריכים ובודקת מה ההפרש ביניהם
-        {//צריך לטפל באיתחול הדיפולטיבי של D2 שיהיה NOW
+        public double AmountOfDays(DateTime start, DateTime end)//A function that accepts two dates and checks the time difference between them. If the function has only received one date, it will check how much time has passed from that date until now.
+        {
             end = end == null ? DateTime.Now : end;
             return (end - start).TotalDays;
         }
@@ -310,35 +309,35 @@ namespace BL
             return isDatesAvilable(h, g.EntryDate, g.ReleaseDate);
         }
 
-        public List<GuestRequest> GetAllGuestRequest(Predicate<GuestRequest> condition)
+        public List<GuestRequest> GetAllGuestRequest(Predicate<GuestRequest> condition)//A function that can return all customer requirements that fit a particular condition.
         {
             return GetGuestRequestList().Where(x => condition(x)).ToList();
         }
 
-        public int GetNumOfOrders(GuestRequest gr)
-        {
+        public int GetNumOfOrders(GuestRequest gr)//A function that accepts customer demand and returns the number of orders sent to it.
+        { 
             return GetOrdersList().Where(x => x.GuestRequestKey == gr.GuestRequestKey).Count();
         }
 
-        public int GetNumOfSentOrders(HostingUnit hu)
+        public int GetNumOfSentOrders(HostingUnit hu)//A function that accepts a hosting unit and returns the number of invitations sent / the number of orders successfully closed for this unit through the site.
         {
             return GetOrdersList().Where(x => x.HostingUnitKey == hu.HostingUnitKey && 
             (x.Status == OrderStatus.SentMail || x.Status == OrderStatus.ClosedRequestDoneDeal)).Count();
         }
 
-        Func<Order, int, bool> isOldOrder = delegate (Order order, int amountOfDays)
+        Func<Order, int, bool> isOldOrder = delegate (Order order, int amountOfDays)//A function that accepts several days, and returns all orders that have elapsed since they were created / since the email was sent to a customer greater than or equal to the number of days the function received.
         {
             DateTime start = order.OrderDate > order.CreateDate ? order.CreateDate : order.OrderDate;
             DateTime end = DateTime.Now;
             return (end - start).TotalDays >= amountOfDays;
         };
 
-        public List<Order> GetOldOrders(int amountOfDays)//פונקציה שמחזירה רשימה של הזמנות שהזמו שעבר ממתי שהם אושרו או שנשלח מייל ללקוח שווה למספר הימים שקיבלנו
+        public List<Order> GetOldOrders(int amountOfDays)
         {
             return GetOrdersList().Where(x => isOldOrder(x, amountOfDays)).ToList();
         }
 
-        int amountOfOrders(HostingUnit h,List<Order> orderList)//פונקציה שמקבלת דרישת לקוח, ומחזירה את מספר ההזמנות שנשלחו אליו
+        int amountOfOrders(HostingUnit h,List<Order> orderList)//A function that goes through the order list and checks for each unit how many orders it has closed.
         {
             int sum = 0;
             foreach(var item in orderList)
@@ -362,7 +361,7 @@ namespace BL
 
         }
 
-        List<List<HostingUnit>> GroupHostingUnitsByArea()
+        public List<List<HostingUnit>> GroupHostingUnitsByArea()
          {
             return (from hu in GetUnitsList()
                        group hu by hu.Area into g
@@ -385,12 +384,12 @@ namespace BL
                     select g.ToList()).ToList();
         }
 
-        private List<Host> getHostsList()
+        private List<Host> getHostsList()//A function that returns a list of hosting units sorted by host.
         {
             return GetUnitsList().Select(x => x.Owner).Distinct().ToList();
         }
 
-        private int getNumOfUnits(Host owner)
+        private int getNumOfUnits(Host owner)//A function that returns the number of units each host has.
         {
             return GetUnitsList().Sum(x => x.Owner.HostKey == owner.HostKey ? 1 : 0);
         }
@@ -399,11 +398,7 @@ namespace BL
         {
             
         }
-
-        List<List<HostingUnit>> IBL.GroupHostingUnitsByArea()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
 

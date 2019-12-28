@@ -10,30 +10,32 @@ namespace BE
     {
         public int HostingUnitKey { get; set; }
         public int GuestRequestKey { get; set; }
-        //public static int tempOrderKey = 20000001;
         private int orderKey;
-        public int OrderKey {
+        public int OrderKey
+        {
             get { return orderKey; }
             set { orderKey = Configuration.OrderId++; }
         }
         public OrderStatus Status { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime OrderDate { get; set; }
-        public string ToString { get; set; }
         public Order() { }//defult constructor
-
+        public string toString { get; set; }
+        public override string ToString()//A print function that prints all the details of the class
+        {
+            toString = "";
+            toString += "this is your order information: \n";
+            toString += $"Hosting unit key: {HostingUnitKey} \n";
+            toString += $"Guest request key: {GuestRequestKey} \n";
+            toString += $"order key: {orderKey} \n";
+            toString += $"Status: {Status} \n";
+            toString += $"Create date: {CreateDate} \n";
+            toString += $"Order date: {OrderDate} \n";
+            return toString;
+        }
         public object Clone()
         {
             return MemberwiseClone();
         }
-
-        //public Order(GuestRequest newGuastRequest)
-        //{
-        //    GuestRequestKey = newGuastRequest.GuestRequestKey;
-        //    OrderKey = tempOrderKey;
-        //    tempOrderKey++;
-        //    Status = OrderStatus.NotHandled;
-        //    CreateDate = DateTime.Now.Date;
-        //}
     }
 }

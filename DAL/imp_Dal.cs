@@ -10,10 +10,12 @@ namespace DAL
 {
     public class imp_Dal : IDAL
     {
-        // סינגלטון
-        private static imp_Dal instance = null;//שדה שבו נגדיר את המופע הראשון שלנו
+        
+        
+        //Using Singleton makes sure that no new instance of the class is ever created but only one instance.
+        private static imp_Dal instance = null;
 
-        public static imp_Dal getInstance()//פונקציה סטטית שדואגת לייצר את המופע שלנו פעם אחת בלבד.
+        public static imp_Dal getInstance()
         {
             if (instance == null)
             {
@@ -26,7 +28,7 @@ namespace DAL
 
         #region Guest Requst
 
-        public List<GuestRequest> GetGuestRequestList()//מחזיר רשימת בקשות אירוח
+        public List<GuestRequest> GetGuestRequestList()
         {
             return (from gr in DataSource.requestList
                    select (GuestRequest)gr.Clone()).ToList();
@@ -37,7 +39,7 @@ namespace DAL
             return (GuestRequest)GetGuestRequestList().FirstOrDefault(x=>x.GuestRequestKey == id).Clone();
         }
 
-        public void AddRequest(GuestRequest newRequest)//מוסיף דרישת אירוח חדשה
+        public void AddRequest(GuestRequest newRequest)
         {
             if(GetGuestRequestList().Any(x => x.GuestRequestKey == newRequest.GuestRequestKey))
             {
@@ -46,7 +48,7 @@ namespace DAL
             DataSource.requestList.Add((GuestRequest)newRequest.Clone());
         }
 
-        public void UpdateRequest(GuestRequest updatedRequest)//פונקציה שמשנה את הסטטוס של הבקשה- פעילה או לא
+        public void UpdateRequest(GuestRequest updatedRequest) 
         {
             DataSource.requestList = (from x in GetGuestRequestList()
                                    let Status = updatedRequest.Status
@@ -63,7 +65,7 @@ namespace DAL
 
         #region Hosting Units
 
-        public List<HostingUnit> GetUnitsList()//מחזיר רשימת אירוח
+        public List<HostingUnit> GetUnitsList()
         {
             return (from gr in DataSource.unitList
                     select (HostingUnit)gr.Clone()).ToList();
@@ -74,7 +76,7 @@ namespace DAL
             return (HostingUnit)DataSource.unitList.FirstOrDefault(x => x.HostingUnitKey == id).Clone();
         }
 
-        public void AddUnit(HostingUnit newUnit)//הוספת יחידית אירוח
+        public void AddUnit(HostingUnit newUnit)  
         {
             if (GetUnitsList().Any(x => x.HostingUnitKey == newUnit.HostingUnitKey))
             {
@@ -96,7 +98,7 @@ namespace DAL
                .ToList();
         }
 
-        public void DeleteUnit(HostingUnit delUnit)//מוחק את כל היחידה
+        public void DeleteUnit(HostingUnit delUnit)
         {
             GetUnitsList().RemoveAll(x => x.HostingUnitKey == delUnit.HostingUnitKey);
         }
@@ -104,7 +106,7 @@ namespace DAL
 
         #region Orders
 
-        public List<Order> GetOrdersList()//מחזיר רשימת הזמנות
+        public List<Order> GetOrdersList()
         {
             return (from d in DataSource.orderList
                     select (Order)d.Clone()).ToList();
@@ -115,7 +117,7 @@ namespace DAL
             return (Order)DataSource.orderList.FirstOrDefault(x => x.OrderKey == id).Clone();
         }
 
-        public void AddOrder(Order newOrder)//מוסיף הזמנה לרשימה
+        public void AddOrder(Order newOrder)
         {
             if (GetOrdersList().Any(x => x.OrderKey == newOrder.OrderKey))
             {
@@ -124,7 +126,7 @@ namespace DAL
             DataSource.orderList.Add((Order)newOrder.Clone());
         }
 
-        public void UpdateOrder(Order updatedOrder)//פונקציה שמעדכנת את הסטטוס של ההזמנה לפי מה שהמארח יחליט לשנות
+        public void UpdateOrder(Order updatedOrder)
         {
             DataSource.orderList = (from order in GetOrdersList()
                                    let Status = updatedOrder.Status
@@ -140,7 +142,7 @@ namespace DAL
 
         #endregion
 
-        public List<BankBranch> GetBankList()// מחזיר מתוך רשימה של חשבונות בנקים רק את שמות הבנקים על ידי שימוש בlinq 
+        public List<BankBranch> GetBankList() //Quick reboot of bank list.
         {
             return new List<BankBranch>
             {
@@ -186,11 +188,5 @@ namespace DAL
                 }
             };
         }
-
-
-
-    
-
-       
     }
 }

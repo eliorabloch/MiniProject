@@ -6,24 +6,29 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-     public class Host: ICloneable
+    public class Host : ICloneable
     {
         public string HostKey { get; set; }
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
         public string PhoneNumber { get; set; }
-        public  string MailAddress { get; set; }
+        public string MailAddress { get; set; }
         public BankBranch BankAccuont { get; set; }
         public bool CollectionClearance { get; set; }
-        public uint BankAccountNumber { get;set;}
+        public uint BankAccountNumber { get; set; }
         public string toString { get; set; }
-        public override string ToString()
+        public override string ToString()//A print function that prints all the details of the class
         {
-           toString = "";
-            //foreach (var item in HostingUnitCollection)
-            //{
-            //   toString += item + "\n";
-            //}
+            toString = "";
+            toString += "this is your host information: \n";
+            toString += $"Host key: {HostKey} \n";
+            toString += $"Private name: {PrivateName} \n";
+            toString += $"Family name: {FamilyName} \n";
+            toString += $"Phone number: {PhoneNumber} \n";
+            toString += $"Mail address: {MailAddress} \n";
+            toString += $"Bank accuont: {BankAccuont} \n";
+            toString += $"Collection clearance: {CollectionClearance} \n";
+            toString += $"Bank account number: {BankAccountNumber} \n";
             return toString;
         }
 
@@ -33,5 +38,6 @@ namespace BE
         }
 
         public Host() { }//defult constructor
+
     }
 }

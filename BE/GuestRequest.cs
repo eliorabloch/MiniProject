@@ -33,14 +33,27 @@ namespace BE
         public Options Jacuzz { get; set; }
         public Options Garden { get; set; }
         public Options ChildrensAttractions { get; set; }
-        public string toString { get; set; }
         public GuestRequest() { }// defualt constructor
-        public override string ToString()
+        public string toString { get; set; }
+        public override string ToString()//A print function that prints all the details of the class
         {
             toString = "";
-            toString += "this is your request information: \n";
-            toString += $"entry date: {EntryDate} \n";
-            toString += $"Realese date: {ReleaseDate} \n";
+            toString += "this is your guest request information: \n";
+            toString += $"Private name: {PrivateName} \n";
+            toString += $"Family name: {FamilyName} \n";
+            toString += $"Mail address: {MailAddress} \n";
+            toString += $"Status: {Status} \n";
+            toString += $"Entry date: {EntryDate} \n";
+            toString += $"Release date: {ReleaseDate} \n";
+            toString += $"Area: {Area} \n";
+            toString += $"Sub area: {SubArea} \n";
+            toString += $"Type: {Type} \n";
+            toString += $"Adults: {Adults} \n";
+            toString += $"Children: {Children} \n";
+            toString += $"Pool?: {Pool} \n";
+            toString += $"Jacuzz?: {Jacuzz} \n";
+            toString += $"Garden?: {Garden} \n";
+            toString += $"Childrens attractions?: {ChildrensAttractions} \n";
             return toString;
         }
 
