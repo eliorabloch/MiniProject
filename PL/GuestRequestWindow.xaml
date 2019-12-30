@@ -1,0 +1,92 @@
+﻿<Window x:Class="PL.GuestRequestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="GuestRequestWindow" Height="450" Width="800">
+    <Grid Margin="2,0,-2,-4" Height="419" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="792" Background="#FFCDE8F5" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+
+
+        </Grid.ColumnDefinitions>
+        <Label Content="Unit-Type:" HorizontalAlignment="Left" Height="26" Margin="25,223,0,0" VerticalAlignment="Top" Width="69" Grid.Row="1"/>
+        <Label Content="Area&#xD;&#xA;Area:" HorizontalAlignment="Left" Height="25" Margin="32,281,0,0" VerticalAlignment="Top" Width="128" Grid.Row="1"/>
+        <ComboBox x:Name="AreaComboBox" HorizontalAlignment="Left" Margin="32,311,0,84" Width="155" Grid.Row="1">
+            <ComboBoxItem Content="jerusalem" />
+            <ComboBoxItem Content="center" />
+            <ComboBoxItem Content="north" />
+            <ComboBoxItem Content="south" />
+
+
+
+        </ComboBox>
+        <ComboBox x:Name="TypeComboBox" Height="23" Margin="32,253,605,0" VerticalAlignment="Top" Grid.Row="1">
+            <ComboBoxItem Content=" Tzimer"  />
+            <ComboBoxItem Content="HostingUnit" />
+            <ComboBoxItem Content="HotelRoom" />
+            <ComboBoxItem Content="Tent" />
+
+
+        </ComboBox>
+        <Label Content="First Name" HorizontalAlignment="Left" Margin="29,10,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="26" Width="67"/>
+        <TextBox x:Name="GuestRequestFirstNameTextBox" HorizontalAlignment="Left" Height="23" Margin="99,14,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="97"/>
+        <Button x:Name="SaveBtn" Content="Save" HorizontalAlignment="Left" Margin="335,356,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="95" Height="42" Click="SaveBtn_Click"/>
+        <Label x:Name="GuestRequestKeyLable" Content="Label" HorizontalAlignment="Left" Margin="408,14,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="136" Foreground="#FF939393" Height="26"/>
+        <RadioButton Name="PPossible" Content="Possible" HorizontalAlignment="Left" Height="16" Margin="32,88,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="96" />
+        <RadioButton  Name="PNeccesery" Content="Neccesery " HorizontalAlignment="Left" Height="17" Margin="32,109,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="96"/>
+        <RadioButton Name="PNotintersted" Content=" Not intersted" HorizontalAlignment="Left" Height="18" Margin="32,131,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="96"/>
+        <Label Content="Pool:" HorizontalAlignment="Left" Height="39" Margin="28,63,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Graden:" HorizontalAlignment="Left" Height="24" Margin="130,62,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="119"/>
+        <Grid HorizontalAlignment="Left" Height="90" Margin="23,68,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="105"/>
+        <Grid x:Name="GardenRadio" HorizontalAlignment="Left" Height="86" Margin="133,63,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="104">
+            <RadioButton GroupName="GardenRadio"  Name="GPossible" Content="Possible" HorizontalAlignment="Left" Height="16" Margin="0,25,0,0" VerticalAlignment="Top" Width="94"/>
+            <RadioButton  GroupName="GardenRadio"  Name="GNeccesery" Content="Neccesery" HorizontalAlignment="Left" Height="18" Margin="0,46,0,0" VerticalAlignment="Top" Width="94"/>
+            <RadioButton    GroupName="GardenRadio" Name="GNotintersted" Content="Not intersted" HorizontalAlignment="Left" Height="18" Margin="0,69,0,-1" VerticalAlignment="Top" Width="94"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="84" Margin="240,65,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="105">
+            <RadioButton Name="CPossible" Content="Possible" HorizontalAlignment="Left" Height="18" Margin="0,21,0,0" VerticalAlignment="Top" Width="95"/>
+            <RadioButton  Name="CNeccesery" Content="Neccesery" HorizontalAlignment="Left" Height="20" Margin="0,42,0,0" VerticalAlignment="Top" Width="86"/>
+            <RadioButton  Name="CNotintersted" Content="Not intersted" HorizontalAlignment="Left" Height="15" Margin="0,65,0,0" VerticalAlignment="Top" Width="95"/>
+        </Grid>
+        <Label Content="Children Attractions:" HorizontalAlignment="Left" Height="37" Margin="237,62,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="137"/>
+        <Grid HorizontalAlignment="Left" Height="49" Margin="24,14,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="187">
+            <Label Content="Last Name" HorizontalAlignment="Left" Height="53" Margin="180,-4,-90,0" VerticalAlignment="Top" Width="97"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="38" Margin="10,10,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="398"/>
+        <TextBox x:Name="GuestRequestlastNameTextBox"  HorizontalAlignment="Left" Height="21" Margin="275,16,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="93"/>
+        <Grid HorizontalAlignment="Left" Height="110" Margin="380,63,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="101">
+
+            <Label Content="Jacuzzi:" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="91"/>
+            <RadioButton Name="JPossible" Content="Possible" HorizontalAlignment="Left" Height="24" Margin="5,24,0,0" VerticalAlignment="Top" Width="86"/>
+            <RadioButton  Name="JNeccesery" Content="Neccesery" HorizontalAlignment="Left" Height="30" Margin="5,45,0,0" VerticalAlignment="Top" Width="86"/>
+            <RadioButton  Name="JNotintersted" Content="Not intersted" HorizontalAlignment="Left" Height="33" Margin="5,67,0,0" VerticalAlignment="Top" Width="91"/>
+
+
+        </Grid>
+        <Calendar x:Name="FromDateCalender" HorizontalAlignment="Left" Margin="557,32,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="186" Width="179"/>
+        <Label Content="From:" HorizontalAlignment="Left" Margin="554,9,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="179"/>
+        <Calendar x:Name="ToDateCalender" HorizontalAlignment="Left" Height="175" Margin="557,223,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="179"/>
+        <Label Content="To:" HorizontalAlignment="Left" Height="45" Margin="557,200,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="86"/>
+        <Label Content="Phone-Number:" HorizontalAlignment="Left" Height="25" Margin="26,163,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="PhoneNumbertTextBox" HorizontalAlignment="Left" Height="20" Margin="126,166,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="108"/>
+        <Label Content="E-Mail:" HorizontalAlignment="Left" Height="25" Margin="253,163,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="52"/>
+        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="20" Margin="302,166,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="106"/>
+        <Label Content="Sub - Area:" HorizontalAlignment="Left" Height="27" Margin="29,340,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="99"/>
+        <TextBox x:Name="SubAreaTextBox" HorizontalAlignment="Left" Height="26" Margin="32,367,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="155"/>
+        <Label Content="Children:" HorizontalAlignment="Left" Height="35" Margin="28,192,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="125"/>
+        <Label Content="Adults:" HorizontalAlignment="Left" Height="29" Margin="110,192,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="43"/>
+        <TextBox x:Name="ChildrenTextBox" HorizontalAlignment="Left" Height="15" Margin="88,197,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="15"/>
+        <TextBox x:Name="AdultsTextBox" HorizontalAlignment="Left" Height="15" Margin="158,197,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="15"/>
+
+        <Button x:Name="backBtn" Content="Back" HorizontalAlignment="Left" Height="27" Margin="756,382,0,0" VerticalAlignment="Top" Width="28" Background="#FFEA8E8E" Click="Button_Click" Grid.RowSpan="2"/>
+    </Grid>
+</Window>
+

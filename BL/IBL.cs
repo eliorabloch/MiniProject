@@ -33,6 +33,7 @@ namespace BL
 
 
         // BL new  function
+       // void GetHost(HostingUnit h);
         bool AvailableDate(HostingUnit h, GuestRequest g);
         List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys);
         bool SendOrder(Host h, Order o);

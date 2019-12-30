@@ -5,12 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PL"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="700">
+             d:DesignHeight="100" d:DesignWidth="730">
     <Grid x:Name="UserControlContainer">
-        <TextBlock x:Name="HostinUnitNameTextBlock" HorizontalAlignment="Left" Height="48" Margin="26,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" FontSize="20"/>
-        <Label x:Name="HostingUnitKeyLable" Content="" HorizontalAlignment="Left" Margin="260,28,0,0" VerticalAlignment="Top" Height="50" Width="186" Foreground="#FFA8A8A8"/>
-        <Button x:Name="EditHostinUnitBtn" Content="Edit" HorizontalAlignment="Left" Margin="505,28,0,0" VerticalAlignment="Top" Width="65" Height="48" Click="EditHostinUnitBtn_Click"/>
-        <Button x:Name="DeleteHostingUnitBtn" Content="Delete" HorizontalAlignment="Left" Margin="615,28,0,0" VerticalAlignment="Top" Width="60" Height="48" Click="DeleteHostingUnitBtn_Click"/>
+        <Image Source="unitlist.jpg" Margin="10,0,-18,0"/>
+        <TextBlock x:Name="HostinUnitNameTextBlock" HorizontalAlignment="Left" Height="27" Margin="75,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" FontSize="20" FontFamily="MV Boli"/>
+        <Label x:Name="HostingUnitKeyLable" HorizontalAlignment="Left" Margin="246,40,0,0" VerticalAlignment="Top" Height="50" Width="186" Foreground="#FFA8A8A8"/>
+        <Button x:Name="EditHostinUnitBtn" Content="Edit" HorizontalAlignment="Left" Margin="578,5,0,0" VerticalAlignment="Top" Width="43" Height="36" Click="EditHostinUnitBtn_Click" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="MV Boli"/>
+        <Button x:Name="DeleteHostingUnitBtn" Content="Delete" HorizontalAlignment="Left" Margin="648,5,0,0" VerticalAlignment="Top" Width="45" Height="36" Click="DeleteHostingUnitBtn_Click" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="MV Boli"/>
+        <Button x:Name="OrderHostingUnitBtn" Content="Order" HorizontalAlignment="Left" Margin="521,5,0,0" VerticalAlignment="Top" Width="46" Height="36" Click="OrderHostingUnitBtn_Click" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="MV Boli"/>
 
     </Grid>
 </UserControl>

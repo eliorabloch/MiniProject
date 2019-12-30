@@ -1,0 +1,21 @@
+﻿<Window x:Class="PL.GuestRequestListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="GuestRequestListWindow" Height="450" Width="800">
+    <Grid>
+
+        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="330" Margin="10,0,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="HostingUnitListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="AddrBtn" Content="Add Request" HorizontalAlignment="Left" Height="61" Margin="207,348,0,0" VerticalAlignment="Top" Width="436" Click="AddBtn_Click" Background="#FFAADBE6"/>
+        <Button x:Name="backBtn" Content="Back" HorizontalAlignment="Left" Height="27" Margin="10,382,0,0" VerticalAlignment="Top" Width="43" Background="#FFEA8E8E" Click="Button_Click"/>
+    </Grid>
+</Window>

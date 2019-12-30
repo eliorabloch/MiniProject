@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{805DB8DB-1EEF-45F1-9FEC-160656FA9380}</ProjectGuid>
+    <ProjectGuid>{E2E04478-B854-4F03-9869-BE5767EB6BCC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PL</RootNamespace>
-    <AssemblyName>PL</AssemblyName>
+    <RootNamespace>PLWPF</RootNamespace>
+    <AssemblyName>PLWPF</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,54 +54,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MyOrderItemControl.xaml.cs">
-      <DependentUpon>MyOrderItemControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="OrderListPage.xaml.cs">
-      <DependentUpon>OrderListPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SuggetionOrderItemControl.xaml.cs">
-      <DependentUpon>SuggetionOrderItemControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WelcomePage.xaml.cs">
-      <DependentUpon>WelcomePage.xaml</DependentUpon>
-    </Compile>
-    <Page Include="GuestRequestItemControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GuestRequestListWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GuestRequestWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HostInformationPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HostingUnitItemControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HostingUnitPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HostinUnitListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HostLoginPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HostWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -111,62 +62,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GuestRequestItemControl.xaml.cs">
-      <DependentUpon>GuestRequestItemControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GuestRequestListWindow.xaml.cs">
-      <DependentUpon>GuestRequestListWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GuestRequestWindow.xaml.cs">
-      <DependentUpon>GuestRequestWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="HostInformationPage.xaml.cs">
-      <DependentUpon>HostInformationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="HostingUnitItemControl.xaml.cs">
-      <DependentUpon>HostingUnitItemControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="HostingUnitPage.xaml.cs">
-      <DependentUpon>HostingUnitPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="HostinUnitListPage.xaml.cs">
-      <DependentUpon>HostinUnitListPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="HostLoginPage.xaml.cs">
-      <DependentUpon>HostLoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="HostWindow.xaml.cs">
-      <DependentUpon>HostWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ManagerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MyOrderItemControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="OrderListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SuggetionOrderItemControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WelcomePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ManagerPage.xaml.cs">
-      <DependentUpon>ManagerPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -204,15 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Main.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="unitlist.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="addunit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

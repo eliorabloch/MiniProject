@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SuggetionOrderItemControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SuggetionOrderItemControl : UserControl
     {
-        public MainWindow()
+        public SuggetionOrderItemControl()
         {
             InitializeComponent();
         }
-
-        
     }
 }

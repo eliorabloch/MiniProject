@@ -10,21 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for HostWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HostWindow : Window
     {
-        public MainWindow()
+        public HostWindow()
         {
             InitializeComponent();
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow obj = new MainWindow();
+            this.Visibility = Visibility.Hidden;
+            obj.Show();
+        }
     }
 }

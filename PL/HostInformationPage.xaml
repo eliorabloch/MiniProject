@@ -1,0 +1,41 @@
+﻿<Page x:Class="PL.HostInformationPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PL"
+             mc:Ignorable="d" Width="680" Height="800" Background="#FFDEDEDE">
+    <Grid Margin="0,-22,0,162">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="227*"/>
+            <ColumnDefinition Width="165*"/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" Width="400" Margin="0,22,-8,-108" Grid.ColumnSpan="2">
+            <Label Content="First-Name:" HorizontalAlignment="Left" Height="24" Margin="9,52,0,0" VerticalAlignment="Top" Width="122" FontWeight="Bold"/>
+            <TextBox x:Name="FirstNameTextBox" HorizontalAlignment="Left" Height="26" Margin="88,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92"/>
+            <Label Content="Last-Name:" HorizontalAlignment="Left" Height="32" Margin="188,53,0,0" VerticalAlignment="Top" Width="103" FontWeight="Bold"/>
+            <TextBox x:Name="LastNameTextBox" HorizontalAlignment="Left" Height="26" Margin="266,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+            <Label Content="Phone-Number:" HorizontalAlignment="Left" Height="34" Margin="9,92,0,0" VerticalAlignment="Top" Width="122" FontWeight="Bold"/>
+            <Label Content="E-Mail Address:" HorizontalAlignment="Left" Height="50" Margin="189,92,0,0" VerticalAlignment="Top" Width="160" FontWeight="Bold"/>
+            <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Height="29" Margin="9,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" TextChanged="PhoneNumberTextBox_TextChanged"/>
+            <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="29" Margin="188,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" TextChanged="PhoneNumberTextBox_TextChanged"/>
+            <Label Content="Bank Account Number" HorizontalAlignment="Left" Height="49" Margin="9,160,0,0" VerticalAlignment="Top" Width="232" FontWeight="Bold"/>
+            <TextBox x:Name="BankAccountNumberTextBox" HorizontalAlignment="Left" Height="29" Margin="12,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" RenderTransformOrigin="0.5,0.5"/>
+            <CheckBox x:Name="collectoinCleearenceCheckBox" Content="Collection Clearance" HorizontalAlignment="Left" Height="29" Margin="194,194,0,0" VerticalAlignment="Top" Width="187" FontSize="16" FontWeight="Bold"/>
+            <Button x:Name="SaveBTN" Content="Done" HorizontalAlignment="Left" Height="46" Margin="154,241,0,0" VerticalAlignment="Top" Width="104" FontWeight="Bold" Click="SaveBTN_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="button.png"/>
+                </Button.Background>
+            </Button>
+            <TextBox x:Name="HostIdTextBox" HorizontalAlignment="Left" Height="29" Margin="89,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
+        </Grid>
+        <Label Content="Host ID:" HorizontalAlignment="Left" Height="35" Margin="13,36,0,0" VerticalAlignment="Top" Width="72" FontWeight="Bold"/>
+
+
+        <Button x:Name="backBtn"  HorizontalAlignment="Left" Height="30" Margin="13,361,0,-150" VerticalAlignment="Top" Width="30" Click="Button_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="https://cdn.pixabay.com/photo/2016/09/05/10/50/app-1646213_960_720.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Page>

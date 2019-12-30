@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="PL.SuggetionOrderItemControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PL"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="380">
+    <Grid>
+        <Label x:Name="GuestRequestPrivateNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="87"/>
+        <Label x:Name="GuestRequestFamilyNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="87"/>
+        <Button x:Name="GuestRequestDetailsBtn" Content="Info" HorizontalAlignment="Left" Margin="216,10,0,0" VerticalAlignment="Top" Width="73" Height="57"/>
+        <Button x:Name="GuestRequestInviteBtn" Content="Invite" HorizontalAlignment="Left" Margin="294,10,0,0" VerticalAlignment="Top" Width="76" Height="57"/>
+
+    </Grid>
+</UserControl>

@@ -39,7 +39,7 @@ namespace DAL
 
         public GuestRequest GetRequest(int id)
         {
-            return (GuestRequest)GetGuestRequestList().FirstOrDefault(x=>x.GuestRequestKey == id).Clone();
+            return (GuestRequest)GetGuestRequestList().FirstOrDefault(x=>x.GuestRequestKey == id)?.Clone();
         }
 
         public void AddRequest(GuestRequest newRequest)
@@ -62,7 +62,7 @@ namespace DAL
 
         public void DeleteRequest(GuestRequest newRequest)
         {
-            GetGuestRequestList().RemoveAll(x => x.GuestRequestKey == newRequest.GuestRequestKey);
+            DataSource.requestList.RemoveAll(x => x.GuestRequestKey == newRequest.GuestRequestKey);
         }
 
         #endregion
@@ -105,7 +105,7 @@ namespace DAL
 
         public void DeleteUnit(HostingUnit delUnit)
         {
-            GetUnitsList().RemoveAll(x => x.HostingUnitKey == delUnit.HostingUnitKey);
+            DataSource.unitList.RemoveAll(x => x.HostingUnitKey == delUnit.HostingUnitKey);
         }
         #endregion
 

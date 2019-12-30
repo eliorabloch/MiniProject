@@ -25,17 +25,18 @@ namespace DS
                 new GuestRequest
                 {
                     GuestRequestKey = Configuration.GuestRequestId++,
-                    Adults = 3,
+                    Adults = "3",
                     Area = Areas.Center,
-                    Children = 9,
+                    Children = "9",
                     ChildrensAttractions = Options.neccesery,
                     EntryDate = new DateTime(2020, 1, 1),
-                    ReleaseDate = new DateTime(2020, 1, 4),
+                    ReleaseDate = new DateTime(2020, 1, 2),
                     FamilyName = "Bloch",
                     PrivateName = "Eli",
                     Garden = Options.notintersted,
                     Jacuzz =  Options.possible,
                     MailAddress = "a@a.com",
+                    PhoneNumber="0546345291",
                     Pool = Options.possible,
                     RegistrationDate = DateTime.Now,
                     Status = RequestStatus.Open,
@@ -45,9 +46,9 @@ namespace DS
                 new GuestRequest
                 {
                                         GuestRequestKey = Configuration.GuestRequestId++,
-                    Adults = 5,
+                    Adults = "5",
                     Area = Areas.Jerusalem,
-                    Children = 9,
+                    Children = "9",
                     ChildrensAttractions = Options.possible,
                     EntryDate = new DateTime(2020, 1, 1),
                     ReleaseDate = new DateTime(2020, 1, 4),
@@ -56,6 +57,7 @@ namespace DS
                     Garden = Options.notintersted,
                     Jacuzz =  Options.possible,
                     MailAddress = "l@a.com",
+                    PhoneNumber="0546345555",
                     Pool = Options.possible,
                     RegistrationDate = DateTime.Now,
                     Status = RequestStatus.Open,
@@ -65,9 +67,9 @@ namespace DS
                 new GuestRequest
                 {
                                         GuestRequestKey = Configuration.GuestRequestId++,
-                    Adults = 2,
+                    Adults = "2",
                     Area = Areas.North,
-                    Children = 5,
+                    Children = "5",
                     ChildrensAttractions = Options.neccesery,
                     EntryDate = new DateTime(2020,2, 1),
                     ReleaseDate = new DateTime(2020, 2, 4),
@@ -76,7 +78,8 @@ namespace DS
                     Garden = Options.notintersted,
                     Jacuzz =  Options.possible,
                     MailAddress = "a@mmm.com",
-                    Pool = Options.possible,
+                    PhoneNumber="0546745555",
+                    Pool = Options.notintersted,
                     RegistrationDate = DateTime.Now,
                     Status = RequestStatus.ExpiredRequest,
                     SubArea = "Tzfat",
@@ -85,17 +88,18 @@ namespace DS
                 new GuestRequest
                 {
                                         GuestRequestKey = Configuration.GuestRequestId++,
-                    Adults = 2,
+                    Adults =" 2",
                     Area = Areas.South,
-                    Children = 1,
+                    Children = "1",
                     ChildrensAttractions = Options.notintersted,
-                    EntryDate = new DateTime(2020, 3, 3),
-                    ReleaseDate = new DateTime(2020, 4, 6),
+                    EntryDate = new DateTime(2019, 01, 12),
+                    ReleaseDate = new DateTime(2019, 01,15),
                     FamilyName = "Fridman",
                     PrivateName = "Ronit",
                     Garden = Options.possible,
                     Jacuzz =  Options.notintersted,
                     MailAddress = "a@a.com",
+                    PhoneNumber="0546341234",
                     Pool = Options.possible,
                     RegistrationDate = DateTime.Now,
                     Status = RequestStatus.ClosedDeal,
@@ -103,7 +107,7 @@ namespace DS
                     Type = UnitType.Tent
                 }
             };
-            
+
             // init hosting units list
             unitList = new List<HostingUnit>
             {
@@ -116,7 +120,24 @@ namespace DS
                     HostingUnitName = "Hello kiti",
                     SubArea = "ttt",
                     Jacuzz = true,
-                    Type = UnitType.HostingUnit
+                    Type = UnitType.HostingUnit,
+                    Owner= new Host
+                    {
+                        PrivateName="rami",
+                        FamilyName="Bloch",
+                        HostId="2064555",
+                         PhoneNumber="065476485",
+                        CollectionClearance=true,
+                        MailAddress="e@gmail.com",
+                        BankAccountNumber="2222",
+       
+
+
+                    }
+              
+
+                   
+
                 },
                  new HostingUnit
                 {
@@ -127,7 +148,20 @@ namespace DS
                     HostingUnitName = "Sami",
                                         SubArea = "ttt",
                     Jacuzz = true,
-                    Type = UnitType.Tent
+                    Type = UnitType.Tent,
+                     Owner= new Host
+                    {
+                        PrivateName="rami",
+                        FamilyName="Bloch",
+                        HostId="123",
+                         PhoneNumber="065476485",
+                        CollectionClearance=true,
+                        MailAddress="e@gmail.com",
+                        BankAccountNumber="1111",
+
+
+
+                    }
                 },
                   new HostingUnit
                 {
@@ -138,7 +172,20 @@ namespace DS
                     HostingUnitName = "Blue sky",
                                         SubArea = "ttt",
                     Jacuzz = true,
-                    Type = UnitType.Tzimer
+                    Type = UnitType.Tzimer,
+                     Owner= new Host
+                    {
+                        PrivateName="rami",
+                        FamilyName="Bloch",
+                        HostId="2064555",
+                         PhoneNumber="065476485",
+                        CollectionClearance=true,
+                        MailAddress="e@gmail.com",
+                        BankAccountNumber="3451",
+
+
+
+                    }
                 },
                    new HostingUnit
                 {
@@ -149,7 +196,20 @@ namespace DS
                     HostingUnitName = "Eliel hotel",
                                         SubArea = "ttt",
                     Jacuzz = true,
-                    Type = UnitType.HotelRoom
+                    Type = UnitType.HotelRoom,
+                     Owner= new Host
+                    {
+                        PrivateName="rami",
+                        FamilyName="Bloch",
+                        HostId="2064555",
+                        CollectionClearance=true,
+                        MailAddress="e@gmail.com",
+                        PhoneNumber="065476485",
+                        BankAccountNumber="1145611",
+
+
+
+                    }
                 }
             };
 

@@ -1,4 +1,5 @@
-﻿using BL;
+﻿using BE;
+using BL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+//this page is the format of how every appeerance of my list should be built.
 namespace PL
 {
     /// <summary>
@@ -21,26 +22,30 @@ namespace PL
     /// </summary>
     public partial class HostingUnitItemControl : UserControl
     {
-        public HostingUnitItemControl()
+        NavigationService m_navigationService { get; set; }
+        HostingUnit m_hostingUnit;
+        public HostingUnitItemControl(HostingUnit owner, NavigationService navigationService)
         {
+            m_hostingUnit = owner;
             InitializeComponent();
+            m_navigationService = navigationService;
         }
 
-        private void EditHostinUnitBtn_Click(object sender, RoutedEventArgs e)
+        private void EditHostinUnitBtn_Click(object sender, RoutedEventArgs e)//this takes us to edit the unit
         {
             try
             {
                 int hostingUnitKey = int.Parse(HostingUnitKeyLable.Content.ToString().Substring(1));
-                HostingUnitWindow huw = new HostingUnitWindow(true, hostingUnitKey);
-                huw.Show();
+                HostingUnitPage huw = new HostingUnitPage(m_hostingUnit.Owner, true, hostingUnitKey);
+                m_navigationService.Navigate(huw);
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);// throws a message if cant edit unit.
             }
         }
 
-        private void DeleteHostingUnitBtn_Click(object sender, RoutedEventArgs e)
+        private void DeleteHostingUnitBtn_Click(object sender, RoutedEventArgs e)//this takes us to delete the unit
         {
             try
             {
@@ -51,8 +56,13 @@ namespace PL
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);// throws a message if cant delete unit.
             }
+        }
+
+        private void OrderHostingUnitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.m_navigationService.Navigate(new OrderListPage(m_hostingUnit));
         }
     }
 }

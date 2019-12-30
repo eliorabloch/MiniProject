@@ -15,6 +15,9 @@ namespace BE
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
         public string MailAddress { get; set; }
+        public string PhoneNumber { get; set; }
+
+
         public RequestStatus Status {get;set;}
         public DateTime RegistrationDate { get; set; }
         public DateTime EntryDate { get; set; }
@@ -22,8 +25,8 @@ namespace BE
         public Areas Area { get; set; }
         public string SubArea { get; set; }
         public UnitType Type { get; set; }
-        public uint Adults { get; set; }
-        public uint Children { get; set; }
+        public string Adults { get; set; }
+        public string Children { get; set; }
         public Options Pool { get; set; }
         public Options Jacuzz { get; set; }
         public Options Garden { get; set; }
