@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         
         mc:Ignorable="d"
-           Title="Eliel" Height="680" Width="800" ResizeMode="NoResize">
+           Title="Eliel" Height="680" Width="840" ResizeMode="NoResize" >
     <Grid>
         <Frame x:Name="MainFrame" Source="WelcomePage.xaml" NavigationUIVisibility="Hidden">
         </Frame>

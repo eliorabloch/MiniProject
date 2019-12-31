@@ -5,28 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="HostinUnitListWindow" Height="680" Width="800">
-    <Grid>
+        Title="HostinUnitListWindow" Height="680" Width="840">
+    <Grid Margin="0,-2,0,2">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="Black" Offset="0"/>
                 <GradientStop Color="#FF9DC8E6" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="320" Margin="22,10,0,0" VerticalAlignment="Top" Width="742">
-            
+        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="522" Margin="36,12,0,0" VerticalAlignment="Top" Width="768">
+
         </ListView>
-        <Button x:Name="AddBtn" Content="  Add Unit" HorizontalAlignment="Left" Height="74" Margin="349,335,0,0" VerticalAlignment="Top" Width="163" Click="AddBtn_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="16">
+        <Button x:Name="AddBtn" Content="  Add Unit" HorizontalAlignment="Left" Height="73" Margin="333,536,0,0" VerticalAlignment="Top" Width="196" Click="AddBtn_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="16">
             <Button.Background>
                 <ImageBrush ImageSource="button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="backBtn" HorizontalAlignment="Left" Height="30" Margin="10,368,0,0" VerticalAlignment="Top" Width="30" Click="Button_Click" BorderBrush="{x:Null}">
+        <Button x:Name="backBtn" HorizontalAlignment="Left" Height="30" Margin="10,579,0,0" VerticalAlignment="Top" Width="30" Click="Button_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="https://cdn.pixabay.com/photo/2016/09/05/10/50/app-1646213_960_720.png"/>
             </Button.Background>
         </Button>
-        <Image Source="addunit.png" Margin="362,358,378,35"></Image>
+        <Image Source="addunit.png" Margin="360,465,448,10"></Image>
 
     </Grid>
 </Page>

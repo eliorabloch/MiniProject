@@ -5,16 +5,30 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PL"
       mc:Ignorable="d" 
-      d:DesignHeight="680" d:DesignWidth="800"
-      Title="HostLoginPage" Height="680" Width="800">
+      d:DesignHeight="680" d:DesignWidth="840"
+      Title="HostLoginPage" Height="680" Width="840">
 
-    <Grid>
-        <Label Content="Existing Host?" HorizontalAlignment="Left" Height="29" Margin="248,58,0,0" VerticalAlignment="Top" Width="111"/>
-        <TextBox x:Name="HostIdTextBox" HorizontalAlignment="Left" Height="21" Margin="248,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" Foreground="#FF8D8888"/>
-        <Label Content="New host?" HorizontalAlignment="Left" Margin="248,118,0,0" VerticalAlignment="Top" Height="34" Width="89"/>
-        <Button x:Name="CreateNewHostBtn" Content="Create New Account" HorizontalAlignment="Left" Height="36" Margin="248,152,0,0" VerticalAlignment="Top" Width="166" RenderTransformOrigin="0.491,0.577" Click="CreateNewHostBtn_Click"/>
-        <Button x:Name="LoginHostBtn" Content="Login" HorizontalAlignment="Left" Margin="425,88,0,0" VerticalAlignment="Top" Width="116" Height="26" Click="LoginHostBtn_Click"/>
-        <Label Content="Please Enter your ID" HorizontalAlignment="Left" Margin="94,87,0,0" VerticalAlignment="Top" Width="128"/>
+    <Grid Background="#FF9DC8E6">
+        <Label Content="Existing Host?" HorizontalAlignment="Left" Height="81" Margin="324,114,0,0" VerticalAlignment="Top" Width="196" FontSize="24" FontFamily="MV Boli"/>
+        <TextBox x:Name="HostIdTextBox" HorizontalAlignment="Left" Height="34" Margin="324,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Foreground="#FF8D8888"/>
+        <Label Content="New host?" HorizontalAlignment="Left" Margin="356,301,0,0" VerticalAlignment="Top" Height="67" Width="247" FontFamily="MV Boli" FontSize="24"/>
+        <Button x:Name="CreateNewHostBtn" Content="Create New Account" HorizontalAlignment="Left" Height="60" Margin="356,362,0,0" VerticalAlignment="Top" Width="144" RenderTransformOrigin="0.491,0.577" Click="CreateNewHostBtn_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="button.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="LoginHostBtn" Content="Login" HorizontalAlignment="Left" Margin="370,225,0,0" VerticalAlignment="Top" Width="116" Height="60
+                " Click="LoginHostBtn_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="button.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Please Enter your ID" HorizontalAlignment="Left" Margin="148,171,0,0" VerticalAlignment="Top" Width="177" FontFamily="MV Boli" FontSize="16"/>
+        <Button Content="" HorizontalAlignment="Left" Height="30" Margin="62,583,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="https://cdn.pixabay.com/photo/2016/09/05/10/50/app-1646213_960_720.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Page>
