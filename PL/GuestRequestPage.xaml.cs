@@ -310,10 +310,10 @@ namespace PL
                     }
                     #endregion
                     bl.AddRequest(gr);
+                   
 
-                   // GuestRequestListWindow obj = new GuestRequestListWindow();
-                    //this.Visibility = Visibility.Hidden;
-                   // obj.Show();
+                    var GlPAGE = new GuestRequestListPage();
+                    this.NavigationService.Navigate(GlPAGE);
 
                 }
             }

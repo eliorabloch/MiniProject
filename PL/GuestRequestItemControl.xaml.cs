@@ -22,7 +22,11 @@ namespace PL
     /// </summary>
     public partial class GuestRequestItemControl : UserControl
     {
-        NavigationService m_navigationService { get; set; }
+        public GuestRequestItemControl()
+        {
+            InitializeComponent();
+        }
+           NavigationService m_navigationService { get; set; }
         public GuestRequestItemControl(NavigationService navigationService)
         {
             InitializeComponent();
