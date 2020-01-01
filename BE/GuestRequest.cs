@@ -16,9 +16,7 @@ namespace BE
         public string FamilyName { get; set; }
         public string MailAddress { get; set; }
         public string PhoneNumber { get; set; }
-
-
-        public RequestStatus Status {get;set;}
+        public RequestStatus Status {get ;set;}
         public DateTime RegistrationDate { get; set; }
         public DateTime EntryDate { get; set; }
         public DateTime ReleaseDate { get; set; }

@@ -81,7 +81,7 @@ namespace DS
                     PhoneNumber="0546745555",
                     Pool = Options.notintersted,
                     RegistrationDate = DateTime.Now,
-                    Status = RequestStatus.ExpiredRequest,
+                    Status = RequestStatus.Open,
                     SubArea = "Tzfat",
                     Type = UnitType.Tzimer
                 },
@@ -102,7 +102,7 @@ namespace DS
                     PhoneNumber="0546341234",
                     Pool = Options.possible,
                     RegistrationDate = DateTime.Now,
-                    Status = RequestStatus.ClosedDeal,
+                    Status = RequestStatus.Open,
                     SubArea = "Eilat",
                     Type = UnitType.Tent
                 }
@@ -130,14 +130,7 @@ namespace DS
                         CollectionClearance=true,
                         MailAddress="e@gmail.com",
                         BankAccountNumber="2222",
-       
-
-
                     }
-              
-
-                   
-
                 },
                  new HostingUnit
                 {
@@ -158,9 +151,6 @@ namespace DS
                         CollectionClearance=true,
                         MailAddress="e@gmail.com",
                         BankAccountNumber="1111",
-
-
-
                     }
                 },
                   new HostingUnit
@@ -182,14 +172,11 @@ namespace DS
                         CollectionClearance=true,
                         MailAddress="e@gmail.com",
                         BankAccountNumber="3451",
-
-
-
                     }
                 },
                    new HostingUnit
                 {
-                                           HostingUnitKey = Configuration.HostingUnitId++,
+                    HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = true,
                     ChildrensAttractions = false,

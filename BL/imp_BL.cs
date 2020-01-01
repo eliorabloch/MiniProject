@@ -47,10 +47,64 @@ namespace BL
             return GetUnitsList().Where(x => x.Owner.HostId == hostId).ToList();
         }
 
+        public void matchRequestToUnit(Host h ,List<GuestRequest> GetGuestRequestList)// Function who match between hostingunit to guestrequest.
+        {
+            foreach (var item in GetUnitsByHost(h.HostId))
+            {
+               foreach(var itemm in GetGuestRequestList)
+                {
+                    Order order =checkIfFit(item, itemm);//Here we will send a mail to the geust that he welcome to come to out unit.
+                    if(!(order==null))
+                    {
+                        AddOrder(order); 
+                    }
+                }
+            }
+        }
+
+        public Order checkIfFit(HostingUnit hu, GuestRequest gr)
+        {
+            if((hu.SubArea==gr.SubArea)&& (hu.Area == gr.Area))
+            {
+                if(hu.Type == gr.Type)
+                {
+                    if(isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate))
+                    {
+                        if ((hu.Pool == true && (gr.Pool == Options.neccesery || gr.Pool == Options.possible)) || (hu.Pool == false && (gr.Pool == Options.notintersted || gr.Pool == Options.possible)))
+                        {
+                            if ((hu.Jacuzz == true && (gr.Jacuzz == Options.neccesery || gr.Jacuzz == Options.possible)) || (hu.Jacuzz == false && (gr.Jacuzz == Options.notintersted || gr.Jacuzz == Options.possible)))
+                            {
+                                if ((hu.Garden == true && (gr.Garden == Options.neccesery || gr.Garden == Options.possible)) || (hu.Garden == false && (gr.Garden == Options.notintersted || gr.Garden == Options.possible)))
+                                {
+                                    if ((hu.ChildrensAttractions == true && (gr.ChildrensAttractions == Options.neccesery || gr.ChildrensAttractions == Options.possible)) || (hu.ChildrensAttractions == false && (gr.ChildrensAttractions == Options.notintersted || gr.ChildrensAttractions == Options.possible)))
+                                    {
+                                        Order order = new Order();
+                                        order.GuestRequestKey = gr.GuestRequestKey;
+                                        order.HostingUnitKey = hu.HostingUnitKey;
+                                        order.Status = OrderStatus.NotHandled;
+                                        order.CreateDate = DateTime.Now;
+                                        return order;
+                                    }
+                                    return null;
+                                }
+                                return null;
+                            }
+                            return null;
+                        }
+                        return null;
+                    }
+                    return null;
+                }
+                return null;
+            }
+            return null;
+        }
+
+
         public Host GetHost(string hostId)
         {
             var hu = GetUnitsList().FirstOrDefault(x => x.Owner.HostId == hostId);
-            if(hu != null)
+            if (hu != null)
             {
                 return hu.Owner;
             }
@@ -217,6 +271,9 @@ namespace BL
             dal.AddOrder(newOrder);
         }
 
+
+        
+
         public void UpdateOrder(Order updatedOrder)
         {
             var oldOrder = getOrderIfExists(updatedOrder.OrderKey);
@@ -232,12 +289,21 @@ namespace BL
                 Configuration.Profits += (totalDays * Configuration.Commissin);
                 updateDatesAvilable(unit, req);
                 cancelAllOtherOrders(updatedOrder);
+                req.Status = RequestStatus.ClosedDeal;
             }
             else if (updatedOrder.Status == OrderStatus.SentMail)
             {
                 sendOrderRequest(req);
+                req.Status = RequestStatus.ClosedDeal;
             }
-
+            if (oldOrder.Status== OrderStatus.ClosedRequestCanceled)
+            {
+                req.Status = RequestStatus.ExpiredRequest;
+            }
+            if (oldOrder.Status== OrderStatus.NotHandled)
+            {
+                req.Status = RequestStatus.Open;
+            }
         }
 
 
