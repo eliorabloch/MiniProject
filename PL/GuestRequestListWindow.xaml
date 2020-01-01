@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="GuestRequestListWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#FF9DC8E6">
 
         <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="330" Margin="10,0,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="HostingUnitListView_SelectionChanged">
             <ListView.View>
@@ -15,7 +15,16 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="AddrBtn" Content="Add Request" HorizontalAlignment="Left" Height="61" Margin="207,348,0,0" VerticalAlignment="Top" Width="436" Click="AddBtn_Click" Background="#FFAADBE6"/>
-        <Button x:Name="backBtn" Content="Back" HorizontalAlignment="Left" Height="27" Margin="10,382,0,0" VerticalAlignment="Top" Width="43" Background="#FFEA8E8E" Click="Button_Click"/>
+        <Button x:Name="AddrBtn" Content="Add Request" HorizontalAlignment="Left" Height="61" Margin="330,335,0,0" VerticalAlignment="Top" Width="165" Click="AddBtn_Click" FontFamily="MV Boli" FontSize="16" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="button.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="backBtn" Content="" HorizontalAlignment="Left" Height="30" Margin="10,362,0,0" VerticalAlignment="Top" Width="30
+                " Click="Button_Click" Foreground="{x:Null}" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="arrow.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
