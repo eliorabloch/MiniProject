@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BootingPage.xaml.cs">
+      <DependentUpon>BootingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MyOrderItemControl.xaml.cs">
       <DependentUpon>MyOrderItemControl.xaml</DependentUpon>
     </Compile>
@@ -67,15 +70,19 @@
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
+    <Page Include="BootingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GuestRequestItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GuestRequestListWindow.xaml">
+    <Page Include="GuestRequestListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GuestRequestWindow.xaml">
+    <Page Include="GuestRequestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,7 +106,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HostWindow.xaml">
+    <Page Include="HostPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,11 +121,11 @@
     <Compile Include="GuestRequestItemControl.xaml.cs">
       <DependentUpon>GuestRequestItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GuestRequestListWindow.xaml.cs">
-      <DependentUpon>GuestRequestListWindow.xaml</DependentUpon>
+    <Compile Include="GuestRequestListPage.xaml.cs">
+      <DependentUpon>GuestRequestListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GuestRequestWindow.xaml.cs">
-      <DependentUpon>GuestRequestWindow.xaml</DependentUpon>
+    <Compile Include="GuestRequestPage.xaml.cs">
+      <DependentUpon>GuestRequestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="HostInformationPage.xaml.cs">
       <DependentUpon>HostInformationPage.xaml</DependentUpon>
@@ -135,8 +142,8 @@
     <Compile Include="HostLoginPage.xaml.cs">
       <DependentUpon>HostLoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HostWindow.xaml.cs">
-      <DependentUpon>HostWindow.xaml</DependentUpon>
+    <Compile Include="HostPage.xaml.cs">
+      <DependentUpon>HostPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -228,6 +235,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="whitebtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="airplain.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

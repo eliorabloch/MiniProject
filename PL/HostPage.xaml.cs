@@ -17,18 +17,16 @@ namespace PL
     /// <summary>
     /// Interaction logic for HostWindow.xaml
     /// </summary>
-    public partial class HostWindow : Window
+    public partial class HostPage : Page
     {
-        public HostWindow()
+        public HostPage()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow obj = new MainWindow();
-            this.Visibility = Visibility.Hidden;
-            obj.Show();
+           
         }
     }
 }

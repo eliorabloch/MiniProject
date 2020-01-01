@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BE;
+using BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,24 +12,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BL;
 
 namespace PL
 {
     /// <summary>
     /// Interaction logic for GuestRequestListWindow.xaml
     /// </summary>
-    public partial class GuestRequestListWindow : Window
+    public partial class GuestRequestListPage : Page
+
     {
-        public GuestRequestListWindow()
+
+        NavigationService m_navigationService { get; set; }
+
+        public GuestRequestListPage(NavigationService navigationService)
         {
             InitializeComponent();
+            m_navigationService = navigationService;
             List<GuestRequestItemControl> guestRequestItemsControl = new List<GuestRequestItemControl>();
              ImpBL bl = ImpBL.Instance;
             foreach (var item in bl.GetGuestRequestList())
             {
-                GuestRequestItemControl gric = new GuestRequestItemControl() ;
+                GuestRequestItemControl gric = new GuestRequestItemControl( navigationService);
                 gric.GuestRequestTextBlock.Text = item.PrivateName+ " " + item.FamilyName;
                 gric.GuestRequestKeyLable.Content = "#" + item.GuestRequestKey;
                 guestRequestItemsControl.Add(gric);
@@ -39,9 +46,9 @@ namespace PL
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
 
-           GuestRequestWindow obj = new GuestRequestWindow();
-            this.Visibility = Visibility.Hidden;
-            obj.Show();
+
+            var GuestRequestPage = new GuestRequestPage(); //create your new form.
+            this.NavigationService.Navigate(GuestRequestPage);
         }
 
         private void HostingUnitListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -51,9 +58,7 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow obj = new MainWindow();
-            this.Visibility = Visibility.Hidden;
-            obj.Show();
+            this.NavigationService.GoBack();
         }
     }
 }

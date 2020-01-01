@@ -1,11 +1,11 @@
-﻿<Window x:Class="PL.GuestRequestListWindow"
+﻿<Page x:Class="PL.GuestRequestListPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="GuestRequestListWindow" Height="450" Width="800">
+        Title="GuestRequestListWindow" Height="680" Width="840">
     <Grid Background="#FF9DC8E6">
 
         <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="330" Margin="10,0,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="HostingUnitListView_SelectionChanged">
@@ -27,4 +27,4 @@
             </Button.Background>
         </Button>
     </Grid>
-</Window>
+</Page>

@@ -1,12 +1,12 @@
-﻿<Window x:Class="PL.GuestRequestWindow"
+﻿<Page x:Class="PL.GuestRequestPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="GuestRequestWindow" Height="450" Width="800">
-    <Grid Margin="2,0,-2,-4" Height="419" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="792" Background="#FFCDE8F5" >
+        Title="GuestRequestWindow" Height="680" Width="840">
+    <Grid Margin="2,0,0,0" Height="680" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="838" Background="#FFCDE8F5" >
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
             <RowDefinition/>
@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         <Label Content="Unit-Type:" HorizontalAlignment="Left" Height="26" Margin="25,223,0,0" VerticalAlignment="Top" Width="69" Grid.Row="1"/>
         <Label Content="Area&#xD;&#xA;Area:" HorizontalAlignment="Left" Height="25" Margin="32,281,0,0" VerticalAlignment="Top" Width="128" Grid.Row="1"/>
-        <ComboBox x:Name="AreaComboBox" HorizontalAlignment="Left" Margin="32,311,0,84" Width="155" Grid.Row="1">
+        <ComboBox x:Name="AreaComboBox" HorizontalAlignment="Left" Margin="32,311,0,345" Width="155" Grid.Row="1">
             <ComboBoxItem Content="jerusalem" />
             <ComboBoxItem Content="center" />
             <ComboBoxItem Content="north" />
@@ -93,5 +93,5 @@
         </Button>
         <Label x:Name="statusLable" Content="status" HorizontalAlignment="Left" Height="38" Margin="220,253,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="125"/>
     </Grid>
-</Window>
+</Page>
 

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BL;
 
+
 namespace PL
 {
     /// <summary>
@@ -21,9 +22,11 @@ namespace PL
     /// </summary>
     public partial class GuestRequestItemControl : UserControl
     {
-        public GuestRequestItemControl()
+        NavigationService m_navigationService { get; set; }
+        public GuestRequestItemControl(NavigationService navigationService)
         {
             InitializeComponent();
+            m_navigationService = navigationService;
         }
 
         private void DeleteHostingUnitBtn_Click(object sender, RoutedEventArgs e)
@@ -44,11 +47,11 @@ namespace PL
 
         private void RequestInfoBtn_Click(object sender, RoutedEventArgs e)
         {
+            
             ImpBL bl = ImpBL.Instance;
             int GuestRequestKey = int.Parse(GuestRequestKeyLable.Content.ToString().Substring(1));
-            GuestRequestWindow obj = new GuestRequestWindow(true,GuestRequestKey);
-            this.Visibility = Visibility.Hidden;
-            obj.Show();
+            var GuestRequestPage = new GuestRequestPage(true, m_navigationService,GuestRequestKey); //create your new form.
+           m_navigationService.Navigate(GuestRequestPage);
         }
     }
 }

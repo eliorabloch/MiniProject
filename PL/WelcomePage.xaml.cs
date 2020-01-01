@@ -20,6 +20,7 @@ namespace PL
     /// </summary>
     public partial class WelcomePage : Page
     {
+        NavigationService m_navigationService { get; set; }
         public WelcomePage()
         {
             InitializeComponent();
@@ -27,9 +28,10 @@ namespace PL
 
         private void GeustRequestBtn_Click(object sender, RoutedEventArgs e)
         {
-            GuestRequestListWindow obj = new GuestRequestListWindow();
-            this.Visibility = Visibility.Hidden;
-            obj.Show();
+            m_navigationService = NavigationService;
+            var GuestRequestPage = new GuestRequestListPage(m_navigationService); //create your new form.
+            this.NavigationService.Navigate(GuestRequestPage);
+          
         }
 
         private void HostingUnitBTN_Click(object sender, RoutedEventArgs e)

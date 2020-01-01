@@ -11,23 +11,26 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Navigation;
 using BL;
 using BE;
+
 
 namespace PL
 {
     /// <summary>
     /// Interaction logic for GuestRequestWindow.xaml
     /// </summary>
-    public partial class GuestRequestWindow : Window
+    public partial class GuestRequestPage : Page
     {
-       
-        public GuestRequestWindow()
+        public GuestRequestPage()
         {
             InitializeComponent();
         }
 
-        public GuestRequestWindow(bool isExistingReq, int key = -1)
+
+
+        public GuestRequestPage(bool isExistingReq, NavigationService navigationService,int key = -1)
         {
             InitializeComponent();
             ImpBL bl = ImpBL.Instance;
@@ -308,9 +311,9 @@ namespace PL
                     #endregion
                     bl.AddRequest(gr);
 
-                    GuestRequestListWindow obj = new GuestRequestListWindow();
-                    this.Visibility = Visibility.Hidden;
-                    obj.Show();
+                   // GuestRequestListWindow obj = new GuestRequestListWindow();
+                    //this.Visibility = Visibility.Hidden;
+                   // obj.Show();
 
                 }
             }
@@ -324,9 +327,7 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GuestRequestListWindow obj = new GuestRequestListWindow();
-            this.Visibility = Visibility.Hidden;
-            obj.Show();
+          this.NavigationService.GoBack();
         }
 
         private void EmailTextBox_TextChanged(object sender, TextChangedEventArgs e)

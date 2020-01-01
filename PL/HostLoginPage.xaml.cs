@@ -49,5 +49,10 @@ namespace PL
             this.NavigationService.Navigate(hip);
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
