@@ -41,5 +41,14 @@ namespace PL
             }
 
         }
+
+        private void RequestInfoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ImpBL bl = ImpBL.Instance;
+            int GuestRequestKey = int.Parse(GuestRequestKeyLable.Content.ToString().Substring(1));
+            GuestRequestWindow obj = new GuestRequestWindow(true,GuestRequestKey);
+            this.Visibility = Visibility.Hidden;
+            obj.Show();
+        }
     }
 }
