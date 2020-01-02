@@ -52,7 +52,7 @@ namespace BE
         public override string ToString()//A print function that prints all the details of the class
         {
             string toString = "";
-            toString += "this is your hostingUnit information: \n";
+            toString += "This is your hostingUnit information: \n";
             toString += $"Hosting unit key: {HostingUnitKey} \n";
             toString += $"Owner: {Owner} \n";
             toString += $"Hosting unit name: {HostingUnitName} \n";

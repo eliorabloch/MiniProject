@@ -37,6 +37,32 @@ namespace BL
 
         #region Gusets Requsts
 
+        public GuestRequest searchByKey(List<GuestRequest> guestRequest, int key = -1)
+        {
+            foreach(var item in guestRequest)
+            {
+                if (item.GuestRequestKey == key)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
+        public List<GuestRequest> searchByName(List<GuestRequest> guestRequest, string familyName, string privateName)
+        {
+            List<GuestRequest> nameGR = new List<GuestRequest>();
+            foreach (var item in guestRequest)
+            {
+                if((item.PrivateName== privateName)&&(item.FamilyName==familyName))
+                {
+                    nameGR.Add(item);
+                }
+                return nameGR;
+            }
+            return null;
+        }
+
         public GuestRequest GetRequest(int id)
         {
             return getGuestRequestIfExists(id);
@@ -47,13 +73,13 @@ namespace BL
             return GetUnitsList().Where(x => x.Owner.HostId == hostId).ToList();
         }
 
-        public void matchRequestToUnit(Host h ,List<GuestRequest> GetGuestRequestList)// Function who match between hostingunit to guestrequest.
+        public void matchRequestToUnit(Host h ,List<GuestRequest> GetGuestRequestList)
         {
             foreach (var item in GetUnitsByHost(h.HostId))
             {
                foreach(var itemm in GetGuestRequestList)
                 {
-                    Order order =checkIfFit(item, itemm);//Here we will send a mail to the geust that he welcome to come to out unit.
+                    Order order = checkIfUnitMatchToRequest(item, itemm);//Here we will send a mail to the guest that he welcome to come to out unit.
                     if(!(order==null))
                     {
                         AddOrder(order); 
@@ -62,7 +88,7 @@ namespace BL
             }
         }
 
-        public Order checkIfFit(HostingUnit hu, GuestRequest gr)
+        public Order checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr)
         {
             if((hu.SubArea==gr.SubArea)&& (hu.Area == gr.Area))
             {
@@ -100,6 +126,13 @@ namespace BL
             return null;
         }
 
+        public List<List<GuestRequest>> GroupRequesteByStatus()
+        {
+            return (from gr in GetGuestRequestList()
+                    group gr by gr.Status into g
+                    select g.ToList()).ToList();
+
+        }
 
         public Host GetHost(string hostId)
         {
@@ -186,6 +219,32 @@ namespace BL
 
         #region Hosting Units
 
+        public HostingUnit searchByKey(List<HostingUnit> hostingUnit, int key = -1)
+        {
+            foreach (var item in hostingUnit)
+            {
+                if (item.HostingUnitKey == key)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
+        public List<HostingUnit> searchByName(List<HostingUnit> HostingUnit, string Name)
+        {
+            List<HostingUnit> nameHU = new List<HostingUnit>();
+            foreach (var item in HostingUnit)
+            {
+                if (item.HostingUnitName == Name)
+                {
+                    nameHU.Add(item);
+                }
+                return nameHU;
+            }
+            return null;
+        }
+
         static Func<int, HostingUnit> getHostingUnitsIfExists = delegate (int id)//A delegate function that accepts any hosting unit and checks by its ID whether it already exists, if it does not throw an exception, else returns the unit.
         {
             var oldUnit = dal.GetUnit(id);
@@ -236,7 +295,7 @@ namespace BL
             }
         }
 
-        public List<HostingUnit> GetUnitsList()//A function that returns the hosting unit list.
+        public List<HostingUnit> GetUnitsList()
         {
             return dal.GetUnitsList();
         }
@@ -245,6 +304,18 @@ namespace BL
 
         #region Orders
 
+        public Order searchByKey(List<Order> order, int key = -1)
+        {
+            foreach (var item in order)
+            {
+                if (item.OrderKey == key)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+        
         static Func<int, Order> getOrderIfExists = delegate (int id)
         {
             var oldOrder = dal.GetOrder(id);
@@ -270,10 +341,7 @@ namespace BL
             }
             dal.AddOrder(newOrder);
         }
-
-
         
-
         public void UpdateOrder(Order updatedOrder)
         {
             var oldOrder = getOrderIfExists(updatedOrder.OrderKey);
@@ -306,10 +374,9 @@ namespace BL
             }
         }
 
-
         #endregion
 
-        public List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys)//A function that accepts a date and number of vacation days and returns the list of all available accommodation units on that date.
+        public List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys)
         {
             DateTime end = start.AddDays(amountOfDAys);
             return GetUnitsList().Where(x => isDatesAvilable(x, start, end)).ToList();
@@ -336,22 +403,22 @@ namespace BL
             });
         }
 
-        public List<GuestRequest> GetGuestRequestList()//A function that returns the geust request list.
+        public List<GuestRequest> GetGuestRequestList()
         {
             return dal.GetGuestRequestList();
         }
 
-        public List<Order> GetOrdersList()//A function that returns the orders list.
+        public List<Order> GetOrdersList()
         {
             return dal.GetOrdersList();
         }
 
-        public List<BankBranch> GetBankList()//A function that returns the banks list.
+        public List<BankBranch> GetBankList()
         {
             return dal.GetBankList();
         }
 
-        public bool SendOrder(Host h, Order o)//A function that checks whether an order can be sent to a customer. Only if the client has signed a host bank authorization form can he send an order.
+        public bool SendOrder(Host h, Order o)
         {
             if (h.CollectionClearance)
             {
@@ -381,13 +448,13 @@ namespace BL
             return true;
         }
 
-        bool availableDate(HostingUnit h, DateTime start, int amount)//A function that makes sure the booked dates are free in the unit we placed the order.
+        bool availableDate(HostingUnit h, DateTime start, int amount)
         {
             DateTime end = start.AddDays(amount);
             return isDatesAvilable(h, start, end);
         }
 
-        public double AmountOfDays(DateTime start, DateTime end)//A function that accepts two dates and checks the time difference between them. If the function has only received one date, it will check how much time has passed from that date until now.
+        public double AmountOfDays(DateTime start, DateTime end)
         {
             end = end == null ? DateTime.Now : end;
             return (end - start).TotalDays;
@@ -398,17 +465,17 @@ namespace BL
             return isDatesAvilable(h, g.EntryDate, g.ReleaseDate);
         }
 
-        public List<GuestRequest> GetAllGuestRequest(Predicate<GuestRequest> condition)//A function that can return all customer requirements that fit a particular condition.
+        public List<GuestRequest> GetAllGuestRequest(Predicate<GuestRequest> condition)
         {
             return GetGuestRequestList().Where(x => condition(x)).ToList();
         }
 
-        public int GetNumOfOrders(GuestRequest gr)//A function that accepts customer demand and returns the number of orders sent to it.
+        public int GetNumOfOrders(GuestRequest gr)
         {
             return GetOrdersList().Where(x => x.GuestRequestKey == gr.GuestRequestKey).Count();
         }
 
-        public int GetNumOfSentOrders(HostingUnit hu)//A function that accepts a hosting unit and returns the number of invitations sent / the number of orders successfully closed for this unit through the site.
+        public int GetNumOfSentOrders(HostingUnit hu)
         {
             return GetOrdersList().Where(x => x.HostingUnitKey == hu.HostingUnitKey &&
             (x.Status == OrderStatus.SentMail || x.Status == OrderStatus.ClosedRequestDoneDeal)).Count();
@@ -472,6 +539,7 @@ namespace BL
                     group h by getNumOfUnits(h) into g
                     select g.ToList()).ToList();
         }
+
         public List<List<HostingUnit>> GroupHostingUnitssByArea()
         {
             return (from hu in GetUnitsList()
@@ -479,10 +547,6 @@ namespace BL
                     select g.ToList()).ToList();
 
         }
-       // void GetHost( int key)
-      //  {
-           // Host h= new Host 
-       // }
 
         private List<Host> getHostsList()//A function that returns a list of hosting units sorted by host.
         {
@@ -498,7 +562,11 @@ namespace BL
         {
             
         }
-        
+
+        public List<List<GuestRequest>> GroupRequestByStatus()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

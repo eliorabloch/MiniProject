@@ -16,7 +16,7 @@ namespace BE
         public override string ToString()//A print function that prints all the details of the class
         {
             string toString = "";
-            toString += "this is your bank branch information: \n";
+            toString += "This is your bank branch information: \n";
             toString += $"Bank number: {BankNumber} \n";
             toString += $"Bank name: {BankName} \n";
             toString += $"Branch number: {BranchNumber} \n";
