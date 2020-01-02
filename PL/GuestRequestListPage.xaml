@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="GuestRequestListWindow" Height="680" Width="840">
-    <Grid Background="#FF9DC8E6" Margin="10,0,0,0">
+    <Grid Background="#FF9DC8E6" Margin="0,0,-1,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="71*"/>
-            <ColumnDefinition Width="34*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="520" Margin="37,56,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="HostingUnitListView_SelectionChanged" Grid.ColumnSpan="2">
+        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="520" Margin="37,56,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="HostingUnitListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
@@ -42,14 +42,14 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="By key:" HorizontalAlignment="Left" Height="33" Margin="483,17,0,0" VerticalAlignment="Top" Width="125" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="searchByKeyTextBox" HorizontalAlignment="Left" Height="25" Margin="531,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2" TextChanged="searchByKeyTextBox_TextChanged"/>
+        <Label Content="By key:" HorizontalAlignment="Left" Height="33" Margin="483,17,0,0" VerticalAlignment="Top" Width="125"/>
+        <TextBox x:Name="searchByKeyTextBox" HorizontalAlignment="Left" Height="25" Margin="531,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" TextChanged="searchByKeyTextBox_TextChanged"/>
         <Button x:Name="searchByNameBtn" Content="" HorizontalAlignment="Left" Height="30" Margin="447,15,0,0" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.463,3.008" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="searchByNameBtn_Click">
             <Button.Background>
                 <ImageBrush ImageSource="images/searchBtn.png" />
             </Button.Background>
         </Button>
-        <Button x:Name="searchByKeyBtn" Content="" HorizontalAlignment="Left" Height="30" Margin="126,15,0,0" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.463,3.008" Foreground="{x:Null}" BorderBrush="{x:Null}" Grid.Column="1" Click="searchByKeyBtn_Click">
+        <Button x:Name="searchByKeyBtn" Content="" HorizontalAlignment="Left" Height="30" Margin="686,13,0,0" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.463,3.008" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="searchByKeyBtn_Click">
             <Button.Background>
                 <ImageBrush ImageSource="images/searchBtn.png" />
             </Button.Background>

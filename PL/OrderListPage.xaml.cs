@@ -34,5 +34,10 @@ namespace PL
             }
             MyOrderListView.ItemsSource = itemsToView;
         }
+
+        private void SuggestionListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

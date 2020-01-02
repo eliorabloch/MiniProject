@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="GuestRequestWindow" Height="680" Width="840">
-    <Grid Margin="2,0,0,0" Height="680" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="838" Background="#FFCDE8F5" >
+    <Grid Margin="2,0,0,0" Height="680" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="838" Background="#FF9DC8E6" >
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
             <RowDefinition/>
@@ -38,7 +38,11 @@
         </ComboBox>
         <Label Content="First Name" HorizontalAlignment="Left" Margin="29,10,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="26" Width="67"/>
         <TextBox x:Name="GuestRequestFirstNameTextBox" HorizontalAlignment="Left" Height="23" Margin="99,14,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="97"/>
-        <Button x:Name="SaveBtn" Content="Save" HorizontalAlignment="Left" Margin="335,356,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="95" Height="42" Click="SaveBtn_Click"/>
+        <Button x:Name="SaveBtn" Content="Save" HorizontalAlignment="Left" Margin="335,356,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="95" Height="42" Click="SaveBtn_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="images/button.png"/>
+            </Button.Background>
+        </Button>
         <Label x:Name="GuestRequestKeyLable" Content="Label" HorizontalAlignment="Left" Margin="408,14,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="136" Foreground="#FF939393" Height="26"/>
         <RadioButton Name="PPossible" Content="Possible" HorizontalAlignment="Left" Height="16" Margin="32,88,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="96" />
         <RadioButton  Name="PNeccesery" Content="Neccesery " HorizontalAlignment="Left" Height="17" Margin="32,109,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="96"/>
@@ -71,10 +75,28 @@
 
 
         </Grid>
-        <Calendar x:Name="FromDateCalender" HorizontalAlignment="Left" Margin="557,32,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="186" Width="179"/>
-        <Label Content="From:" HorizontalAlignment="Left" Margin="554,9,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="179"/>
-        <Calendar x:Name="ToDateCalender" HorizontalAlignment="Left" Height="175" Margin="557,223,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="179"/>
-        <Label Content="To:" HorizontalAlignment="Left" Height="45" Margin="557,200,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="86"/>
+        <Calendar x:Name="FromDateCalender" HorizontalAlignment="Left" Margin="599,109,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="186" Width="179">
+            <Calendar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE4EAF0" Offset="0"/>
+                    <GradientStop Color="#FFECF0F4" Offset="0.16"/>
+                    <GradientStop Color="#FFFCFCFD" Offset="0.16"/>
+                    <GradientStop Color="#FFD9C8C2" Offset="1"/>
+                </LinearGradientBrush>
+            </Calendar.Background>
+        </Calendar>
+        <Label Content="From:" HorizontalAlignment="Left" Margin="659,83,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="179" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="20" FontWeight="Bold" Height="66"/>
+        <Calendar x:Name="ToDateCalender" HorizontalAlignment="Left" Height="175" Margin="599,314,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="179">
+            <Calendar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE4EAF0" Offset="0"/>
+                    <GradientStop Color="#FFECF0F4" Offset="0.16"/>
+                    <GradientStop Color="#FFFCFCFD" Offset="0.16"/>
+                    <GradientStop Color="#FFD9C8C2" Offset="1"/>
+                </LinearGradientBrush>
+            </Calendar.Background>
+        </Calendar>
+        <Label Content="To:" HorizontalAlignment="Left" Height="45" Margin="677,291,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="86" FontSize="18" FontFamily="Tw Cen MT Condensed Extra Bold"/>
         <Label Content="Phone-Number:" HorizontalAlignment="Left" Height="25" Margin="26,163,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="128"/>
         <TextBox x:Name="PhoneNumbertTextBox" HorizontalAlignment="Left" Height="20" Margin="126,166,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="108"/>
         <Label Content="E-Mail:" HorizontalAlignment="Left" Height="25" Margin="253,163,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="52"/>
