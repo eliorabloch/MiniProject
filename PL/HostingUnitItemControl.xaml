@@ -7,12 +7,29 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="730">
     <Grid x:Name="UserControlContainer">
-        <Image Source="unitlist.jpg" Margin="10,0,-18,0"/>
-        <TextBlock x:Name="HostinUnitNameTextBlock" HorizontalAlignment="Left" Height="27" Margin="75,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" FontSize="20" FontFamily="MV Boli"/>
-        <Label x:Name="HostingUnitKeyLable" HorizontalAlignment="Left" Margin="246,40,0,0" VerticalAlignment="Top" Height="50" Width="186" Foreground="#FFA8A8A8"/>
-        <Button x:Name="EditHostinUnitBtn" Content="Edit" HorizontalAlignment="Left" Margin="578,5,0,0" VerticalAlignment="Top" Width="43" Height="36" Click="EditHostinUnitBtn_Click" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="MV Boli"/>
-        <Button x:Name="DeleteHostingUnitBtn" Content="Delete" HorizontalAlignment="Left" Margin="648,5,0,0" VerticalAlignment="Top" Width="45" Height="36" Click="DeleteHostingUnitBtn_Click" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="MV Boli"/>
-        <Button x:Name="OrderHostingUnitBtn" Content="Order" HorizontalAlignment="Left" Margin="521,5,0,0" VerticalAlignment="Top" Width="46" Height="36" Click="OrderHostingUnitBtn_Click" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="MV Boli"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="693*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Height="100" Margin="-2,0,0,0" VerticalAlignment="Top" Width="732" Background="#FFD9C8C2"/>
+
+        <TextBlock x:Name="HostinUnitNameTextBlock" HorizontalAlignment="Left" Height="27" Margin="38,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" FontSize="20" FontFamily="MV Boli" Grid.Column="1"/>
+        <Label x:Name="HostingUnitKeyLable" HorizontalAlignment="Left" Margin="209,40,0,0" VerticalAlignment="Top" Height="50" Width="186" Foreground="#FFA8A8A8" Grid.Column="1"/>
+        <Button x:Name="EditHostinUnitBtn" Content="Edit" HorizontalAlignment="Left" Margin="555,30,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="EditHostinUnitBtn_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" Grid.Column="1" Foreground="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="images/editBtn.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="DeleteHostingUnitBtn" Content="" HorizontalAlignment="Left" Margin="617,30,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="DeleteHostingUnitBtn_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" Grid.Column="1">
+            <Button.Background>
+                <ImageBrush ImageSource="images/delBtn.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="OrderHostingUnitBtn" Content="" HorizontalAlignment="Left" Margin="492,30,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="OrderHostingUnitBtn_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" Grid.Column="1">
+            <Button.Background>
+                <ImageBrush ImageSource="images/Orderbtn.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </UserControl>

@@ -1,0 +1,27 @@
+﻿<Page x:Class="PL.GuestRequestInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PL"
+      mc:Ignorable="d" 
+      d:DesignHeight="680" d:DesignWidth="840"
+      Title="GuestRequestInfoPage">
+
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="680" VerticalAlignment="Top" Width="840">
+            <Grid.Background>
+                <ImageBrush ImageSource="images/main2.jpg"/>
+            </Grid.Background>
+            <Grid HorizontalAlignment="Left" Height="620" Margin="441,36,0,0" VerticalAlignment="Top" Width="389"/>
+            <Grid x:Name="informationgrid" HorizontalAlignment="Left" Height="680" Margin="219,0,0,0" VerticalAlignment="Top" Width="422">
+                <Grid.Background>
+                    <SolidColorBrush Color="#FFD9C8C2" Opacity="0.9"/>
+                </Grid.Background>
+                <Label Content="Request Information:" HorizontalAlignment="Left" Height="76" Margin="26,26,-32,0" VerticalAlignment="Top" Width="428" FontFamily="MV Boli" FontSize="36"/>
+                <TextBox x:Name="infoTextBox" HorizontalAlignment="Left" Height="563" Margin="10,117,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="402" Background="{x:Null}" TextChanged="TextBox_TextChanged" SelectionBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Padding="0" BorderBrush="{x:Null}"/>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Page>

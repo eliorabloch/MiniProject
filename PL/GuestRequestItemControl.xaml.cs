@@ -54,7 +54,7 @@ namespace PL
             
             ImpBL bl = ImpBL.Instance;
             int GuestRequestKey = int.Parse(GuestRequestKeyLable.Content.ToString().Substring(1));
-            var GuestRequestPage = new GuestRequestPage(true, m_navigationService,GuestRequestKey); //create your new form.
+            var GuestRequestPage = new GuestRequestInfoPage(GuestRequestKey); //create your new form.
            m_navigationService.Navigate(GuestRequestPage);
         }
     }

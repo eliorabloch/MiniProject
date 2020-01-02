@@ -47,7 +47,7 @@
         <Button x:Name="HostInfoBTN" Content="Host-Information" HorizontalAlignment="Left" Height="43" Margin="610,22,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="167" Click="HostInfoBTN_Click"/>
         <Button x:Name="backBtn"  HorizontalAlignment="Left" Height="30" Margin="19,395,0,0" VerticalAlignment="Top" Width="30" Click="Back_Click" Grid.RowSpan="2" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="https://cdn.pixabay.com/photo/2016/09/05/10/50/app-1646213_960_720.png"/>
+                <ImageBrush ImageSource="images/arrow.png"/>
             </Button.Background>
         </Button>
     </Grid>

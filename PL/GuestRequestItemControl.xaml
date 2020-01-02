@@ -10,12 +10,12 @@
         <Label x:Name="GuestRequestKeyLable" Content="" HorizontalAlignment="Left" Margin="260,17,0,0" VerticalAlignment="Top" Height="50" Width="186" Foreground="#FFA8A8A8"/>
         <Button x:Name="DeleteGuestRequestBtn" Content="" HorizontalAlignment="Left" Margin="662,15,0,0" VerticalAlignment="Top" Width="52" Height="52" Click="DeleteHostingUnitBtn_Click" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="delBtn.png"/>
+                <ImageBrush ImageSource="images/delBtn.png" />
             </Button.Background>
         </Button>
         <Button x:Name="RequestInfoBtn" Content="Request Info" HorizontalAlignment="Left" Height="50" Margin="501,14,0,0" VerticalAlignment="Top" Width="156" BorderBrush="{x:Null}" Click="RequestInfoBtn_Click" FontFamily="MV Boli">
             <Button.Background>
-                <ImageBrush ImageSource="infoBtn.png"/>
+                <ImageBrush ImageSource="images/infoBtn.png" />
             </Button.Background>
         </Button>
 

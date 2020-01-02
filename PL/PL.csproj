@@ -58,6 +58,9 @@
     <Compile Include="BootingPage.xaml.cs">
       <DependentUpon>BootingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GuestRequestInfoPage.xaml.cs">
+      <DependentUpon>GuestRequestInfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MyOrderItemControl.xaml.cs">
       <DependentUpon>MyOrderItemControl.xaml</DependentUpon>
     </Compile>
@@ -71,6 +74,10 @@
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
     <Page Include="BootingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GuestRequestInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -210,34 +217,42 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Main.jpg" />
+    <Resource Include="images\Main.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="unitlist.jpg" />
+    <Resource Include="images\unitlist.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="button.png" />
+    <Resource Include="images\button.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="addunit.png" />
+    <Resource Include="images\addunit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="arrow.png" />
+    <Resource Include="images\arrow.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="blueBtn.png" />
-    <Resource Include="delBtn.png" />
-    <Resource Include="editBtn.jpg" />
-    <Resource Include="Orderbtn.png" />
+    <Resource Include="images\blueBtn.png" />
+    <Resource Include="images\delBtn.png" />
+    <Resource Include="images\Orderbtn.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="infoBtn.png" />
+    <Resource Include="images\infoBtn.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="whitebtn.png" />
+    <Resource Include="images\whitebtn.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="airplain.png" />
+    <Resource Include="images\airplain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\searchBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\editBtn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\main2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

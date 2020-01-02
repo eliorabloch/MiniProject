@@ -5,27 +5,42 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     
       xmlns:local="clr-namespace:PL"
-      mc:Ignorable="d" 
-      d:DesignHeight="680" d:DesignWidth="840"
-      Title="WelcomePage" Height="680"  Width="840">
+      mc:Ignorable="d"
+      Title="WelcomePage" Height="656"  Width="824">
 
-    
+
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="images/main2.jpg"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="218*"/>
             <ColumnDefinition Width="133*"/>
             <ColumnDefinition Width="49*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="Main.jpg"  Grid.ColumnSpan="3" Margin="0,-22,0,22"  />
+        <Image   Grid.ColumnSpan="3"  />
         <Grid HorizontalAlignment="Left" Height="621"  VerticalAlignment="Top" Width="202"/>
         <Grid HorizontalAlignment="Left" Height="315"  VerticalAlignment="Top" Width="229">
-            <Button x:Name="GeustRequestBtn" Content="Guest" HorizontalAlignment="Left" Height="28"  VerticalAlignment="Top" Width="144" FontFamily="MV Boli" FontSize="20" Background="{x:Null}" BorderBrush="{x:Null}" Click="GeustRequestBtn_Click" Margin="46,28,0,0"/>
+            <Button x:Name="GeustRequestBtn" Content="Guest" HorizontalAlignment="Left" Height="80"  VerticalAlignment="Top" Width="170
+                    " FontFamily="MV Boli" FontSize="20" BorderBrush="{x:Null}" Click="GeustRequestBtn_Click" Margin="28,24,0,0">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/button.png"/>
+                </Button.Background>
+            </Button>
         </Grid>
-        <Button x:Name="HostingUnitBTN" Content="Host" HorizontalAlignment="Left" Height="32" Margin="55,110,0,0" VerticalAlignment="Top" Width="125" FontFamily="MV Boli" FontSize="20" BorderBrush="{x:Null}" Background="{x:Null}" Click="HostingUnitBTN_Click"/>
-        
-            <Button x:Name="MannagerBtn" Content="Administrator" HorizontalAlignment="Left" Height="31" Margin="52,198,0,0" VerticalAlignment="Top" Width="138" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="MannagerBtn_Click"/>
-       
+        <Button x:Name="HostingUnitBTN" Content="Host" HorizontalAlignment="Left" Height="80" Margin="27,110,0,0" VerticalAlignment="Top" Width="170" FontFamily="MV Boli" FontSize="20" BorderBrush="{x:Null}" Click="HostingUnitBTN_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="images/button.png"/>
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="MannagerBtn" Content="Administrator" HorizontalAlignment="Left" Height="80" Margin="28,198,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="MannagerBtn_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="images/button.png"/>
+            </Button.Background>
+        </Button>
+
     </Grid>
 
 </Page>
