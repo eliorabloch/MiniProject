@@ -17,7 +17,7 @@ namespace BE
         public string MailAddress { get; set; }
         public string PhoneNumber { get; set; }
         public RequestStatus Status {get ;set;}
-        public DateTime RegistrationDate { get; set; }
+        public DateTime RegistrationDate { get { return RegistrationDate; } set { RegistrationDate = DateTime.Now; } }
         public DateTime EntryDate { get; set; }
         public DateTime ReleaseDate { get; set; }
         public Areas Area { get; set; }
@@ -33,13 +33,14 @@ namespace BE
         public override string ToString()//A print function that prints all the details of the class
         {
             string toString = "";
-            toString += "this is your guest request information: \n";
+            toString += "This is your guest request information: \n";
             toString += $"Private name: {PrivateName} \n";
             toString += $"Family name: {FamilyName} \n";
             toString += $"Mail address: {MailAddress} \n";
             toString += $"Status: {Status} \n";
-            toString += $"Entry date: {EntryDate} \n";
-            toString += $"Release date: {ReleaseDate} \n";
+            toString += $"Entry date: {EntryDate.Date} \n";
+            toString += $"Release date: {ReleaseDate.Date} \n";
+            toString += $"Registration Date: {RegistrationDate.Date} \n";
             toString += $"Area: {Area} \n";
             toString += $"Sub area: {SubArea} \n";
             toString += $"Type: {Type} \n";

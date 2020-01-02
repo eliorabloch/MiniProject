@@ -29,19 +29,25 @@ namespace BL
         List<GuestRequest> GetGuestRequestList();// A function that returns a list of hosting requests
         List<Order> GetOrdersList();//Function that returns an order list.
         List<BankBranch> GetBankList(); //A function that returns a list of banks.
-
+        List<List<GuestRequest>> GroupRequestByStatus();// Function who sort the geust requests by their status.
 
 
         // BL new  function
-       // void GetHost(HostingUnit h);
-        bool AvailableDate(HostingUnit h, GuestRequest g);
-        List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys);
-        bool SendOrder(Host h, Order o);
-        double AmountOfDays(DateTime start, DateTime end);
+        bool AvailableDate(HostingUnit h, GuestRequest g);//A function that makes sure the booked dates are free in the unit we placed the order.
+        List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys);//A function that accepts a date and number of vacation days and returns the list of all available accommodation units on that date.
+        bool SendOrder(Host h, Order o);//A function that checks whether an order can be sent to a customer. Only if the client has signed a host bank authorization form can he send an order.
+        double AmountOfDays(DateTime start, DateTime end);//A function that accepts two dates and checks the time difference between them. If the function has only received one date, it will check how much time has passed from that date until now.
         List<Order> GetOldOrders(int amountOfDays);
-        List<GuestRequest> GetAllGuestRequest(Predicate<GuestRequest> condition);
-        int GetNumOfOrders(GuestRequest gr);
-        int GetNumOfSentOrders(HostingUnit hu);
+        List<GuestRequest> GetAllGuestRequest(Predicate<GuestRequest> condition);//A function that can return all customer requirements that fit a particular condition.
+        int GetNumOfOrders(GuestRequest gr);//A function that accepts customer demand and returns the number of orders sent to it.
+        int GetNumOfSentOrders(HostingUnit hu);//A function that accepts a hosting unit and returns the number of invitations sent / the number of orders successfully closed for this unit through the site.
+        GuestRequest searchByKey(List<GuestRequest> guestRequest, int key = -1);// Fanction who search for a guest requests by its key.
+        List<GuestRequest> searchByName(List<GuestRequest> guestRequest, string familyName, string privateName);//Function who search for a guest request by its full name.
+        HostingUnit searchByKey(List<HostingUnit> hostingUnit, int key = -1);// Fanction who search for a hosting units by its key.
+        List<HostingUnit> searchByName(List<HostingUnit> HostingUnit, string Name);//Function who search for a hosting unit by its name.
+        Order searchByKey(List<Order> order, int key = -1);// Fanction who search for a orders by its key.
+        void matchRequestToUnit(Host h, List<GuestRequest> GetGuestRequestList);// Function who match between hostingunit to guestrequest.
+        Order checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr);// Check if hosting unit is fit to guest request.
 
         List<List<GuestRequest>> GroupGuestRequestByAreas();//A function that returns a list of guest requirements grouped by the required area.
         List<List<GuestRequest>> GroupGuestRequestByNumOfAtendees();//A function that returns a customer requirements list grouped by the number of vacationers.
