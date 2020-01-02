@@ -31,7 +31,7 @@ namespace BL
         List<BankBranch> GetBankList(); //A function that returns a list of banks.
         List<List<GuestRequest>> GroupRequestByStatus();// Function who sort the geust requests by their status.
 
-
+        bool[,] createMatrix(HostingUnit h);
         // BL new  function
         bool AvailableDate(HostingUnit h, GuestRequest g);//A function that makes sure the booked dates are free in the unit we placed the order.
         List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys);//A function that accepts a date and number of vacation days and returns the list of all available accommodation units on that date.
@@ -46,7 +46,7 @@ namespace BL
         HostingUnit searchByKey(List<HostingUnit> hostingUnit, int key = -1);// Fanction who search for a hosting units by its key.
         List<HostingUnit> searchByName(List<HostingUnit> HostingUnit, string Name);//Function who search for a hosting unit by its name.
         Order searchByKey(List<Order> order, int key = -1);// Fanction who search for a orders by its key.
-        void matchRequestToUnit(Host h, List<GuestRequest> GetGuestRequestList);// Function who match between hostingunit to guestrequest.
+        List<Order> matchRequestToUnit(Host h, List<GuestRequest> GetGuestRequestList);// Function who match between hostingunit to guestrequest.
         Order checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr);// Check if hosting unit is fit to guest request.
 
         List<List<GuestRequest>> GroupGuestRequestByAreas();//A function that returns a list of guest requirements grouped by the required area.

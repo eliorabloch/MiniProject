@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PL"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="380">
-    <Grid>
+             d:DesignHeight="50
+             " d:DesignWidth="440">
+    <Grid Margin="0,0,0,-32">
         <Label x:Name="GuestRequestPrivateNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="87"/>
         <Label x:Name="GuestRequestFamilyNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="87"/>
         <Button x:Name="GuestRequestDetailsBtn" Content="Info" HorizontalAlignment="Left" Margin="216,10,0,0" VerticalAlignment="Top" Width="73" Height="57"/>

@@ -26,13 +26,22 @@ namespace PL
         {
             InitializeComponent();
             ImpBL bl = ImpBL.Instance;
-            List<Order> orders = bl.GetOrdersByUnit(hostingUnit.HostingUnitKey);
+            List<Order> Myorders = bl.GetOrdersByUnit(hostingUnit.HostingUnitKey);
             List<MyOrderItemControl> itemsToView = new List<MyOrderItemControl>();
-            foreach (var order in orders)
+            foreach (var order in Myorders)
             {
                 itemsToView.Add(new MyOrderItemControl(order));
             }
+
             MyOrderListView.ItemsSource = itemsToView;
+
+          List<Order> Suggestorders = bl.matchRequestToUnit(hostingUnit.Owner,bl.GetGuestRequestList());
+            List<SuggetionOrderItemControl> itemsToView2 = new List<SuggetionOrderItemControl>();
+            foreach (var order in Suggestorders)
+           {
+               itemsToView2.Add(new SuggetionOrderItemControl(order));
+            }
+           SuggestionListView.ItemsSource = itemsToView2;
         }
 
         private void SuggestionListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -11,6 +11,18 @@ namespace BL
 {
     public class ImpBL : IBL
     {
+        public bool[,] createMatrix(HostingUnit hostingunit)//Filing the dairy with false valuse
+        {
+          
+            for (int i = 0; i < 12; i++)//This for fills the array with false values
+            {
+                for (int j = 1; j < 31; j++)
+                {
+                   hostingunit. Diary[i, j] = false;
+                }
+            }
+            return hostingunit.Diary;
+        }
         #region Singleton
         private static readonly ImpBL instance = new ImpBL();
         //Using Singleton makes sure that no new instance of the class is ever created but only one instance.
@@ -39,7 +51,7 @@ namespace BL
 
         public GuestRequest searchByKey(List<GuestRequest> guestRequest, int key = -1)
         {
-            foreach(var item in guestRequest)
+            foreach (var item in guestRequest)
             {
                 if (item.GuestRequestKey == key)
                 {
@@ -63,10 +75,10 @@ namespace BL
 
             }
             if (ifExist)
-            { 
+            {
                 return nameGR;
-                }
-       
+            }
+
             throw new TzimerException($"Sorry,cant find a request with the name:{familyName}", "bl");
 
 
@@ -82,28 +94,31 @@ namespace BL
             return GetUnitsList().Where(x => x.Owner.HostId == hostId).ToList();
         }
 
-        public void matchRequestToUnit(Host h ,List<GuestRequest> GetGuestRequestList)
+        public List<Order> matchRequestToUnit(Host h, List<GuestRequest> GetGuestRequestList)
         {
+            List<Order> subOrders = new List<Order>();
             foreach (var item in GetUnitsByHost(h.HostId))
             {
-               foreach(var itemm in GetGuestRequestList)
+                foreach (var itemm in GetGuestRequestList)
                 {
                     Order order = checkIfUnitMatchToRequest(item, itemm);//Here we will send a mail to the guest that he welcome to come to out unit.
-                    if(!(order==null))
+                    if (!(order == null))
                     {
-                        AddOrder(order); 
+                        AddOrder(order);
+                        subOrders.Add(order);
                     }
                 }
             }
+            return subOrders;
         }
 
         public Order checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr)
         {
-            if((hu.SubArea==gr.SubArea)&& (hu.Area == gr.Area))
+            if ((hu.SubArea == gr.SubArea) && (hu.Area == gr.Area))
             {
-                if(hu.Type == gr.Type)
+                if (hu.Type == gr.Type)
                 {
-                    if(isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate))
+                    if (isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate))
                     {
                         if ((hu.Pool == true && (gr.Pool == Options.neccesery || gr.Pool == Options.possible)) || (hu.Pool == false && (gr.Pool == Options.notintersted || gr.Pool == Options.possible)))
                         {
@@ -237,11 +252,12 @@ namespace BL
                     return item;
                 }
             }
-            throw new TzimerException($"Sorry,cant find a request with the key{key}","bl");
+            throw new TzimerException($"Sorry,cant find a request with the key{key}", "bl");
         }
 
         public List<HostingUnit> searchByName(List<HostingUnit> HostingUnit, string Name)
-        { bool ifExist = false;
+        {
+            bool ifExist = false;
             List<HostingUnit> nameHU = new List<HostingUnit>();
             foreach (var item in HostingUnit)
             {
@@ -260,7 +276,7 @@ namespace BL
             }
 
             else
-        throw new TzimerException($"Sorry,cant find a request with the name:{Name}", "bl");
+                throw new TzimerException($"Sorry,cant find a request with the name:{Name}", "bl");
         }
 
         static Func<int, HostingUnit> getHostingUnitsIfExists = delegate (int id)//A delegate function that accepts any hosting unit and checks by its ID whether it already exists, if it does not throw an exception, else returns the unit.
@@ -280,7 +296,9 @@ namespace BL
 
         public void AddUnit(HostingUnit newUnit)
         {
+            createMatrix(newUnit);
             validHostingUnit(newUnit);
+           
             dal.AddUnit(newUnit);
         }
 
@@ -333,7 +351,7 @@ namespace BL
             }
             return null;
         }
-        
+
         static Func<int, Order> getOrderIfExists = delegate (int id)
         {
             var oldOrder = dal.GetOrder(id);
@@ -359,7 +377,7 @@ namespace BL
             }
             dal.AddOrder(newOrder);
         }
-        
+
         public void UpdateOrder(Order updatedOrder)
         {
             var oldOrder = getOrderIfExists(updatedOrder.OrderKey);
@@ -382,11 +400,11 @@ namespace BL
                 sendOrderRequest(req);
                 req.Status = RequestStatus.ClosedDeal;
             }
-            if (oldOrder.Status== OrderStatus.ClosedRequestCanceled)
+            if (oldOrder.Status == OrderStatus.ClosedRequestCanceled)
             {
                 req.Status = RequestStatus.ExpiredRequest;
             }
-            if (oldOrder.Status== OrderStatus.NotHandled)
+            if (oldOrder.Status == OrderStatus.NotHandled)
             {
                 req.Status = RequestStatus.Open;
             }
@@ -575,10 +593,10 @@ namespace BL
         {
             return GetUnitsList().Sum(x => x.Owner.HostId == owner.HostId ? 1 : 0);
         }
-       
+
         public void DeleteOrder(Order update)
         {
-            
+
         }
 
         public List<List<GuestRequest>> GroupRequestByStatus()
@@ -587,7 +605,3 @@ namespace BL
         }
     }
 }
-
-
-   
-

@@ -15,16 +15,7 @@ namespace BE
         }
         public Host Owner { get; set; }
         public string HostingUnitName { get; set; }
-        private bool[,] diary;
-        public bool[,] Diary {
-            set {
-                diary = createMatrix();
-            }
-            get
-            {
-                return diary;
-            }
-        }
+        public bool[,] Diary;
         public bool Pool;
         public bool Jacuzz;
         public  bool Garden;
@@ -33,18 +24,7 @@ namespace BE
         public string SubArea;
         public UnitType Type;
         public HostingUnit() { }//defult constructor
-        private bool[,] createMatrix()//Filing the dairy with false valuse
-        {
-            bool[,] d = new bool[12, 31];
-            for (int i = 0; i < 12; i++)//This for fills the array with false values
-            {
-                for (int j = 1; j < 31; j++)
-                {
-                    d[i, j] = false;
-                }
-            }
-            return d;
-        }
+        
         public object Clone()
         {
             return MemberwiseClone();

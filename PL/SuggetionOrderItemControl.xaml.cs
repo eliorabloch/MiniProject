@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BL;
+using BE;
 
 namespace PL
 {
@@ -19,8 +21,8 @@ namespace PL
     /// Interaction logic for SuggetionOrderItemControl.xaml
     /// </summary>
     public partial class SuggetionOrderItemControl : UserControl
-    {
-        public SuggetionOrderItemControl()
+    { 
+        public SuggetionOrderItemControl(Order order)
         {
             InitializeComponent();
         }

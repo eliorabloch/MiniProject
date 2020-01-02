@@ -218,7 +218,7 @@ namespace DS
             unitList = new List<HostingUnit>
             {
                 new HostingUnit
-                {
+                {   
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = true,
@@ -278,6 +278,28 @@ namespace DS
                         CollectionClearance=true,
                         MailAddress="oliviacoch@gmail.com",
                         BankAccountNumber="905000087600",
+                    }
+                },
+                 new HostingUnit
+                {   
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.Jerusalem,
+                    Pool = true,
+                    ChildrensAttractions = true,
+                    HostingUnitName = "",
+                    SubArea = "Mamila",
+                    Garden=true,
+                    Jacuzz = true,
+                    Type = UnitType.HotelRoom,
+                    Owner= new Host
+                    {
+                        PrivateName="LielAndEli",
+                        FamilyName="OrensteinAndBloch",
+                        HostId="8",
+                        CollectionClearance=true,
+                        MailAddress="elielhotel2020@gmail.com",
+                        PhoneNumber="0546547645",
+                        BankAccountNumber="456678951232",
                     }
                 },
                   new HostingUnit
