@@ -31,7 +31,6 @@ namespace BL
         List<BankBranch> GetBankList(); //A function that returns a list of banks.
         List<List<GuestRequest>> GroupRequestByStatus();// Function who sort the geust requests by their status.
 
-        bool[,] createMatrix(HostingUnit h);
         // BL new  function
         bool AvailableDate(HostingUnit h, GuestRequest g);//A function that makes sure the booked dates are free in the unit we placed the order.
         List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys);//A function that accepts a date and number of vacation days and returns the list of all available accommodation units on that date.

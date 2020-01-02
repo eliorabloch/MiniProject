@@ -11,18 +11,7 @@ namespace BL
 {
     public class ImpBL : IBL
     {
-        public bool[,] createMatrix(HostingUnit hostingunit)//Filing the dairy with false valuse
-        {
-          
-            for (int i = 0; i < 12; i++)//This for fills the array with false values
-            {
-                for (int j = 1; j < 31; j++)
-                {
-                   hostingunit. Diary[i, j] = false;
-                }
-            }
-            return hostingunit.Diary;
-        }
+  
         #region Singleton
         private static readonly ImpBL instance = new ImpBL();
         //Using Singleton makes sure that no new instance of the class is ever created but only one instance.
@@ -296,7 +285,7 @@ namespace BL
 
         public void AddUnit(HostingUnit newUnit)
         {
-            createMatrix(newUnit);
+           
             validHostingUnit(newUnit);
            
             dal.AddUnit(newUnit);

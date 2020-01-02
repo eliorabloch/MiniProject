@@ -218,7 +218,7 @@ namespace DS
             unitList = new List<HostingUnit>
             {
                 new HostingUnit
-                {   
+                {
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = true,
@@ -242,6 +242,7 @@ namespace DS
                 {
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
+                   // Diary = BE.Utils.createMatrix(),
                     Pool = true,
                     ChildrensAttractions = true,
                     HostingUnitName = "Plaza",
@@ -281,12 +282,12 @@ namespace DS
                     }
                 },
                  new HostingUnit
-                {   
+                {  // Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Jerusalem,
                     Pool = true,
                     ChildrensAttractions = true,
-                    HostingUnitName = "",
+                    HostingUnitName = "hotel",
                     SubArea = "Mamila",
                     Garden=true,
                     Jacuzz = true,
