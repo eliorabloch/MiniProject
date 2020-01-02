@@ -18,9 +18,14 @@
                 <Grid.Background>
                     <SolidColorBrush Color="#FFD9C8C2" Opacity="0.9"/>
                 </Grid.Background>
-                <Label Content="Request Information:" HorizontalAlignment="Left" Height="76" Margin="26,26,-32,0" VerticalAlignment="Top" Width="428" FontFamily="MV Boli" FontSize="36"/>
-                <TextBox x:Name="infoTextBox" HorizontalAlignment="Left" Height="563" Margin="10,117,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="402" Background="{x:Null}" TextChanged="TextBox_TextChanged" SelectionBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Padding="0" BorderBrush="{x:Null}"/>
+                <Label Content="Request Information:" HorizontalAlignment="Left" Height="76" Margin="22,6,-28,0" VerticalAlignment="Top" Width="428" FontFamily="MV Boli" FontSize="36"/>
+                <TextBox x:Name="infoTextBox" HorizontalAlignment="Left" Height="629" Margin="0,75,0,-24" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="422" Background="{x:Null}" TextChanged="TextBox_TextChanged" SelectionBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Padding="0" BorderBrush="{x:Null}"/>
             </Grid>
+            <Button x:Name="BackBtn" Content="" HorizontalAlignment="Left" Height="30" Margin="28,606,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Click="BackBtn_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/arrow.png"/>
+                </Button.Background>
+            </Button>
         </Grid>
 
     </Grid>

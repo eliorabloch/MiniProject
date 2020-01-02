@@ -37,5 +37,10 @@ namespace PL
            
             infoTextBox.Text = bl.GetRequest(Gkey).ToString();
         }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
     }
 }

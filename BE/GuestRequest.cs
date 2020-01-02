@@ -17,7 +17,7 @@ namespace BE
         public string MailAddress { get; set; }
         public string PhoneNumber { get; set; }
         public RequestStatus Status {get ;set;}
-        public DateTime RegistrationDate { get { return RegistrationDate; } set { RegistrationDate = DateTime.Now; } }
+        public DateTime RegistrationDate { get; set; }
         public DateTime EntryDate { get; set; }
         public DateTime ReleaseDate { get; set; }
         public Areas Area { get; set; }
@@ -38,9 +38,9 @@ namespace BE
             toString += $"Family name: {FamilyName} \n";
             toString += $"Mail address: {MailAddress} \n";
             toString += $"Status: {Status} \n";
-            toString += $"Entry date: {EntryDate.Date} \n";
-            toString += $"Release date: {ReleaseDate.Date} \n";
-            toString += $"Registration Date: {RegistrationDate.Date} \n";
+            toString += $"Entry date: {EntryDate.Date.ToString("dd-MM-yyyy")} \n";
+            toString += $"Release date: {ReleaseDate.Date.ToString("dd-MM-yyyy")} \n";
+            toString += $"Registration Date: {RegistrationDate.Date.ToString("dd-MM-yyyy")} \n";
             toString += $"Area: {Area} \n";
             toString += $"Sub area: {SubArea} \n";
             toString += $"Type: {Type} \n";

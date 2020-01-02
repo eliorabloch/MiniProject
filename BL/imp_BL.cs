@@ -49,18 +49,27 @@ namespace BL
             return null;
         }
 
-        public List<GuestRequest> searchByName(List<GuestRequest> guestRequest, string familyName, string privateName)
+        public List<GuestRequest> searchByName(List<GuestRequest> guestRequest, string familyName)
         {
+            bool ifExist = false;
             List<GuestRequest> nameGR = new List<GuestRequest>();
             foreach (var item in guestRequest)
             {
-                if((item.PrivateName== privateName)&&(item.FamilyName==familyName))
+                if (item.FamilyName == familyName)
                 {
                     nameGR.Add(item);
+                    ifExist = true;
                 }
-                return nameGR;
+
             }
-            return null;
+            if (ifExist)
+            { 
+                return nameGR;
+                }
+       
+            throw new TzimerException($"Sorry,cant find a request with the name:{familyName}", "bl");
+
+
         }
 
         public GuestRequest GetRequest(int id)
@@ -228,21 +237,30 @@ namespace BL
                     return item;
                 }
             }
-            return null;
+            throw new TzimerException($"Sorry,cant find a request with the key{key}","bl");
         }
 
         public List<HostingUnit> searchByName(List<HostingUnit> HostingUnit, string Name)
-        {
+        { bool ifExist = false;
             List<HostingUnit> nameHU = new List<HostingUnit>();
             foreach (var item in HostingUnit)
             {
                 if (item.HostingUnitName == Name)
                 {
                     nameHU.Add(item);
+                    ifExist = true;
                 }
+
+            }
+
+
+            if (ifExist)
+            {
                 return nameHU;
             }
-            return null;
+
+            else
+        throw new TzimerException($"Sorry,cant find a request with the name:{Name}", "bl");
         }
 
         static Func<int, HostingUnit> getHostingUnitsIfExists = delegate (int id)//A delegate function that accepts any hosting unit and checks by its ID whether it already exists, if it does not throw an exception, else returns the unit.

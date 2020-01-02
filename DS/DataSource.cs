@@ -127,7 +127,7 @@ namespace DS
                     SubArea = "Givat shmuel",
                     Type = UnitType.HostingUnit
                 },
-                
+
                 new GuestRequest
                 {
                     GuestRequestKey = Configuration.GuestRequestId++,
@@ -231,7 +231,7 @@ namespace DS
                     {
                         PrivateName="rami",
                         FamilyName="Bloch",
-                        HostId="123456789",
+                        HostId="1",
                         PhoneNumber="0547648500",
                         CollectionClearance=true,
                         MailAddress="ramidan@gmail.com",
@@ -252,7 +252,7 @@ namespace DS
                     {
                         PrivateName="Moshe",
                         FamilyName="lo",
-                        HostId="998564444",
+                        HostId="2",
                         PhoneNumber="0548866123",
                         CollectionClearance=true,
                         MailAddress="lomoshe@gmail.com",
@@ -273,7 +273,7 @@ namespace DS
                     {
                         PrivateName="Olivia",
                         FamilyName="Coch",
-                        HostId="990908766",
+                        HostId="3",
                          PhoneNumber="0533345217",
                         CollectionClearance=true,
                         MailAddress="oliviacoch@gmail.com",
@@ -294,7 +294,7 @@ namespace DS
                     {
                         PrivateName="Pnina",
                         FamilyName="Lev",
-                        HostId="776509834",
+                        HostId="4",
                          PhoneNumber="0523345643",
                         CollectionClearance=true,
                         MailAddress="pninaeilat@gmail.com",
@@ -315,14 +315,14 @@ namespace DS
                     {
                         PrivateName="Shimon",
                         FamilyName="Baruch",
-                        HostId="000982343",
+                        HostId="5",
                          PhoneNumber="0588897545",
                         CollectionClearance=true,
                         MailAddress="baruch@gmail.com",
                         BankAccountNumber="678787990043",
                     }
                 },
-               
+
                  new HostingUnit
                 {
                    HostingUnitKey = Configuration.HostingUnitId++,
@@ -337,7 +337,7 @@ namespace DS
                     {
                         PrivateName="Sami",
                         FamilyName="Oren",
-                        HostId="667524570",
+                        HostId="6",
                         PhoneNumber="0587712340",
                         CollectionClearance=true,
                         MailAddress="tentforrent@gmail.com",
@@ -358,7 +358,7 @@ namespace DS
                     {
                         PrivateName="Nechama",
                         FamilyName="Israel",
-                        HostId="008745678",
+                        HostId="7",
                          PhoneNumber="0548823450",
                         CollectionClearance=true,
                         MailAddress="petachtikvatzimer@gmail.com",
@@ -379,13 +379,34 @@ namespace DS
                     {
                         PrivateName="LielAndEli",
                         FamilyName="OrensteinAndBloch",
-                        HostId="206455765",
+                        HostId="8",
                         CollectionClearance=true,
                         MailAddress="elielhotel2020@gmail.com",
                         PhoneNumber="0546547645",
                         BankAccountNumber="456678951232",
                     }
-                }
+                },
+                   new HostingUnit
+                {
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.Center,
+                    Pool = false,
+                    ChildrensAttractions = true,
+                    HostingUnitName = "Nechama",
+                    SubArea = "Petach tikva",
+                    Jacuzz = false,
+                    Type = UnitType.HostingUnit,
+                    Owner= new Host
+                    {
+                        PrivateName="Nechama",
+                        FamilyName="Israel",
+                        HostId="7",
+                        PhoneNumber="0548823450",
+                        CollectionClearance=true,
+                        MailAddress="petachtikvatzimer@gmail.com",
+                        BankAccountNumber="009821454432",
+                    }
+                   }
             };
 
             // init order list
