@@ -199,7 +199,7 @@ namespace DS
                     Children = "1",
                     ChildrensAttractions = Options.notintersted,
                     EntryDate = new DateTime(2019, 01, 12),
-                    ReleaseDate = new DateTime(2019, 01,15),
+                    ReleaseDate = new DateTime(2019, 01,15),          
                     FamilyName = "Fridman",
                     PrivateName = "Ronit",
                     Garden = Options.possible,
@@ -218,7 +218,8 @@ namespace DS
             unitList = new List<HostingUnit>
             {
                 new HostingUnit
-                {
+                {  Diary=BE.Utils.createMatrix(),
+
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = true,
@@ -242,7 +243,7 @@ namespace DS
                 {
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
-                   // Diary = BE.Utils.createMatrix(),
+                    Diary = BE.Utils.createMatrix(),
                     Pool = true,
                     ChildrensAttractions = true,
                     HostingUnitName = "Plaza",
@@ -261,7 +262,7 @@ namespace DS
                     }
                 },
                  new HostingUnit
-                {
+                { Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Jerusalem,
                     Pool = true,
@@ -282,7 +283,7 @@ namespace DS
                     }
                 },
                  new HostingUnit
-                {  // Diary=BE.Utils.createMatrix(),
+                {   Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Jerusalem,
                     Pool = true,
@@ -304,7 +305,7 @@ namespace DS
                     }
                 },
                   new HostingUnit
-                {
+                { Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.South,
                     Pool = true,
@@ -325,7 +326,7 @@ namespace DS
                     }
                 },
                    new HostingUnit
-                {
+                { Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.North,
                     Pool = true,
@@ -347,7 +348,7 @@ namespace DS
                 },
 
                  new HostingUnit
-                {
+                {Diary=BE.Utils.createMatrix(),
                    HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.South,
                     Pool = true,
@@ -368,7 +369,7 @@ namespace DS
                     }
                 },
                   new HostingUnit
-                {
+                {Diary=BE.Utils.createMatrix(),
                    HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = true,
@@ -389,7 +390,7 @@ namespace DS
                     }
                 },
                    new HostingUnit
-                {
+                {Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = true,
@@ -410,7 +411,7 @@ namespace DS
                     }
                 },
                    new HostingUnit
-                {
+                {Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = false,

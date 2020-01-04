@@ -413,7 +413,7 @@ namespace BL
             while (tempDate < req.ReleaseDate)
             {
                 unit.Diary[tempDate.Month - 1, tempDate.Day - 1] = true;
-                tempDate.AddDays(1);
+                tempDate=tempDate.AddDays(1);
             }
         }
 
@@ -468,7 +468,8 @@ namespace BL
                 {
                     return false;
                 }
-                tempDate.AddDays(1);
+                
+                tempDate=tempDate.AddDays(1);
             }
             return true;
         }

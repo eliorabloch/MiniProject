@@ -22,8 +22,7 @@ namespace PL
     public partial class HostInformationPage : Page
 
     {
-        int hostId = 0;
-        bool isToEdit = false;
+        
         public HostInformationPage()
         {
             InitializeComponent();

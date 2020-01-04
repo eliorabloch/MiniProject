@@ -28,7 +28,7 @@ namespace PL
 
         private void GeustRequestBtn_Click(object sender, RoutedEventArgs e)
         {
-            m_navigationService = NavigationService;
+            m_navigationService = this.NavigationService;
             var GuestRequestPage = new GuestRequestListPage(m_navigationService); //create your new form.
             this.NavigationService.Navigate(GuestRequestPage);
           

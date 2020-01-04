@@ -29,14 +29,14 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <ListView x:Name="MyOrderListView" HorizontalAlignment="Left" Height="521" Margin="22,99,0,0" VerticalAlignment="Top" Width="394">
+            <ListView x:Name="MyOrderListView" HorizontalAlignment="Left" Height="501" Margin="22,99,0,0" VerticalAlignment="Top" Width="394">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
             </ListView>
-            <ListView x:Name="SuggestionListView" HorizontalAlignment="Left" Height="521" Margin="432,99,0,0" VerticalAlignment="Top" Width="389" SelectionChanged="SuggestionListView_SelectionChanged">
+            <ListView x:Name="SuggestionListView" HorizontalAlignment="Left" Height="501" Margin="432,99,0,0" VerticalAlignment="Top" Width="389" SelectionChanged="SuggestionListView_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>
@@ -44,7 +44,7 @@
                 </ListView.View>
             </ListView>
         </Grid>
-        <Button Content="" HorizontalAlignment="Left" Height="30" Margin="29,633,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}">
+        <Button Content="" HorizontalAlignment="Left" Height="30" Margin="33,608,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Click="Button_Click">
             <Button.Background>
                 <ImageBrush ImageSource="images/arrow.png"/>
             </Button.Background>

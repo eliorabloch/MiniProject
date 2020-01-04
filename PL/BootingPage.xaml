@@ -3,17 +3,31 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:local="clr-namespace:PL"
       mc:Ignorable="d" 
       Height="680" Width="840"
       Title="BootingPage">
-
+   
     <Grid>
-
+        
         <Canvas>
-            <Image x:Name="MyImg" Source="airplain.png" Canvas.Top="218" Canvas.Left="374" Height="116" Width="137"/>
+            <Canvas.Background>
+                <ImageBrush ImageSource="images/home.jpg"/>
+            </Canvas.Background>
+            <Image Loaded="Image_Loaded" gif:ImageBehavior.AnimatedSource="Images/airplane.gif" Height="217" Width="490" Canvas.Left="201" Canvas.Top="181" RenderTransformOrigin="0.5,0.5" OpacityMask="Black">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.413"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
 
         </Canvas>
-
+        
     </Grid>
+    
 </Page>
