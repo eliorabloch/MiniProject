@@ -5,10 +5,38 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PL"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="680" d:DesignWidth="840"
       Title="ManagerPage">
 
     <Grid>
-        
+        <Button x:Name="backBtn" Content="" HorizontalAlignment="Left" Height="30" Margin="41,595,0,0" VerticalAlignment="Top" Width="30
+                " Click="Button_Click" Foreground="{x:Null}" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="images/arrow.png" />
+            </Button.Background>
+        </Button>
+        <TextBox Name="AvailableUnits"  HorizontalAlignment="Left" Height="34" Margin="91,0,0,0" TextWrapping="Wrap" Text="Available Units By Date:" VerticalAlignment="Top" Width="236" FontSize="20"/>
+        <Button Name="availableU" Content="Available Units" HorizontalAlignment="Left" Margin="399,43,0,0" VerticalAlignment="Top" Width="104" Height="39" Click="AvailableU_Click"/>
+        <TextBox Name="GroupGRByAreas" HorizontalAlignment="Left" Height="57" Margin="91,83,0,0" TextWrapping="Wrap" Text="Group Guest Request By Areas:" VerticalAlignment="Top" Width="178" RenderTransformOrigin="-0.023,0.554" FontSize="20"/>
+        <Button Name="groupGRbyareas" Content="Group Guest Request By Areas" HorizontalAlignment="Left" Margin="91,147,0,0" VerticalAlignment="Top" Width="200" Height="39" Click="GroupGRbyareas_Click"/>
+        <TextBox Name="GroupHUByAreas" HorizontalAlignment="Left" Height="56" Margin="91,191,0,0" TextWrapping="Wrap" Text="Group HostingUnit By Areas:" VerticalAlignment="Top" Width="178" FontSize="20"/>
+        <Button Name="groupHUbyareas" Content="Group Hosting Units By Areas" HorizontalAlignment="Left" Margin="91,252,0,0" VerticalAlignment="Top" Width="200" Height="39"/>
+        <TextBox Name="GroupGRByAtendees" HorizontalAlignment="Left" Height="56" Margin="91,300,0,0" TextWrapping="Wrap" Text="Group Guest Request By Atendees:" VerticalAlignment="Top" Width="200" FontSize="20" RenderTransformOrigin="0.219,0.563"/>
+        <Button Name="groupGRbyatendees" Content="Group Guest Request By Atendees" HorizontalAlignment="Left" Margin="91,361,0,0" VerticalAlignment="Top" Width="200" Height="39"/>
+        <TextBox Name="GroupHByNumOfU" HorizontalAlignment="Left" Height="55" Margin="91,405,0,0" TextWrapping="Wrap" Text="Group Hosts By Num Of Units:" VerticalAlignment="Top" Width="200" FontSize="20"/>
+        <Button Name="groupHbynumofU" Content="Group Hosts By Num Of Units" HorizontalAlignment="Left" Margin="91,465,0,0" VerticalAlignment="Top" Width="200" Height="39"/>
+        <TextBox Name="GetHlist" HorizontalAlignment="Left" Height="34" Margin="619,13,0,0" TextWrapping="Wrap" Text= "Host list:" VerticalAlignment="Top" Width="123" FontSize="20"/>
+        <Button Name="hostlist" Content="Hosts List" HorizontalAlignment="Left" Margin="620,62,0,0" VerticalAlignment="Top" Width="200" Height="39"/>
+        <TextBox Name="GetNumOfU" HorizontalAlignment="Left" Height="28" Margin="623,101,0,0" TextWrapping="Wrap" Text="Num Of Units:" VerticalAlignment="Top" Width="157" FontSize="20"/>
+        <Label Name="numberOfU" Content="numberOfUnits" HorizontalAlignment="Left" Margin="642,140,0,0" VerticalAlignment="Top" Width="101" Height="44"/>
+        <TextBox Name="OccupancyforU" HorizontalAlignment="Left" Height="34" Margin="623,184,0,0" TextWrapping="Wrap" Text="Occupancy for Unit:" VerticalAlignment="Top" Width="197" FontSize="20"/>
+        <Label Name="Occupancy" Content="OccupancyforUnit" HorizontalAlignment="Left" Margin="642,223,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+        <TextBox Name="OverallOccupancy" HorizontalAlignment="Left" Height="41" Margin="623,269,0,0" TextWrapping="Wrap" Text="Overall Occupancy" VerticalAlignment="Top" Width="197" FontSize="20"/>
+        <Label Name="Occupancyforall" Content="Occupancyforall" HorizontalAlignment="Left" Margin="642,318,0,0" VerticalAlignment="Top" Height="38" Width="138"/>
+        <TextBox Name="dateTextBox" HorizontalAlignment="Left" Height="39" Margin="91,44,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="116" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Date:" HorizontalAlignment="Left" Height="73" Margin="41,50,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label Content="Amount Of Days:" HorizontalAlignment="Left" Height="53" Margin="212,50,0,0" VerticalAlignment="Top" Width="182"/>
+        <TextBox  Name="amountTextBox"  HorizontalAlignment="Left" Height="43" Margin="332,39,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="62"/>
+
     </Grid>
 </Page>

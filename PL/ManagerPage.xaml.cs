@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BL;
+using BE;
 
 namespace PL
 {
@@ -20,9 +22,44 @@ namespace PL
     /// </summary>
     public partial class ManagerPage : Page
     {
-        public ManagerPage()
+        NavigationService m_navigationService { get; set; }
+        //public ManagerPage()
+        //{
+        //    InitializeComponent();
+        //}
+        public ManagerPage(NavigationService navigationService)
         {
             InitializeComponent();
+            m_navigationService = navigationService;
+        }
+       
+
+        private void AvailableUnitComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void AvailableU_Click(object sender, RoutedEventArgs e)
+        {
+            //m_navigationService = this.NavigationService;
+            var ManagerPageAvailableUnit = new ManagerPageAvailableUnitList(amountTextBox.Text,dateTextBox.Text); //create your new form.
+            this.NavigationService.Navigate(ManagerPageAvailableUnit);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void GroupGRbyareas_Click(object sender, RoutedEventArgs e)
+        {
+            var ManagerPageAvailableUnit = new ManagerPageGroupGRByAreasList(m_navigationService); //create your new form.
+            this.NavigationService.Navigate(ManagerPageAvailableUnit);
         }
     }
 }

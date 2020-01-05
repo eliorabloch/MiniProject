@@ -24,7 +24,7 @@
         <Label Content="Do you have:" HorizontalAlignment="Left" Height="25" Margin="25,40,0,0" VerticalAlignment="Top" Width="187" Grid.Row="1" RenderTransformOrigin="0.584,1.592"/>
         <Label Content="Unit-Type:" HorizontalAlignment="Left" Height="26" Margin="25,223,0,0" VerticalAlignment="Top" Width="69" Grid.Row="1"/>
         <Label Content="Area&#xD;&#xA;Area:" HorizontalAlignment="Left" Height="25" Margin="32,281,0,0" VerticalAlignment="Top" Width="128" Grid.Row="1"/>
-        <ComboBox x:Name="AreaComboBox" HorizontalAlignment="Left" Margin="32,311,0,342" Width="143" Grid.Row="1">
+        <ComboBox x:Name="AreaComboBox" HorizontalAlignment="Left" Margin="32,311,0,342" Width="143" Grid.Row="1" SelectionChanged="AreaComboBox_SelectionChanged">
             <ComboBoxItem Content="jerusalem" />
             <ComboBoxItem Content="center" />
             <ComboBoxItem Content="north" />
@@ -32,7 +32,7 @@
 
 
         </ComboBox>
-        <ComboBox x:Name="UnitTypeComboBox" Height="27" Margin="32,253,625,0" VerticalAlignment="Top" Grid.Row="1">
+        <ComboBox x:Name="UnitTypeComboBox" Height="27" Margin="32,253,625,0" VerticalAlignment="Top" Grid.Row="1" SelectionChanged="UnitTypeComboBox_SelectionChanged">
             <ComboBoxItem Content=" Tzimer"  />
             <ComboBoxItem Content="HostingUnit" />
             <ComboBoxItem Content="HotelRoom" />
