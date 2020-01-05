@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Navigation;
 
 namespace BE
 {
@@ -20,5 +21,7 @@ namespace BE
             }
             return mat;
         }
+
+        static public NavigationService navigationService { get; set; }
     }
 }

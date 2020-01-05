@@ -8,7 +8,10 @@
       d:DesignHeight="680" d:DesignWidth="840"
       Title="HostLoginPage" Height="680" Width="840">
 
-    <Grid Background="#FF9DC8E6">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="images/back.jpg" Opacity="0.8"/>
+        </Grid.Background>
         <Label Content="Existing Host?" HorizontalAlignment="Left" Height="81" Margin="338,114,0,0" VerticalAlignment="Top" Width="196" FontSize="24" FontFamily="MV Boli"/>
         <TextBox x:Name="HostIdTextBox" HorizontalAlignment="Left" Height="34" Margin="324,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Foreground="#FF8D8888"/>
         <Label Content="New host?" HorizontalAlignment="Left" Margin="356,301,0,0" VerticalAlignment="Top" Height="67" Width="247" FontFamily="MV Boli" FontSize="24"/>

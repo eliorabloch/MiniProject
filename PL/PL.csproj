@@ -73,6 +73,9 @@
     <Compile Include="SuggetionOrderItemControl.xaml.cs">
       <DependentUpon>SuggetionOrderItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ThankYouPage.xaml.cs">
+      <DependentUpon>ThankYouPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ThankYouPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WelcomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -272,6 +279,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\home.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\back.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
