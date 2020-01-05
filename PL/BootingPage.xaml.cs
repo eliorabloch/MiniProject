@@ -43,6 +43,7 @@ namespace PL
         private void changePage(object sender, EventArgs e)
         {
             timer.Stop();
+            Utils.navigationService = this.NavigationService;
             this.NavigationService.Navigate(new WelcomePage());
         }
     }

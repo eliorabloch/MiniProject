@@ -38,8 +38,8 @@ namespace PL
 
             gr.Status = RequestStatus.Open;
 
-            statusLable.Content = gr.Status;
-            GuestRequestKeyLable.Content = key;
+          
+            
             GuestRequestFirstNameTextBox.Text = gr.PrivateName;
             GuestRequestlastNameTextBox.Text = gr.FamilyName;
             PhoneNumbertTextBox.Text = gr.PhoneNumber;
@@ -155,8 +155,10 @@ namespace PL
                     ImpBL bl = ImpBL.Instance;
                     GuestRequest gr = new GuestRequest();
                     gr.Status = RequestStatus.Open;
+                    gr.RegistrationDate=DateTime.Now;
 
-                    statusLable.Content = gr.Status;
+
+                   
 
                     gr.PrivateName = GuestRequestFirstNameTextBox.Text;
                     gr.FamilyName = GuestRequestlastNameTextBox.Text;

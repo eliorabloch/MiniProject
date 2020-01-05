@@ -32,7 +32,7 @@ namespace PL
             ImpBL bl = ImpBL.Instance;
             foreach (var item in bl.GetGuestRequestList())
             {
-                GuestRequestItemControl gric = new GuestRequestItemControl();
+                GuestRequestItemControl gric = new GuestRequestItemControl(Utils.navigationService);
                 gric.GuestRequestTextBlock.Text = item.PrivateName + " " + item.FamilyName;
                 gric.GuestRequestKeyLable.Content = "#" + item.GuestRequestKey;
                 guestRequestItemsControl.Add(gric);
@@ -80,7 +80,7 @@ namespace PL
 
         private void fullNameSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+    
         }
 
         private void searchByNameBtn_Click(object sender, RoutedEventArgs e)
