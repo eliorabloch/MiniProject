@@ -58,11 +58,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AvailableUnitItemControl.xaml.cs">
+      <DependentUpon>AvailableUnitItemControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BootingPage.xaml.cs">
       <DependentUpon>BootingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="GuestRequestInfoPage.xaml.cs">
       <DependentUpon>GuestRequestInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerPageAvailableUnit.xaml.cs">
+      <DependentUpon>ManagerPageAvailableUnit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerPageAvailableUnitList.xaml.cs">
+      <DependentUpon>ManagerPageAvailableUnitList.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyOrderItemControl.xaml.cs">
       <DependentUpon>MyOrderItemControl.xaml</DependentUpon>
@@ -79,6 +88,10 @@
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
+    <Page Include="AvailableUnitItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BootingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,6 +176,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ManagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManagerPageAvailableUnit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManagerPageAvailableUnitList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
