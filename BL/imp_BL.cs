@@ -401,7 +401,7 @@ namespace BL
 
         #endregion
 
-        public List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys)
+        public List<HostingUnit> GetAllAvilableUnits( DateTime start, int amountOfDAys)
         {
             DateTime end = start.AddDays(amountOfDAys);
             return GetUnitsList().Where(x => isDatesAvilable(x, start, end)).ToList();

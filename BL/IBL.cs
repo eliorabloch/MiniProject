@@ -33,7 +33,7 @@ namespace BL
 
         // BL new  function
         bool AvailableDate(HostingUnit h, GuestRequest g);//A function that makes sure the booked dates are free in the unit we placed the order.
-        List<HostingUnit> GetAllAvilableUnits(HostingUnit unit, DateTime start, int amountOfDAys);//A function that accepts a date and number of vacation days and returns the list of all available accommodation units on that date.
+        List<HostingUnit> GetAllAvilableUnits( DateTime start, int amountOfDAys);//A function that accepts a date and number of vacation days and returns the list of all available accommodation units on that date.
         bool SendOrder(Host h, Order o);//A function that checks whether an order can be sent to a customer. Only if the client has signed a host bank authorization form can he send an order.
         double AmountOfDays(DateTime start, DateTime end);//A function that accepts two dates and checks the time difference between them. If the function has only received one date, it will check how much time has passed from that date until now.
         List<Order> GetOldOrders(int amountOfDays);

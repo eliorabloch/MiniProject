@@ -16,7 +16,7 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="500" Margin="37,56,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="HostingUnitListView_SelectionChanged" Grid.ColumnSpan="2">
+        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="500" Margin="37,56,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="HostingUnitListView_SelectionChanged" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>

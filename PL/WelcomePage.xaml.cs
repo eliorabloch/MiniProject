@@ -43,9 +43,9 @@ namespace PL
 
         private void MannagerBtn_Click(object sender, RoutedEventArgs e)
         {
-            ManagerPage obj = new ManagerPage();
-            this.Visibility = Visibility.Hidden;
-            //obj.Show();
+            m_navigationService = this.NavigationService;
+            var ManagerPage = new ManagerPage(m_navigationService); //create your new form.
+            this.NavigationService.Navigate(ManagerPage);
 
         }
     }
