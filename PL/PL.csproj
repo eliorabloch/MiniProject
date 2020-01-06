@@ -73,15 +73,6 @@
     <Compile Include="ManagerPageAvailableUnitList.xaml.cs">
       <DependentUpon>ManagerPageAvailableUnitList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManagerPageGroupGRByAreas.xaml.cs">
-      <DependentUpon>ManagerPageGroupGRByAreas.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ManagerPageGroupGRByAreasItemControl.xaml.cs">
-      <DependentUpon>ManagerPageGroupGRByAreasItemControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ManagerPageGroupGRByAreasList.xaml.cs">
-      <DependentUpon>ManagerPageGroupGRByAreasList.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MyOrderItemControl.xaml.cs">
       <DependentUpon>MyOrderItemControl.xaml</DependentUpon>
     </Compile>
@@ -193,18 +184,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ManagerPageAvailableUnitList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ManagerPageGroupGRByAreas.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ManagerPageGroupGRByAreasItemControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ManagerPageGroupGRByAreasList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

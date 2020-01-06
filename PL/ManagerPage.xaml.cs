@@ -58,8 +58,7 @@ namespace PL
 
         private void GroupGRbyareas_Click(object sender, RoutedEventArgs e)
         {
-            var ManagerPageAvailableUnit = new ManagerPageGroupGRByAreasList(m_navigationService); //create your new form.
-            this.NavigationService.Navigate(ManagerPageAvailableUnit);
+          
         }
     }
 }
