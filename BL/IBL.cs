@@ -29,7 +29,7 @@ namespace BL
         List<GuestRequest> GetGuestRequestList();// A function that returns a list of hosting requests
         List<Order> GetOrdersList();//Function that returns an order list.
         List<BankBranch> GetBankList(); //A function that returns a list of banks.
-        List<List<GuestRequest>> GroupRequestByStatus();// Function who sort the geust requests by their status.
+       List<List<GuestRequest>> GroupRequesteByStatus();// Function who sort the geust requests by their status.
 
         // BL new  function
         bool AvailableDate(HostingUnit h, GuestRequest g);//A function that makes sure the booked dates are free in the unit we placed the order.

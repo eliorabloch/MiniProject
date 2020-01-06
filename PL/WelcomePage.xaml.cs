@@ -38,7 +38,6 @@ namespace PL
         {
             var HostLoginPage = new HostLoginPage(); //create your new form.
             this.NavigationService.Navigate(HostLoginPage);
-            //this.Content = HostLoginPage;
         }
 
         private void MannagerBtn_Click(object sender, RoutedEventArgs e)
