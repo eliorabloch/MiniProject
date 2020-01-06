@@ -6,20 +6,28 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="HostinUnitListWindow" Height="680" Width="840">
-    <Grid Margin="0,-2,0,2" OpacityMask="#FF9DC8E6" Background="#FF9DC8E6">
-        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="522" Margin="36,12,0,0" VerticalAlignment="Top" Width="768">
+    <Grid Margin="0,-2,0,2">
+        <Grid.Background>
+            <ImageBrush ImageSource="images/back.jpg" Opacity="0.8"/>
+        </Grid.Background>
+        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="494" Margin="36,12,0,0" VerticalAlignment="Top" Width="768">
 
         </ListView>
-        <Button x:Name="AddBtn" Content="  Add Unit" HorizontalAlignment="Left" Height="73" Margin="333,536,0,0" VerticalAlignment="Top" Width="196" Click="AddBtn_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="16">
+        <Button x:Name="AddBtn" Content="  Add Unit" HorizontalAlignment="Left" Height="73" Margin="333,524,0,0" VerticalAlignment="Top" Width="196" Click="AddBtn_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="16">
             <Button.Background>
                 <ImageBrush ImageSource="images/button.png" />
             </Button.Background>
         </Button>
-        <Button x:Name="backBtn" HorizontalAlignment="Left" Height="30" Margin="36,571,0,0" VerticalAlignment="Top" Width="30" Click="Button_Click" BorderBrush="{x:Null}">
+        <Button x:Name="backBtn" HorizontalAlignment="Left" Height="30" Margin="36,559,0,0" VerticalAlignment="Top" Width="30" Click="Button_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="images/arrow.png"/>
             </Button.Background>
         </Button>
+        <Label Content="" HorizontalAlignment="Left" Height="30" Margin="366,545,0,0" VerticalAlignment="Top" Width="29">
+            <Label.Background>
+                <ImageBrush ImageSource="images/addunit.png"/>
+            </Label.Background>
+        </Label>
 
     </Grid>
 </Page>

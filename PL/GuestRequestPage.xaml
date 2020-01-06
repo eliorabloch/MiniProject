@@ -20,7 +20,7 @@
 
 
         </Grid.ColumnDefinitions>
-        <Label  HorizontalAlignment="Left" Margin="615,-2,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="223" Height="682">
+        <Label  HorizontalAlignment="Left" Margin="603,-2,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="223" Height="682">
             <Label.Background>
                 <SolidColorBrush Color="#FFBEE6DF" Opacity="0.8"/>
             </Label.Background>
@@ -47,7 +47,7 @@
         <Label Content="First Name:" HorizontalAlignment="Left" Margin="32,77,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="26" Width="86" FontFamily="Lucida Sans Unicode"/>
         <TextBox x:Name="GuestRequestFirstNameTextBox" HorizontalAlignment="Left" Height="25" Margin="117,77,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="170
                  "/>
-        <Button x:Name="SaveBtn" Content="Save" HorizontalAlignment="Left" Margin="689,514,0,0" VerticalAlignment="Top" Width="95" Height="42" Click="SaveBtn_Click" BorderBrush="{x:Null}" Grid.Row="1">
+        <Button x:Name="SaveBtn" Content="Save" HorizontalAlignment="Left" Margin="671,500,0,0" VerticalAlignment="Top" Width="95" Height="42" Click="SaveBtn_Click" BorderBrush="{x:Null}" Grid.Row="1">
             <Button.Background>
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
@@ -88,7 +88,7 @@
 
 
         </Grid>
-        <Calendar x:Name="FromDateCalender" HorizontalAlignment="Left" Margin="641,75,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="186" Width="179">
+        <Calendar x:Name="FromDateCalender" HorizontalAlignment="Left" Margin="619,75,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="186" Width="179">
             <Calendar.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFE4EAF0" Offset="0"/>
@@ -98,8 +98,8 @@
                 </LinearGradientBrush>
             </Calendar.Background>
         </Calendar>
-        <Label Content="From:" HorizontalAlignment="Left" Margin="698,39,-39,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="179" FontFamily="MV Boli" FontSize="20" FontWeight="Bold" Height="66" Grid.ColumnSpan="2"/>
-        <Calendar x:Name="ToDateCalender" HorizontalAlignment="Left" Height="175" Margin="641,296,0,0" VerticalAlignment="Top" Width="179" Grid.Row="1">
+        <Label Content="From:" HorizontalAlignment="Left" Margin="674,43,-15,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="179" FontFamily="MV Boli" FontSize="20" FontWeight="Bold" Height="66" Grid.ColumnSpan="2"/>
+        <Calendar x:Name="ToDateCalender" HorizontalAlignment="Left" Height="175" Margin="623,296,0,0" VerticalAlignment="Top" Width="179" Grid.Row="1">
             <Calendar.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFE4EAF0" Offset="0"/>
@@ -109,7 +109,7 @@
                 </LinearGradientBrush>
             </Calendar.Background>
         </Calendar>
-        <Label Content="To:" HorizontalAlignment="Left" Height="45" Margin="711,267,0,0" VerticalAlignment="Top" Width="86" FontSize="18" FontFamily="MV Boli" FontWeight="Bold" Grid.Row="1"/>
+        <Label Content="To:" HorizontalAlignment="Left" Height="45" Margin="691,267,0,0" VerticalAlignment="Top" Width="86" FontSize="18" FontFamily="MV Boli" FontWeight="Bold" Grid.Row="1"/>
         <Label Content="Phone-Number:" HorizontalAlignment="Left" Height="25" Margin="296,246,0,0" VerticalAlignment="Top" Width="128" Grid.Row="1" FontFamily="Lucida Sans Unicode"/>
         <TextBox x:Name="PhoneNumbertTextBox" HorizontalAlignment="Left" Height="25
                  " Margin="120,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170
@@ -125,7 +125,7 @@
         <TextBox x:Name="ChildrenTextBox" HorizontalAlignment="Left" Height="25" Margin="150,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Grid.Row="1"/>
         <TextBox x:Name="AdultsTextBox" HorizontalAlignment="Left" Height="25" Margin="311,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Grid.Row="1" RenderTransformOrigin="16.333,-0.333"/>
 
-        <Button x:Name="backBtn" Content="" HorizontalAlignment="Left" Height="27" Margin="27,601,0,0" VerticalAlignment="Top" Width="28" Click="Button_Click" BorderBrush="{x:Null}" Grid.Row="1">
+        <Button x:Name="backBtn" Content="" HorizontalAlignment="Left" Height="27" Margin="37,587,0,0" VerticalAlignment="Top" Width="28" Click="Button_Click" BorderBrush="{x:Null}" Grid.Row="1">
             <Button.Background>
                 <ImageBrush ImageSource="images/arrow.png"/>
             </Button.Background>

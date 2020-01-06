@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="hostingUnit" Height="680" Width="800">
+        Title="hostingUnit" Height="680" Width="840
+      ">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="images/back.jpg" Opacity="0.8"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
             <RowDefinition/>
@@ -16,15 +20,21 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Sub Area:" HorizontalAlignment="Left" Height="25" Margin="29,168,0,0" VerticalAlignment="Top" Width="65" FontWeight="Black" Grid.Row="1"/>
-        <CheckBox x:Name="HasPoolCheckBox" FontWeight="Black" Content="Pool" HorizontalAlignment="Left" Height="20" Margin="29,148,0,0" VerticalAlignment="Top" Width="111" Grid.Row="1"/>
-        <CheckBox x:Name="HasJacuzzCheckBox" FontWeight="Black"  Content="Jacuzz" HorizontalAlignment="Left" Height="19" Margin="29,124,0,0" VerticalAlignment="Top" Width="85" IsChecked="False" Grid.Row="1" />
-        <CheckBox x:Name="HasGardanCheckBox" FontWeight="Black" Content="Garden" HorizontalAlignment="Left" Height="22" Margin="29,98,0,0" VerticalAlignment="Top" Width="125" IsChecked="False" Grid.Row="1" />
-        <CheckBox x:Name="HasChildrenAttractionsCheckBox" FontWeight="Black" Content="ChildrenAttractions" HorizontalAlignment="Left" Height="22" Margin="29,70,0,0" VerticalAlignment="Top" Width="197" IsChecked="False" Grid.Row="1" />
-        <Label Content="Do you have:" HorizontalAlignment="Left" Height="25" Margin="25,40,0,0" VerticalAlignment="Top" Width="187" Grid.Row="1" RenderTransformOrigin="0.584,1.592"/>
-        <Label Content="Unit-Type:" HorizontalAlignment="Left" Height="26" Margin="25,223,0,0" VerticalAlignment="Top" Width="69" Grid.Row="1"/>
-        <Label Content="Area&#xD;&#xA;Area:" HorizontalAlignment="Left" Height="25" Margin="32,281,0,0" VerticalAlignment="Top" Width="128" Grid.Row="1"/>
-        <ComboBox x:Name="AreaComboBox" HorizontalAlignment="Left" Margin="32,311,0,342" Width="143" Grid.Row="1">
+        <Label  HorizontalAlignment="Left" Height="698" Margin="57,-18,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="359">
+            <Label.Background>
+                <SolidColorBrush Color="#FFBEE6DF" Opacity="0.8"/>
+            </Label.Background>
+        </Label>
+
+        <Label Content="Sub Area:" HorizontalAlignment="Left" Height="25" Margin="75,238,0,0" VerticalAlignment="Top" Width="65" FontWeight="Black" Grid.Row="1"/>
+        <CheckBox x:Name="HasPoolCheckBox" FontWeight="Black" Content="Pool" HorizontalAlignment="Left" Height="20" Margin="74,216,0,0" VerticalAlignment="Top" Width="111" Grid.Row="1"/>
+        <CheckBox x:Name="HasJacuzzCheckBox" FontWeight="Black"  Content="Jacuzz" HorizontalAlignment="Left" Height="19" Margin="73,190,0,0" VerticalAlignment="Top" Width="85" IsChecked="False" Grid.Row="1" />
+        <CheckBox x:Name="HasGardanCheckBox" FontWeight="Black" Content="Garden" HorizontalAlignment="Left" Height="22" Margin="73,162,0,0" VerticalAlignment="Top" Width="125" IsChecked="False" Grid.Row="1" />
+        <CheckBox x:Name="HasChildrenAttractionsCheckBox" FontWeight="Black" Content="ChildrenAttractions" HorizontalAlignment="Left" Height="22" Margin="73,134,0,0" VerticalAlignment="Top" Width="197" IsChecked="False" Grid.Row="1" />
+        <Label Content="Do you have:" HorizontalAlignment="Left" Height="25" Margin="67,100,0,0" VerticalAlignment="Top" Width="187" Grid.Row="1" RenderTransformOrigin="0.584,1.592"/>
+        <Label Content="Unit-Type:" HorizontalAlignment="Left" Height="26" Margin="75,278,0,0" VerticalAlignment="Top" Width="69" Grid.Row="1"/>
+        <Label Content="Area&#xA;Area:" HorizontalAlignment="Left" Height="25" Margin="79,319,0,0" VerticalAlignment="Top" Width="128" Grid.Row="1"/>
+        <ComboBox x:Name="AreaComboBox" HorizontalAlignment="Left" Margin="147,320,0,330" Width="143" Grid.Row="1" Height="30">
             <ComboBoxItem Content="jerusalem" />
             <ComboBoxItem Content="center" />
             <ComboBoxItem Content="north" />
@@ -32,22 +42,34 @@
 
 
         </ComboBox>
-        <ComboBox x:Name="UnitTypeComboBox" Height="27" Margin="32,253,625,0" VerticalAlignment="Top" Grid.Row="1">
+        <ComboBox x:Name="UnitTypeComboBox" Height="30
+                  " Margin="147,276,510,0" VerticalAlignment="Top" Grid.Row="1" Background="White">
             <ComboBoxItem Content=" Tzimer"  />
             <ComboBoxItem Content="HostingUnit" />
             <ComboBoxItem Content="HotelRoom" />
             <ComboBoxItem Content="Tent" />
         </ComboBox>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="29,10,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
-        <TextBox x:Name="HostinUnitNameTextBox" HorizontalAlignment="Left" Height="23" Margin="76,14,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="SubAreaTextBox" HorizontalAlignment="Left" Height="23" Margin="99,173,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="SaveBtn" Content="Save" HorizontalAlignment="Left" Margin="639,344,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="77" Height="26" Click="SaveBtn_Click"/>
-        <Label x:Name="HostingUnitKeyLable" Content="Label" HorizontalAlignment="Left" Margin="216,10,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="136" Foreground="#FF939393"/>
-        <Button x:Name="HostInfoBTN" Content="Host-Information" HorizontalAlignment="Left" Height="43" Margin="610,22,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="167" Click="HostInfoBTN_Click"/>
-        <Button x:Name="backBtn"  HorizontalAlignment="Left" Height="30" Margin="19,395,0,0" VerticalAlignment="Top" Width="30" Click="Back_Click" Grid.RowSpan="2" BorderBrush="{x:Null}">
+        <Label Content="Name" HorizontalAlignment="Left" Margin="66,72,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
+        <TextBox x:Name="HostinUnitNameTextBox" HorizontalAlignment="Left" Height="30" Margin="113,71,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="SubAreaTextBox" HorizontalAlignment="Left" Height="30
+                 " Margin="147,233,0,0" Grid.RowSpan="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="225"/>
+        <Button x:Name="SaveBtn" Content="Save" HorizontalAlignment="Left" Margin="193,393,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="77" Height="36" Click="SaveBtn_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="images/button.png"/>
+            </Button.Background>
+        </Button>
+        <Label x:Name="HostingUnitKeyLable" Content="Label" HorizontalAlignment="Left" Margin="280,72,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="123" Foreground="#FF939393"/>
+        <Button x:Name="HostInfoBTN" Content="" HorizontalAlignment="Left" Height="50" Margin="666,28,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="50 " Click="HostInfoBTN_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="images/man.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="backBtn"  HorizontalAlignment="Left" Height="30" Margin="87,455,0,0" VerticalAlignment="Top" Width="30" Click="Back_Click" Grid.RowSpan="2" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="images/arrow.png"/>
             </Button.Background>
         </Button>
+        <Label Content="Host-information" HorizontalAlignment="Left" Height="48" Margin="607,83,-4,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="237" FontFamily="Lucida Sans Unicode" Grid.ColumnSpan="2" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Unit Information:" HorizontalAlignment="Left" Height="33" Margin="157,14,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="258" FontFamily="MV Boli" FontSize="18"/>
     </Grid>
 </Page>

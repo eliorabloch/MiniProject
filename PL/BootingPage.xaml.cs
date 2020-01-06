@@ -35,7 +35,7 @@ namespace PL
 
         private void Image_Loaded(object sender, RoutedEventArgs e)
         {
-            timer.Interval = TimeSpan.FromSeconds(3);
+            timer.Interval = TimeSpan.FromSeconds(2);
             timer.Tick += changePage;
             timer.Start();
         }
