@@ -52,10 +52,5 @@ namespace PL
         {
             this.NavigationService.GoBack();
         }
-
-        private void HostingUnitListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

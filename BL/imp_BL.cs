@@ -31,7 +31,10 @@ namespace BL
             dal = factoryDAL.GetDAL(TypeDAL);
         }
 
-        
+        public List<Order> GetOrdersByUnit(int hostingUnitKey)
+        {
+            return GetOrdersList().Where(x => x.HostingUnitKey == hostingUnitKey).ToList();
+        }
 
         #region Gusets Requsts
 
@@ -326,16 +329,6 @@ namespace BL
 
         #region Orders
 
-        public void DeleteOrder(Order update)
-        {
-
-        }
-
-        public List<Order> GetOrdersByUnit(int hostingUnitKey)//An orders who reflect to one specific hostingunit.
-        {
-            return GetOrdersList().Where(x => x.HostingUnitKey == hostingUnitKey).ToList();
-        }
-
         public Order searchByKey(List<Order> order, int key = -1)
         {
             foreach (var item in order)
@@ -489,7 +482,7 @@ namespace BL
 
         public double AmountOfDays(DateTime start, DateTime end)
         {
-            end = end == null ? DateTime.Now : end;//איתחול ברירת מחדל לend=now.
+            end = end == null ? DateTime.Now : end;
             return (end - start).TotalDays;
         }
 
@@ -590,7 +583,15 @@ namespace BL
         {
             return GetUnitsList().Sum(x => x.Owner.HostId == owner.HostId ? 1 : 0);
         }
-        
-       
+
+        public void DeleteOrder(Order update)
+        {
+
+        }
+
+        public List<List<GuestRequest>> GroupRequestByStatus()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

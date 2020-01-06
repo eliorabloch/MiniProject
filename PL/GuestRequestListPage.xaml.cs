@@ -50,6 +50,8 @@ namespace PL
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
+
+
             var GuestRequestPage = new GuestRequestPage(); //create your new form.
             this.NavigationService.Navigate(GuestRequestPage);
         }
