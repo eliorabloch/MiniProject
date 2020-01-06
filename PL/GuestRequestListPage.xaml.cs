@@ -25,23 +25,9 @@ namespace PL
     public partial class GuestRequestListPage : Page
 
     {
-        public GuestRequestListPage()
-        {
-            InitializeComponent();
-            List<GuestRequestItemControl> guestRequestItemsControl = new List<GuestRequestItemControl>();
-            ImpBL bl = ImpBL.Instance;
-            foreach (var item in bl.GetGuestRequestList())
-            {
-                GuestRequestItemControl gric = new GuestRequestItemControl(Utils.navigationService);
-                gric.GuestRequestTextBlock.Text = item.PrivateName + " " + item.FamilyName;
-                gric.GuestRequestKeyLable.Content = "#" + item.GuestRequestKey;
-                guestRequestItemsControl.Add(gric);
-            }
-            HostingUnitListView.ItemsSource = guestRequestItemsControl;
+      
 
-
-
-        }
+       
 
         NavigationService m_navigationService { get; set; }
 
@@ -64,6 +50,8 @@ namespace PL
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
+
+
             var GuestRequestPage = new GuestRequestPage(); //create your new form.
             this.NavigationService.Navigate(GuestRequestPage);
         }

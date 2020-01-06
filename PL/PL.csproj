@@ -64,14 +64,17 @@
     <Compile Include="BootingPage.xaml.cs">
       <DependentUpon>BootingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GroupingGRbyAreaItemControl.xaml.cs">
+      <DependentUpon>GroupingGRbyAreaItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GroupingListPage.xaml.cs">
+      <DependentUpon>GroupingListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GuestRequestInfoPage.xaml.cs">
       <DependentUpon>GuestRequestInfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManagerPageAvailableUnit.xaml.cs">
-      <DependentUpon>ManagerPageAvailableUnit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ManagerPageAvailableUnitList.xaml.cs">
-      <DependentUpon>ManagerPageAvailableUnitList.xaml</DependentUpon>
+    <Compile Include="ManagerListsPage.xaml.cs">
+      <DependentUpon>ManagerListsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyOrderItemControl.xaml.cs">
       <DependentUpon>MyOrderItemControl.xaml</DependentUpon>
@@ -93,6 +96,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BootingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GroupingGRbyAreaItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GroupingListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,15 +186,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ManagerListsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ManagerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ManagerPageAvailableUnit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ManagerPageAvailableUnitList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -306,6 +313,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\man.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

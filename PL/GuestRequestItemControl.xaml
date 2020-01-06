@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:PL"
              mc:Ignorable="d" Width="730" Height="73">
     <Grid x:Name="UserControlContainer" Background="#FFD9C8C2">
-        <TextBlock x:Name="GuestRequestTextBlock" HorizontalAlignment="Left" Height="50" Margin="24,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" FontSize="20" FontFamily="MV Boli" />
-        <Label x:Name="GuestRequestKeyLable" Content="" HorizontalAlignment="Left" Margin="260,17,0,0" VerticalAlignment="Top" Height="50" Width="186" Foreground="#FFA8A8A8"/>
+        <Label x:Name="GuestRequestKeyLable" Content="" HorizontalAlignment="Left" Margin="290,17,0,0" VerticalAlignment="Top" Height="50" Width="186" Foreground="#FFA8A8A8"/>
         <Button x:Name="DeleteGuestRequestBtn" Content="" HorizontalAlignment="Left" Margin="662,15,0,0" VerticalAlignment="Top" Width="52" Height="52" Click="DeleteHostingUnitBtn_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="images/delBtn.png" />
@@ -18,6 +17,7 @@
                 <ImageBrush ImageSource="images/infoBtn.png" />
             </Button.Background>
         </Button>
+        <TextBlock x:Name="GuestRequestTextBlock" HorizontalAlignment="Left" Height="48" Margin="20,13,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="291" Text="dsfsdf"/>
 
     </Grid>
 </UserControl>

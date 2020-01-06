@@ -38,6 +38,7 @@ namespace PL
         {
             var HostLoginPage = new HostLoginPage(); //create your new form.
             this.NavigationService.Navigate(HostLoginPage);
+            //this.Content = HostLoginPage;
         }
 
         private void MannagerBtn_Click(object sender, RoutedEventArgs e)
@@ -45,6 +46,7 @@ namespace PL
             m_navigationService = this.NavigationService;
             var ManagerPage = new ManagerPage(m_navigationService); //create your new form.
             this.NavigationService.Navigate(ManagerPage);
+
         }
     }
 }

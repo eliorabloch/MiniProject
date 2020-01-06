@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BL;
+using System.Windows.Threading;
+using BE;
 
 namespace PL
 {
@@ -23,6 +26,21 @@ namespace PL
         public ThankYouPage()
         {
             InitializeComponent();
+        }
+        DispatcherTimer timer = new DispatcherTimer();
+
+        private void Image_Loaded(object sender, RoutedEventArgs e)
+        {
+            timer.Interval = TimeSpan.FromSeconds(4);
+            timer.Tick += changePage;
+            timer.Start();
+        }
+
+        private void changePage(object sender, EventArgs e)
+        {
+            timer.Stop();
+            Utils.navigationService = this.NavigationService;
+            this.NavigationService.Navigate(new GuestRequestListPage(Utils.navigationService));
         }
     }
 }

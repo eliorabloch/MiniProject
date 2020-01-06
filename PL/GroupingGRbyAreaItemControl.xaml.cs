@@ -12,17 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BE;
+using BL;
 
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for AvailableUnitItemControl.xaml
+    /// Interaction logic for GroupingGRbyArea.xaml
     /// </summary>
-    public partial class AvailableUnitItemControl : UserControl
+    public partial class GroupingGRbyAreaItemControl : UserControl
     {
-        public AvailableUnitItemControl()
+        public GroupingGRbyAreaItemControl()
         {
             InitializeComponent();
+            //foreach (var item in myList)
+
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        
     }
 }

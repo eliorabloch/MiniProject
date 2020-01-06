@@ -1,4 +1,4 @@
-﻿<Page x:Class="PL.ManagerPageAvailableUnitList"
+﻿<Page x:Class="PL.ManagerListsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,7 +9,7 @@
       Title="ManagerPageAvailableUnitList">
 
     <Grid>
-        
+
         <Label Content="Available Unit:" HorizontalAlignment="Left" Height="36" Margin="34,10,0,0" VerticalAlignment="Top" Width="283" FontSize="18" FontFamily="MV Boli"/>
         <ListView x:Name="AvailableUnitListView" HorizontalAlignment="Left" Height="363" Margin="163,51,0,0" VerticalAlignment="Top" Width="458" SelectionChanged="AvailableUnitListView_SelectionChanged">
             <ListView.View>
@@ -18,6 +18,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
+
     </Grid>
 </Page>

@@ -16,15 +16,11 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for ManagerPageAvailableUnit.xaml
+    /// Interaction logic for GroupingListPage.xaml
     /// </summary>
-    public partial class ManagerPageAvailableUnit : Page
+    public partial class GroupingListPage : Page
     {
-        public ManagerPageAvailableUnit()
-        {
-            InitializeComponent();
-        }
-        public ManagerPageAvailableUnit(NavigationService navigationService)
+        public GroupingListPage()
         {
             InitializeComponent();
         }

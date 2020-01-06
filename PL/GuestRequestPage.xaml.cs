@@ -314,8 +314,8 @@ namespace PL
                     bl.AddRequest(gr);
                    
 
-                    var GlPAGE = new GuestRequestListPage();
-                    this.NavigationService.Navigate(GlPAGE);
+                    var thankPAGE = new ThankYouPage();
+                    this.NavigationService.Navigate(thankPAGE);
 
                 }
             }

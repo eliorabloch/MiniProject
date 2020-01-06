@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:PL"
         
         mc:Ignorable="d"
-           Title="Eliel" Height="680" Width="840" ResizeMode="NoResize" >
+           Title="Vacation-Mode" Height="680" Width="840" ResizeMode="NoResize" Icon="images/icon.png
+        " >
     <Grid>
         <Frame x:Name="MainFrame"  NavigationUIVisibility="Hidden">
         </Frame>

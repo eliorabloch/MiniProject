@@ -32,7 +32,7 @@ namespace PL
             InitializeComponent();
             m_navigationService = navigationService;
         }
-       
+
 
         private void AvailableUnitComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -41,8 +41,8 @@ namespace PL
 
         private void AvailableU_Click(object sender, RoutedEventArgs e)
         {
-            //m_navigationService = this.NavigationService;
-            var ManagerPageAvailableUnit = new ManagerPageAvailableUnitList(amountTextBox.Text,dateTextBox.Text); //create your new form.
+            m_navigationService = this.NavigationService;
+            var ManagerPageAvailableUnit = new ManagerListsPage(amountTextBox.Text, dateTextBox.Text); //create your new form.
             this.NavigationService.Navigate(ManagerPageAvailableUnit);
         }
 
@@ -58,7 +58,9 @@ namespace PL
 
         private void GroupGRbyareas_Click(object sender, RoutedEventArgs e)
         {
-          
+            m_navigationService = this.NavigationService;
+            var ManagerPageAvailableUnit = new ManagerListsPage(); //create your new form.
+            this.NavigationService.Navigate(ManagerPageAvailableUnit);
         }
     }
 }

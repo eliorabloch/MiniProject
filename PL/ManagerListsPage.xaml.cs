@@ -19,11 +19,26 @@ namespace PL
     /// <summary>
     /// Interaction logic for ManagerPageAvailableUnitList.xaml
     /// </summary>
-    public partial class ManagerPageAvailableUnitList : Page
+    public partial class ManagerListsPage : Page
     {
         NavigationService m_navigationService { get; set; }
+        public ManagerListsPage()
+        {
+            InitializeComponent();
+            List<GroupingGRbyAreaItemControl> AreaItemControl = new List<GroupingGRbyAreaItemControl>();
+            ImpBL bl = ImpBL.Instance;
+           // foreach (var item in bl.GroupGuestRequestByAreas())
+            {
 
-        public ManagerPageAvailableUnitList(string amountofdays, string date)
+                GroupingGRbyAreaItemControl auic = new GroupingGRbyAreaItemControl();
+                //auic.AreaTextBlock.Text = item.;
+                //gric.GuestRequestKeyLable.Content = "#" + item.GuestRequestKey;
+               // availableUnitItemControl.Add(auic);
+            }
+           // AvailableUnitListView.ItemsSource = availableUnitItemControl;
+
+        }
+        public ManagerListsPage(string amountofdays, string date)
         {
             DateTime d = DateTime.Parse(date);
             InitializeComponent();
@@ -41,10 +56,7 @@ namespace PL
 
 
         }
-        public ManagerPageAvailableUnitList(NavigationService navigationService)
-        {
-            InitializeComponent();
-        }
+        
 
         private void AvailableUnitListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
