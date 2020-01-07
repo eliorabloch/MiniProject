@@ -17,7 +17,7 @@
                 <ImageBrush ImageSource="images/infoBtn.png" />
             </Button.Background>
         </Button>
-        <TextBlock x:Name="GuestRequestTextBlock" HorizontalAlignment="Left" Height="48" Margin="20,13,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="291" Text="dsfsdf"/>
+        <Label x:Name="GuestRequestTextBlock" Content="Label" HorizontalAlignment="Left" Margin="36,17,0,0" VerticalAlignment="Top" Height="46" Width="254"/>
 
     </Grid>
 </UserControl>

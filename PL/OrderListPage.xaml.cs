@@ -35,11 +35,11 @@ namespace PL
 
             MyOrderListView.ItemsSource = itemsToView;
 
-          List<Order> Suggestorders = bl.matchRequestToUnit(hostingUnit.Owner,bl.GetGuestRequestList());
+          List<GuestRequest> Suggestorders = bl.matchRequestToUnit(hostingUnit.Owner);
             List<SuggetionOrderItemControl> itemsToView2 = new List<SuggetionOrderItemControl>();
-            foreach (var order in Suggestorders)
+            foreach (var gr in Suggestorders)
            {
-               itemsToView2.Add(new SuggetionOrderItemControl(order));
+               itemsToView2.Add(new SuggetionOrderItemControl(gr));
             }
            SuggestionListView.ItemsSource = itemsToView2;
         }

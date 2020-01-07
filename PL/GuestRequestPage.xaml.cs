@@ -26,125 +26,13 @@ namespace PL
         public GuestRequestPage()
         {
             InitializeComponent();
+            TypeComboBox.ItemsSource = Enum.GetNames(typeof(UnitType)).ToList();
+            //    TypeComboBox.SelectedValue = gr.Type.ToString();
+
         }
 
 
-
-        public GuestRequestPage(bool isExistingReq, NavigationService navigationService,int key = -1)
-        {
-            InitializeComponent();
-            ImpBL bl = ImpBL.Instance;
-            GuestRequest gr = bl.GetRequest(key);
-
-            gr.Status = RequestStatus.Open;
-
-          
-            
-            GuestRequestFirstNameTextBox.Text = gr.PrivateName;
-            GuestRequestlastNameTextBox.Text = gr.FamilyName;
-            PhoneNumbertTextBox.Text = gr.PhoneNumber;
-            ChildrenTextBox.Text = gr.Children;
-            AdultsTextBox.Text = gr.Adults;
-            EmailTextBox.Text = gr.MailAddress;
-            SubAreaTextBox.Text = gr.SubArea;
-            // FromDateCalender.SelectedDates[0] = gr.EntryDate;
-            // ToDateCalender.SelectedDates[0] = gr.ReleaseDate ;
-            switch (gr.Area)
-            {
-                case Areas.South:
-                    AreaComboBox.SelectedIndex = 3;
-                    break;
-                case Areas.North:
-                    AreaComboBox.SelectedIndex = 2;
-                    break;
-                case Areas.Center:
-                    AreaComboBox.SelectedIndex = 1;
-                    break;
-                case Areas.Jerusalem:
-                    AreaComboBox.SelectedIndex = 0;
-                    break;
-                default:
-                    break;
-            }
-
-            switch (gr.Type)
-            {
-                case UnitType.Tzimer:
-                    TypeComboBox.SelectedIndex = 0;
-                    break;
-                case UnitType.HostingUnit:
-                    TypeComboBox.SelectedIndex = 1;
-                    break;
-                case UnitType.HotelRoom:
-                    TypeComboBox.SelectedIndex = 2;
-                    break;
-                case UnitType.Tent:
-                    TypeComboBox.SelectedIndex = 3;
-                    break;
-                default:
-                    break;
-            }
-            switch (gr.Pool)
-
-            {
-                case Options.possible:
-                    PPossible.IsChecked = true;
-                    break;
-                case Options.neccesery:
-                    PNeccesery.IsChecked = true;
-                    break;
-                case Options.notintersted:
-                    PNotintersted.IsChecked = true;
-                    break;
-                default:
-                    break;
-            }
-            switch (gr.Garden)
-
-            {
-                case Options.possible:
-                    GPossible.IsChecked = true;
-                    break;
-                case Options.neccesery:
-                    GNeccesery.IsChecked = true;
-                    break;
-                case Options.notintersted:
-                    GNotintersted.IsChecked = true;
-                    break;
-                default:
-                    break;
-            }
-            switch (gr.Jacuzz)
-
-            {
-                case Options.possible:
-                    JPossible.IsChecked = true;
-                    break;
-                case Options.neccesery:
-                    JNeccesery.IsChecked = true;
-                    break;
-                case Options.notintersted:
-                    JNotintersted.IsChecked = true;
-                    break;
-                default:
-                    break;
-            }
-            switch (gr.ChildrensAttractions)
-
-            {
-                case Options.possible:
-                    CPossible.IsChecked = true;
-                    break;
-                case Options.neccesery:
-                    CNeccesery.IsChecked = true;
-                    break;
-                case Options.notintersted:
-                    CNotintersted.IsChecked = true;
-                    break;
-                default:
-                    break;
-            }
-        }
+        
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -191,26 +79,10 @@ namespace PL
                         default:
                             break;
                     }
-                    switch (TypeComboBox.SelectedIndex)
-                    {
-                        case 0:
-                            gr.Type = UnitType.Tzimer;
-                            break;
-                        case 1:
-                            gr.Type = UnitType.HostingUnit;
 
-                            break;
-                        case 2:
-                            gr.Type = UnitType.HotelRoom;
+                    gr.Type = (UnitType)Enum.Parse(typeof(UnitType), TypeComboBox.SelectedValue.ToString(), true);
 
-                            break;
-                        case 3:
-                            gr.Type = UnitType.Tent;
-
-                            break;
-                        default:
-                            break;
-                    }
+                    
                     #region childrenattractions
                     switch (CNotintersted.IsChecked)
                     {

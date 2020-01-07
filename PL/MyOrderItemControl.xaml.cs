@@ -28,6 +28,7 @@ namespace PL
             InitializeComponent();
             m_order = order;
             OrderIdLable.Content = order.OrderKey;
+            //OrderStatusComboBox.ItemsSource = Enum.GetNames(typeof(OrderStatus)).ToList();
             switch (order.Status)
             {
                 case OrderStatus.NotHandled:
@@ -47,27 +48,36 @@ namespace PL
             }
         }
 
-        private void OrderStatusComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SaveStatusBtn_Click(object sender, RoutedEventArgs e)
         {
-            switch (OrderStatusComboBox.SelectedIndex)
+            try
             {
-                case 0:
-                    m_order.Status = OrderStatus.NotHandled;
-                    break;
-                case 1:
-                    m_order.Status = OrderStatus.SentMail;
-                    break;
-                case 2:
-                    m_order.Status = OrderStatus.ClosedRequestCanceled;
-                    break;
-                case 3:
-                    m_order.Status = OrderStatus.ClosedRequestDoneDeal;
-                    break;
-                default:
-                    break;
+                switch (OrderStatusComboBox.SelectedIndex)
+                {
+                    case 0:
+                        m_order.Status = OrderStatus.NotHandled;
+                        break;
+                    case 1:
+                        m_order.Status = OrderStatus.SentMail;
+                        break;
+                    case 2:
+                        m_order.Status = OrderStatus.ClosedRequestCanceled;
+                        break;
+                    case 3:
+
+                        m_order.Status = OrderStatus.ClosedRequestDoneDeal;
+                        break;
+                    default:
+                        break;
+                }
+                //m_order.Status = (OrderStatus)Enum.Parse(typeof(OrderStatus), OrderStatusComboBox.SelectedValue.ToString(), true); 
+                ImpBL bl = ImpBL.Instance;
+                bl.UpdateOrder(m_order);
             }
-            ImpBL bl = ImpBL.Instance;
-            bl.UpdateOrder(m_order);
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

@@ -45,9 +45,9 @@ namespace BL
         HostingUnit searchByKey(List<HostingUnit> hostingUnit, int key = -1);// Fanction who search for a hosting units by its key.
         List<HostingUnit> searchByName(List<HostingUnit> HostingUnit, string Name);//Function who search for a hosting unit by its name.
         Order searchByKey(List<Order> order, int key = -1);// Fanction who search for a orders by its key.
-        List<Order> matchRequestToUnit(Host h, List<GuestRequest> GetGuestRequestList);// Function who match between hostingunit to guestrequest.
-        Order checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr);// Check if hosting unit is fit to guest request.
-
+        List<GuestRequest> matchRequestToUnit(Host h);// Function who match between hostingunit to guestrequest.
+        GuestRequest checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr);// Check if hosting unit is fit to guest request.
+        List<Tuple<DateTime, DateTime>> markTakenDatesInMatrix(HostingUnit unit);//list of taken days;
         List<List<GuestRequest>> GroupGuestRequestByAreas();//A function that returns a list of guest requirements grouped by the required area.
         List<List<GuestRequest>> GroupGuestRequestByNumOfAtendees();//A function that returns a customer requirements list grouped by the number of vacationers.
         List<List<Host>> GroupHostsByNumOfUnits();//A function that returns a host list grouped by the number of hosting units they hold.

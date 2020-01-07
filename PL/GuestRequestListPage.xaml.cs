@@ -25,10 +25,6 @@ namespace PL
     public partial class GuestRequestListPage : Page
 
     {
-      
-
-       
-
         NavigationService m_navigationService { get; set; }
 
         public GuestRequestListPage(NavigationService navigationService)
@@ -40,7 +36,7 @@ namespace PL
             foreach (var item in bl.GetGuestRequestList())
             {
                 GuestRequestItemControl gric = new GuestRequestItemControl( navigationService);
-                gric.GuestRequestTextBlock.Text = item.PrivateName+ " " + item.FamilyName;
+                gric.GuestRequestTextBlock.Content = item.PrivateName+ " " + item.FamilyName;
                 gric.GuestRequestKeyLable.Content = "#" + item.GuestRequestKey;
                 guestRequestItemsControl.Add(gric);
             }
@@ -50,8 +46,6 @@ namespace PL
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
-
             var GuestRequestPage = new GuestRequestPage(); //create your new form.
             this.NavigationService.Navigate(GuestRequestPage);
         }
@@ -82,7 +76,7 @@ namespace PL
                 foreach (var item in bl.searchByName(bl.GetGuestRequestList(), fullNameSearchTextBox.Text))
                 {
                     GuestRequestItemControl sgric = new GuestRequestItemControl(m_navigationService);
-                    sgric.GuestRequestTextBlock.Text = item.PrivateName + " " + item.FamilyName;
+                    sgric.GuestRequestTextBlock.Content = item.PrivateName + " " + item.FamilyName;
                     sgric.GuestRequestKeyLable.Content = "#" + item.GuestRequestKey;
                     SubguestRequestItemsControl.Add(sgric);
                 }
@@ -108,9 +102,8 @@ namespace PL
                 int Key = int.Parse(searchByKeyTextBox.Text);
                 GuestRequest gr = bl.searchByKey(bl.GetGuestRequestList(), Key);
 
-
                 GuestRequestItemControl sgric = new GuestRequestItemControl(m_navigationService);
-                sgric.GuestRequestTextBlock.Text = gr.PrivateName + " " + gr.FamilyName;
+                sgric.GuestRequestTextBlock.Content = gr.PrivateName + " " + gr.FamilyName;
                 sgric.GuestRequestKeyLable.Content = "#" + gr.GuestRequestKey;
                 SubguestRequestItemsControl.Add(sgric);
             

@@ -12,12 +12,13 @@
             <ColumnDefinition Width="173*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="OrderIdLable" Content="Label" HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Height="33" Width="188" FontFamily="Tw Cen MT Condensed Extra Bold"/>
-        <ComboBox x:Name="OrderStatusComboBox" SelectionChanged="OrderStatusComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="21,13,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1">
+        <ComboBox x:Name="OrderStatusComboBox" HorizontalAlignment="Left" Margin="21,13,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1">
             <ComboBoxItem Content="Not Handled"  />
             <ComboBoxItem Content="Sent Mail" />
             <ComboBoxItem Content="Canceled" />
             <ComboBoxItem Content="Done Deal" />
         </ComboBox>
+        <Button x:Name="SaveStatusBtn" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="145,13,0,0" VerticalAlignment="Top" Width="36" Click="SaveStatusBtn_Click"/>
 
     </Grid>
 </UserControl>

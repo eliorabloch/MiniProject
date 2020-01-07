@@ -83,25 +83,25 @@ namespace BL
             return GetUnitsList().Where(x => x.Owner.HostId == hostId).ToList();
         }
 
-        public List<Order> matchRequestToUnit(Host h, List<GuestRequest> GetGuestRequestList)
+        public List<GuestRequest> matchRequestToUnit(Host h)
         {
-            List<Order> subOrders = new List<Order>();
+            List<GuestRequest> subGuestRequest = new List<GuestRequest>();
             foreach (var item in GetUnitsByHost(h.HostId))
             {
-                foreach (var itemm in GetGuestRequestList)
+                foreach (var itemm in GetGuestRequestList())
                 {
-                    Order order = checkIfUnitMatchToRequest(item, itemm);//Here we will send a mail to the guest that he welcome to come to out unit.
-                    if (!(order == null))
+                    GuestRequest gr = checkIfUnitMatchToRequest(item, itemm);
+                    //Here we will send a mail to the guest that he welcome to come to out unit.
+                    if (gr != null)
                     {
-                        AddOrder(order);
-                        subOrders.Add(order);
+                        subGuestRequest.Add(gr);
                     }
                 }
             }
-            return subOrders;
+            return subGuestRequest;
         }
 
-        public Order checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr)
+        public GuestRequest checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr)
         {
             if ((hu.SubArea == gr.SubArea) && (hu.Area == gr.Area))
             {
@@ -117,12 +117,12 @@ namespace BL
                                 {
                                     if ((hu.ChildrensAttractions == true && (gr.ChildrensAttractions == Options.neccesery || gr.ChildrensAttractions == Options.possible)) || (hu.ChildrensAttractions == false && (gr.ChildrensAttractions == Options.notintersted || gr.ChildrensAttractions == Options.possible)))
                                     {
-                                        Order order = new Order();
-                                        order.GuestRequestKey = gr.GuestRequestKey;
-                                        order.HostingUnitKey = hu.HostingUnitKey;
-                                        order.Status = OrderStatus.NotHandled;
-                                        order.CreateDate = DateTime.Now;
-                                        return order;
+                                        //Order order = new Order();
+                                        //order.GuestRequestKey = gr.GuestRequestKey;
+                                        //order.HostingUnitKey = hu.HostingUnitKey;
+                                        //order.Status = OrderStatus.NotHandled;
+                                        //order.CreateDate = DateTime.Now;
+                                        return gr;
                                     }
                                     return null;
                                 }
@@ -389,14 +389,16 @@ namespace BL
                 sendOrderRequest(req);
                 req.Status = RequestStatus.ClosedDeal;
             }
-            if (oldOrder.Status == OrderStatus.ClosedRequestCanceled)
+            if (updatedOrder.Status == OrderStatus.ClosedRequestCanceled)
             {
                 req.Status = RequestStatus.ExpiredRequest;
             }
-            if (oldOrder.Status == OrderStatus.NotHandled)
+            if (updatedOrder.Status == OrderStatus.NotHandled)
             {
                 req.Status = RequestStatus.Open;
             }
+            UpdateRequest(req);
+            dal.UpdateOrder(updatedOrder);
         }
 
         #endregion
@@ -592,6 +594,16 @@ namespace BL
         public List<List<GuestRequest>> GroupRequestByStatus()
         {
             throw new NotImplementedException();
+        }
+        public List<Tuple<DateTime, DateTime>> markTakenDatesInMatrix(HostingUnit unit)
+        {
+            List<Tuple<DateTime, DateTime>> res = new List<Tuple<DateTime, DateTime>>();
+            var allReleventOrders = GetOrdersByUnit(unit.HostingUnitKey)
+                .Where(order => order.Status == OrderStatus.ClosedRequestDoneDeal)
+                .Select(x=>x.GuestRequestKey);
+            return  GetGuestRequestList().Where(gr => allReleventOrders.Contains(gr.GuestRequestKey))
+                .Select(item => new Tuple<DateTime, DateTime>(item.EntryDate, item.ReleaseDate)).ToList();
+
         }
     }
 }

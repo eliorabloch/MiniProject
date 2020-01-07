@@ -11,7 +11,7 @@
 
     <Grid>
         <Grid HorizontalAlignment="Left" Height="681" Margin="-1,-1,0,0" VerticalAlignment="Top" Width="841" Background="#FF9DC8E6">
-            <Label Content=" Order Suggestions:" HorizontalAlignment="Left" Height="63" Margin="496,27,0,0" VerticalAlignment="Top" Width="287" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36">
+            <Label Content="Requests Suggestions:" HorizontalAlignment="Left" Height="63" Margin="496,27,0,0" VerticalAlignment="Top" Width="287" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36">
                 <Label.Background>
                     <ImageBrush ImageSource="images/whitebtn.png"/>
                 </Label.Background>

@@ -134,10 +134,17 @@ namespace DAL
 
         public void UpdateOrder(Order updatedOrder)
         {
-            DataSource.orderList = (from order in GetOrdersList()
-                                   let Status = updatedOrder.Status
-                                    where order.OrderKey == updatedOrder.OrderKey 
-                                   select (Order)order.Clone()).ToList();
+
+            DataSource.orderList = DataSource.orderList
+                 .Select(x =>
+                 {
+                     if (x.OrderKey == updatedOrder.OrderKey)
+                     {
+                         x.Status = updatedOrder.Status;
+                     }
+                     return (Order)x.Clone();
+                 })
+                 .ToList();
         }
 
 

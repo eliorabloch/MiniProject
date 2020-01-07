@@ -19,6 +19,7 @@ namespace PL
         public HostingUnitPage(Host owner, bool isEdit, int key=-1)
         {
             InitializeComponent();
+
             m_Owner = owner;
             if (isEdit)
             {
@@ -68,7 +69,15 @@ namespace PL
                         break;
                 }
                 m_isEdit = true;
+
+                foreach (var item in bl.markTakenDatesInMatrix(hu))
+                {
+                    takenDatesCalender.BlackoutDates.Add(new CalendarDateRange(item.Item1,item.Item2));
+                }
+               
             }
+
+           
 
         }
 
@@ -164,6 +173,11 @@ namespace PL
             {
                 MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void HasJacuzzCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
     }

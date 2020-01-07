@@ -22,7 +22,7 @@ namespace PL
     /// </summary>
     public partial class SuggetionOrderItemControl : UserControl
     { 
-        public SuggetionOrderItemControl(Order order)
+        public SuggetionOrderItemControl(GuestRequest order)
         {
             InitializeComponent();
         }

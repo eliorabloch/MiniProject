@@ -3,8 +3,10 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:local="clr-namespace:PL"
+      xmlns:resx="clr-namespace:PL.Properties"
+
       mc:Ignorable="d" 
       d:DesignHeight="680" d:DesignWidth="840"
       Title="ThankYouPage">
@@ -15,7 +17,7 @@
             <ImageBrush ImageSource="images/back.jpg" Opacity="0.8"/>
         </Grid.Background>
         <Label Content="            &#xD;&#xA;        for choosing &quot;Vacation-Mode&quot; &#xD;&#xA;      service we will get back to you with&#xD;&#xA;      the information as soon as possible!" HorizontalAlignment="Left" Height="372" Margin="143,89,-122,0" VerticalAlignment="Top" Width="819" FontFamily="MV Boli" FontSize="24"/>
-        <Label Content="Thank - You" HorizontalAlignment="Left" Height="108" Margin="266,45,-122,0" VerticalAlignment="Top" Width="696" FontFamily="MV Boli" FontSize="48"/>
+        <Label Content="{x:Static resx:Resources.ThankYou}"  HorizontalAlignment="Left" Height="108" Margin="266,45,-122,0" VerticalAlignment="Top" Width="696" FontFamily="MV Boli" FontSize="48"/>
         <Image Loaded="Image_Loaded" gif:ImageBehavior.AnimatedSource="Images/airplane.gif" Height="217" Width="490" Canvas.Left="201" Canvas.Top="181" RenderTransformOrigin="0.5,0.5" OpacityMask="Black" Margin="171,179,179,284"></Image>
     </Grid>
 </Page>
