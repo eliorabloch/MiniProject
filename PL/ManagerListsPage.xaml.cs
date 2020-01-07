@@ -22,21 +22,21 @@ namespace PL
     public partial class ManagerListsPage : Page
     {
         NavigationService m_navigationService { get; set; }
+
         public ManagerListsPage()
         {
             InitializeComponent();
-            List<GroupingGRbyAreaItemControl> AreaItemControl = new List<GroupingGRbyAreaItemControl>();
+            List<GetHostListItemControl> getHostListsPage = new List<GetHostListItemControl>();
             ImpBL bl = ImpBL.Instance;
-           // foreach (var item in bl.GroupGuestRequestByAreas())
+            
+            foreach (var item in bl.GetUnitsList())
             {
-
-                GroupingGRbyAreaItemControl auic = new GroupingGRbyAreaItemControl();
-                //auic.AreaTextBlock.Text = item.;
-                //gric.GuestRequestKeyLable.Content = "#" + item.GuestRequestKey;
-               // availableUnitItemControl.Add(auic);
+                    GetHostListItemControl ghlic = new GetHostListItemControl();
+                    ghlic.HostNameTextBlock.Text = item.Owner.PrivateName + " " + item.Owner.FamilyName;
+                    ghlic.HostKeyLable.Content = "#" + item.Owner.HostId;
+                    getHostListsPage.Add(ghlic);
             }
-           // AvailableUnitListView.ItemsSource = availableUnitItemControl;
-
+            AvailableUnitListView.ItemsSource = getHostListsPage;
         }
         public ManagerListsPage(string amountofdays, string date)
         {
@@ -46,17 +46,13 @@ namespace PL
             ImpBL bl = ImpBL.Instance;
             foreach (var item in bl.GetAllAvilableUnits(d, int.Parse(amountofdays)))
             {
-
                 AvailableUnitItemControl auic = new AvailableUnitItemControl();
                 auic.UnitNameTextBlock.Text = item.HostingUnitName;
-                //gric.GuestRequestKeyLable.Content = "#" + item.GuestRequestKey;
                 availableUnitItemControl.Add(auic);
             }
             AvailableUnitListView.ItemsSource = availableUnitItemControl;
-
-
+           
         }
-        
 
         private void AvailableUnitListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

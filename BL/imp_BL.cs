@@ -11,7 +11,7 @@ namespace BL
 {
     public class ImpBL : IBL
     {
-  
+
         #region Singleton
         private static readonly ImpBL instance = new ImpBL();
         //Using Singleton makes sure that no new instance of the class is ever created but only one instance.
@@ -285,9 +285,9 @@ namespace BL
 
         public void AddUnit(HostingUnit newUnit)
         {
-           
+
             validHostingUnit(newUnit);
-           
+
             dal.AddUnit(newUnit);
         }
 
@@ -403,7 +403,7 @@ namespace BL
 
         #endregion
 
-        public List<HostingUnit> GetAllAvilableUnits( DateTime start, int amountOfDAys)
+        public List<HostingUnit> GetAllAvilableUnits(DateTime start, int amountOfDAys)
         {
             DateTime end = start.AddDays(amountOfDAys);
             return GetUnitsList().Where(x => isDatesAvilable(x, start, end)).ToList();
@@ -415,13 +415,14 @@ namespace BL
             while (tempDate < req.ReleaseDate)
             {
                 unit.Diary[tempDate.Month - 1, tempDate.Day - 1] = true;
-                tempDate=tempDate.AddDays(1);
+                tempDate = tempDate.AddDays(1);
             }
         }
 
         static void cancelAllOtherOrders(Order order)
         {
-            dal.GetOrdersList().ForEach(o => {
+            dal.GetOrdersList().ForEach(o =>
+            {
                 if (o.GuestRequestKey == order.GuestRequestKey && o.OrderKey != order.OrderKey)
                 {
                     o.Status = OrderStatus.ClosedRequestCanceled;
@@ -470,8 +471,8 @@ namespace BL
                 {
                     return false;
                 }
-                
-                tempDate=tempDate.AddDays(1);
+
+                tempDate = tempDate.AddDays(1);
             }
             return true;
         }
@@ -605,5 +606,59 @@ namespace BL
                 .Select(item => new Tuple<DateTime, DateTime>(item.EntryDate, item.ReleaseDate)).ToList();
 
         }
+
+
+        public int GetAnnualBusyDays(HostingUnit hostingUnit)// Function who returns the total number of busy days per year for one hosting unit.
+        {
+            int counter = 0;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int j = 0; j < 30; j++)
+                {
+                    if (hostingUnit.Diary [i, j])
+                    {
+                        counter++;
+                    }
+                }
+            }
+            return counter;
+        }
+
+        public float GetAnnualBusyPercentage(HostingUnit hostingUnit)//A function that returns the percentage of annual occupancy for one hosting unit.
+        {
+            Console.WriteLine();
+            int counter = GetAnnualBusyDays(hostingUnit);
+            double precent = ((double)counter / 365) * (100);
+            return (float)precent;
+        }
+
+        
+        public float GetAnnualBusyPercentageForAllUnitsForOneHost(Host host)//A function that returns the percentage of annual occupancy for all the hosting unit that one host has.
+        {
+            float sum=0,counter=0,precent=0;
+            List<HostingUnit> listhu=  GetUnitsByHost(host.HostId);
+            foreach (var item in listhu)
+            {
+                counter=GetAnnualBusyPercentage(item);
+                sum += counter;
+            }
+            precent = (sum / 365) * (100);
+            return precent;
+        }
+
+
+        public float GetAnnualBusyPercentageForAllUnitsForTheAdministor(List<Host> listh)//A function that returns the percentage of annual occupancy for all the hosting unit that adminisrot has.
+        {
+            float sum = 0, precent=0;
+            List<Host> listH = getHostsList();
+            foreach (var item in listh)
+            {
+                float counter = GetAnnualBusyPercentageForAllUnitsForOneHost(item);
+                sum += counter;
+            }
+            precent = (sum / 365) * (100);
+            return precent;
+        }
     }
+
 }

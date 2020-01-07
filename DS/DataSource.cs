@@ -295,8 +295,8 @@ namespace DS
                     Type = UnitType.HotelRoom,
                     Owner= new Host
                     {
-                        PrivateName="LielAndEli",
-                        FamilyName="OrensteinAndBloch",
+                        PrivateName="Lieli",
+                        FamilyName="Ob",
                         HostId="8",
                         CollectionClearance=true,
                         MailAddress="elielhotel2020@gmail.com",
@@ -401,8 +401,8 @@ namespace DS
                     Type = UnitType.HotelRoom,
                     Owner= new Host
                     {
-                        PrivateName="LielAndEli",
-                        FamilyName="OrensteinAndBloch",
+                        PrivateName="Lieli",
+                        FamilyName="Ob",
                         HostId="8",
                         CollectionClearance=true,
                         MailAddress="elielhotel2020@gmail.com",

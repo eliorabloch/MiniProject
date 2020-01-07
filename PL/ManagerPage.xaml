@@ -26,7 +26,7 @@
         <TextBox Name="GroupHByNumOfU" HorizontalAlignment="Left" Height="55" Margin="91,405,0,0" TextWrapping="Wrap" Text="Group Hosts By Num Of Units:" VerticalAlignment="Top" Width="200" FontSize="20"/>
         <Button Name="groupHbynumofU" Content="Group Hosts By Num Of Units" HorizontalAlignment="Left" Margin="91,465,0,0" VerticalAlignment="Top" Width="200" Height="39"/>
         <TextBox Name="GetHlist" HorizontalAlignment="Left" Height="34" Margin="619,13,0,0" TextWrapping="Wrap" Text= "Host list:" VerticalAlignment="Top" Width="123" FontSize="20"/>
-        <Button Name="hostlist" Content="Hosts List" HorizontalAlignment="Left" Margin="620,62,0,0" VerticalAlignment="Top" Width="200" Height="39"/>
+        <Button Name="hostlist" Content="Hosts List" HorizontalAlignment="Left" Margin="620,62,0,0" VerticalAlignment="Top" Width="200" Height="39" Click="Hostlist_Click"/>
         <TextBox Name="GetNumOfU" HorizontalAlignment="Left" Height="28" Margin="623,101,0,0" TextWrapping="Wrap" Text="Num Of Units:" VerticalAlignment="Top" Width="157" FontSize="20"/>
         <Label Name="numberOfU" Content="numberOfUnits" HorizontalAlignment="Left" Margin="642,140,0,0" VerticalAlignment="Top" Width="101" Height="44"/>
         <TextBox Name="OccupancyforU" HorizontalAlignment="Left" Height="34" Margin="623,184,0,0" TextWrapping="Wrap" Text="Occupancy for Unit:" VerticalAlignment="Top" Width="197" FontSize="20"/>

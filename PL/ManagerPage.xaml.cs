@@ -62,5 +62,12 @@ namespace PL
             var ManagerPageAvailableUnit = new ManagerListsPage(); //create your new form.
             this.NavigationService.Navigate(ManagerPageAvailableUnit);
         }
+
+        private void Hostlist_Click(object sender, RoutedEventArgs e)
+        {
+            m_navigationService = this.NavigationService;
+            var ManagerPageGetHostList = new ManagerListsPage(); //create your new form.
+            this.NavigationService.Navigate(ManagerPageGetHostList);
+        }
     }
 }
