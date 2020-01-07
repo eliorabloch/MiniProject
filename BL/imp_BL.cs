@@ -103,39 +103,19 @@ namespace BL
 
         public GuestRequest checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr)
         {
-            if ((hu.SubArea == gr.SubArea) && (hu.Area == gr.Area))
+            if ((((((((hu.SubArea == gr.SubArea) && (hu.Area == gr.Area)) && (hu.Type == gr.Type)) && (isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate))) &&
+                    ((hu.Pool == true && (gr.Pool == Options.neccesery || gr.Pool == Options.possible)) || (hu.Pool == false && (gr.Pool == Options.notintersted || gr.Pool == Options.possible)))) &&
+                    (hu.Jacuzz == true && (gr.Jacuzz == Options.neccesery || gr.Jacuzz == Options.possible)) || (hu.Jacuzz == false && (gr.Jacuzz == Options.notintersted || gr.Jacuzz == Options.possible))) &&
+                    ((hu.Garden == true && (gr.Garden == Options.neccesery || gr.Garden == Options.possible)) || (hu.Garden == false && (gr.Garden == Options.notintersted || gr.Garden == Options.possible)))) &&
+                    ((hu.ChildrensAttractions == true && (gr.ChildrensAttractions == Options.neccesery || gr.ChildrensAttractions == Options.possible)) || (hu.ChildrensAttractions == false && (gr.ChildrensAttractions == Options.notintersted || gr.ChildrensAttractions == Options.possible))))
             {
-                if (hu.Type == gr.Type)
-                {
-                    if (isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate))
-                    {
-                        if ((hu.Pool == true && (gr.Pool == Options.neccesery || gr.Pool == Options.possible)) || (hu.Pool == false && (gr.Pool == Options.notintersted || gr.Pool == Options.possible)))
-                        {
-                            if ((hu.Jacuzz == true && (gr.Jacuzz == Options.neccesery || gr.Jacuzz == Options.possible)) || (hu.Jacuzz == false && (gr.Jacuzz == Options.notintersted || gr.Jacuzz == Options.possible)))
-                            {
-                                if ((hu.Garden == true && (gr.Garden == Options.neccesery || gr.Garden == Options.possible)) || (hu.Garden == false && (gr.Garden == Options.notintersted || gr.Garden == Options.possible)))
-                                {
-                                    if ((hu.ChildrensAttractions == true && (gr.ChildrensAttractions == Options.neccesery || gr.ChildrensAttractions == Options.possible)) || (hu.ChildrensAttractions == false && (gr.ChildrensAttractions == Options.notintersted || gr.ChildrensAttractions == Options.possible)))
-                                    {
-                                        //Order order = new Order();
-                                        //order.GuestRequestKey = gr.GuestRequestKey;
-                                        //order.HostingUnitKey = hu.HostingUnitKey;
-                                        //order.Status = OrderStatus.NotHandled;
-                                        //order.CreateDate = DateTime.Now;
-                                        return gr;
-                                    }
-                                    return null;
-                                }
-                                return null;
-                            }
-                            return null;
-                        }
-                        return null;
-                    }
-                    return null;
-                }
-                return null;
+                return gr;
             }
+            //Order order = new Order();
+            //order.GuestRequestKey = gr.GuestRequestKey;
+            //order.HostingUnitKey = hu.HostingUnitKey;
+            //order.Status = OrderStatus.NotHandled;
+            //order.CreateDate = DateTime.Now;
             return null;
         }
 
@@ -409,7 +389,7 @@ namespace BL
             return GetUnitsList().Where(x => isDatesAvilable(x, start, end)).ToList();
         }
 
-        void updateDatesAvilable(HostingUnit unit, GuestRequest req)//t If a vacant unit is on a particular date and the guest wants to be in this unit - the matrix will change the days in the unit to be occupied.
+        void updateDatesAvilable(HostingUnit unit, GuestRequest req)//If a vacant unit is on a particular date and the guest wants to be in this unit - the matrix will change the days in the unit to be occupied.
         {
             DateTime tempDate = req.EntryDate;
             while (tempDate < req.ReleaseDate)
