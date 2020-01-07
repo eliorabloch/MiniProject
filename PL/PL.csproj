@@ -64,6 +64,9 @@
     <Compile Include="BootingPage.xaml.cs">
       <DependentUpon>BootingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GetHostListsPage.xaml.cs">
+      <DependentUpon>GetHostListsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GroupingGRbyAreaItemControl.xaml.cs">
       <DependentUpon>GroupingGRbyAreaItemControl.xaml</DependentUpon>
     </Compile>
@@ -75,6 +78,9 @@
     </Compile>
     <Compile Include="ManagerListsPage.xaml.cs">
       <DependentUpon>ManagerListsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GetHostListItemControl.xaml.cs">
+      <DependentUpon>GetHostListItemControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyOrderItemControl.xaml.cs">
       <DependentUpon>MyOrderItemControl.xaml</DependentUpon>
@@ -96,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BootingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GetHostListsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,6 +201,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ManagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GetHostListItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
