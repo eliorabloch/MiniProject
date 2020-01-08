@@ -105,7 +105,7 @@ namespace BL
         {
             if ((((((((hu.SubArea == gr.SubArea) && (hu.Area == gr.Area)) && (hu.Type == gr.Type)) && (isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate))) &&
                     ((hu.Pool == true && (gr.Pool == Options.neccesery || gr.Pool == Options.possible)) || (hu.Pool == false && (gr.Pool == Options.notintersted || gr.Pool == Options.possible)))) &&
-                    (hu.Jacuzz == true && (gr.Jacuzz == Options.neccesery || gr.Jacuzz == Options.possible)) || (hu.Jacuzz == false && (gr.Jacuzz == Options.notintersted || gr.Jacuzz == Options.possible))) &&
+                    (hu.Jacuzz == true && (gr.Jacuzzi == Options.neccesery || gr.Jacuzzi == Options.possible)) || (hu.Jacuzz == false && (gr.Jacuzzi == Options.notintersted || gr.Jacuzzi == Options.possible))) &&
                     ((hu.Garden == true && (gr.Garden == Options.neccesery || gr.Garden == Options.possible)) || (hu.Garden == false && (gr.Garden == Options.notintersted || gr.Garden == Options.possible)))) &&
                     ((hu.ChildrensAttractions == true && (gr.ChildrensAttractions == Options.neccesery || gr.ChildrensAttractions == Options.possible)) || (hu.ChildrensAttractions == false && (gr.ChildrensAttractions == Options.notintersted || gr.ChildrensAttractions == Options.possible))))
             {
