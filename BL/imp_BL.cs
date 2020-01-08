@@ -103,48 +103,24 @@ namespace BL
 
         public GuestRequest checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr)
         {
-            if ((((((((hu.SubArea == gr.SubArea) && (hu.Area == gr.Area)) && (hu.Type == gr.Type)) && (isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate))) &&
+            if ((((((((((((hu.SubArea == gr.SubArea) && (hu.Area == gr.Area)) && (hu.Type == gr.Type)) && (isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate))) &&
                     ((hu.Pool == true && (gr.Pool == Options.neccesery || gr.Pool == Options.possible)) || (hu.Pool == false && (gr.Pool == Options.notintersted || gr.Pool == Options.possible)))) &&
                     (hu.Jacuzz == true && (gr.Jacuzzi == Options.neccesery || gr.Jacuzzi == Options.possible)) || (hu.Jacuzz == false && (gr.Jacuzzi == Options.notintersted || gr.Jacuzzi == Options.possible))) &&
                     ((hu.Garden == true && (gr.Garden == Options.neccesery || gr.Garden == Options.possible)) || (hu.Garden == false && (gr.Garden == Options.notintersted || gr.Garden == Options.possible)))) &&
-                    ((hu.ChildrensAttractions == true && (gr.ChildrensAttractions == Options.neccesery || gr.ChildrensAttractions == Options.possible)) || (hu.ChildrensAttractions == false && (gr.ChildrensAttractions == Options.notintersted || gr.ChildrensAttractions == Options.possible))))
+                    ((hu.ChildrensAttractions == true && (gr.ChildrensAttractions == Options.neccesery || gr.ChildrensAttractions == Options.possible)) || (hu.ChildrensAttractions == false && (gr.ChildrensAttractions == Options.notintersted || gr.ChildrensAttractions == Options.possible)))) &&
+                    ((hu.AirConditoiner == true && (gr.AirConditoiner == Options.neccesery || gr.AirConditoiner == Options.possible)) || (hu.AirConditoiner == false && (gr.AirConditoiner == Options.notintersted || gr.AirConditoiner == Options.possible)))) &&
+                    ((hu.breakfastIncluded == true && (gr.breakfastIncluded == Options.neccesery || gr.breakfastIncluded == Options.possible)) || (hu.breakfastIncluded == false && (gr.breakfastIncluded == Options.notintersted || gr.breakfastIncluded == Options.possible)))) &&
+                    ((hu.FreeParking == true && (gr.FreeParking == Options.neccesery || gr.FreeParking == Options.possible)) || (hu.FreeParking == false && (gr.FreeParking == Options.notintersted || gr.FreeParking == Options.possible)))) &&
+                    ((hu.RoomService == true && (gr.RoomService == Options.neccesery || gr.RoomService == Options.possible)) || (hu.RoomService == false && (gr.RoomService == Options.notintersted || gr.RoomService == Options.possible))))
             {
-                if (hu.Type == gr.Type)
-                {
-                    if (isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate))
-                    {
-                        if ((hu.Pool == true && (gr.Pool == Options.neccesery || gr.Pool == Options.possible)) || (hu.Pool == false && (gr.Pool == Options.notintersted || gr.Pool == Options.possible)))
-                        {
-                            if ((hu.Jacuzz == true && (gr.Jacuzzi == Options.neccesery || gr.Jacuzzi == Options.possible)) || (hu.Jacuzz == false && (gr.Jacuzzi == Options.notintersted || gr.Jacuzzi == Options.possible)))
-                            {
-                                if ((hu.Garden == true && (gr.Garden == Options.neccesery || gr.Garden == Options.possible)) || (hu.Garden == false && (gr.Garden == Options.notintersted || gr.Garden == Options.possible)))
-                                {
-                                    if ((hu.ChildrensAttractions == true && (gr.ChildrensAttractions == Options.neccesery || gr.ChildrensAttractions == Options.possible)) || (hu.ChildrensAttractions == false && (gr.ChildrensAttractions == Options.notintersted || gr.ChildrensAttractions == Options.possible)))
-                                    {
-                                        //Order order = new Order();
-                                        //order.GuestRequestKey = gr.GuestRequestKey;
-                                        //order.HostingUnitKey = hu.HostingUnitKey;
-                                        //order.Status = OrderStatus.NotHandled;
-                                        //order.CreateDate = DateTime.Now;
-                                        return gr;
-                                    }
-                                    return null;
-                                }
-                                return null;
-                            }
-                            return null;
-                        }
-                        return null;
-                    }
-                    return null;
-                }
-                return null;
+                //Order order = new Order();
+                //order.GuestRequestKey = gr.GuestRequestKey;
+                //order.HostingUnitKey = hu.HostingUnitKey;
+                //order.Status = OrderStatus.NotHandled;
+                //order.CreateDate = DateTime.Now;
+                return gr;
             }
-            //Order order = new Order();
-            //order.GuestRequestKey = gr.GuestRequestKey;
-            //order.HostingUnitKey = hu.HostingUnitKey;
-            //order.Status = OrderStatus.NotHandled;
-            //order.CreateDate = DateTime.Now;
+
             return null;
         }
 
@@ -610,8 +586,8 @@ namespace BL
             List<Tuple<DateTime, DateTime>> res = new List<Tuple<DateTime, DateTime>>();
             var allReleventOrders = GetOrdersByUnit(unit.HostingUnitKey)
                 .Where(order => order.Status == OrderStatus.ClosedRequestDoneDeal)
-                .Select(x=>x.GuestRequestKey);
-            return  GetGuestRequestList().Where(gr => allReleventOrders.Contains(gr.GuestRequestKey))
+                .Select(x => x.GuestRequestKey);
+            return GetGuestRequestList().Where(gr => allReleventOrders.Contains(gr.GuestRequestKey))
                 .Select(item => new Tuple<DateTime, DateTime>(item.EntryDate, item.ReleaseDate)).ToList();
 
         }
@@ -624,7 +600,7 @@ namespace BL
             {
                 for (int j = 0; j < 30; j++)
                 {
-                    if (hostingUnit.Diary [i, j])
+                    if (hostingUnit.Diary[i, j])
                     {
                         counter++;
                     }
@@ -641,14 +617,14 @@ namespace BL
             return (float)precent;
         }
 
-        
+
         public float GetAnnualBusyPercentageForAllUnitsForOneHost(Host host)//A function that returns the percentage of annual occupancy for all the hosting unit that one host has.
         {
-            float sum=0,counter=0,precent=0;
-            List<HostingUnit> listhu=  GetUnitsByHost(host.HostId);
+            float sum = 0, counter = 0, precent = 0;
+            List<HostingUnit> listhu = GetUnitsByHost(host.HostId);
             foreach (var item in listhu)
             {
-                counter=GetAnnualBusyPercentage(item);
+                counter = GetAnnualBusyPercentage(item);
                 sum += counter;
             }
             precent = (sum / 365) * (100);
@@ -658,7 +634,7 @@ namespace BL
 
         public float GetAnnualBusyPercentageForAllUnitsForTheAdministor(List<Host> listh)//A function that returns the percentage of annual occupancy for all the hosting unit that adminisrot has.
         {
-            float sum = 0, precent=0;
+            float sum = 0, precent = 0;
             List<Host> listH = getHostsList();
             foreach (var item in listh)
             {

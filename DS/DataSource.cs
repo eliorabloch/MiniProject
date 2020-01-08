@@ -28,7 +28,6 @@ namespace DS
                     Adults = "2",
                     Area = Areas.Jerusalem,
                     Children = "7",
-
                     EntryDate = new DateTime(2020, 7, 1),
                     ReleaseDate = new DateTime(2020, 8, 2),
                     FamilyName = "Cohen",
@@ -41,10 +40,8 @@ namespace DS
                     RoomService=Options.notintersted,
                     FreeParking=Options.possible,
                     breakfastIncluded=Options.notintersted,
-                    
                     MailAddress = "mosheCohen@gmail.com",
                     PhoneNumber="0545556678",
-
                     RegistrationDate = DateTime.Now,
                     Status = RequestStatus.Open,
                     SubArea = "Mamila",
@@ -151,7 +148,6 @@ namespace DS
                     SubArea = "Givat shmuel",
                     Type = UnitType.HostingUnit
                 },
-
                 new GuestRequest
                 {
                     GuestRequestKey = Configuration.GuestRequestId++,
@@ -251,6 +247,281 @@ namespace DS
                     Status = RequestStatus.Open,
                     SubArea = "Eilat",
                     Type = UnitType.Tent
+                },
+                new GuestRequest
+                {
+                    GuestRequestKey = Configuration.GuestRequestId++,
+                    Adults = "8",
+                    Area = Areas.Jerusalem,
+                    Children = "7",
+                    EntryDate = new DateTime(2020, 9, 19),
+                    ReleaseDate = new DateTime(2020, 10, 2),
+                    FamilyName = "Eisen",
+                    PrivateName = "Liron",
+                    Garden = Options.neccesery,
+                    Jacuzzi =  Options.possible,
+                    Pool = Options.possible,
+                    ChildrensAttractions = Options.neccesery,
+                    AirConditoiner=Options.neccesery,
+                    RoomService=Options.notintersted,
+                    FreeParking=Options.notintersted,
+                    breakfastIncluded=Options.notintersted,
+                    MailAddress = "Lironnnn@gmail.com",
+                    PhoneNumber="0549056678",
+                    RegistrationDate = DateTime.Now,
+                    Status = RequestStatus.Open,
+                    SubArea = "Givat Shaul",
+                    Type = UnitType.Tent
+                },
+                new GuestRequest
+                {
+                    GuestRequestKey = Configuration.GuestRequestId++,
+                    Adults = "2",
+                    Area = Areas.North,
+                    Children = "0",
+                    EntryDate = new DateTime(2020, 5, 1),
+                    ReleaseDate = new DateTime(2020, 5, 5),
+                    FamilyName = "Or",
+                    PrivateName = "Lali",
+                    Garden = Options.neccesery,
+                    Jacuzzi =  Options.possible,
+                    Pool = Options.possible,
+                    ChildrensAttractions = Options.notintersted,
+                    AirConditoiner=Options.neccesery,
+                    RoomService=Options.notintersted,
+                    FreeParking=Options.possible,
+                    breakfastIncluded=Options.possible,
+                    MailAddress = "lalior565656@gmail.com",
+                    PhoneNumber="0546009678",
+                    RegistrationDate = DateTime.Now,
+                    Status = RequestStatus.Open,
+                    SubArea = "Golan",
+                    Type = UnitType.Tzimer
+                },
+                new GuestRequest
+                {
+                    GuestRequestKey = Configuration.GuestRequestId++,
+                    Adults = "1",
+                    Area = Areas.Center,
+                    Children = "4",
+                    EntryDate = new DateTime(2020, 4, 11),
+                    ReleaseDate = new DateTime(2020, 4, 20),
+                    FamilyName = "Gilai",
+                    PrivateName = "Halel",
+                    Garden = Options.notintersted,
+                    Jacuzzi =  Options.notintersted,
+                    Pool = Options.possible,
+                    ChildrensAttractions = Options.neccesery,
+                    AirConditoiner=Options.neccesery,
+                    RoomService=Options.neccesery,
+                    FreeParking=Options.possible,
+                    breakfastIncluded=Options.neccesery,
+                    MailAddress = "GilaiHalel98@gmail.com",
+                    PhoneNumber="053423678",
+                    RegistrationDate = DateTime.Now,
+                    Status = RequestStatus.Open,
+                    SubArea = "Herzelia",
+                    Type = UnitType.HotelRoom
+                },
+                new GuestRequest
+                {
+                    GuestRequestKey = Configuration.GuestRequestId++,
+                    Adults = "3",
+                    Area = Areas.Jerusalem,
+                    Children = "0",
+                    EntryDate = new DateTime(2020, 6, 21),
+                    ReleaseDate = new DateTime(2020, 6, 26),
+                    FamilyName = "Levi",
+                    PrivateName = "Lee",
+                    Garden = Options.possible,
+                    Jacuzzi =  Options.possible,
+                    Pool = Options.possible,
+                    ChildrensAttractions = Options.notintersted,
+                    AirConditoiner=Options.neccesery,
+                    RoomService=Options.notintersted,
+                    FreeParking=Options.possible,
+                    breakfastIncluded=Options.notintersted,
+                    MailAddress = "lee0522345455@gmail.com",
+                    PhoneNumber="0522345455",
+                    RegistrationDate = DateTime.Now,
+                    Status = RequestStatus.Open,
+                    SubArea = "Givat Mordechay",
+                    Type = UnitType.HotelRoom
+                },
+                new GuestRequest
+                {
+                    GuestRequestKey = Configuration.GuestRequestId++,
+                    Adults = "4",
+                    Area = Areas.Center,
+                    Children = "7",
+                    EntryDate = new DateTime(2020, 7, 15),
+                    ReleaseDate = new DateTime(2020, 7, 17),
+                    FamilyName = "Klein",
+                    PrivateName = "Tal",
+                    Garden = Options.neccesery,
+                    Jacuzzi =  Options.notintersted,
+                    Pool = Options.notintersted,
+                    ChildrensAttractions = Options.neccesery,
+                    AirConditoiner=Options.neccesery,
+                    RoomService=Options.notintersted,
+                    FreeParking=Options.possible,
+                    breakfastIncluded=Options.notintersted,
+                    MailAddress = "Kleinfamily@walla.com",
+                    PhoneNumber="0556609343",
+                    RegistrationDate = DateTime.Now,
+                    Status = RequestStatus.Open,
+                    SubArea = "Ramat Gan",
+                    Type = UnitType.HostingUnit
+                },
+                new GuestRequest
+                {
+                    GuestRequestKey = Configuration.GuestRequestId++,
+                    Adults = "3",
+                    Area = Areas.South,
+                    Children = "2",
+                    EntryDate = new DateTime(2020, 9, 1),
+                    ReleaseDate = new DateTime(2020, 9, 5),
+                    FamilyName = "Tzur",
+                    PrivateName = "Yarden",
+                    Garden = Options.neccesery,
+                    Jacuzzi =  Options.notintersted,
+                    Pool = Options.notintersted,
+                    ChildrensAttractions = Options.notintersted,
+                    AirConditoiner=Options.notintersted,
+                    RoomService=Options.notintersted,
+                    FreeParking=Options.notintersted,
+                    breakfastIncluded=Options.notintersted,
+                    MailAddress = "Yardenushhht@gmail.com",
+                    PhoneNumber="0585667824",
+                    RegistrationDate = DateTime.Now,
+                    Status = RequestStatus.Open,
+                    SubArea = "Beer Sheva",
+                    Type = UnitType.Tent
+                },
+                new GuestRequest
+                {
+                    GuestRequestKey = Configuration.GuestRequestId++,
+                    Adults = "2",
+                    Area = Areas.South,
+                    Children = "0",
+                    EntryDate = new DateTime(2020, 8, 23),
+                    ReleaseDate = new DateTime(2020, 8, 27),
+                    FamilyName = "Vizel",
+                    PrivateName = "Amit",
+                    Garden = Options.neccesery,
+                    Jacuzzi =  Options.possible,
+                    Pool = Options.possible,
+                    ChildrensAttractions = Options.notintersted,
+                    AirConditoiner=Options.neccesery,
+                    RoomService=Options.notintersted,
+                    FreeParking=Options.possible,
+                    breakfastIncluded=Options.notintersted,
+                    MailAddress = "mosheCohen@gmail.com",
+                    PhoneNumber="0545623786",
+                    RegistrationDate = DateTime.Now,
+                    Status = RequestStatus.Open,
+                    SubArea = "Eilat",
+                    Type = UnitType.HotelRoom
+                },
+                new GuestRequest
+                {
+                    GuestRequestKey = Configuration.GuestRequestId++,
+                    Adults = "2",
+                    Area = Areas.Center,
+                    Children = "3",
+                    EntryDate = new DateTime(2020, 5, 14),
+                    ReleaseDate = new DateTime(2020, 5, 20),
+                    FamilyName = "Levi",
+                    PrivateName = "Moriya",
+                    Garden = Options.neccesery,
+                    Jacuzzi =  Options.possible,
+                    Pool = Options.possible,
+                    ChildrensAttractions = Options.neccesery,
+                    AirConditoiner=Options.neccesery,
+                    RoomService=Options.notintersted,
+                    FreeParking=Options.possible,
+                    breakfastIncluded=Options.notintersted,
+                    MailAddress = "mosheCohen@gmail.com",
+                    PhoneNumber="0540996678",
+                    RegistrationDate = DateTime.Now,
+                    Status = RequestStatus.Open,
+                    SubArea = "Rehovot",
+                    Type = UnitType.HostingUnit
+                },
+                new GuestRequest
+                {
+                    GuestRequestKey = Configuration.GuestRequestId++,
+                    Adults = "1",
+                    Area = Areas.South,
+                    Children = "0",
+                    EntryDate = new DateTime(2020, 7, 11),
+                    ReleaseDate = new DateTime(2020, 8, 12),
+                    FamilyName = "Mosh",
+                    PrivateName = "Kobi",
+                    Garden = Options.notintersted,
+                    Jacuzzi =  Options.notintersted,
+                    Pool = Options.notintersted,
+                    ChildrensAttractions = Options.notintersted,
+                    AirConditoiner=Options.notintersted,
+                    RoomService=Options.notintersted,
+                    FreeParking=Options.neccesery,
+                    breakfastIncluded=Options.notintersted,
+                    MailAddress = "kobimosh78@gmail.com",
+                    PhoneNumber="0549056678",
+                    RegistrationDate = DateTime.Now,
+                    Status = RequestStatus.Open,
+                    SubArea = "Metzada",
+                    Type = UnitType.Tent
+                },
+                new GuestRequest
+                {
+                    GuestRequestKey = Configuration.GuestRequestId++,
+                    Adults = "2",
+                    Area = Areas.Jerusalem,
+                    Children = "1",
+                    EntryDate = new DateTime(2020, 7, 1),
+                    ReleaseDate = new DateTime(2020, 8, 2),
+                    FamilyName = "Cohen",
+                    PrivateName = "Yair",
+                    Garden = Options.neccesery,
+                    Jacuzzi =  Options.possible,
+                    Pool = Options.possible,
+                    ChildrensAttractions = Options.neccesery,
+                    AirConditoiner=Options.neccesery,
+                    RoomService=Options.notintersted,
+                    FreeParking=Options.possible,
+                    breakfastIncluded=Options.notintersted,
+                    MailAddress = "mosheCohen@gmail.com",
+                    PhoneNumber="0523456780",
+                    RegistrationDate = DateTime.Now,
+                    Status = RequestStatus.Open,
+                    SubArea = "Mamila",
+                    Type = UnitType.HotelRoom
+                },
+                new GuestRequest
+                {
+                    GuestRequestKey = Configuration.GuestRequestId++,
+                    Adults = "2",
+                    Area = Areas.Center,
+                    Children = "7",
+                    EntryDate = new DateTime(2020, 6, 21),
+                    ReleaseDate = new DateTime(2020, 6, 22),
+                    FamilyName = "Malka",
+                    PrivateName = "Efrat",
+                    Garden = Options.neccesery,
+                    Jacuzzi =  Options.possible,
+                    Pool = Options.possible,
+                    ChildrensAttractions = Options.neccesery,
+                    AirConditoiner=Options.neccesery,
+                    RoomService=Options.notintersted,
+                    FreeParking=Options.possible,
+                    breakfastIncluded=Options.notintersted,
+                    MailAddress = "malkaefrat@walla.com",
+                    PhoneNumber="0500056678",
+                    RegistrationDate = DateTime.Now,
+                    Status = RequestStatus.Open,
+                    SubArea = "Netanya",
+                    Type = UnitType.HotelRoom
                 }
             };
 
@@ -271,7 +542,7 @@ namespace DS
                     breakfastIncluded=false,
                     AirConditoiner=true,
                     RoomService = false,
-                   
+
                     Garden=false,
                     Type = UnitType.HotelRoom,
                     Owner= new Host
@@ -321,7 +592,7 @@ namespace DS
                     breakfastIncluded=false,
                     AirConditoiner=true,
                     RoomService = false,
-                    
+
                     Garden=false,
                     ChildrensAttractions = false,
                     HostingUnitName = "Leonardo",
@@ -348,12 +619,12 @@ namespace DS
                     breakfastIncluded=false,
                     AirConditoiner=true,
                     RoomService = false,
-                   
+
                     Garden=false,
                     ChildrensAttractions = true,
                     HostingUnitName = "hotel",
                     SubArea = "Mamila",
-                   
+
                     Jacuzz = true,
                     Type = UnitType.HotelRoom,
                     Owner= new Host
@@ -376,7 +647,7 @@ namespace DS
                     breakfastIncluded=false,
                     AirConditoiner=true,
                     RoomService = false,
-                    
+
                     Garden=false,
                     ChildrensAttractions = false,
                     HostingUnitName = "Pnina tzimmer",
@@ -403,7 +674,7 @@ namespace DS
                     breakfastIncluded=false,
                     AirConditoiner=true,
                     RoomService = false,
-                    
+
                     Garden=false,
                     ChildrensAttractions = false,
                     HostingUnitName = "Shimony",
@@ -431,7 +702,7 @@ namespace DS
                     breakfastIncluded=false,
                     AirConditoiner=true,
                     RoomService = false,
-                    
+
                     Garden=false,
                     ChildrensAttractions = true,
                     HostingUnitName = "Sami",
@@ -458,7 +729,7 @@ namespace DS
                     breakfastIncluded=false,
                     AirConditoiner=true,
                     RoomService = false,
-                  
+
                     Garden=false,
                     ChildrensAttractions = false,
                     HostingUnitName = "Blue sky",
@@ -485,7 +756,7 @@ namespace DS
                     breakfastIncluded=false,
                     AirConditoiner=true,
                     RoomService = false,
-                    
+
                     Garden=false,
                     ChildrensAttractions = true,
                     HostingUnitName = "Eliel hotel",
@@ -513,7 +784,7 @@ namespace DS
                     breakfastIncluded=false,
                     AirConditoiner=true,
                     RoomService = false,
-                   
+
                     Garden=false,
                     HostingUnitName = "Nechama",
                     SubArea = "Petach tikva",
@@ -599,6 +870,191 @@ namespace DS
                     HostingUnitKey = 100000007,
                     Status = OrderStatus.SentMail
                 },
+
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000008,
+                    HostingUnitKey = 100000008,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000009,
+                    HostingUnitKey = 100000009,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000010,
+                    HostingUnitKey = 100000010,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000011,
+                    HostingUnitKey = 100000011,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000012,
+                    HostingUnitKey = 100000012,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000013,
+                    HostingUnitKey = 100000013,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000014,
+                    HostingUnitKey = 100000014,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000015,
+                    HostingUnitKey = 100000015,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000016,
+                    HostingUnitKey = 100000016,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000017,
+                    HostingUnitKey = 100000017,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000018,
+                    HostingUnitKey = 100000018,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000019,
+                    HostingUnitKey = 100000019,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000020,
+                    HostingUnitKey = 100000020,
+                    Status = OrderStatus.SentMail
+                },
+                 new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000021,
+                    HostingUnitKey = 100000021,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000022,
+                    HostingUnitKey = 100000022,
+                    Status = OrderStatus.SentMail
+                },
+                            new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000023,
+                    HostingUnitKey = 100000023,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000024,
+                    HostingUnitKey = 100000024,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000025,
+                    HostingUnitKey = 100000025,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000026,
+                    HostingUnitKey = 100000026,
+                    Status = OrderStatus.SentMail
+                },
+                        new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000027,
+                    HostingUnitKey = 100000027,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000028,
+                    HostingUnitKey = 100000028,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000029,
+                    HostingUnitKey = 100000029,
+                    Status = OrderStatus.SentMail
+                },
+                new Order
+                {
+                    OrderKey = Configuration.OrderId++,
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = 100000030,
+                    HostingUnitKey = 100000030,
+                    Status = OrderStatus.SentMail
+                }
             };
 
         }
