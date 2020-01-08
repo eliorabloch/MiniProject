@@ -59,19 +59,21 @@
             </Button.Background>
         </Button>
         <Label x:Name="HostingUnitKeyLable" Content="Label" HorizontalAlignment="Left" Margin="280,72,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="123" Foreground="#FF939393"/>
-        <Button x:Name="HostInfoBTN" Content="" HorizontalAlignment="Left" Height="50" Margin="668,38,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="50 " Click="HostInfoBTN_Click" BorderBrush="{x:Null}">
+        <Button x:Name="HostInfoBTN" Content="" HorizontalAlignment="Left" Height="50" Margin="710,38,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="50 " Click="HostInfoBTN_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="images/man.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="backBtn"  HorizontalAlignment="Left" Height="30" Margin="87,455,0,0" VerticalAlignment="Top" Width="30" Click="Back_Click" Grid.RowSpan="2" BorderBrush="{x:Null}">
+        <Button x:Name="backBtn"  HorizontalAlignment="Left" Height="28" Margin="68,607,0,0" VerticalAlignment="Top" Width="30" Click="Back_Click" Grid.RowSpan="2" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="images/arrow.png"/>
             </Button.Background>
         </Button>
+        <Label Content="Host-information" HorizontalAlignment="Left" Height="48" Margin="642,93,-39,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="237" FontFamily="Lucida Sans Unicode" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <Label Content="Unit Information:" HorizontalAlignment="Left" Height="33" Margin="157,14,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="258" FontFamily="MV Boli" FontSize="18"/>
         <Calendar x:Name="takenDatesCalender" 
                   HorizontalAlignment="Left" 
-                  Margin="603,132,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="186" Width="179">
+                  Margin="122,474,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="182" Width="219">
 
             <Calendar.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -82,8 +84,6 @@
                 </LinearGradientBrush>
             </Calendar.Background>
         </Calendar>
-        <Label Content="Host-information" HorizontalAlignment="Left" Height="48" Margin="607,83,-4,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="237" FontFamily="Lucida Sans Unicode" Grid.ColumnSpan="2" FontSize="18" FontWeight="Bold"/>
-        <Label Content="Unit Information:" HorizontalAlignment="Left" Height="33" Margin="157,14,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="258" FontFamily="MV Boli" FontSize="18"/>
     </Grid>
 
 </Page>

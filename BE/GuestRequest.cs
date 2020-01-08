@@ -26,7 +26,13 @@ namespace BE
         public string Adults { get; set; }
         public string Children { get; set; }
         public Options Pool { get; set; }
-        public Options Jacuzz { get; set; }
+        public Options FreeParking{ get; set; }
+        public Options breakfastIncluded { get; set; }
+        public Options AirConditoiner { get; set; }
+        public Options RoomService { get; set; }
+       
+
+        public Options Jacuzzi { get; set; }
         public Options Garden { get; set; }
         public Options ChildrensAttractions { get; set; }
         public GuestRequest() { }// defualt constructor
@@ -47,9 +53,13 @@ namespace BE
             toString += $"Adults: {Adults} \n";
             toString += $"Children: {Children} \n";
             toString += $"Pool?: {Pool} \n";
-            toString += $"Jacuzz?: {Jacuzz} \n";
+            toString += $"Jacuzzi?: {Jacuzzi} \n";
             toString += $"Garden?: {Garden} \n";
             toString += $"Childrens attractions?: {ChildrensAttractions} \n";
+            toString += $" Room Service?: { RoomService} \n";
+            toString += $"Air Conditoiner?: { AirConditoiner } \n";
+            toString += $"breakfast Included?: {breakfastIncluded} \n";
+            toString += $"Free Parking?: {FreeParking} \n";
             return toString;
         }
 

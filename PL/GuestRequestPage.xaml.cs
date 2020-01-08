@@ -82,7 +82,31 @@ namespace PL
 
                     gr.Type = (UnitType)Enum.Parse(typeof(UnitType), TypeComboBox.SelectedValue.ToString(), true);
 
-                    
+                    #region breakfastIncluded
+                    switch (BNotintersted.IsChecked)
+                    {
+                        case true:
+                            gr.breakfastIncluded = Options.notintersted;
+                            break;
+
+                    }
+                    switch (BPossible.IsChecked)
+                    {
+                        case true:
+                            gr.breakfastIncluded = Options.possible;
+                            break;
+
+
+                    }
+                    switch (BNeccesery.IsChecked)
+                    {
+                        case true:
+                            gr.breakfastIncluded = Options.neccesery;
+                            break;
+
+
+                    }
+                    #endregion
                     #region childrenattractions
                     switch (CNotintersted.IsChecked)
                     {
@@ -103,6 +127,31 @@ namespace PL
                     {
                         case true:
                             gr.ChildrensAttractions = Options.neccesery;
+                            break;
+
+
+                    }
+                    #endregion
+                    #region Air conditioner
+                    switch (ANotintersted.IsChecked)
+                    {
+                        case true:
+                            gr.AirConditoiner = Options.notintersted;
+                            break;
+
+                    }
+                    switch (APossible.IsChecked)
+                    {
+                        case true:
+                            gr.AirConditoiner = Options.possible;
+                            break;
+
+
+                    }
+                    switch (ANeccesery.IsChecked)
+                    {
+                        case true:
+                            gr.AirConditoiner = Options.neccesery;
                             break;
 
 
@@ -137,14 +186,14 @@ namespace PL
                     switch (JNotintersted.IsChecked)
                     {
                         case true:
-                            gr.Jacuzz = Options.notintersted;
+                            gr.Jacuzzi = Options.notintersted;
                             break;
 
                     }
                     switch (JPossible.IsChecked)
                     {
                         case true:
-                            gr.Jacuzz = Options.possible;
+                            gr.Jacuzzi = Options.possible;
                             break;
 
 
@@ -152,7 +201,7 @@ namespace PL
                     switch (JNeccesery.IsChecked)
                     {
                         case true:
-                            gr.Jacuzz = Options.neccesery;
+                            gr.Jacuzzi = Options.neccesery;
                             break;
 
 
@@ -183,6 +232,57 @@ namespace PL
 
                     }
                     #endregion
+                    #region Free Parking
+                    switch (FNotintersted.IsChecked)
+                    {
+                        case true:
+                            gr.FreeParking = Options.notintersted;
+                            break;
+
+                    }
+                    switch (FPossible.IsChecked)
+                    {
+                        case true:
+                            gr.FreeParking = Options.possible;
+                            break;
+
+
+                    }
+                    switch (FNeccesery.IsChecked)
+                    {
+                        case true:
+                            gr.FreeParking = Options.neccesery;
+                            break;
+
+
+                    }
+                    #endregion
+                    #region Room Service
+                    switch (RNotintersted.IsChecked)
+                    {
+                        case true:
+                            gr.RoomService = Options.notintersted;
+                            break;
+
+                    }
+                    switch (RPossible.IsChecked)
+                    {
+                        case true:
+                            gr.RoomService = Options.possible;
+                            break;
+
+
+                    }
+                    switch (RNeccesery.IsChecked)
+                    {
+                        case true:
+                            gr.RoomService = Options.neccesery;
+                            break;
+
+
+                    }
+                    #endregion
+
                     bl.AddRequest(gr);
                    
 

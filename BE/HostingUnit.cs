@@ -20,6 +20,10 @@ namespace BE
         public bool Jacuzz;
         public  bool Garden;
         public  bool ChildrensAttractions;
+        public bool FreeParking;
+        public bool breakfastIncluded;
+        public bool AirConditoiner;
+        public bool RoomService;
         public Areas Area;
         public string SubArea;
         public UnitType Type;
@@ -37,7 +41,7 @@ namespace BE
             toString += $"Owner: {Owner} \n";
             toString += $"Hosting unit name: {HostingUnitName} \n";
             toString += $"Pool?: {Pool} \n";
-            toString += $"Jacuzz?: {Jacuzz} \n";
+            toString += $"Jacuzzi?: {Jacuzz} \n";
             toString += $"Garden?: {Garden} \n";
             toString += $"Childrens attractions?: {ChildrensAttractions} \n";
             toString += $"Area: {Area} \n";
