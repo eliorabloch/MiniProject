@@ -798,7 +798,7 @@ namespace DS
                         MailAddress="petachtikvatzimer@gmail.com",
                         BankAccountNumber="009821454432",
                     }
-                   }
+                   },
                 new HostingUnit
                 {
                     Diary =BE.Utils.createMatrix(),
@@ -1120,7 +1120,7 @@ namespace DS
                     GuestRequestKey = 100000005,
                     HostingUnitKey = 100000005,
                     Status = OrderStatus.SentMail
-                }
+                },
                 new Order
                 {
                     OrderKey = Configuration.OrderId++,
