@@ -521,7 +521,7 @@ namespace DS
                     RegistrationDate = DateTime.Now,
                     Status = RequestStatus.Open,
                     SubArea = "Netanya",
-                    Type = UnitType.HotelRoom
+                    Type = UnitType.HostingUnit
                 }
             };
 
@@ -583,7 +583,7 @@ namespace DS
                         BankAccountNumber="345565657789",
                     }
                 },
-                 new HostingUnit
+                new HostingUnit
                 { Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Jerusalem,
@@ -610,7 +610,7 @@ namespace DS
                         BankAccountNumber="905000087600",
                     }
                 },
-                 new HostingUnit
+                new HostingUnit
                 {   Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Jerusalem,
@@ -638,7 +638,7 @@ namespace DS
                         BankAccountNumber="456678951232",
                     }
                 },
-                  new HostingUnit
+                new HostingUnit
                 { Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.South,
@@ -665,7 +665,7 @@ namespace DS
                         BankAccountNumber="678888543000",
                     }
                 },
-                   new HostingUnit
+                new HostingUnit
                 { Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.North,
@@ -692,8 +692,7 @@ namespace DS
                         BankAccountNumber="678787990043",
                     }
                 },
-
-                 new HostingUnit
+                new HostingUnit
                 {Diary=BE.Utils.createMatrix(),
                    HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.South,
@@ -720,7 +719,7 @@ namespace DS
                         BankAccountNumber="098334549877",
                     }
                 },
-                  new HostingUnit
+                new HostingUnit
                 {Diary=BE.Utils.createMatrix(),
                    HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
@@ -747,7 +746,7 @@ namespace DS
                         BankAccountNumber="009821454432",
                     }
                 },
-                   new HostingUnit
+                new HostingUnit
                 {Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
@@ -774,7 +773,7 @@ namespace DS
                         BankAccountNumber="456678951232",
                     }
                 },
-                   new HostingUnit
+                new HostingUnit
                 {Diary=BE.Utils.createMatrix(),
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
@@ -784,7 +783,6 @@ namespace DS
                     breakfastIncluded=false,
                     AirConditoiner=true,
                     RoomService = false,
-
                     Garden=false,
                     HostingUnitName = "Nechama",
                     SubArea = "Petach tikva",
@@ -801,6 +799,275 @@ namespace DS
                         BankAccountNumber="009821454432",
                     }
                    }
+                new HostingUnit
+                {
+                    Diary =BE.Utils.createMatrix(),
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.Jerusalem,
+                    Pool = true,
+                    ChildrensAttractions = true,
+                    FreeParking=true,
+                    breakfastIncluded=false,
+                    AirConditoiner=true,
+                    RoomService = true,
+                    Garden=true,
+                    HostingUnitName = "Ramada",
+                    SubArea = "Ramot",
+                    Jacuzz = true,
+                    Type = UnitType.HotelRoom,
+                    Owner= new Host
+                    {
+                        PrivateName="Roni",
+                        FamilyName="Yaniv",
+                        HostId="9",
+                        PhoneNumber="0589903450",
+                        CollectionClearance=true,
+                        MailAddress="RoniRamada@gmail.com",
+                        BankAccountNumber="009821993432",
+                    }
+                   },
+                new HostingUnit
+                {
+                Diary =BE.Utils.createMatrix(),
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.Center,
+                    Pool = true,
+                    ChildrensAttractions = false,
+                     FreeParking=true,
+                    breakfastIncluded=false,
+                    AirConditoiner=true,
+                    RoomService = false,
+                    Garden=true,
+                    HostingUnitName = "Yanir",
+                    SubArea = "Netanya",
+                    Jacuzz = false,
+                    Type = UnitType.HostingUnit,
+                    Owner= new Host
+                    {
+                        PrivateName="Yanir",
+                        FamilyName="Roman",
+                        HostId="10",
+                        PhoneNumber="0549099095",
+                        CollectionClearance=true,
+                        MailAddress="yanirromanr@gmail.com",
+                        BankAccountNumber="123421454432",
+                    }
+                   },
+                new HostingUnit
+                {
+                Diary =BE.Utils.createMatrix(),
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.Jerusalem,
+                    Pool = true,
+                    ChildrensAttractions = true,
+                     FreeParking=true,
+                    breakfastIncluded=true,
+                    AirConditoiner=true,
+                    RoomService = true,
+                    Garden=true,
+                    HostingUnitName = "Mamila Hotel",
+                    SubArea = "Mamila",
+                    Jacuzz = true,
+                    Type = UnitType.HotelRoom,
+                    Owner= new Host
+                    {
+                        PrivateName="Yoram",
+                        FamilyName="Danon",
+                        HostId="11",
+                        PhoneNumber="0524454598",
+                        CollectionClearance=true,
+                        MailAddress="mamilahotel-yoram@gmail.com",
+                        BankAccountNumber="009985346368",
+                    }
+                   },
+                new HostingUnit
+                {
+                    Diary =BE.Utils.createMatrix(),
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.Center,
+                    Pool = false,
+                    ChildrensAttractions = true,
+                     FreeParking=true,
+                    breakfastIncluded=false,
+                    AirConditoiner=true,
+                    RoomService = false,
+                    Garden=false,
+                    HostingUnitName = "Nechama",
+                    SubArea = "Ramat Gan",
+                    Jacuzz = false,
+                    Type = UnitType.HostingUnit,
+                    Owner= new Host
+                    {
+                        PrivateName="Nechama",
+                        FamilyName="Israel",
+                        HostId="7",
+                        PhoneNumber="0548823450",
+                        CollectionClearance=true,
+                        MailAddress="petachtikvatzimer@gmail.com",
+                        BankAccountNumber="009821454432",
+                    }
+                   },
+                new HostingUnit
+                {
+                    Diary =BE.Utils.createMatrix(),
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.Center,
+                    Pool = false,
+                    ChildrensAttractions = false,
+                    FreeParking=true,
+                    breakfastIncluded=false,
+                    AirConditoiner=true,
+                    RoomService = false,
+                    Garden=false,
+                    HostingUnitName = "rami",
+                    SubArea = "Beer Shave",
+                    Jacuzz = false,
+                    Type = UnitType.Tent,
+                    Owner= new Host
+                    {
+                       PrivateName="rami",
+                        FamilyName="Bloch",
+                        HostId="1",
+                        PhoneNumber="0547648500",
+                        CollectionClearance=true,
+                        MailAddress="ramidan@gmail.com",
+                        BankAccountNumber="009863673795",
+                    }
+                   },
+                new HostingUnit
+                {
+                Diary =BE.Utils.createMatrix(),
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.Center,
+                    Garden = true,
+                    Jacuzz =  true,
+                    Pool = true,
+                    ChildrensAttractions = false,
+                    AirConditoiner=true,
+                    RoomService=false,
+                    FreeParking=true,
+                    breakfastIncluded=false,
+                    HostingUnitName = "Clab Hotel",
+                    SubArea = "Eilat",
+                    Type = UnitType.HotelRoom,
+                    Owner= new Host
+                    {
+                        PrivateName ="Lieli",
+                        FamilyName="Ob",
+                        HostId="8",
+                        CollectionClearance=true,
+                        MailAddress="elielhotel2020@gmail.com",
+                        PhoneNumber="0546547645",
+                        BankAccountNumber="456678951232",
+                    }
+                   },
+                new HostingUnit
+                {Diary=BE.Utils.createMatrix(),
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.Center,
+                    Pool = false,
+                    ChildrensAttractions = true,
+                    FreeParking=true,
+                    breakfastIncluded=false,
+                    AirConditoiner=true,
+                    RoomService = false,
+                    Garden=false,
+                    HostingUnitName = "Hotel metzada",
+                    SubArea = "Metzada",
+                    Jacuzz = false,
+                    Type = UnitType.HotelRoom,
+                    Owner= new Host
+                    {
+                        PrivateName="Lieli",
+                        FamilyName="Ob",
+                        HostId="8",
+                        CollectionClearance=true,
+                        MailAddress="elielhotel2020@gmail.com",
+                        PhoneNumber="0546547645",
+                        BankAccountNumber="456678951232",
+                    }
+                   },
+                new HostingUnit
+                {
+                    Diary =BE.Utils.createMatrix(),
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.Center,
+                    Pool = false,
+                    ChildrensAttractions = true,
+                     FreeParking=true,
+                    breakfastIncluded=false,
+                    AirConditoiner=true,
+                    RoomService = false,
+                    Garden=false,
+                    HostingUnitName = "Yonna",
+                    SubArea = "Petach tikva",
+                    Jacuzz = false,
+                    Type = UnitType.HostingUnit,
+                    Owner= new Host
+                    {
+                        PrivateName="Yonna",
+                        FamilyName="Ariel",
+                        HostId="12",
+                        PhoneNumber="0533423450",
+                        CollectionClearance=true,
+                        MailAddress="petachtikvatYonna@gmail.com",
+                        BankAccountNumber="009821454402",
+                    }
+                   },
+                new HostingUnit
+                {
+                      Diary =BE.Utils.createMatrix(),
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.South,
+                    Pool = false,
+                    ChildrensAttractions = true,
+                     FreeParking=true,
+                    breakfastIncluded=false,
+                    AirConditoiner=true,
+                    RoomService = false,
+                    Garden=false,
+                    HostingUnitName = "Ana tents",
+                    SubArea = "Metzada",
+                    Jacuzz = false,
+                    Type = UnitType.Tent,
+                    Owner= new Host
+                    {
+                        PrivateName="Anna",
+                        FamilyName="Maxim",
+                        HostId="13",
+                        PhoneNumber="0555564450",
+                        CollectionClearance=true,
+                        MailAddress="anna123345@gmail.com",
+                        BankAccountNumber="099082454432",
+                    }
+                   },
+                new HostingUnit
+                {
+                        Diary =BE.Utils.createMatrix(),
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.Center,
+                    Pool = true,
+                    ChildrensAttractions = true,
+                     FreeParking=true,
+                    breakfastIncluded=true,
+                    AirConditoiner=true,
+                    RoomService = true,
+                    Garden=true,
+                    HostingUnitName = "Plaza",
+                    SubArea = "Tal Aviv",
+                    Jacuzz = false,
+                    Type = UnitType.HostingUnit,
+                    Owner= new Host
+                    {
+                        PrivateName="Yarden",
+                        FamilyName="Harari",
+                        HostId="7",
+                        PhoneNumber="0589823450",
+                        CollectionClearance=true,
+                        MailAddress="plazabyyardenr@gmail.com",
+                        BankAccountNumber="123821454432",
+                    }
+                   }
             };
 
             // init order list
@@ -814,7 +1081,7 @@ namespace DS
                     HostingUnitKey = 100000000,
                     Status = OrderStatus.SentMail
                 },
-                 new Order
+                new Order
                 {
                     OrderKey = Configuration.OrderId++,
                     CreateDate = DateTime.Now,
@@ -822,7 +1089,7 @@ namespace DS
                     HostingUnitKey = 100000001,
                     Status = OrderStatus.SentMail
                 },
-                  new Order
+                new Order
                 {
                     OrderKey = Configuration.OrderId++,
                     CreateDate = DateTime.Now,
@@ -830,7 +1097,7 @@ namespace DS
                     HostingUnitKey = 100000002,
                     Status = OrderStatus.SentMail
                 },
-                   new Order
+                new Order
                 {
                     OrderKey = Configuration.OrderId++,
                     CreateDate = DateTime.Now,
@@ -838,7 +1105,7 @@ namespace DS
                     HostingUnitKey = 100000003,
                     Status = OrderStatus.SentMail
                 },
-                    new Order
+                new Order
                 {
                     OrderKey = Configuration.OrderId++,
                     CreateDate = DateTime.Now,
@@ -846,15 +1113,15 @@ namespace DS
                     HostingUnitKey = 100000004,
                     Status = OrderStatus.SentMail
                 },
-                     new Order
+                new Order
                 {
                     OrderKey = Configuration.OrderId++,
                     CreateDate = DateTime.Now,
                     GuestRequestKey = 100000005,
                     HostingUnitKey = 100000005,
                     Status = OrderStatus.SentMail
-                },
-                      new Order
+                }
+                new Order
                 {
                     OrderKey = Configuration.OrderId++,
                     CreateDate = DateTime.Now,
@@ -862,7 +1129,7 @@ namespace DS
                     HostingUnitKey = 100000006,
                     Status = OrderStatus.SentMail
                 },
-                       new Order
+                new Order
                 {
                     OrderKey = Configuration.OrderId++,
                     CreateDate = DateTime.Now,
@@ -870,7 +1137,6 @@ namespace DS
                     HostingUnitKey = 100000007,
                     Status = OrderStatus.SentMail
                 },
-
                 new Order
                 {
                     OrderKey = Configuration.OrderId++,
@@ -967,94 +1233,6 @@ namespace DS
                     HostingUnitKey = 100000019,
                     Status = OrderStatus.SentMail
                 },
-                new Order
-                {
-                    OrderKey = Configuration.OrderId++,
-                    CreateDate = DateTime.Now,
-                    GuestRequestKey = 100000020,
-                    HostingUnitKey = 100000020,
-                    Status = OrderStatus.SentMail
-                },
-                 new Order
-                {
-                    OrderKey = Configuration.OrderId++,
-                    CreateDate = DateTime.Now,
-                    GuestRequestKey = 100000021,
-                    HostingUnitKey = 100000021,
-                    Status = OrderStatus.SentMail
-                },
-                new Order
-                {
-                    OrderKey = Configuration.OrderId++,
-                    CreateDate = DateTime.Now,
-                    GuestRequestKey = 100000022,
-                    HostingUnitKey = 100000022,
-                    Status = OrderStatus.SentMail
-                },
-                            new Order
-                {
-                    OrderKey = Configuration.OrderId++,
-                    CreateDate = DateTime.Now,
-                    GuestRequestKey = 100000023,
-                    HostingUnitKey = 100000023,
-                    Status = OrderStatus.SentMail
-                },
-                new Order
-                {
-                    OrderKey = Configuration.OrderId++,
-                    CreateDate = DateTime.Now,
-                    GuestRequestKey = 100000024,
-                    HostingUnitKey = 100000024,
-                    Status = OrderStatus.SentMail
-                },
-                new Order
-                {
-                    OrderKey = Configuration.OrderId++,
-                    CreateDate = DateTime.Now,
-                    GuestRequestKey = 100000025,
-                    HostingUnitKey = 100000025,
-                    Status = OrderStatus.SentMail
-                },
-                new Order
-                {
-                    OrderKey = Configuration.OrderId++,
-                    CreateDate = DateTime.Now,
-                    GuestRequestKey = 100000026,
-                    HostingUnitKey = 100000026,
-                    Status = OrderStatus.SentMail
-                },
-                        new Order
-                {
-                    OrderKey = Configuration.OrderId++,
-                    CreateDate = DateTime.Now,
-                    GuestRequestKey = 100000027,
-                    HostingUnitKey = 100000027,
-                    Status = OrderStatus.SentMail
-                },
-                new Order
-                {
-                    OrderKey = Configuration.OrderId++,
-                    CreateDate = DateTime.Now,
-                    GuestRequestKey = 100000028,
-                    HostingUnitKey = 100000028,
-                    Status = OrderStatus.SentMail
-                },
-                new Order
-                {
-                    OrderKey = Configuration.OrderId++,
-                    CreateDate = DateTime.Now,
-                    GuestRequestKey = 100000029,
-                    HostingUnitKey = 100000029,
-                    Status = OrderStatus.SentMail
-                },
-                new Order
-                {
-                    OrderKey = Configuration.OrderId++,
-                    CreateDate = DateTime.Now,
-                    GuestRequestKey = 100000030,
-                    HostingUnitKey = 100000030,
-                    Status = OrderStatus.SentMail
-                }
             };
 
         }
