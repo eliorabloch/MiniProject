@@ -30,8 +30,6 @@ namespace BE
         public Options breakfastIncluded { get; set; }
         public Options AirConditoiner { get; set; }
         public Options RoomService { get; set; }
-       
-
         public Options Jacuzzi { get; set; }
         public Options Garden { get; set; }
         public Options ChildrensAttractions { get; set; }
@@ -56,7 +54,7 @@ namespace BE
             toString += $"Jacuzzi?: {Jacuzzi} \n";
             toString += $"Garden?: {Garden} \n";
             toString += $"Childrens attractions?: {ChildrensAttractions} \n";
-            toString += $" Room Service?: { RoomService} \n";
+            toString += $"Room Service?: { RoomService} \n";
             toString += $"Air Conditoiner?: { AirConditoiner } \n";
             toString += $"breakfast Included?: {breakfastIncluded} \n";
             toString += $"Free Parking?: {FreeParking} \n";

@@ -8,11 +8,7 @@ namespace BE
 {
    public class HostingUnit : ICloneable
     {
-        public int HostingUnitKey
-        {
-            set;
-            get;
-        }
+        public int HostingUnitKey { get; set; }
         public Host Owner { get; set; }
         public string HostingUnitName { get; set; }
         public bool[,] Diary;
@@ -46,6 +42,10 @@ namespace BE
             toString += $"Childrens attractions?: {ChildrensAttractions} \n";
             toString += $"Area: {Area} \n";
             toString += $"Sub area: {SubArea} \n";
+            toString += $"Room Service?: { RoomService} \n";
+            toString += $"Air Conditoiner?: { AirConditoiner } \n";
+            toString += $"breakfast Included?: {breakfastIncluded} \n";
+            toString += $"Free Parking?: {FreeParking} \n";
             return toString;
         }
     }
