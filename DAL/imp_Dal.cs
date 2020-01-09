@@ -83,7 +83,7 @@ namespace DAL
 
         public HostingUnit GetUnit(int id)
         {
-            return (HostingUnit)DataSource.unitList.FirstOrDefault(x => x.HostingUnitKey == id).Clone();
+            return (HostingUnit)DataSource.unitList.FirstOrDefault(x => x.HostingUnitKey == id)?.Clone();
         }
 
         public void AddUnit(HostingUnit newUnit)  

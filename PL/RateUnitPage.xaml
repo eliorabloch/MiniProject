@@ -12,15 +12,18 @@
         <Grid.Background>
             <ImageBrush ImageSource="images/back.jpg" Opacity="0.8"/>
         </Grid.Background>
-        <ListView x:Name="ratingListView" HorizontalAlignment="Left" Height="572" Margin="152,10,0,0" VerticalAlignment="Top" Width="520
-                  
-                  " SelectionChanged="ListView_SelectionChanged" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        <ListView x:Name="ratingListView" HorizontalAlignment="Left" Height="572" Margin="152,10,0,0" VerticalAlignment="Top" Width="569" SelectionChanged="ListView_SelectionChanged" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Content="" HorizontalAlignment="Left" Height="30" Margin="87,552,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Click="Button_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="images/arrow.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Page>

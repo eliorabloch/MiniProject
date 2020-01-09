@@ -30,8 +30,11 @@ namespace PL
             foreach (var item in bl.GetUnitsList())
             {
                 RatingUnitItemControl uic = new RatingUnitItemControl();
+                uic.idLable.Content = item.HostingUnitKey;
+               
                 uic.unitNameLable.Content = item.HostingUnitName;
-
+                
+                
                 RatingControl.Add(uic);
             }
             ratingListView.ItemsSource = RatingControl;
@@ -40,6 +43,11 @@ namespace PL
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }

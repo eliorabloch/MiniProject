@@ -8,35 +8,35 @@
              " Height="81.198">
     <Grid Background="#FFD9C8C2" Margin="2,8,-11,2" HorizontalAlignment="Left" Width="523">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="344*"/>
-            <ColumnDefinition Width="179*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="fiveStarBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="137.039,21,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Grid.Column="1">
+        <Button x:Name="fiveStarBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="481,21,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="fiveStarBTN_Click">
             <Button.Background>
                 <ImageBrush ImageSource="images/star1.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="FOURsTARbtn" Content="" HorizontalAlignment="Left" Height="25" Margin="104.039,21,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Grid.Column="1">
+        <Button x:Name="FOURsTARbtn" Content="" HorizontalAlignment="Left" Height="25" Margin="448,21,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="FOURsTARbtn_Click">
             <Button.Background>
                 <ImageBrush ImageSource="images/star1.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="threeStarBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="67.039,21,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Grid.Column="1">
+        <Button x:Name="threeStarBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="411,21,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="threeStarBTN_Click">
             <Button.Background>
                 <ImageBrush ImageSource="images/star1.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="twoStarBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="30.039,21,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Grid.Column="1">
+        <Button x:Name="twoStarBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="374,21,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="twoStarBTN_Click">
             <Button.Background>
                 <ImageBrush ImageSource="images/star1.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="oneStarBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="334,21,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
+        <Button x:Name="oneStarBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="334,21,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="oneStarBTN_Click">
             <Button.Background>
                 <ImageBrush ImageSource="images/star1.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="unitNameLable" Content="Label" HorizontalAlignment="Left" Height="43" Margin="10,10,0,0" VerticalAlignment="Top" Width="267"/>
+        <Label x:Name="unitNameLable" Content="Label" HorizontalAlignment="Left" Height="51" Margin="10,10,0,0" VerticalAlignment="Top" Width="168" FontFamily="MV Boli" FontSize="22"/>
+        <Label x:Name="idLable" Content="Label" HorizontalAlignment="Left" Height="15" Margin="266,46,0,0" VerticalAlignment="Top" Width="44" Foreground="{x:Null}"/>
 
     </Grid>
 </UserControl>
