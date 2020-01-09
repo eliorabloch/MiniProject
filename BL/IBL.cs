@@ -32,6 +32,7 @@ namespace BL
         List<List<GuestRequest>> GroupRequestByStatus();// Function who sort the geust requests by their status.
 
         // BL new  function
+        float GetAnnualBusyPercentage(string UnitName);
         bool AvailableDate(HostingUnit h, GuestRequest g);//A function that makes sure the booked dates are free in the unit we placed the order.
         List<HostingUnit> GetAllAvilableUnits( DateTime start, int amountOfDAys);//A function that accepts a date and number of vacation days and returns the list of all available accommodation units on that date.
         bool SendOrder(Host h, Order o);//A function that checks whether an order can be sent to a customer. Only if the client has signed a host bank authorization form can he send an order.

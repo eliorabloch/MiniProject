@@ -31,11 +31,14 @@ namespace BE
             toString += $"Bank account number: {BankAccountNumber} \n";
             return toString;
         }
-
         public object Clone()
         {
-            throw new MemberAccessException();
+            return MemberwiseClone();
         }
+        //public object Clone()
+        //{
+        //    throw new MemberAccessException();
+        //}
 
         public Host() { }//defult constructor
 

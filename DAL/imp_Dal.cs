@@ -75,6 +75,12 @@ namespace DAL
                     select (HostingUnit)gr.Clone()).ToList();
         }
 
+        public List<Host> GetHostList()
+        {
+            return (from h in DataSource.unitList
+                    select (Host)h.Owner.Clone()).ToList();
+        }
+
         public HostingUnit GetUnit(int id)
         {
             return (HostingUnit)DataSource.unitList.FirstOrDefault(x => x.HostingUnitKey == id).Clone();

@@ -24,6 +24,7 @@ namespace DAL
         void UpdateOrder(Order update);//Function that updates an order.
         void DeleteOrder(Order update);//Function that deletes an order.
 
+        List<Host> GetHostList();// A function that returns a hosts list.
         List<HostingUnit> GetUnitsList();// A function that returns a hosting unit list.
         List<GuestRequest> GetGuestRequestList();// A function that returns a list of hosting requests
         List<Order> GetOrdersList();//Function that returns an order list.

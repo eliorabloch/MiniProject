@@ -22,6 +22,7 @@ namespace PL
     /// </summary>
     public partial class ManagerPage : Page
     {
+        ImpBL bl = ImpBL.Instance;
         NavigationService m_navigationService { get; set; }
         //public ManagerPage()
         //{
@@ -58,9 +59,7 @@ namespace PL
 
         private void GroupGRbyareas_Click(object sender, RoutedEventArgs e)
         {
-            m_navigationService = this.NavigationService;
-            var ManagerPageAvailableUnit = new ManagerListsPage(); //create your new form.
-            this.NavigationService.Navigate(ManagerPageAvailableUnit);
+            
         }
 
         private void Hostlist_Click(object sender, RoutedEventArgs e)
@@ -68,6 +67,37 @@ namespace PL
             m_navigationService = this.NavigationService;
             var ManagerPageGetHostList = new ManagerListsPage(); //create your new form.
             this.NavigationService.Navigate(ManagerPageGetHostList);
+        }
+
+        private void OccupancyButtom_Click(object sender, RoutedEventArgs e)
+        {
+
+            float temp = bl.GetAnnualBusyPercentage(UnitTextBox.Text);
+            answerUnitOccupancyTextBlock.Text= "The occupancy of this unit is: " + temp;
+         }
+
+            private void HostOccupancyButtom_Click(object sender, RoutedEventArgs e)
+        {
+            float temp = bl.GetAnnualBusyPercentageForAllUnitsForOneHost(HostOccupancyTextBox.Text);
+            answerHostOccupancyTextBlock.Text = "The occupancy of this host is: " + temp;
+        }
+
+        private void AnswerUnitOccupancyTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void AllOccupancyButtom_Click(object sender, RoutedEventArgs e)
+        {
+            float temp = bl.GetAnnualBusyPercentageForAllUnitsForTheAdministor();
+            answerAllOccupancyTextBlock.Text = "The overall occupancy is: " + temp;
+            
+        }
+
+        private void NumberOfUnitsHostNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            //int temp = bl.getNumOfUnits(??);
+            //answerNumberOfUnitsTextBlock.Text = "The number of units this host has is: " + temp;
         }
     }
 }
