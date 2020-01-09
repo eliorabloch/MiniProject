@@ -28,7 +28,7 @@
         <TextBox Name="GetHlist" HorizontalAlignment="Left" Height="34" Margin="619,13,0,0" TextWrapping="Wrap" Text= "Host list:" VerticalAlignment="Top" Width="123" FontSize="20"/>
         <Button Name="hostlist" Content="Hosts List" HorizontalAlignment="Left" Margin="620,62,0,0" VerticalAlignment="Top" Width="200" Height="39" Click="Hostlist_Click"/>
         <TextBox Name="GetNumOfU" HorizontalAlignment="Left" Height="28" Margin="623,101,0,0" TextWrapping="Wrap" Text="Num Of Units:" VerticalAlignment="Top" Width="157" FontSize="20"/>
-        <Label Name="numberOfU" Content="numberOfUnits" HorizontalAlignment="Left" Margin="642,140,0,0" VerticalAlignment="Top" Width="101" Height="44"/>
+        <Label Name="numberOfU" Content="Host:" HorizontalAlignment="Left" Margin="489,147,0,0" VerticalAlignment="Top" Width="41" Height="39"/>
         <TextBox Name="OccupancyforU" HorizontalAlignment="Left" Height="34" Margin="623,184,0,0" TextWrapping="Wrap" Text="Occupancy for Unit:" VerticalAlignment="Top" Width="197" FontSize="20"/>
         <TextBox Name="OverallOccupancy" HorizontalAlignment="Left" Height="41" Margin="620,359,0,0" TextWrapping="Wrap" Text="Overall Occupancy:" VerticalAlignment="Top" Width="197" FontSize="20"/>
         <TextBox Name="dateTextBox" HorizontalAlignment="Left" Height="39" Margin="91,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="116" TextChanged="TextBox_TextChanged"/>
@@ -37,17 +37,20 @@
         <TextBox  Name="amountTextBox"  HorizontalAlignment="Left" Height="43" Margin="332,39,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="62"/>
         <TextBox Name="UnitTextBox" HorizontalAlignment="Left" Height="25" Margin="524,224,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="67"/>
         <Label Content="Unit:" HorizontalAlignment="Left" Margin="491,222,0,0" VerticalAlignment="Top" Height="25" Width="55" RenderTransformOrigin="0.436,0.573"/>
-        <Button Name="OccupancyButtom" Content="Host occupancy" HorizontalAlignment="Left" Margin="603,223,0,0" VerticalAlignment="Top" Width="105" Height="41" Click="OccupancyButtom_Click"/>
+        <Button Name="OccupancyButtom" Content="calculate" HorizontalAlignment="Left" Margin="603,223,0,0" VerticalAlignment="Top" Width="105" Height="41" Click="OccupancyButtom_Click"/>
         <Label  Content="Host" HorizontalAlignment="Left" Margin="489,318,0,0" VerticalAlignment="Top"/>
         <TextBox Name="HostOccupancyTextBox" HorizontalAlignment="Left" Height="23" Margin="530,318,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="72"/>
         <Label Content="AllOccupancy" HorizontalAlignment="Left" Margin="446,405,0,0" VerticalAlignment="Top" Height="34" Width="92"/>
-        <Button Name="HostOccupancyButtom" Content=" HostOcuupancy " HorizontalAlignment="Left" Margin="613,316,0,0" VerticalAlignment="Top" Width="105" Height="38" Click="HostOccupancyButtom_Click"/>
-        <Button Name="AllOccupancyButtom" Content="All occupancy" HorizontalAlignment="Left" Margin="622,405,0,0" VerticalAlignment="Top" Width="100" Height="34" Click="AllOccupancyButtom_Click"/>
+        <Button Name="HostOccupancyButtom" Content="calculate" HorizontalAlignment="Left" Margin="613,316,0,0" VerticalAlignment="Top" Width="105" Height="38" Click="HostOccupancyButtom_Click"/>
+        <Button Name="AllOccupancyButtom" Content="calculate" HorizontalAlignment="Left" Margin="622,405,0,0" VerticalAlignment="Top" Width="100" Height="34" Click="AllOccupancyButtom_Click"/>
         <TextBox Name="AllOccupancyTextBox" HorizontalAlignment="Left" Height="30" Margin="528,409,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="89"/>
         <TextBox Name="OcuupancyforhostTextBox" HorizontalAlignment="Left" Height="45" Margin="619,269,0,0" TextWrapping="Wrap" Text="Occupancy for Host:" VerticalAlignment="Top" Width="198" FontSize="20"/>
         <TextBlock Name="answerUnitOccupancyTextBlock" HorizontalAlignment="Left" Margin="711,224,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="40" Width="113"/>
         <TextBlock Name="answerHostOccupancyTextBlock" HorizontalAlignment="Left" Margin="723,319,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="35" Width="94"/>
         <TextBlock Name="answerAllOccupancyTextBlock" HorizontalAlignment="Left" Margin="731,409,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="88"/>
+        <TextBox Name="NumberOfUnitsHostNameTextBox" HorizontalAlignment="Left" Height="39" Margin="533,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+        <Button Name="NumberOfUnitsHostNameButton" Content="calculate" HorizontalAlignment="Left" Margin="632,134,0,0" VerticalAlignment="Top" Width="100" Height="45" Click="NumberOfUnitsHostNameButton_Click"/>
+        <TextBlock Name="answerNumberOfUnitsTextBlock" HorizontalAlignment="Left" Margin="742,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="39" Width="88"/>
 
     </Grid>
 </Page>

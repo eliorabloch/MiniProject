@@ -598,7 +598,7 @@ namespace BL
             return GetUnitsList().Select(x => x.Owner).Distinct().ToList();
         }
 
-        private int getNumOfUnits(Host owner)//A function that returns the number of units each host has.
+        public int getNumOfUnits(Host owner)//A function that returns the number of units each host has.
         {
             return GetUnitsList().Sum(x => x.Owner.HostId == owner.HostId ? 1 : 0);
         }
