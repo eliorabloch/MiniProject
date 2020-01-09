@@ -10,16 +10,12 @@
       Title="OrderListPage">
 
     <Grid>
-        <Grid HorizontalAlignment="Left" Height="681" Margin="-1,-1,0,0" VerticalAlignment="Top" Width="841" Background="#FF9DC8E6">
-            <Label Content="Requests Suggestions:" HorizontalAlignment="Left" Height="63" Margin="496,27,0,0" VerticalAlignment="Top" Width="287" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36">
-                <Label.Background>
-                    <ImageBrush ImageSource="images/whitebtn.png"/>
-                </Label.Background>
-            </Label>
-            <Label Content="  My Orders:" HorizontalAlignment="Left" Height="63" Margin="114,27,0,0" VerticalAlignment="Top" Width="203" RenderTransformOrigin="0.5,0.5" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36" FontWeight="Bold">
-                <Label.Background>
-                    <ImageBrush ImageSource="images/whitebtn.png"/>
-                </Label.Background>
+        <Grid HorizontalAlignment="Left" Height="681" Margin="-1,-1,0,0" VerticalAlignment="Top" Width="841">
+            <Grid.Background>
+                <ImageBrush ImageSource="images/back.jpg" Opacity="0.8"/>
+            </Grid.Background>
+            <Label Content="Requests Suggestions:" HorizontalAlignment="Left" Height="63" Margin="440,27,0,0" VerticalAlignment="Top" Width="358" FontFamily="MV Boli" FontSize="36" Background="{x:Null}"/>
+            <Label Content="  My Orders:" HorizontalAlignment="Left" Height="63" Margin="90,23,0,0" VerticalAlignment="Top" Width="249" RenderTransformOrigin="0.5,0.5" FontFamily="MV Boli" FontSize="36" Background="{x:Null}">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -29,14 +25,16 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <ListView x:Name="MyOrderListView" HorizontalAlignment="Left" Height="501" Margin="22,99,0,0" VerticalAlignment="Top" Width="394">
+            <ListView x:Name="MyOrderListView" HorizontalAlignment="Left" Height="500" Margin="38,99,0,0" VerticalAlignment="Top" Width="380
+                      " Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
             </ListView>
-            <ListView x:Name="SuggestionListView" HorizontalAlignment="Left" Height="501" Margin="432,99,0,0" VerticalAlignment="Top" Width="389" SelectionChanged="SuggestionListView_SelectionChanged">
+            <ListView x:Name="SuggestionListView" HorizontalAlignment="Left" Height="500" Margin="422,99,0,0" VerticalAlignment="Top" Width="380
+                      " SelectionChanged="SuggestionListView_SelectionChanged" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>

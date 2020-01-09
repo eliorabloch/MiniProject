@@ -28,49 +28,17 @@ namespace PL
             InitializeComponent();
             m_order = order;
             OrderIdLable.Content = order.OrderKey;
-            //OrderStatusComboBox.ItemsSource = Enum.GetNames(typeof(OrderStatus)).ToList();
-            switch (order.Status)
-            {
-                case OrderStatus.NotHandled:
-                    OrderStatusComboBox.SelectedIndex = 0;
-                    break;
-                case OrderStatus.SentMail:
-                    OrderStatusComboBox.SelectedIndex = 1;
-                    break;
-                case OrderStatus.ClosedRequestCanceled:
-                    OrderStatusComboBox.SelectedIndex = 2;
-                    break;
-                case OrderStatus.ClosedRequestDoneDeal:
-                    OrderStatusComboBox.SelectedIndex = 3;
-                    break;
-                default:
-                    break;
-            }
+            OrderStatusComboBox.ItemsSource = Enum.GetNames(typeof(OrderStatus)).ToList();
+            OrderStatusComboBox.SelectedValue = order.Status.ToString();
+            
         }
 
         private void SaveStatusBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                switch (OrderStatusComboBox.SelectedIndex)
-                {
-                    case 0:
-                        m_order.Status = OrderStatus.NotHandled;
-                        break;
-                    case 1:
-                        m_order.Status = OrderStatus.SentMail;
-                        break;
-                    case 2:
-                        m_order.Status = OrderStatus.ClosedRequestCanceled;
-                        break;
-                    case 3:
-
-                        m_order.Status = OrderStatus.ClosedRequestDoneDeal;
-                        break;
-                    default:
-                        break;
-                }
-                //m_order.Status = (OrderStatus)Enum.Parse(typeof(OrderStatus), OrderStatusComboBox.SelectedValue.ToString(), true); 
+               
+                m_order.Status = (OrderStatus)Enum.Parse(typeof(OrderStatus), OrderStatusComboBox.SelectedValue.ToString(), true); 
                 ImpBL bl = ImpBL.Instance;
                 bl.UpdateOrder(m_order);
             }

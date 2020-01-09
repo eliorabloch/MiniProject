@@ -16,7 +16,7 @@ namespace BE
     }
     public enum OrderStatus
     {
-        NotHandled, SentMail, ClosedRequestCanceled, ClosedRequestDoneDeal
+        NotHandled, SentMail, Canceled, DoneDeal
     }
    public enum RequestStatus
     {

@@ -26,5 +26,10 @@ namespace PL
         {
             InitializeComponent();
         }
+
+        private void GuestRequestDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

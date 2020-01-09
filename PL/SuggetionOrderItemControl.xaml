@@ -6,12 +6,25 @@
              xmlns:local="clr-namespace:PL"
              mc:Ignorable="d" 
              d:DesignHeight="50
-             " d:DesignWidth="440">
-    <Grid Margin="0,0,0,-32">
-        <Label x:Name="GuestRequestPrivateNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="87"/>
-        <Label x:Name="GuestRequestFamilyNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="87"/>
-        <Button x:Name="GuestRequestDetailsBtn" Content="Info" HorizontalAlignment="Left" Margin="216,10,0,0" VerticalAlignment="Top" Width="73" Height="57"/>
-        <Button x:Name="GuestRequestInviteBtn" Content="Invite" HorizontalAlignment="Left" Margin="294,10,0,0" VerticalAlignment="Top" Width="76" Height="57"/>
+             " d:DesignWidth="350
+             ">
+    <Grid Background="#FFD9C8C2" Margin="0,1,0,-1" Width="360
+          ">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="GuestRequestPrivateNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Width="61"/>
+        <Label x:Name="GuestRequestFamilyNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="87"/>
+        <Button x:Name="GuestRequestDetailsBtn" Content="Information" HorizontalAlignment="Left" Margin="164,6,0,0" VerticalAlignment="Top" Width="121" Height="36" FontFamily="Lucida Sans Unicode" Click="GuestRequestDetailsBtn_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="images/infoBtn.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="GuestRequestInviteBtn" Content="Invite" HorizontalAlignment="Left" Margin="286,6,0,0" VerticalAlignment="Top" Width="60" Height="36" BorderBrush="{x:Null}" FontFamily="Lucida Sans Unicode">
+            <Button.Background>
+                <ImageBrush ImageSource="images/blueBtn.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </UserControl>

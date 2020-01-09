@@ -5,20 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PL"
              mc:Ignorable="d" Height="50
-             " Width="434.525">
-    <Grid Height="50" VerticalAlignment="Top" Background="#FFD9C8C2" Margin="0,0,16,0">
+             " Width="355
+             
+             
+             ">
+    <Grid Height="50" VerticalAlignment="Top" Background="#FFD9C8C2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="207*"/>
             <ColumnDefinition Width="173*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="OrderIdLable" Content="Label" HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Height="33" Width="188" FontFamily="Tw Cen MT Condensed Extra Bold"/>
-        <ComboBox x:Name="OrderStatusComboBox" HorizontalAlignment="Left" Margin="21,13,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1">
-            <ComboBoxItem Content="Not Handled"  />
-            <ComboBoxItem Content="Sent Mail" />
-            <ComboBoxItem Content="Canceled" />
-            <ComboBoxItem Content="Done Deal" />
-        </ComboBox>
-        <Button x:Name="SaveStatusBtn" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="145,13,0,0" VerticalAlignment="Top" Width="36" Click="SaveStatusBtn_Click"/>
+        <Label x:Name="OrderIdLable" Content="Label" HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Height="33" Width="188" FontFamily="Lucida Sans Unicode"/>
+        <ComboBox x:Name="OrderStatusComboBox" HorizontalAlignment="Left" Margin="158,13,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" FontFamily="Lucida Sans Unicode"/>
+        <Button x:Name="SaveStatusBtn" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="90,12,0,0" VerticalAlignment="Top" Width="46" Click="SaveStatusBtn_Click" FontFamily="Lucida Sans Unicode" Height="25" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="images/blueBtn.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </UserControl>

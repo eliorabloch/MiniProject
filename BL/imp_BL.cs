@@ -215,7 +215,7 @@ namespace BL
             //Check that the vacation start date is at least one day earlier than the vacation end date.
             if ((newRequest.ReleaseDate - newRequest.EntryDate).TotalDays < 1)
             {
-                throw new TzimerException("Sorry, the dates you choose are invalid, entry must be before leave!", "bl");
+                throw new TzimerException("Sorry, the dates you chose are invalid, entry must be before leave!", "bl");
             }
             //If one of the fields is empty, you will send an exception and request a refill.
             if (string.IsNullOrEmpty(newRequest.FamilyName))
@@ -229,6 +229,33 @@ namespace BL
             if (string.IsNullOrEmpty(newRequest.MailAddress))
             {
                 throw new TzimerException("Please enter your e-mail address", "bl");
+
+            }
+            if (string.IsNullOrEmpty(newRequest.PhoneNumber))
+            {
+                throw new TzimerException("Please enter your phone number", "bl");
+            }
+
+            if (!(newRequest.MailAddress.Contains("@")))
+            {
+                throw new TzimerException("E-mail Address format is invaled.Please enter the correct format.", "bl");
+            }
+            if(string.IsNullOrEmpty(newRequest.Children))
+            {
+                throw new TzimerException("Please enter the amount of children", "bl");
+
+            }
+            if (string.IsNullOrEmpty(newRequest.Adults))
+            {
+                throw new TzimerException("Please enter the amount of adults", "bl");
+
+            }
+            int number;
+            bool checknumber = Int32.TryParse(newRequest.PhoneNumber, out number);
+            if(!checknumber)
+            {
+                throw new TzimerException("Phone number may contain only numbers.", "bl");
+
             }
             //If the number of adults is equal to 0, an exception is sent.
             if (newRequest.Adults == "0")
@@ -381,11 +408,11 @@ namespace BL
             var oldOrder = getOrderIfExists(updatedOrder.OrderKey);
             var req = getGuestRequestIfExists(updatedOrder.GuestRequestKey);
             var unit = getHostingUnitsIfExists(updatedOrder.HostingUnitKey);
-            if (oldOrder.Status == OrderStatus.ClosedRequestCanceled || oldOrder.Status == OrderStatus.ClosedRequestDoneDeal)
+            if (oldOrder.Status == OrderStatus.Canceled || oldOrder.Status == OrderStatus.DoneDeal)
             {
                 throw new TzimerException("Sorry, this order already closed", "bl");
             }
-            if (updatedOrder.Status == OrderStatus.ClosedRequestDoneDeal)
+            if (updatedOrder.Status == OrderStatus.DoneDeal)
             {
                 var totalDays = (req.ReleaseDate - req.EntryDate).TotalDays;
                 Configuration.Profits += (totalDays * Configuration.Commissin);
@@ -398,7 +425,7 @@ namespace BL
                 sendOrderRequest(req);
                 req.Status = RequestStatus.ClosedDeal;
             }
-            if (updatedOrder.Status == OrderStatus.ClosedRequestCanceled)
+            if (updatedOrder.Status == OrderStatus.Canceled)
             {
                 req.Status = RequestStatus.ExpiredRequest;
             }
@@ -434,7 +461,7 @@ namespace BL
             {
                 if (o.GuestRequestKey == order.GuestRequestKey && o.OrderKey != order.OrderKey)
                 {
-                    o.Status = OrderStatus.ClosedRequestCanceled;
+                    o.Status = OrderStatus.Canceled;
                     dal.UpdateOrder(o);
                 }
             });
@@ -516,7 +543,7 @@ namespace BL
         public int GetNumOfSentOrders(HostingUnit hu)
         {
             return GetOrdersList().Where(x => x.HostingUnitKey == hu.HostingUnitKey &&
-            (x.Status == OrderStatus.SentMail || x.Status == OrderStatus.ClosedRequestDoneDeal)).Count();
+            (x.Status == OrderStatus.SentMail || x.Status == OrderStatus.DoneDeal)).Count();
         }
 
         Func<Order, int, bool> isOldOrder = delegate (Order order, int amountOfDays)//A function that accepts several days, and returns all orders that have elapsed since they were created / since the email was sent to a customer greater than or equal to the number of days the function received.
@@ -538,7 +565,7 @@ namespace BL
             {
                 if (item.HostingUnitKey == h.HostingUnitKey)
                 {
-                    if (item.Status == OrderStatus.ClosedRequestCanceled || item.Status == OrderStatus.ClosedRequestDoneDeal)
+                    if (item.Status == OrderStatus.Canceled || item.Status == OrderStatus.DoneDeal)
                     {
                         sum++;
                     }
@@ -609,7 +636,7 @@ namespace BL
         {
             List<Tuple<DateTime, DateTime>> res = new List<Tuple<DateTime, DateTime>>();
             var allReleventOrders = GetOrdersByUnit(unit.HostingUnitKey)
-                .Where(order => order.Status == OrderStatus.ClosedRequestDoneDeal)
+                .Where(order => order.Status == OrderStatus.DoneDeal)
                 .Select(x=>x.GuestRequestKey);
             return  GetGuestRequestList().Where(gr => allReleventOrders.Contains(gr.GuestRequestKey))
                 .Select(item => new Tuple<DateTime, DateTime>(item.EntryDate, item.ReleaseDate)).ToList();
