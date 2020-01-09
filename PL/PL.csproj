@@ -64,6 +64,9 @@
     <Compile Include="BootingPage.xaml.cs">
       <DependentUpon>BootingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GalleryPage.xaml.cs">
+      <DependentUpon>GalleryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GetHostListsPage.xaml.cs">
       <DependentUpon>GetHostListsPage.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BootingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GalleryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -350,6 +357,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\star1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gimages\G1.jpg" />
+    <Resource Include="Gimages\G2.jpg" />
+    <Resource Include="Gimages\G3.jpg" />
+    <Resource Include="Gimages\G4.jpg" />
+    <Resource Include="Gimages\G5.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

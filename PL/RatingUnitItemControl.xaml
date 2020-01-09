@@ -37,6 +37,7 @@
         </Button>
         <Label x:Name="unitNameLable" Content="Label" HorizontalAlignment="Left" Height="51" Margin="10,10,0,0" VerticalAlignment="Top" Width="168" FontFamily="MV Boli" FontSize="22"/>
         <Label x:Name="idLable" Content="Label" HorizontalAlignment="Left" Height="15" Margin="266,46,0,0" VerticalAlignment="Top" Width="44" Foreground="{x:Null}"/>
+        <Label x:Name="Thankyoulable" Content="Thank you for rating us!" HorizontalAlignment="Left" Margin="287,15,-11,-5" VerticalAlignment="Top" Width="247" Height="61" FontFamily="MV Boli" FontSize="18" Visibility="Collapsed"/>
 
     </Grid>
 </UserControl>

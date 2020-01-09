@@ -64,6 +64,12 @@ namespace PL
             hu.RateAmount += numStars;
             hu.RateStars = hu.RateAmount / hu.amountOfRaters;
             bl.UpdateUnit(hu);
+            oneStarBTN.Visibility = Visibility.Collapsed;
+            twoStarBTN.Visibility = Visibility.Collapsed;
+            threeStarBTN.Visibility = Visibility.Collapsed;
+            FOURsTARbtn.Visibility = Visibility.Collapsed;
+            fiveStarBTN.Visibility = Visibility.Collapsed;
+            Thankyoulable.Visibility = Visibility.Visible;
         }
     }
 }

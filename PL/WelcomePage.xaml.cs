@@ -62,7 +62,8 @@ namespace PL
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-
+            var galleryPage = new GalleryPage(m_navigationService); //create your new form.
+            this.NavigationService.Navigate(galleryPage);
         }
     }
 }
