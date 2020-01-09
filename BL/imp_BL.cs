@@ -216,7 +216,7 @@ namespace BL
             {
                 throw new TzimerException("E-mail Address format is invaled.Please enter the correct format.", "bl");
             }
-            if(string.IsNullOrEmpty(newRequest.Children))
+            if (string.IsNullOrEmpty(newRequest.Children))
             {
                 throw new TzimerException("Please enter the amount of children", "bl");
 
@@ -228,7 +228,7 @@ namespace BL
             }
             int number;
             bool checknumber = Int32.TryParse(newRequest.PhoneNumber, out number);
-            if(!checknumber)
+            if (!checknumber)
             {
                 throw new TzimerException("Phone number may contain only numbers.", "bl");
 
@@ -452,6 +452,10 @@ namespace BL
         {
             return dal.GetOrdersList();
         }
+        public List<Host> GetHostsList()
+        {
+            return dal.GetHostList();
+        }
 
         public List<BankBranch> GetBankList()
         {
@@ -589,7 +593,7 @@ namespace BL
 
         }
 
-        private List<Host> getHostsList()//A function that returns a list of hosting units sorted by host.
+        private List<Host> getHostsList()
         {
             return GetUnitsList().Select(x => x.Owner).Distinct().ToList();
         }
@@ -608,19 +612,19 @@ namespace BL
         {
             throw new NotImplementedException();
         }
+
         public List<Tuple<DateTime, DateTime>> markTakenDatesInMatrix(HostingUnit unit)
         {
             List<Tuple<DateTime, DateTime>> res = new List<Tuple<DateTime, DateTime>>();
             var allReleventOrders = GetOrdersByUnit(unit.HostingUnitKey)
                 .Where(order => order.Status == OrderStatus.DoneDeal)
-                .Select(x=>x.GuestRequestKey);
-            return  GetGuestRequestList().Where(gr => allReleventOrders.Contains(gr.GuestRequestKey))
+                .Select(x => x.GuestRequestKey);
+            return GetGuestRequestList().Where(gr => allReleventOrders.Contains(gr.GuestRequestKey))
                 .Select(item => new Tuple<DateTime, DateTime>(item.EntryDate, item.ReleaseDate)).ToList();
 
         }
 
-
-        public int GetAnnualBusyDays(HostingUnit hostingUnit)// Function who returns the total number of busy days per year for one hosting unit.
+        public int GetNumberOfTakenDays(HostingUnit hostingUnit)// Function who returns the total number of busy days per year for one hosting unit.
         {
             int counter = 0;
             for (int i = 0; i < 11; i++)
@@ -636,36 +640,49 @@ namespace BL
             return counter;
         }
 
-        public float GetAnnualBusyPercentage(HostingUnit hostingUnit)//A function that returns the percentage of annual occupancy for one hosting unit.
+        public float GetAnnualBusyPercentage(string UnitName)//A function that returns the percentage of annual occupancy for one hosting unit.
         {
-            Console.WriteLine();
-            int counter = GetAnnualBusyDays(hostingUnit);
-            double precent = ((double)counter / 365) * (100);
+            double precent = 0.0, counter=0.0;
+            List<HostingUnit> mylist =  GetUnitsList();
+            foreach (var item in mylist)
+            {
+                if (UnitName == item.HostingUnitName)
+                {
+                    counter = GetNumberOfTakenDays(item);
+                    precent = (counter / 365) * (100);
+                }
+            }
             return (float)precent;
         }
 
-
-        public float GetAnnualBusyPercentageForAllUnitsForOneHost(Host host)//A function that returns the percentage of annual occupancy for all the hosting unit that one host has.
+        public float GetAnnualBusyPercentageForAllUnitsForOneHost(string HostName)//A function that returns the percentage of annual occupancy for all the hosting unit that one host has.
         {
+            List<Host> myHostList = GetHostsList();
             float sum = 0, counter = 0, precent = 0;
-            List<HostingUnit> listhu = GetUnitsByHost(host.HostId);
-            foreach (var item in listhu)
+            foreach (var item in myHostList)
             {
-                counter = GetAnnualBusyPercentage(item);
-                sum += counter;
+                if (HostName == (item.PrivateName+" "+item.FamilyName))
+                {
+                    List<HostingUnit> listhu = GetUnitsByHost(item.HostId);
+                    foreach (var itemm in listhu)
+                    {
+                        counter = GetAnnualBusyPercentage(itemm.HostingUnitName);
+                        sum += counter;
+                    }
+                    precent = (sum / 365) * (100);
+                    
+                }
             }
-            precent = (sum / 365) * (100);
             return precent;
         }
 
-
-        public float GetAnnualBusyPercentageForAllUnitsForTheAdministor(List<Host> listh)//A function that returns the percentage of annual occupancy for all the hosting unit that adminisrot has.
+        public float GetAnnualBusyPercentageForAllUnitsForTheAdministor()//A function that returns the percentage of annual occupancy for all the hosting unit that adminisrot has.
         {
             float sum = 0, precent = 0;
-            List<Host> listH = getHostsList();
-            foreach (var item in listh)
+            List<Host> listH = GetHostsList();
+            foreach (var item in listH)
             {
-                float counter = GetAnnualBusyPercentageForAllUnitsForOneHost(item);
+                float counter = GetAnnualBusyPercentageForAllUnitsForOneHost(item.PrivateName+" "+item.FamilyName);
                 sum += counter;
             }
             precent = (sum / 365) * (100);
