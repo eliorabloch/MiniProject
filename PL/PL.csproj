@@ -88,6 +88,12 @@
     <Compile Include="OrderListPage.xaml.cs">
       <DependentUpon>OrderListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RateUnitPage.xaml.cs">
+      <DependentUpon>RateUnitPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RatingUnitItemControl.xaml.cs">
+      <DependentUpon>RatingUnitItemControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SuggetionOrderItemControl.xaml.cs">
       <DependentUpon>SuggetionOrderItemControl.xaml</DependentUpon>
     </Compile>
@@ -216,6 +222,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RateUnitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RatingUnitItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SuggetionOrderItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -330,6 +344,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\star1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

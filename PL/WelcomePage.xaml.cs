@@ -48,5 +48,21 @@ namespace PL
             this.NavigationService.Navigate(ManagerPage);
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var ratingunitpage = new RateUnitPage(m_navigationService); //create your new form.
+            this.NavigationService.Navigate(ratingunitpage);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

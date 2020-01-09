@@ -530,7 +530,7 @@ namespace DS
             {
                 new HostingUnit
                 {  Diary=BE.Utils.createMatrix(),
-
+                   RateStars=3,
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = true,
@@ -562,6 +562,7 @@ namespace DS
                     Area = Areas.Center,
                     Diary = BE.Utils.createMatrix(),
                     FreeParking=true,
+                    RateStars=5,
                     breakfastIncluded=false,
                     AirConditoiner=true,
                     RoomService = false,
@@ -592,7 +593,7 @@ namespace DS
                     breakfastIncluded=false,
                     AirConditoiner=true,
                     RoomService = false,
-
+                    RateStars=1,
                     Garden=false,
                     ChildrensAttractions = false,
                     HostingUnitName = "Leonardo",

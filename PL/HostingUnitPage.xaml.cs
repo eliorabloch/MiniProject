@@ -1,7 +1,17 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using System.Windows.Navigation;
 using BE;
 using BL;
 
@@ -19,7 +29,7 @@ namespace PL
         public HostingUnitPage(Host owner, bool isEdit, int key=-1)
         {
             InitializeComponent();
-
+            
             m_Owner = owner;
             if (isEdit)
             {
@@ -32,6 +42,43 @@ namespace PL
                 HostinUnitNameTextBox.Text = hu.HostingUnitName;
                 HostingUnitKeyLable.Content = "#" + hu.HostingUnitKey;
                 SubAreaTextBox.Text = hu.SubArea;
+                switch (hu.RateStars)
+                {
+                    case 1:
+                        oneStar.Visibility = Visibility.Visible;
+                        break;
+                    case 2:
+                        oneStar.Visibility = Visibility.Visible;
+                        TwoStar.Visibility = Visibility.Visible;
+                        break;
+                    case 3:
+                        oneStar.Visibility = Visibility.Visible;
+                       
+                        TwoStar.Visibility = Visibility.Visible;
+                        ThreeStar.Visibility = Visibility.Visible;
+                        break;
+
+                    case 4:
+                        oneStar.Visibility = Visibility.Visible;
+                        TwoStar.Visibility = Visibility.Visible;
+                        ThreeStar.Visibility = Visibility.Visible;
+                        FourStar.Visibility = Visibility.Visible;
+                        break;
+
+                    case 5:
+                        oneStar.Visibility = Visibility.Visible;
+                        TwoStar.Visibility = Visibility.Visible;
+                        ThreeStar.Visibility = Visibility.Visible;
+                        FourStar.Visibility = Visibility.Visible;
+                        FiveStar.Visibility = Visibility.Visible;
+
+                        break;
+                    default:
+                        break;
+
+
+
+                }
 
                 switch (hu.Area)
                 {
@@ -50,7 +97,7 @@ namespace PL
                     default:
                         break;
                 }
-
+             
                 switch (hu.Type)
                 {
                     case UnitType.Tzimer:
@@ -80,7 +127,7 @@ namespace PL
            
 
         }
-
+        
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
@@ -179,6 +226,8 @@ namespace PL
         {
 
         }
+
+      
     }
     }
 

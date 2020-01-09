@@ -14,12 +14,10 @@
             <ImageBrush ImageSource="images/main2.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="218*"/>
-            <ColumnDefinition Width="133*"/>
-            <ColumnDefinition Width="49*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Image   Grid.ColumnSpan="3"  />
+        <Image  />
         <Grid HorizontalAlignment="Left" Height="621"  VerticalAlignment="Top" Width="202"/>
         <Grid HorizontalAlignment="Left" Height="315"  VerticalAlignment="Top" Width="229">
             <Button x:Name="GeustRequestBtn" Content="Guest" HorizontalAlignment="Left" Height="80"  VerticalAlignment="Top" Width="170
@@ -38,6 +36,21 @@
         <Button x:Name="MannagerBtn" Content="Administrator" HorizontalAlignment="Left" Height="80" Margin="28,198,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="MannagerBtn_Click">
             <Button.Background>
                 <ImageBrush ImageSource="images/button.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="Rate Units" HorizontalAlignment="Left" Height="80" Margin="27,463,0,0" VerticalAlignment="Top" Width="169" Click="Button_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20">
+            <Button.Background>
+                <ImageBrush ImageSource="images/blueBtn.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content=" gallery" HorizontalAlignment="Left" Height="80" Margin="27,376,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="Button_Click_2">
+            <Button.Background>
+                <ImageBrush ImageSource="images/blueBtn.png"/>
+            </Button.Background>
+        </Button>
+        <Button Content="Button" HorizontalAlignment="Left" Height="80" Margin="26,549,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="images/blueBtn.png"/>
             </Button.Background>
         </Button>
 
