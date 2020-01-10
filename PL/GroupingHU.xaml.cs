@@ -35,6 +35,10 @@ namespace PL
             {
                 if (groupByComboBox.SelectedIndex == 0)
                 {
+                    groupingDataGrid.Items.Clear();
+                    groupingDataGrid.CanUserReorderColumns = false;
+                    groupingDataGrid.CanUserResizeColumns = false;
+                    groupingDataGrid.CanUserResizeRows = false;
                     groupingDataGrid.CanUserSortColumns = false;
                     var hu = bl.GroupHostingUnitsByArea();
                     foreach (var item in hu)

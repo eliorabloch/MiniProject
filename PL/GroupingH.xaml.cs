@@ -35,6 +35,10 @@ namespace PL
             {
                 if (groupByComboBox.SelectedIndex == 0)
                 {
+                    groupingDataGrid.Items.Clear();
+                    groupingDataGrid.CanUserReorderColumns = false;
+                    groupingDataGrid.CanUserResizeColumns = false;
+                    groupingDataGrid.CanUserResizeRows = false;
                     groupingDataGrid.CanUserSortColumns = false;
                     var h = bl.GroupHostsByNumOfUnits();
                     foreach (var item in h)
@@ -43,6 +47,7 @@ namespace PL
                         {
                             groupingDataGrid.Items.Add(host);
                         }
+                        groupingDataGrid.Items.Add(0);
                     }
                 }
             }

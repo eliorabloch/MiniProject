@@ -35,6 +35,10 @@ namespace PL
             {
                 if(groupByComboBox.SelectedIndex==0)
                 {
+                    groupingDataGrid.Items.Clear();
+                    groupingDataGrid.CanUserReorderColumns = false;
+                    groupingDataGrid.CanUserResizeColumns = false;
+                    groupingDataGrid.CanUserResizeRows = false;
                     groupingDataGrid.CanUserSortColumns = false;
                     var gr = bl.GroupGuestRequestByAreas();
                     foreach (var item in gr)
@@ -47,6 +51,10 @@ namespace PL
                 }
                 if (groupByComboBox.SelectedIndex == 1)
                 {
+                    groupingDataGrid.Items.Clear();
+                    groupingDataGrid.CanUserReorderColumns = false;
+                    groupingDataGrid.CanUserResizeColumns = false;
+                    groupingDataGrid.CanUserResizeRows = false;
                     groupingDataGrid.CanUserSortColumns = false;
                     var gr = bl.GroupGuestRequestByNumOfAtendees();
                     foreach (var item in gr)
@@ -60,6 +68,10 @@ namespace PL
                 }
                 if (groupByComboBox.SelectedIndex == 2)
                 {
+                    groupingDataGrid.Items.Clear();
+                    groupingDataGrid.CanUserReorderColumns = false;
+                    groupingDataGrid.CanUserResizeColumns = false;
+                    groupingDataGrid.CanUserResizeRows = false;
                     groupingDataGrid.CanUserSortColumns = false;
                     var gr = bl.GroupRequestByStatus();
                     foreach (var item in gr)
