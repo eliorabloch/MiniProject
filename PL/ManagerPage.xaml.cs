@@ -59,7 +59,9 @@ namespace PL
 
         private void GroupGRbyareas_Click(object sender, RoutedEventArgs e)
         {
-            
+            m_navigationService = this.NavigationService;
+            var groupGR = new GroupingGR(); //create your new form.
+            this.NavigationService.Navigate(groupGR);
         }
 
         private void Hostlist_Click(object sender, RoutedEventArgs e)
@@ -98,6 +100,20 @@ namespace PL
         {
             //int temp = bl.getNumOfUnits(??);
             //answerNumberOfUnitsTextBlock.Text = "The number of units this host has is: " + temp;
+        }
+
+        private void GroupHU_Click(object sender, RoutedEventArgs e)
+        {
+            m_navigationService = this.NavigationService;
+            var groupHU = new GroupingHU(); //create your new form.
+            this.NavigationService.Navigate(groupHU);
+        }
+
+        private void GroupH_Click(object sender, RoutedEventArgs e)
+        {
+            m_navigationService = this.NavigationService;
+            var groupH = new GroupingH(); //create your new form.
+            this.NavigationService.Navigate(groupH);
         }
     }
 }

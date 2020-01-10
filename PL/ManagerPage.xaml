@@ -8,7 +8,7 @@
       d:DesignHeight="680" d:DesignWidth="840"
       Title="ManagerPage">
 
-    <Grid>
+    <Grid Margin="0,-8,0,8">
         <Button x:Name="backBtn" Content="" HorizontalAlignment="Left" Height="30" Margin="41,595,0,0" VerticalAlignment="Top" Width="30
                 " Click="Button_Click" Foreground="{x:Null}" BorderBrush="{x:Null}">
             <Button.Background>
@@ -17,14 +17,12 @@
         </Button>
         <TextBox Name="AvailableUnits"  HorizontalAlignment="Left" Height="34" Margin="91,0,0,0" TextWrapping="Wrap" Text="Available Units By Date:" VerticalAlignment="Top" Width="236" FontSize="20"/>
         <Button Name="availableU" Content="Available Units" HorizontalAlignment="Left" Margin="399,43,0,0" VerticalAlignment="Top" Width="104" Height="39" Click="AvailableU_Click"/>
-        <TextBox Name="GroupGRByAreas" HorizontalAlignment="Left" Height="57" Margin="91,83,0,0" TextWrapping="Wrap" Text="Group Guest Request By Areas:" VerticalAlignment="Top" Width="178" RenderTransformOrigin="-0.023,0.554" FontSize="20"/>
-        <Button Name="groupGRbyareas" Content="Group Guest Request By Areas" HorizontalAlignment="Left" Margin="91,147,0,0" VerticalAlignment="Top" Width="200" Height="39" Click="GroupGRbyareas_Click"/>
-        <TextBox Name="GroupHUByAreas" HorizontalAlignment="Left" Height="56" Margin="91,191,0,0" TextWrapping="Wrap" Text="Group HostingUnit By Areas:" VerticalAlignment="Top" Width="178" FontSize="20"/>
-        <Button Name="groupHUbyareas" Content="Group Hosting Units By Areas" HorizontalAlignment="Left" Margin="91,252,0,0" VerticalAlignment="Top" Width="200" Height="39"/>
-        <TextBox Name="GroupGRByAtendees" HorizontalAlignment="Left" Height="56" Margin="91,300,0,0" TextWrapping="Wrap" Text="Group Guest Request By Atendees:" VerticalAlignment="Top" Width="200" FontSize="20" RenderTransformOrigin="0.219,0.563"/>
-        <Button Name="groupGRbyatendees" Content="Group Guest Request By Atendees" HorizontalAlignment="Left" Margin="91,361,0,0" VerticalAlignment="Top" Width="200" Height="39"/>
-        <TextBox Name="GroupHByNumOfU" HorizontalAlignment="Left" Height="55" Margin="91,405,0,0" TextWrapping="Wrap" Text="Group Hosts By Num Of Units:" VerticalAlignment="Top" Width="200" FontSize="20"/>
-        <Button Name="groupHbynumofU" Content="Group Hosts By Num Of Units" HorizontalAlignment="Left" Margin="91,465,0,0" VerticalAlignment="Top" Width="200" Height="39"/>
+        <TextBox Name="GroupGR" HorizontalAlignment="Left" Height="40" Margin="91,99,0,0" TextWrapping="Wrap" Text="Group Guest Requests:" VerticalAlignment="Top" Width="236" RenderTransformOrigin="-0.023,0.554" FontSize="20"/>
+        <Button Name="groupGR" Content="Group Guest Request" HorizontalAlignment="Left" Margin="91,147,0,0" VerticalAlignment="Top" Width="200" Height="39" Click="GroupGRbyareas_Click"/>
+        <TextBox Name="GroupHU" HorizontalAlignment="Left" Height="25" Margin="91,214,0,0" TextWrapping="Wrap" Text="Group Hosting Units:" VerticalAlignment="Top" Width="217" FontSize="20"/>
+        <Button Name="groupHU" Content="Group Hosting Units" HorizontalAlignment="Left" Margin="91,252,0,0" VerticalAlignment="Top" Width="200" Height="39" Click="GroupHU_Click"/>
+        <TextBox Name="GroupH" HorizontalAlignment="Left" Height="34" Margin="91,307,0,0" TextWrapping="Wrap" Text="Group Hosts:" VerticalAlignment="Top" Width="200" FontSize="20"/>
+        <Button Name="groupH" Content="Group Hosts" HorizontalAlignment="Left" Margin="91,358,0,0" VerticalAlignment="Top" Width="200" Height="39" Click="GroupH_Click"/>
         <TextBox Name="GetHlist" HorizontalAlignment="Left" Height="34" Margin="619,13,0,0" TextWrapping="Wrap" Text= "Host list:" VerticalAlignment="Top" Width="123" FontSize="20"/>
         <Button Name="hostlist" Content="Hosts List" HorizontalAlignment="Left" Margin="620,62,0,0" VerticalAlignment="Top" Width="200" Height="39" Click="Hostlist_Click"/>
         <TextBox Name="GetNumOfU" HorizontalAlignment="Left" Height="28" Margin="623,101,0,0" TextWrapping="Wrap" Text="Num Of Units:" VerticalAlignment="Top" Width="157" FontSize="20"/>

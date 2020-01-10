@@ -7,24 +7,28 @@ using System.Threading.Tasks;
 namespace BE
 {
    public class HostingUnit : ICloneable
-    {   public int RateStars { get; set; }
-        public int RateAmount { get; set; }
-        public int amountOfRaters { get; set; }
+    {
         public int HostingUnitKey { get; set; }
         public Host Owner { get; set; }
+        public bool Pool{ get; set; }
+        public bool Jacuzz{ get; set; }
+        public bool Garden{ get; set; }
+        public bool ChildrensAttractions { get; set; }
+        public bool FreeParking { get; set; }
+        public bool breakfastIncluded { get; set; }
+        public bool AirConditoiner { get; set; }
+        public bool RoomService { get; set; }
         public string HostingUnitName { get; set; }
+        public Areas Area { get; set; }
+        public string SubArea { get; set; }
+        public UnitType Type { get; set; }
+        public int RateStars { get; set; }
+        public int RateAmount { get; set; }
+        public int amountOfRaters { get; set; }
+        
+        
         public bool[,] Diary;
-        public bool Pool;
-        public bool Jacuzz;
-        public  bool Garden;
-        public  bool ChildrensAttractions;
-        public bool FreeParking;
-        public bool breakfastIncluded;
-        public bool AirConditoiner;
-        public bool RoomService;
-        public Areas Area;
-        public string SubArea;
-        public UnitType Type;
+
         public HostingUnit() { }//defult constructor
         
         public object Clone()

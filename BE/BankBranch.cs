@@ -13,6 +13,14 @@ namespace BE
         public int BranchNumber { get; set; }
         public string BranchAddress { get; set; }
         public string BranchCity { get; set; }
+
+        public BankBranch() { }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
+
         public override string ToString()//A print function that prints all the details of the class
         {
             string toString = "";
@@ -24,9 +32,6 @@ namespace BE
             toString += $"Branch city: {BranchCity} \n";
             return toString;
         }
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
+       
     }
 };

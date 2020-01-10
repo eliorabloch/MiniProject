@@ -102,7 +102,7 @@ namespace DS
                 {
                     GuestRequestKey = Configuration.GuestRequestId++,
                     Adults = "2",
-                    Area = Areas.South,
+                    Area = Areas.North,
                     Children = "9",
                     ChildrensAttractions = Options.possible,
                     EntryDate = new DateTime(2020, 1, 1),

@@ -1,0 +1,48 @@
+﻿<Page x:Class="PL.GroupingGR"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PL"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Grouping">
+
+    <Grid Margin="0,0,0,-70">
+        <Label Content="Group Request" Foreground="LightCoral" FontWeight="ExtraBold" FontSize="18" HorizontalAlignment="Left" Margin="43,43,0,0" VerticalContentAlignment="Top"></Label>
+        <ComboBox x:Name="groupByComboBox" Opacity="0.5" HorizontalAlignment="Left" Margin="497,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupByComboBox_SelectionChanged">
+            <ComboBoxItem>Group Guest Requests By Areas</ComboBoxItem>
+            <ComboBoxItem>Group Guest Requests By Num Of Atendees</ComboBoxItem>
+            <ComboBoxItem>Group Guesr Requests By Status</ComboBoxItem>
+        </ComboBox>
+        <DataGrid x:Name="groupingDataGrid" Opacity="0.5" FontWeight="ExtraBold" HorizontalAlignment="Left" Height="379" Width="780" Margin="10,82,0,0" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="GuestRequestKeyColum" Binding="{Binding GuestRequestKey}" Header="Guest Request Key       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="PrivateNameColum" Binding="{Binding PrivateName}" Header="Private Name       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="FamilyNameColum" Binding="{Binding FamilyName}" Header="Family Name       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="MailAddressColum" Binding="{Binding MailAddress}" Header="Mail Address                   " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="PhoneNumberColum" Binding="{Binding PhoneNumber}" Header="PhoneNumber       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="StatusColum" Binding="{Binding Status}" Header="Status       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="RegistrationDateColum" Binding="{Binding RegistrationDate}" Header="Registration Date       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="EntryDateColum" Binding="{Binding EntryDate}" Header="Entry Date       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="ReleaseDateColum" Binding="{Binding ReleaseDate}" Header="Release Date       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="AreaColum" Binding="{Binding Area}" Header="Area       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="SubAreaColum" Binding="{Binding SubArea}" Header="Sub Area             " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="TypeColum" Binding="{Binding Type}" Header="Type       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="AdultsColum" Binding="{Binding Adults}" Header="Adults       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="ChildrenColum" Binding="{Binding Children}" Header="Children       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="PoolColum" Binding="{Binding Pool}" Header="Pool       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="FreeParkingColum" Binding="{Binding FreeParking}" Header="Free Parking       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="breakfastIncludedColum" Binding="{Binding breakfastIncluded}" Header="breakfast Included       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="AirConditoinerColum" Binding="{Binding AirConditoiner}" Header="Air Conditoiner       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="RoomServiceColum" Binding="{Binding RoomService}" Header="Room Service       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="JacuzziColum" Binding="{Binding Jacuzzi}" Header="Jacuzzi       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="GardenColum" Binding="{Binding Garden}" Header="Garden       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="ChildrensAttractionsColum" Binding="{Binding ChildrensAttractions}" Header="Childrens Attractions       " Width="SizeToHeader"     />
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="backbutton" Content="back" HorizontalAlignment="Left" Margin="20,466,0,0" VerticalAlignment="Top" Width="75" Click="Backbutton_Click"/>
+
+    </Grid>
+</Page>

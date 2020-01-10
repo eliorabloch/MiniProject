@@ -70,11 +70,14 @@
     <Compile Include="GetHostListsPage.xaml.cs">
       <DependentUpon>GetHostListsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GroupingGRbyAreaItemControl.xaml.cs">
-      <DependentUpon>GroupingGRbyAreaItemControl.xaml</DependentUpon>
+    <Compile Include="GroupingGR.xaml.cs">
+      <DependentUpon>GroupingGR.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GroupingListPage.xaml.cs">
-      <DependentUpon>GroupingListPage.xaml</DependentUpon>
+    <Compile Include="GroupingH.xaml.cs">
+      <DependentUpon>GroupingH.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GroupingHU.xaml.cs">
+      <DependentUpon>GroupingHU.xaml</DependentUpon>
     </Compile>
     <Compile Include="GuestRequestInfoPage.xaml.cs">
       <DependentUpon>GuestRequestInfoPage.xaml</DependentUpon>
@@ -122,11 +125,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GroupingGRbyAreaItemControl.xaml">
+    <Page Include="GroupingGR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GroupingListPage.xaml">
+    <Page Include="GroupingH.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GroupingHU.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
