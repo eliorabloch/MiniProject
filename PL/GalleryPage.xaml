@@ -54,11 +54,49 @@
                 <ImageBrush ImageSource="Gimages/G3.jpg"/>
             </Label.Background>
         </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="662,181,0,0" VerticalAlignment="Top" Width="150">
+        <Label x:Name="g1" Content="" HorizontalAlignment="Left" Height="150" Margin="662,181,0,0" VerticalAlignment="Top" Width="150" >
             <Label.Background>
                 <ImageBrush ImageSource="Gimages/G2.jpg"/>
             </Label.Background>
         </Label>
+       
+            <Label Content="" HorizontalAlignment="Left" Height="150" Margin="342,34,-226,0" VerticalAlignment="Top" Width="150">
+                <Label.Background>
+                    <ImageBrush ImageSource="Gimages/G3.jpg"/>
+                </Label.Background>
+            </Label>
+            <Label Content="hhhh" HorizontalAlignment="Left" Height="150" Margin="662,10,0,0" VerticalAlignment="Top" Width="150">
+                <Label.Background>
+                    <ImageBrush ImageSource="Gimages/G2.jpg"/>
+                </Label.Background>
+            </Label>
+            <Grid Width="300" Height="300" Margin="231,370,309,10">
+            <Label  x:Name="lblSeasons" Foreground="White"  FontSize="24" FontFamily="Lucida Sans Unicode"  FontWeight="Bold"    >
+                <Label.Background>
+                    <ImageBrush ImageSource="Gimages/G1.jpg"   />
+                </Label.Background>
+                <Label.Style >
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="Width" Value="150"/>
+                        <Setter Property="Height" Value="150"/>
+                        
+                        <Setter Property="Opacity" Value="0.8"/>
+                       
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="300"/>
+                                <Setter Property="Height" Value="300"/>
+                               
+                                <Setter Property="Opacity" Value="1"/>
+                                
+                                
+                               
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Label.Style>
+            </Label>
+        </Grid>
         <Label HorizontalAlignment="Left" Height="150" Margin="10,10,0,0" VerticalAlignment="Top" Width="150">
             <Label.Background>
                 <ImageBrush ImageSource="Gimages/G1.jpg"/>
@@ -74,90 +112,10 @@
                 <ImageBrush ImageSource="Gimages/G4.jpg"/>
             </Label.Background>
         </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="497,10,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G3.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="662,10,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G2.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label HorizontalAlignment="Left" Height="150" Margin="10,348,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G1.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="172,348,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G5.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="334,348,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G4.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="497,348,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G3.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="662,348,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G2.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label HorizontalAlignment="Left" Height="150" Margin="10,519,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G1.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="172,519,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G5.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="334,519,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G4.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="497,519,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G3.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="662,519,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G2.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label HorizontalAlignment="Left" Height="150" Margin="10,348,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G1.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="172,348,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G5.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="334,348,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G4.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="497,348,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G3.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="662,348,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G2.jpg"/>
-            </Label.Background>
-        </Label>
+
+
+
+
+
     </Grid>
 </Page>

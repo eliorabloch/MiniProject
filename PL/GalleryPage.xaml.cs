@@ -24,6 +24,11 @@ namespace PL
         public GalleryPage(NavigationService nav)
         {
             InitializeComponent();
+            
+          
+            
+            
         }
+     
     }
 }
