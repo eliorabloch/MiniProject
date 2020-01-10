@@ -1,0 +1,40 @@
+﻿<Page x:Class="PL.GroupingHU"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PL"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Grouping">
+
+    <Grid Margin="0,0,0,-57">
+        <Label Content="Hosting Unit" Foreground="LightCoral" FontWeight="ExtraBold" FontSize="18" HorizontalAlignment="Left" Margin="43,43,0,0" VerticalContentAlignment="Top"></Label>
+        <ComboBox x:Name="groupByComboBox" Opacity="0.5" HorizontalAlignment="Left" Margin="497,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupHUByComboBox_SelectionChanged">
+            <ComboBoxItem>Group Hosting Units By Area</ComboBoxItem>
+        </ComboBox>
+        <DataGrid x:Name="groupingDataGrid" Opacity="0.5" FontWeight="ExtraBold" HorizontalAlignment="Left" Height="368" Width="780" Margin="10,94,0,-12" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="HostingUnitKeyColum" Binding="{Binding HostingUnitKey}" Header="Hosting Unit Key       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="HostingUnitNameColum" Binding="{Binding HostingUnitName}" Header="Hosting Unit Name       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="OwnerColum" Binding="{Binding Owner}" Header="Owner                                                                     " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="AreaColum" Binding="{Binding Area}" Header="Area       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="SubAreaColum" Binding="{Binding SubArea}" Header="Sub Area       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="TypeColum" Binding="{Binding Type}" Header="Type       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="PoolColum" Binding="{Binding Pool}" Header="Pool       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="FreeParkingColum" Binding="{Binding FreeParking}" Header="Free Parking       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="breakfastIncludedColum" Binding="{Binding breakfastIncluded}" Header="breakfast Included       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="AirConditoinerColum" Binding="{Binding AirConditoiner}" Header="Air Conditoiner       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="RoomServiceColum" Binding="{Binding RoomService}" Header="Room Service       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="JacuzziColum" Binding="{Binding Jacuzz}" Header="Jacuzzi       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="GardenColum" Binding="{Binding Garden}" Header="Garden       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="ChildrensAttractionsColum" Binding="{Binding ChildrensAttractions}" Header="Childrens Attractions       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="RateStarsColum" Binding="{Binding RateStars}" Header="Rate Stars       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="RateAmountColum" Binding="{Binding RateAmount}" Header="Rate Amount       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="amountOfRatersColum" Binding="{Binding amountOfRaters}" Header="amount Of Raters       " Width="SizeToHeader"     />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="backbutton" Content="back" HorizontalAlignment="Left" Margin="20,466,0,0" VerticalAlignment="Top" Width="75" Click="Backbutton_Click"/>
+
+    </Grid>
+</Page>

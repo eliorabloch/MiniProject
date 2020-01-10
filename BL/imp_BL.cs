@@ -584,13 +584,9 @@ namespace BL
                     group h by getNumOfUnits(h) into g
                     select g.ToList()).ToList();
         }
-
-        public List<List<HostingUnit>> GroupHostingUnitssByArea()
+        public int getNumOfUnits(Host owner)//A function that returns the number of units each host has.
         {
-            return (from hu in GetUnitsList()
-                    group hu by hu.Area into g
-                    select g.ToList()).ToList();
-
+            return GetUnitsList().Sum(x => x.Owner.HostId == owner.HostId ? 1 : 0);
         }
 
         private List<Host> getHostsList()
@@ -598,10 +594,7 @@ namespace BL
             return GetUnitsList().Select(x => x.Owner).Distinct().ToList();
         }
 
-        public int getNumOfUnits(Host owner)//A function that returns the number of units each host has.
-        {
-            return GetUnitsList().Sum(x => x.Owner.HostId == owner.HostId ? 1 : 0);
-        }
+       
 
         public void DeleteOrder(Order update)
         {
@@ -610,7 +603,9 @@ namespace BL
 
         public List<List<GuestRequest>> GroupRequestByStatus()
         {
-            throw new NotImplementedException();
+            return (from gr in GetGuestRequestList()
+                    group gr by gr.Status into g
+                    select g.ToList()).ToList();
         }
 
         public List<Tuple<DateTime, DateTime>> markTakenDatesInMatrix(HostingUnit unit)
