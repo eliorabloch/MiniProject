@@ -5,19 +5,22 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PL"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="680" d:DesignWidth="840"
       Title="Grouping">
 
-    <Grid Margin="0,0,0,-70">
-        <Label Content="Group Request" Foreground="LightCoral" FontWeight="ExtraBold" FontSize="18" HorizontalAlignment="Left" Margin="43,43,0,0" VerticalContentAlignment="Top"></Label>
-        <ComboBox x:Name="groupByComboBox" Opacity="0.5" HorizontalAlignment="Left" Margin="497,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupByComboBox_SelectionChanged">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="images/back.jpg"/>
+        </Grid.Background>
+        <Label Content="Group Request:" Foreground="Black" FontSize="18" HorizontalAlignment="Left" Margin="43,43,0,0" VerticalContentAlignment="Top" FontFamily="MV Boli" Width="151"></Label>
+        <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="575,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupByComboBox_SelectionChanged">
             <ComboBoxItem>Group Guest Requests By Areas</ComboBoxItem>
             <ComboBoxItem>Group Guest Requests By Num Of Atendees</ComboBoxItem>
             <ComboBoxItem>Group Guesr Requests By Status</ComboBoxItem>
         </ComboBox>
-        <DataGrid x:Name="groupingDataGrid" Opacity="0.5" FontWeight="ExtraBold" HorizontalAlignment="Left" Height="379" Width="780" Margin="10,82,0,0" VerticalAlignment="Top">
+        <DataGrid x:Name="groupingDataGrid"   HorizontalAlignment="Left" Height="496" Width="780" Margin="29,82,0,0" VerticalAlignment="Top" SelectionChanged="groupingDataGrid_SelectionChanged" FontFamily="Lucida Sans Unicode" Background="{x:Null}" BorderBrush="{x:Null}">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="GuestRequestKeyColum" Binding="{Binding GuestRequestKey}" Header="Guest Request Key       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="GuestRequestKeyColum" Binding="{Binding GuestRequestKey}" Header="Guest Request Key       " Width="SizeToHeader" Foreground="Black"      />
                 <DataGridTextColumn x:Name="PrivateNameColum" Binding="{Binding PrivateName}" Header="Private Name       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="FamilyNameColum" Binding="{Binding FamilyName}" Header="Family Name       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="MailAddressColum" Binding="{Binding MailAddress}" Header="Mail Address                   " Width="SizeToHeader"     />
@@ -42,7 +45,11 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="backbutton" Content="back" HorizontalAlignment="Left" Margin="20,466,0,0" VerticalAlignment="Top" Width="75" Click="Backbutton_Click"/>
+        <Button Name="backbutton" Content="" HorizontalAlignment="Left" Margin="26,595,0,0" VerticalAlignment="Top" Width="30" Click="Backbutton_Click" Height="30" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="images/arrow.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Page>

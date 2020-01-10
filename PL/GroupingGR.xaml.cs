@@ -94,5 +94,10 @@ namespace PL
         {
             this.NavigationService.GoBack();
         }
+
+        private void groupingDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
