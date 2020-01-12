@@ -98,8 +98,8 @@ namespace PL
 
         private void NumberOfUnitsHostNameButton_Click(object sender, RoutedEventArgs e)
         {
-            //int temp = bl.getNumOfUnits(??);
-            //answerNumberOfUnitsTextBlock.Text = "The number of units this host has is: " + temp;
+            int temp = bl.getNumOfUnits(NumberOfUnitsHostNameTextBox.Text);
+            answerNumberOfUnitsTextBlock.Text = "The number of units this host has is: " + temp;
         }
 
         private void GroupHU_Click(object sender, RoutedEventArgs e)

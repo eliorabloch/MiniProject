@@ -47,6 +47,7 @@ namespace PL
                         {
                             groupingDataGrid.Items.Add(request);
                         }
+                       // groupingDataGrid.Items.Add(0);
                     }
                 }
                 if (groupByComboBox.SelectedIndex == 1)
@@ -63,7 +64,8 @@ namespace PL
                         {
                             groupingDataGrid.Items.Add(request);
                         }
-                        groupingDataGrid.Items.Add(new BE.GuestRequest());
+                      //  groupingDataGrid.Items.Add(new BE.GuestRequest());
+                     //   groupingDataGrid.Items.Add(0);
                     }
                 }
                 if (groupByComboBox.SelectedIndex == 2)
@@ -80,7 +82,8 @@ namespace PL
                         {
                             groupingDataGrid.Items.Add(request);
                         }
-                        groupingDataGrid.Items.Add(new BE.GuestRequest());
+                        //groupingDataGrid.Items.Add(new BE.GuestRequest());
+                        //groupingDataGrid.Items.Add(0);
                     }
                 }
             }
