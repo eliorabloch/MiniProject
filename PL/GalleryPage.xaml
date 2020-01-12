@@ -9,109 +9,446 @@
       Title="GalleryPage">
 
     <Grid Background="#FFE4D5BA">
-        <Label HorizontalAlignment="Left" Height="150" Margin="10,10,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G1.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="172,10,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G5.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="334,10,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G4.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="497,10,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G3.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="662,10,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G2.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label HorizontalAlignment="Left" Height="150" Margin="10,181,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G1.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="172,181,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G5.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="334,181,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G4.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="497,181,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G3.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label x:Name="g1" Content="" HorizontalAlignment="Left" Height="150" Margin="662,181,0,0" VerticalAlignment="Top" Width="150" >
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G2.jpg"/>
-            </Label.Background>
-        </Label>
-       
-            <Label Content="" HorizontalAlignment="Left" Height="150" Margin="342,34,-226,0" VerticalAlignment="Top" Width="150">
-                <Label.Background>
-                    <ImageBrush ImageSource="Gimages/G3.jpg"/>
-                </Label.Background>
-            </Label>
-            <Label Content="hhhh" HorizontalAlignment="Left" Height="150" Margin="662,10,0,0" VerticalAlignment="Top" Width="150">
-                <Label.Background>
-                    <ImageBrush ImageSource="Gimages/G2.jpg"/>
-                </Label.Background>
-            </Label>
-            <Grid Width="300" Height="300" Margin="231,370,309,10">
-            <Label  x:Name="lblSeasons" Foreground="White"  FontSize="24" FontFamily="Lucida Sans Unicode"  FontWeight="Bold"    >
-                <Label.Background>
-                    <ImageBrush ImageSource="Gimages/G1.jpg"   />
-                </Label.Background>
-                <Label.Style >
-                    <Style TargetType="{x:Type Label}">
-                        <Setter Property="Width" Value="150"/>
-                        <Setter Property="Height" Value="150"/>
-                        
+        <Grid Width="200" Height="200" Margin="4,-2,636,482">
+            <Image  x:Name="six" Source="Gimages/G1.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
                         <Setter Property="Opacity" Value="0.8"/>
-                       
+
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Width" Value="300"/>
-                                <Setter Property="Height" Value="300"/>
-                               
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
                                 <Setter Property="Opacity" Value="1"/>
-                                
-                                
-                               
+
+
                             </Trigger>
                         </Style.Triggers>
                     </Style>
-                </Label.Style>
-            </Label>
+                </Image.Style>
+            </Image>
         </Grid>
-        <Label HorizontalAlignment="Left" Height="150" Margin="10,10,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G1.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="172,10,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G5.jpg"/>
-            </Label.Background>
-        </Label>
-        <Label Content="" HorizontalAlignment="Left" Height="150" Margin="334,10,0,0" VerticalAlignment="Top" Width="150">
-            <Label.Background>
-                <ImageBrush ImageSource="Gimages/G4.jpg"/>
-            </Label.Background>
-        </Label>
+        <Grid Width="200" Height="200" Margin="161,-2,479,482">
+            <Image  x:Name="Two" Source="Gimages/G2.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="318,-2,322,482">
+            <Image  x:Name="Two1" Source="Gimages/G3.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="475,-2,165,482">
+            <Image  x:Name="four" Source="Gimages/G4.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="633,-2,7,482">
+            <Image  x:Name="five" Source="Gimages/G5.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="4,154,636,326">
+            <Image  x:Name="six1" Source="Gimages/G8.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="161,154,479,326">
+            <Image  x:Name="six2" Source="Gimages/G6.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="318,156,322,324">
+            <Image  x:Name="six3" Source="Gimages/G10.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="475,156,165,324">
+            <Image  x:Name="six4" Source="Gimages/G7.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="630,156,10,324">
+            <Image  x:Name="six5" Source="Gimages/G9.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="4,308,636,172">
+            <Image  x:Name="six6" Source="Gimages/G15.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="161,308,479,172">
+            <Image  x:Name="Two2" Source="Gimages/G11.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="318,308,322,172">
+            <Image  x:Name="Two3" Source="Gimages/G12.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="475,310,165,170">
+            <Image  x:Name="four1" Source="Gimages/G13.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="633,312,7,168">
+            <Image  x:Name="five1" Source="Gimages/G14.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="4,468,636,12">
+            <Image  x:Name="six7" Source="Gimages/G17.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="161,468,479,12">
+            <Image  x:Name="six8" Source="Gimages/G18.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="318,468,322,12">
+            <Image  x:Name="six9" Source="Gimages/G16.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="475,468,165,12">
+            <Image  x:Name="six10" Source="Gimages/G19.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Grid Width="200" Height="200" Margin="630,468,10,12">
+            <Image  x:Name="six11" Source="Gimages/G20.jpg" >
+
+                <Image.Style >
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="100"/>
+                        <Setter Property="Opacity" Value="0.8"/>
+
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Height" Value="200"/>
+                                <Setter Property="Opacity" Value="1"/>
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Grid>
+        <Button x:Name="BackBTN" Content="" HorizontalAlignment="Left" Margin="10,588,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Click="BackBTN_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="images/arrow.png"/>
+            </Button.Background>
+        </Button>
+
 
 
 

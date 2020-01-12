@@ -372,5 +372,24 @@
     <Resource Include="Gimages\G4.jpg" />
     <Resource Include="Gimages\G5.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gimages\G10.jpg" />
+    <Resource Include="Gimages\G6.jpg" />
+    <Resource Include="Gimages\G7.jpg" />
+    <Resource Include="Gimages\G8.jpg" />
+    <Resource Include="Gimages\G9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gimages\G11.jpg" />
+    <Resource Include="Gimages\G12.jpg" />
+    <Resource Include="Gimages\G13.jpg" />
+    <Resource Include="Gimages\G14.jpg" />
+    <Resource Include="Gimages\G15.jpg" />
+    <Resource Include="Gimages\G16.jpg" />
+    <Resource Include="Gimages\G17.jpg" />
+    <Resource Include="Gimages\G18.jpg" />
+    <Resource Include="Gimages\G19.jpg" />
+    <Resource Include="Gimages\G20.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,7 +6,10 @@
              xmlns:local="clr-namespace:PL"
              mc:Ignorable="d" Width="515
              " Height="81.198">
-    <Grid Background="#FFD9C8C2" Margin="2,8,-11,2" HorizontalAlignment="Left" Width="523">
+    <Grid Margin="2,8,-11,2" HorizontalAlignment="Left" Width="523">
+        <Grid.Background>
+            <SolidColorBrush Color="#FFF7F4F3" Opacity="0.7"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>

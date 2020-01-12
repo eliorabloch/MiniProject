@@ -29,6 +29,10 @@ namespace PL
             
             
         }
-     
+
+        private void BackBTN_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
     }
 }
