@@ -78,7 +78,22 @@ namespace DAL
         public List<Host> GetHostList()
         {
             return (from h in DataSource.unitList
-                    select (Host)h.Owner.Clone()).ToList();
+                            select (Host)h.Owner.Clone()).ToList();
+            //List<Host> myhostlist = (from h in DataSource.unitList
+            //                         select (Host)h.Owner.Clone()).ToList();
+            //List<Host> myhostlist2 = new List<Host>();
+            //foreach (var host in myhostlist)
+            //{
+            //    foreach (var host2 in myhostlist2)
+            //    {
+            //        if (host.HostId != host2.HostId)
+            //        {
+            //            myhostlist2.Add(host2);
+            //        }
+            //    }
+            //    //  return myhostlist2;
+            //}
+            //return myhostlist2;
         }
 
         public HostingUnit GetUnit(int id)
