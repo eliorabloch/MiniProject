@@ -12,6 +12,7 @@
         <Label Content="Hosting Unit" Foreground="LightCoral" FontWeight="ExtraBold" FontSize="18" HorizontalAlignment="Left" Margin="43,43,0,0" VerticalContentAlignment="Top"></Label>
         <ComboBox x:Name="groupByComboBox" Opacity="0.5" HorizontalAlignment="Left" Margin="497,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupHUByComboBox_SelectionChanged">
             <ComboBoxItem>Group Hosting Units By Area</ComboBoxItem>
+            <ComboBoxItem>Group Hosting Units By rates</ComboBoxItem>
         </ComboBox>
         <DataGrid x:Name="groupingDataGrid" Opacity="0.5" FontWeight="ExtraBold" HorizontalAlignment="Left" Height="368" Width="780" Margin="10,94,0,-12" VerticalAlignment="Top">
             <DataGrid.Columns>

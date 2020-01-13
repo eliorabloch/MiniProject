@@ -131,5 +131,10 @@ namespace PL
             int temp = bl.getOverallNumOfUnints();
             answerAllOccupancyTextBlock_Copy.Text = "The overall number of units is: " + temp;
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+           
+        }
     }
 }

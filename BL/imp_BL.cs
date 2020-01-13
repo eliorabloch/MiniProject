@@ -31,10 +31,7 @@ namespace BL
             dal = factoryDAL.GetDAL(TypeDAL);
         }
 
-        public List<Order> GetOrdersByUnit(int hostingUnitKey)
-        {
-            return GetOrdersList().Where(x => x.HostingUnitKey == hostingUnitKey).ToList();
-        }
+        
 
         #region Gusets Requsts
 
@@ -415,6 +412,12 @@ namespace BL
 
         #endregion
 
+
+        public List<Order> GetOrdersByUnit(int hostingUnitKey)
+        {
+            return GetOrdersList().Where(x => x.HostingUnitKey == hostingUnitKey).ToList();
+        }
+
         public List<HostingUnit> GetAllAvilableUnits(DateTime start, int amountOfDAys)
         {
             DateTime end = start.AddDays(amountOfDAys);
@@ -452,6 +455,7 @@ namespace BL
         {
             return dal.GetOrdersList();
         }
+
         public List<Host> GetHostsList()
         {
             return dal.GetHostList();
@@ -703,6 +707,14 @@ namespace BL
             return sum;
             
             
+        }
+
+        public List<List<HostingUnit>> GroupHostingUnitsByRates()
+        {
+            return (from hu in GetUnitsList()
+                    group hu by hu.RateAmount into g
+                    select g.ToList()).ToList();
+
         }
     }
 

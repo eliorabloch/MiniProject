@@ -49,6 +49,22 @@ namespace PL
                         }
                     }
                 }
+                if (groupByComboBox.SelectedIndex == 1)
+                {
+                    groupingDataGrid.Items.Clear();
+                    groupingDataGrid.CanUserReorderColumns = false;
+                    groupingDataGrid.CanUserResizeColumns = false;
+                    groupingDataGrid.CanUserResizeRows = false;
+                    groupingDataGrid.CanUserSortColumns = false;
+                    var hu = bl.GroupHostingUnitsByRates();
+                    foreach (var item in hu)
+                    {
+                        foreach (var hostingunit in item)
+                        {
+                            groupingDataGrid.Items.Add(hostingunit);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
