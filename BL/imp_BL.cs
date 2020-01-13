@@ -581,17 +581,17 @@ namespace BL
         public List<List<Host>> GroupHostsByNumOfUnits()
         {
             return (from h in getHostsList()
-                    group h by getNumOfUnits(h.PrivateName+" "+h.FamilyName) into g
+                    group h by getNumOfUnits(h.HostId) into g
                     select g.ToList()).ToList();
         }
 
-        public int getNumOfUnits(string hostName)//A function that returns the number of units each host has.
+        public int getNumOfUnits(string hostID)//A function that returns the number of units each host has.
         {
             List<Host> myhostlist = getHostsList();
             int sum = 0;
             foreach (var item in myhostlist)
             {
-                if(hostName==item.PrivateName+" "+item.FamilyName)
+                if(hostID==item.HostId)
                 {
                     sum= GetUnitsList().Sum(x => x.Owner.HostId == item.HostId ? 1 : 0);
                 }

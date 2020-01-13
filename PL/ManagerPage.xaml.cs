@@ -115,5 +115,15 @@ namespace PL
             var groupH = new GroupingH(); //create your new form.
             this.NavigationService.Navigate(groupH);
         }
+
+        private void NumberOfUnitsHostNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void GetNumOfU_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

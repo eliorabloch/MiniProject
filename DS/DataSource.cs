@@ -1106,7 +1106,7 @@ namespace DS
                     RateAmount=150,
                 amountOfRaters=70,
                      RateStars=150/70,
-                    HostingUnitName = "Plaza",
+                    HostingUnitName = "Plaza2",
                     SubArea = "Tal Aviv",
                     Jacuzz = false,
                     Type = UnitType.HostingUnit,
