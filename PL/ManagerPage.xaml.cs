@@ -125,5 +125,11 @@ namespace PL
         {
 
         }
+
+        private void AllNumberOfUnits_Click(object sender, RoutedEventArgs e)
+        {
+            int temp = bl.getOverallNumOfUnints();
+            answerAllOccupancyTextBlock_Copy.Text = "The overall number of units is: " + temp;
+        }
     }
 }

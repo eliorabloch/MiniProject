@@ -121,16 +121,13 @@
             </Button.Background>
         </Button>
         <Label Content="Overall Units Amount:" HorizontalAlignment="Left" Height="100" Margin="492,492,0,0" VerticalAlignment="Top" Width="233" FontSize="16" FontFamily="Lucida Sans Unicode"/>
-        <Button x:Name="AllOccupancyButtom_Copy" Content="calculate" HorizontalAlignment="Left" Margin="691,492,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="AllOccupancyButtom_Click" BorderBrush="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="images/button.png"/>
-            </Button.Background>
-        </Button>
+        
         <TextBlock x:Name="answerAllOccupancyTextBlock_Copy" HorizontalAlignment="Left" Margin="502,540,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="40" Width="288">
             <TextBlock.Background>
                 <SolidColorBrush Color="White" Opacity="0.5"/>
             </TextBlock.Background>
         </TextBlock>
-
+        <Button Name="AllNumberOfUnits" Content="calculate" HorizontalAlignment="Left" Margin="715,506,0,0" VerticalAlignment="Top" Width="75" Click="AllNumberOfUnits_Click"/>
+        
     </Grid>
 </Page>

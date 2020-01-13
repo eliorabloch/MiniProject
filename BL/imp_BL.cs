@@ -658,13 +658,13 @@ namespace BL
             return (float)precent;
         }
 
-        public float GetAnnualBusyPercentageForAllUnitsForOneHost(string HostName)//A function that returns the percentage of annual occupancy for all the hosting unit that one host has.
+        public float GetAnnualBusyPercentageForAllUnitsForOneHost(string HostID)//A function that returns the percentage of annual occupancy for all the hosting unit that one host has.
         {
             List<Host> myHostList = GetHostsList();
             float sum = 0, counter = 0, precent = 0;
             foreach (var item in myHostList)
             {
-                if (HostName == (item.PrivateName+" "+item.FamilyName))
+                if (HostID == (item.HostId))
                 {
                     List<HostingUnit> listhu = GetUnitsByHost(item.HostId);
                     foreach (var itemm in listhu)
@@ -685,11 +685,24 @@ namespace BL
             List<Host> listH = GetHostsList();
             foreach (var item in listH)
             {
-                float counter = GetAnnualBusyPercentageForAllUnitsForOneHost(item.PrivateName+" "+item.FamilyName);
+                float counter = GetAnnualBusyPercentageForAllUnitsForOneHost(item.HostId);
                 sum += counter;
             }
             precent = (sum / 365) * (100);
             return precent;
+        }
+
+        public int getOverallNumOfUnints()
+        {
+            int sum = 0;
+            List<Host> myoveralllist = GetHostsList();
+            foreach (var item in myoveralllist)
+            {
+                sum+=getNumOfUnits(item.HostId);
+            }
+            return sum;
+            
+            
         }
     }
 
