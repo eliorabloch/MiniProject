@@ -43,9 +43,11 @@ namespace PL
 
         private void MannagerBtn_Click(object sender, RoutedEventArgs e)
         {
-            m_navigationService = this.NavigationService;
-            var ManagerPage = new ManagerPage(m_navigationService); //create your new form.
-            this.NavigationService.Navigate(ManagerPage);
+            MannagerBtn.Visibility = Visibility.Collapsed;
+            Paasword.Visibility = Visibility.Visible;
+            LoginBtn.Visibility = Visibility.Visible;
+            
+           
 
         }
 
@@ -64,6 +66,16 @@ namespace PL
         {
             var galleryPage = new GalleryPage(m_navigationService); //create your new form.
             this.NavigationService.Navigate(galleryPage);
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MannagerBtn.Visibility = Visibility.Visible;
+            Paasword.Visibility = Visibility.Collapsed;
+            LoginBtn.Visibility = Visibility.Collapsed;
+            m_navigationService = this.NavigationService;
+             var ManagerPage = new ManagerPage(m_navigationService); //create your new form.
+             this.NavigationService.Navigate(ManagerPage);
         }
     }
 }

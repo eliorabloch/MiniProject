@@ -11,13 +11,7 @@
     <Grid>
 
         <Label Content="Available Unit:" HorizontalAlignment="Left" Height="36" Margin="34,10,0,0" VerticalAlignment="Top" Width="283" FontSize="18" FontFamily="MV Boli"/>
-        <ListView x:Name="AvailableUnitListView" HorizontalAlignment="Left" Height="363" Margin="163,51,0,0" VerticalAlignment="Top" Width="458" SelectionChanged="AvailableUnitListView_SelectionChanged">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+       
         <Button Name="backbutton" Content="back" HorizontalAlignment="Left" Margin="10,391,0,0" VerticalAlignment="Top" Width="99" Height="49" Click="Backbutton_Click"/>
 
     </Grid>

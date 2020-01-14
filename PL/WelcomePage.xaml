@@ -10,12 +10,14 @@
 
 
     <Grid>
+
         <Grid.Background>
             <ImageBrush ImageSource="images/main2.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+
 
         <Image  />
         <Grid HorizontalAlignment="Left" Height="621"  VerticalAlignment="Top" Width="202"/>
@@ -33,6 +35,9 @@
             </Button.Background>
         </Button>
 
+
+
+
         <Button x:Name="MannagerBtn" Content="Administrator" HorizontalAlignment="Left" Height="80" Margin="28,198,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="MannagerBtn_Click">
             <Button.Background>
                 <ImageBrush ImageSource="images/button.png"/>
@@ -43,6 +48,7 @@
                 <ImageBrush ImageSource="images/blueBtn.png"/>
             </Button.Background>
         </Button>
+
         <Button Content=" gallery" HorizontalAlignment="Left" Height="80" Margin="27,376,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="Button_Click_2">
             <Button.Background>
                 <ImageBrush ImageSource="images/blueBtn.png"/>
@@ -54,6 +60,21 @@
             </Button.Background>
         </Button>
 
+
+
+        <StackPanel x:Name="Paasword" Margin="28,198,593,370"  Visibility="Collapsed">
+            <TextBlock Text="Enter your password:" Height="24" FontFamily="Lucida Sans Unicode" FontSize="14" FontWeight="Bold" Margin="3,0,-3,0" />
+            <PasswordBox Height="42" >
+                <PasswordBox.Background>
+                    <SolidColorBrush Color="White" Opacity="0.8"/>
+                </PasswordBox.Background>
+            </PasswordBox>
+        </StackPanel>
+        <Button x:Name="LoginBtn" Content="Login" HorizontalAlignment="Left" Height="43" Margin="247,222,0,0" VerticalAlignment="Top" Width="63" FontFamily="Lucida Sans Unicode" BorderBrush="{x:Null}" Click="LoginBtn_Click" Visibility="Collapsed">
+            <Button.Background>
+                <ImageBrush ImageSource="images/button.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 
 </Page>

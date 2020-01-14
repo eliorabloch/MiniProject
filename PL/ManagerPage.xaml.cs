@@ -32,6 +32,7 @@ namespace PL
         {
             InitializeComponent();
             m_navigationService = navigationService;
+           
         }
 
 
@@ -42,9 +43,18 @@ namespace PL
 
         private void AvailableU_Click(object sender, RoutedEventArgs e)
         {
-            m_navigationService = this.NavigationService;
-            var ManagerPageAvailableUnit = new ManagerListsPage(amountTextBox.Text, dateTextBox.Text); //create your new form.
-            this.NavigationService.Navigate(ManagerPageAvailableUnit);
+            DateTime d = DateTime.Parse(dateTextBox.Text);
+            InitializeComponent();
+            List<AvailableUnitItemControl> availableUnitItemControl = new List<AvailableUnitItemControl>();
+            ImpBL bl = ImpBL.Instance;
+            foreach (var item in bl.GetAllAvilableUnits(d, int.Parse(amountTextBox.Text)))
+            {
+                AvailableUnitItemControl auic = new AvailableUnitItemControl();
+                auic.UnitNameTextBlock.Text = item.HostingUnitName;
+                availableUnitItemControl.Add(auic);
+            }
+            AvailableUnitListView.ItemsSource = availableUnitItemControl;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -136,5 +146,12 @@ namespace PL
         {
            
         }
+
+        private void AvailableUnitListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+       
     }
 }
