@@ -32,7 +32,7 @@ namespace PL
         {
             InitializeComponent();
             m_navigationService = navigationService;
-           
+
         }
 
 
@@ -83,15 +83,52 @@ namespace PL
 
         private void OccupancyButtom_Click(object sender, RoutedEventArgs e)
         {
+            bool flag = false;
+            List<HostingUnit> mylist = bl.GetUnitsList();
+            foreach (var item in mylist)
+            {
+                if (UnitTextBox.Text == item.HostingUnitName)
+                {
+                    flag = true;
+                }
+            }
+            if (flag)
+            {
+                float temp = bl.GetAnnualBusyPercentage(UnitTextBox.Text);
+                answerUnitOccupancyTextBlock.Text = "The occupancy of this unit is: " + temp;
+            }
+            else
+            {
+                string titel = "Oops";
+                string err = "Cannot find an HostingUnit with this name.";
+                MessageBox.Show(err, titel);
+            }
+            
+        }
 
-            float temp = bl.GetAnnualBusyPercentage(UnitTextBox.Text);
-            answerUnitOccupancyTextBlock.Text= "The occupancy of this unit is: " + temp;
-         }
-
-            private void HostOccupancyButtom_Click(object sender, RoutedEventArgs e)
+        private void HostOccupancyButtom_Click(object sender, RoutedEventArgs e)
         {
-            float temp = bl.GetAnnualBusyPercentageForAllUnitsForOneHost(HostOccupancyTextBox.Text);
-            answerHostOccupancyTextBlock.Text = "The occupancy of this host is: " + temp;
+            bool flag = false;
+            List<Host> mylist = bl.GetHostsList();
+            foreach (var item in mylist)
+            {
+                if (HostOccupancyTextBox.Text == item.HostId)
+                {
+                    flag = true;
+                }
+            }
+            if (flag)
+            {
+                float temp = bl.GetAnnualBusyPercentageForAllUnitsForOneHost(HostOccupancyTextBox.Text);
+                answerHostOccupancyTextBlock.Text = "The occupancy of this host is: " + temp;
+            }
+            else
+            {
+                string titel = "Oops";
+                string err = "Cannot find an Host with this ID.";
+                MessageBox.Show(err, titel);
+            }
+            
         }
 
         private void AnswerUnitOccupancyTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -103,25 +140,32 @@ namespace PL
         {
             float temp = bl.GetAnnualBusyPercentageForAllUnitsForTheAdministor();
             answerAllOccupancyTextBlock.Text = "The overall occupancy is: " + temp;
-            
+
         }
 
         private void NumberOfUnitsHostNameButton_Click(object sender, RoutedEventArgs e)
         {
-            int temp = bl.getNumOfUnits(NumberOfUnitsHostNameTextBox.Text);
-            answerNumberOfUnitsTextBlock.Text = "The number of units this host has is: " + temp;
-
-            //  List<Host> mylist = bl.GetHostsList();
-            //    foreach (var item in mylist)
-            //    {
-            //        if (NumberOfUnitsHostNameTextBox.Text == item.HostId)
-            //        {
-            //            int temp = bl.getNumOfUnits(NumberOfUnitsHostNameTextBox.Text);
-            //            answerNumberOfUnitsTextBlock.Text = "The number of units this host has is: " + temp;
-            //        }
-            //    }
-            //throw new TzimerException($"Sorry,cant find an Host with the ID:{NumberOfUnitsHostNameTextBox.Text}");
-
+            bool flag = false;
+            List<Host> mylist = bl.GetHostsList();
+            foreach (var item in mylist)
+            {
+                if (NumberOfUnitsHostNameTextBox.Text == item.HostId)
+                {
+                    flag = true;
+                   
+                }
+            }
+            if (flag)
+            {
+                int temp = bl.getNumOfUnits(NumberOfUnitsHostNameTextBox.Text);
+                answerNumberOfUnitsTextBlock.Text = "The number of units this host has is: " + temp;
+            }
+            else
+            {
+                string titel = "Oops";
+                string err = "Cannot find an Host with this ID.";
+                MessageBox.Show(err, titel);
+            }
         }
 
         private void GroupHU_Click(object sender, RoutedEventArgs e)
@@ -156,7 +200,7 @@ namespace PL
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void AvailableUnitListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -164,6 +208,9 @@ namespace PL
 
         }
 
-       
+        private void UnitTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

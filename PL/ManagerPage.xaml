@@ -65,7 +65,7 @@
         <Label Content="Dates Wanted:" HorizontalAlignment="Left" Height="74" Margin="2,489,0,0" VerticalAlignment="Top" Width="98"/>
         <Label Content="Amount Of Days:" HorizontalAlignment="Left" Height="29" Margin="2,531,0,0" VerticalAlignment="Top" Width="98"/>
         <TextBox  x:Name="amountTextBox"  HorizontalAlignment="Left" Height="40" Margin="101,530,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121" BorderBrush="{x:Null}"/>
-        <TextBox x:Name="UnitTextBox" HorizontalAlignment="Left" Height="40" Margin="566,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="116" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="UnitTextBox" HorizontalAlignment="Left" Height="40" Margin="566,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="116" BorderBrush="{x:Null}" TextChanged="UnitTextBox_TextChanged"/>
         <Label Content="Unit Name:" HorizontalAlignment="Left" Margin="493,177,0,0" VerticalAlignment="Top" Height="25" Width="73" RenderTransformOrigin="0.436,0.573"/>
         <Button x:Name="OccupancyButtom" Content="calculate" HorizontalAlignment="Left" Margin="691,166,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="OccupancyButtom_Click" BorderBrush="{x:Null}">
             <Button.Background>

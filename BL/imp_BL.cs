@@ -710,7 +710,7 @@ namespace BL
         public List<List<HostingUnit>> GroupHostingUnitsByRates()
         {
             return (from hu in GetUnitsList()
-                    group hu by hu.RateAmount into g
+                    group hu by hu.RateStars into g
                     select g.ToList()).ToList();
 
         }
