@@ -112,7 +112,7 @@
             </TextBlock.Background>
         </TextBlock>
         <Label Content=" Manager Information:" HorizontalAlignment="Left" Height="108" Margin="41,6,0,0" VerticalAlignment="Top" Width="417" FontSize="36" FontFamily="MV Boli"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="80" Margin="248,104,0,0" VerticalAlignment="Top" Width="200" BorderBrush="{x:Null}" Click="Button_Click_1">
+        <Button Content="Orders" HorizontalAlignment="Left" Height="80" Margin="248,104,0,0" VerticalAlignment="Top" Width="200" BorderBrush="{x:Null}" Click="Button_Click_1">
             <Button.Background>
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>

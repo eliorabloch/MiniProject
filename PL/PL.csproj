@@ -79,6 +79,9 @@
     <Compile Include="GroupingHU.xaml.cs">
       <DependentUpon>GroupingHU.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GroupingO.xaml.cs">
+      <DependentUpon>GroupingO.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GuestRequestInfoPage.xaml.cs">
       <DependentUpon>GuestRequestInfoPage.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GroupingHU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GroupingO.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

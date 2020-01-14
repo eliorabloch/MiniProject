@@ -714,6 +714,14 @@ namespace BL
                     select g.ToList()).ToList();
 
         }
+
+        public List<List<Order>> GroupOrdersByStatus()
+        {
+            return (from o in GetOrdersList()
+                    group o by o.Status into g
+                    select g.ToList()).ToList();
+
+        }
     }
 
 }

@@ -200,7 +200,9 @@ namespace PL
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            m_navigationService = this.NavigationService;
+            var groupO = new GroupingO(); //create your new form.
+            this.NavigationService.Navigate(groupO);
         }
 
         private void AvailableUnitListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
