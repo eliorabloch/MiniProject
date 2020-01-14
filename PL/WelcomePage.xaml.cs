@@ -31,7 +31,7 @@ namespace PL
             m_navigationService = this.NavigationService;
             var GuestRequestPage = new GuestRequestListPage(m_navigationService); //create your new form.
             this.NavigationService.Navigate(GuestRequestPage);
-          
+
         }
 
         private void HostingUnitBTN_Click(object sender, RoutedEventArgs e)
@@ -46,10 +46,14 @@ namespace PL
             MannagerBtn.Visibility = Visibility.Collapsed;
             Paasword.Visibility = Visibility.Visible;
             LoginBtn.Visibility = Visibility.Visible;
-            
+
+      
+        }
+    
            
 
-        }
+
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -70,12 +74,20 @@ namespace PL
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (!(PASSWORD.Password == "206343501"))
+            {
+                string titel = "Oops";
+                string err = "Wrong Password,please try again!";
+                MessageBox.Show(err,titel);
+                return;
+            }
+
             MannagerBtn.Visibility = Visibility.Visible;
             Paasword.Visibility = Visibility.Collapsed;
             LoginBtn.Visibility = Visibility.Collapsed;
             m_navigationService = this.NavigationService;
-             var ManagerPage = new ManagerPage(m_navigationService); //create your new form.
-             this.NavigationService.Navigate(ManagerPage);
+            var ManagerPage = new ManagerPage(m_navigationService); //create your new form.
+            this.NavigationService.Navigate(ManagerPage);
         }
     }
 }

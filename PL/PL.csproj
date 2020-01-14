@@ -88,6 +88,7 @@
     <Compile Include="GetHostListItemControl.xaml.cs">
       <DependentUpon>GetHostListItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MessageBoxButtons.cs" />
     <Compile Include="MyOrderItemControl.xaml.cs">
       <DependentUpon>MyOrderItemControl.xaml</DependentUpon>
     </Compile>
