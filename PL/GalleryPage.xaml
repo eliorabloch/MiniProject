@@ -10,6 +10,7 @@
 
     <Grid Background="#FFE4D5BA">
         <Grid Width="200" Height="200" Margin="4,-2,636,482">
+            <Label Content="Trump" HorizontalAlignment="Left" Margin="63,11,0,0" VerticalAlignment="Top" Width="85" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="six" Source="Gimages/G1.jpg" >
 
                 <Image.Style >
@@ -32,6 +33,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="161,-2,479,482">
+            <Label Content="Queen's" HorizontalAlignment="Left" Margin="58,12,0,0" VerticalAlignment="Top" Width="87" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="Two" Source="Gimages/G2.jpg" >
 
                 <Image.Style >
@@ -53,6 +55,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="318,-2,322,482">
+            <Label Content="High Garden" HorizontalAlignment="Left" Margin="38,10,0,0" VerticalAlignment="Top" Width="140" FontSize="18" FontFamily="MV Boli" FontWeight="Bold" Height="35"/>
             <Image  x:Name="Two1" Source="Gimages/G3.jpg" >
 
                 <Image.Style >
@@ -74,6 +77,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="475,-2,165,482">
+            <Label Content="Sun Days" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" FontFamily="MV Boli" FontSize="18" FontWeight="Bold" Height="35" Width="111"/>
             <Image  x:Name="four" Source="Gimages/G4.jpg" >
 
                 <Image.Style >
@@ -95,6 +99,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="633,-2,7,482">
+            <Label Content="At Ruth" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Width="104" Height="31" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="five" Source="Gimages/G5.jpg" >
 
                 <Image.Style >
@@ -116,6 +121,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="4,154,636,326">
+            <Label Content="Leonardo" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Width="100" FontFamily="MV Boli" FontSize="18" FontWeight="Bold" Height="40"/>
             <Image  x:Name="six1" Source="Gimages/G8.jpg" >
 
                 <Image.Style >
@@ -138,6 +144,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="161,154,479,326">
+            <Label Content="Nechama" HorizontalAlignment="Left" Margin="53,11,0,0" VerticalAlignment="Top" Width="97" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="six2" Source="Gimages/G6.jpg" >
 
                 <Image.Style >
@@ -160,6 +167,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="318,156,322,324">
+            <Label Content="Shimoni" HorizontalAlignment="Left" Margin="60,11,0,0" VerticalAlignment="Top" Width="111" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="six3" Source="Gimages/G10.jpg" >
 
                 <Image.Style >
@@ -182,6 +190,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="475,156,165,324">
+            <Label Content="Royal Gardens" HorizontalAlignment="Left" Margin="34,11,0,0" VerticalAlignment="Top" FontFamily="MV Boli" FontSize="18" FontWeight="Bold" Width="139"/>
             <Image  x:Name="six4" Source="Gimages/G7.jpg" >
 
                 <Image.Style >
@@ -204,6 +213,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="630,156,10,324">
+            <Label Content="The pride" HorizontalAlignment="Left" Margin="49,11,0,0" VerticalAlignment="Top" Width="101" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="six5" Source="Gimages/G9.jpg" >
 
                 <Image.Style >
@@ -227,6 +237,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="4,308,636,172">
+            <Label Content="Pnina's" HorizontalAlignment="Left" Margin="65,11,0,0" VerticalAlignment="Top" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="six6" Source="Gimages/G15.jpg" >
 
                 <Image.Style >
@@ -249,6 +260,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="161,308,479,172">
+            <Label Content="Home Land" HorizontalAlignment="Left" Margin="47,11,0,0" VerticalAlignment="Top" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="Two2" Source="Gimages/G11.jpg" >
 
                 <Image.Style >
@@ -270,6 +282,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="318,308,322,172">
+            <Label Content="Spa World" HorizontalAlignment="Left" Margin="50,11,0,0" VerticalAlignment="Top" FontFamily="MV Boli" FontSize="18" Width="131" FontWeight="Bold"/>
             <Image  x:Name="Two3" Source="Gimages/G12.jpg" >
 
                 <Image.Style >
@@ -291,6 +304,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="475,310,165,170">
+            <Label Content="Kings" HorizontalAlignment="Left" Margin="65,11,0,0" VerticalAlignment="Top" Width="85" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="four1" Source="Gimages/G13.jpg" >
 
                 <Image.Style >
@@ -312,6 +326,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="633,312,7,168">
+            <Label Content="Eliel" HorizontalAlignment="Left" Margin="73,11,0,0" VerticalAlignment="Top" Width="97" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="five1" Source="Gimages/G14.jpg" >
 
                 <Image.Style >
@@ -333,6 +348,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="4,468,636,12">
+            <Label Content="Dan Hotel" HorizontalAlignment="Left" Height="40" Margin="48,10,0,0" VerticalAlignment="Top" Width="142" FontFamily="MV Boli" FontWeight="Bold" FontSize="18"/>
             <Image  x:Name="six7" Source="Gimages/G17.jpg" >
 
                 <Image.Style >
@@ -355,6 +371,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="161,468,479,12">
+            <Label Content="Crown Plaza" HorizontalAlignment="Left" Height="40" Margin="43,10,0,0" VerticalAlignment="Top" Width="147" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="six8" Source="Gimages/G18.jpg" >
 
                 <Image.Style >
@@ -377,6 +394,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="318,468,322,12">
+            <Label Content="Inbal Tents" HorizontalAlignment="Left" Height="34" Margin="48,11,0,0" VerticalAlignment="Top" Width="131" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="six9" Source="Gimages/G16.jpg" >
 
                 <Image.Style >
@@ -399,6 +417,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="475,468,165,12">
+            <Label Content="Fun Clubs" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Width="117" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="six10" Source="Gimages/G19.jpg" >
 
                 <Image.Style >
@@ -421,6 +440,7 @@
             </Image>
         </Grid>
         <Grid Width="200" Height="200" Margin="630,468,10,12">
+            <Label Content="Sharona" HorizontalAlignment="Left" Margin="56,11,0,0" VerticalAlignment="Top" Width="94" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="six11" Source="Gimages/G20.jpg" >
 
                 <Image.Style >

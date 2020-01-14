@@ -32,6 +32,8 @@ namespace PL
 
         private void DeleteHostingUnitBtn_Click(object sender, RoutedEventArgs e)
         {
+           
+
             try
             {
                 ImpBL bl = ImpBL.Instance;
@@ -53,6 +55,10 @@ namespace PL
             int GuestRequestKey = int.Parse(GuestRequestKeyLable.Content.ToString().Substring(1));
             var GuestRequestPage = new GuestRequestInfoPage(GuestRequestKey); //create your new form.
            m_navigationService.Navigate(GuestRequestPage);
+        }
+
+        private class DialogResult
+        {
         }
     }
 }

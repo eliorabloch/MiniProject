@@ -64,7 +64,7 @@
 
         <StackPanel x:Name="Paasword" Margin="28,198,593,370"  Visibility="Collapsed">
             <TextBlock Text="Enter your password:" Height="24" FontFamily="Lucida Sans Unicode" FontSize="14" FontWeight="Bold" Margin="3,0,-3,0" />
-            <PasswordBox Height="42" >
+            <PasswordBox x:Name="PASSWORD" Height="42" >
                 <PasswordBox.Background>
                     <SolidColorBrush Color="White" Opacity="0.8"/>
                 </PasswordBox.Background>
