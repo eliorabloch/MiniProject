@@ -67,6 +67,12 @@
     <Compile Include="GalleryPage.xaml.cs">
       <DependentUpon>GalleryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GetBanksList.xaml.cs">
+      <DependentUpon>GetBanksList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GetBanksListItemControl.xaml.cs">
+      <DependentUpon>GetBanksListItemControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GetHostListsPage.xaml.cs">
       <DependentUpon>GetHostListsPage.xaml</DependentUpon>
     </Compile>
@@ -122,6 +128,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GalleryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GetBanksList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GetBanksListItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

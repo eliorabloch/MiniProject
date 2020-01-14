@@ -214,5 +214,19 @@ namespace PL
         {
 
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            InitializeComponent();
+            List<GetBanksListItemControl> banksListItemControl = new List<GetBanksListItemControl>();
+            ImpBL bl = ImpBL.Instance;
+            foreach (var item in bl.GetBankList())
+            {
+                GetBanksListItemControl blic = new GetBanksListItemControl();
+                blic.BankNameTextBlock.Text = item.BankName;
+                banksListItemControl.Add(blic);
+            }
+            AvailableUnitListView.ItemsSource = banksListItemControl;
+        }
     }
 }
