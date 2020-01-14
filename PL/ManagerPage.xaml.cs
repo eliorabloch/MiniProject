@@ -110,6 +110,18 @@ namespace PL
         {
             int temp = bl.getNumOfUnits(NumberOfUnitsHostNameTextBox.Text);
             answerNumberOfUnitsTextBlock.Text = "The number of units this host has is: " + temp;
+
+            //  List<Host> mylist = bl.GetHostsList();
+            //    foreach (var item in mylist)
+            //    {
+            //        if (NumberOfUnitsHostNameTextBox.Text == item.HostId)
+            //        {
+            //            int temp = bl.getNumOfUnits(NumberOfUnitsHostNameTextBox.Text);
+            //            answerNumberOfUnitsTextBlock.Text = "The number of units this host has is: " + temp;
+            //        }
+            //    }
+            //throw new TzimerException($"Sorry,cant find an Host with the ID:{NumberOfUnitsHostNameTextBox.Text}");
+
         }
 
         private void GroupHU_Click(object sender, RoutedEventArgs e)

@@ -705,8 +705,6 @@ namespace BL
                 sum+=getNumOfUnits(item.HostId);
             }
             return sum;
-            
-            
         }
 
         public List<List<HostingUnit>> GroupHostingUnitsByRates()
