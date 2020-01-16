@@ -13,9 +13,7 @@ namespace DS
         public static List<HostingUnit> unitList;
         public static List<Order> orderList;
 
-        public DataSource()
-        {
-        }
+        public DataSource() { }
 
         public static void Init()
         {
@@ -531,8 +529,8 @@ namespace DS
                 new HostingUnit
                 {  Diary=BE.Utils.createMatrix(),
                 RateAmount=150,
-                amountOfRaters=70,
-                   RateStars=150/70,
+                amountOfRaters=30,
+                   RateStars=150/30,
                     HostingUnitKey = Configuration.HostingUnitId++,
                     Area = Areas.Center,
                     Pool = true,
@@ -686,8 +684,8 @@ namespace DS
                     AirConditoiner=true,
                     RoomService = false,
                     RateAmount=150,
-                amountOfRaters=70,
-                     RateStars=150/7,
+                amountOfRaters=150,
+                     RateStars=150/150,
                     Garden=false,
                     ChildrensAttractions = false,
                     HostingUnitName = "Shimony",
@@ -744,8 +742,8 @@ namespace DS
                     AirConditoiner=true,
                     RoomService = false,
                     RateAmount=150,
-                amountOfRaters=70,
-                     RateStars=150/70,
+                amountOfRaters=30,
+                     RateStars=150/30,
 
                     Garden=false,
                     ChildrensAttractions = false,

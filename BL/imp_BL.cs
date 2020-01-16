@@ -707,12 +707,17 @@ namespace BL
             return sum;
         }
 
-        public List<List<HostingUnit>> GroupHostingUnitsByRates()
+        public List<HostingUnit> groupHostingUnitsByRates()
         {
-            return (from hu in GetUnitsList()
-                    group hu by hu.RateStars into g
-                    select g.ToList()).ToList();
-
+            List<HostingUnit> lhu = new List<HostingUnit>();
+            foreach (var item in GetUnitsList())
+            {
+                var x = from newItem in GetUnitsList()
+                        orderby newItem.RateStars
+                        select newItem;
+                lhu = x.ToList();
+            }
+            return lhu;
         }
 
         public List<List<Order>> GroupOrdersByStatus()
