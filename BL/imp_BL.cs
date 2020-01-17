@@ -265,10 +265,9 @@ namespace BL
 
         public void AddUnit(HostingUnit newUnit)
         {
-
             validHostingUnit(newUnit);
-
             dal.AddUnit(newUnit);
+            newUnit.Owner.numOfUnits++;
         }
 
         public void UpdateUnit(HostingUnit updatedUnit)
@@ -557,9 +556,8 @@ namespace BL
 
         public int getNumOfUnits(string hostID)//A function that returns the number of units each host has.
         {
-            List<Host> myhostlist = getHostsList();
             int sum = 0;
-            foreach (var item in myhostlist)
+            foreach (var item in getHostsList())
             {
                 if(hostID==item.HostId)
                 {

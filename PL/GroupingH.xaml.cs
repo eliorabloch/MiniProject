@@ -47,7 +47,7 @@ namespace PL
                         {
                             groupingDataGrid.Items.Add(host);
                         }
-                        groupingDataGrid.Items.Add(0);
+                       
                     }
                 }
             }
