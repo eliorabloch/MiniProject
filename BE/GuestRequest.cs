@@ -25,6 +25,7 @@ namespace BE
         public UnitType Type { get; set; }
         public string Adults { get; set; }
         public string Children { get; set; }
+        public string Atendees { get; set; }
         public Options Pool { get; set; }
         public Options FreeParking{ get; set; }
         public Options breakfastIncluded { get; set; }

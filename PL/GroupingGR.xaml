@@ -34,6 +34,7 @@
                 <DataGridTextColumn x:Name="TypeColum" Binding="{Binding Type}" Header="Type       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="AdultsColum" Binding="{Binding Adults}" Header="Adults       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="ChildrenColum" Binding="{Binding Children}" Header="Children       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="AtendeesColum" Binding="{Binding Atendees}" Header="Atendees       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="PoolColum" Binding="{Binding Pool}" Header="Pool       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="FreeParkingColum" Binding="{Binding FreeParking}" Header="Free Parking       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="breakfastIncludedColum" Binding="{Binding breakfastIncluded}" Header="breakfast Included       " Width="SizeToHeader"     />

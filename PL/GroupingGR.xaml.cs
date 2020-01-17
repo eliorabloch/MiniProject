@@ -33,7 +33,7 @@ namespace PL
 
             try
             {
-                if(groupByComboBox.SelectedIndex==0)
+                if (groupByComboBox.SelectedIndex == 0)
                 {
                     groupingDataGrid.Items.Clear();
                     groupingDataGrid.CanUserReorderColumns = false;
@@ -47,7 +47,6 @@ namespace PL
                         {
                             groupingDataGrid.Items.Add(request);
                         }
-                       // groupingDataGrid.Items.Add(0);
                     }
                 }
                 if (groupByComboBox.SelectedIndex == 1)
@@ -57,15 +56,11 @@ namespace PL
                     groupingDataGrid.CanUserResizeColumns = false;
                     groupingDataGrid.CanUserResizeRows = false;
                     groupingDataGrid.CanUserSortColumns = false;
-                    var gr = bl.GroupGuestRequestByNumOfAtendees();
-                    foreach (var item in gr)
+                    var gr = bl.groupGuestRequestByNumOfAtendees();
+                    foreach (var request in gr)
                     {
-                        foreach (var request in item)
-                        {
-                            groupingDataGrid.Items.Add(request);
-                        }
-                      //  groupingDataGrid.Items.Add(new BE.GuestRequest());
-                     //   groupingDataGrid.Items.Add(0);
+                        groupingDataGrid.Items.Add(request);
+
                     }
                 }
                 if (groupByComboBox.SelectedIndex == 2)
@@ -82,8 +77,6 @@ namespace PL
                         {
                             groupingDataGrid.Items.Add(request);
                         }
-                        //groupingDataGrid.Items.Add(new BE.GuestRequest());
-                        //groupingDataGrid.Items.Add(0);
                     }
                 }
             }
