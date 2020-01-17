@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-     public class Host : ICloneable
+    public class Host : ICloneable
     {
-        public static int  numOfUnits { get; set; }
+        public int numOfUnits { get; set; }
         public string HostId { get; set; }
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
@@ -18,6 +18,7 @@ namespace BE
         public bool CollectionClearance { get; set; }
         public string BankAccountNumber { get; set; }
         public string toString { get; set; }
+      
         public override string ToString()//A print function that prints all the details of the class
         {
             toString = "";
@@ -44,3 +45,4 @@ namespace BE
 
     }
 }
+

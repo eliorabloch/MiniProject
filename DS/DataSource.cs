@@ -527,19 +527,7 @@ namespace DS
             unitList = new List<HostingUnit>
             {
                 new HostingUnit
-                {    
-                    
-                    
-                    
-                    
-                    
-                      
-                   
-                   
-                   
-                   
-                  
-                  
+                {
                     Diary =BE.Utils.createMatrix(),
                 RateAmount=150,
                 amountOfRaters=30,
@@ -564,6 +552,7 @@ namespace DS
                         FamilyName="Bloch",
                         HostId="1",
                         PhoneNumber="0547648500",
+                        numOfUnits=2,
                         CollectionClearance=true,
                         MailAddress="ramidan@gmail.com",
                         BankAccountNumber="009863673795",
@@ -594,6 +583,7 @@ namespace DS
                         FamilyName="lo",
                         HostId="2",
                         PhoneNumber="0548866123",
+                        numOfUnits=2,
                         CollectionClearance=true,
                         MailAddress="lomoshe@gmail.com",
                         BankAccountNumber="345565657789",
@@ -623,6 +613,7 @@ namespace DS
                         FamilyName="Coch",
                         HostId="3",
                          PhoneNumber="0533345217",
+                         numOfUnits=1,
                         CollectionClearance=true,
                         MailAddress="oliviacoch@gmail.com",
                         BankAccountNumber="905000087600",
@@ -652,6 +643,7 @@ namespace DS
                         PrivateName="Lieli",
                         FamilyName="Ob",
                         HostId="8",
+                        numOfUnits=4,
                         CollectionClearance=true,
                         MailAddress="elielhotel2020@gmail.com",
                         PhoneNumber="0546547645",
@@ -681,6 +673,7 @@ namespace DS
                         PrivateName="Pnina",
                         FamilyName="Lev",
                         HostId="4",
+                        numOfUnits=1,
                          PhoneNumber="0523345643",
                         CollectionClearance=true,
                         MailAddress="pninaeilat@gmail.com",
@@ -710,6 +703,7 @@ namespace DS
                         PrivateName="Shimon",
                         FamilyName="Baruch",
                         HostId="5",
+                        numOfUnits=1,
                          PhoneNumber="0588897545",
                         CollectionClearance=true,
                         MailAddress="baruch@gmail.com",
@@ -739,6 +733,7 @@ namespace DS
                         PrivateName="Sami",
                         FamilyName="Oren",
                         HostId="6",
+                        numOfUnits=1,
                         PhoneNumber="0587712340",
                         CollectionClearance=true,
                         MailAddress="tentforrent@gmail.com",
@@ -769,6 +764,7 @@ namespace DS
                         PrivateName="Nechama",
                         FamilyName="Israel",
                         HostId="7",
+                        numOfUnits=3,
                          PhoneNumber="0548823450",
                         CollectionClearance=true,
                         MailAddress="petachtikvatzimer@gmail.com",
@@ -798,6 +794,7 @@ namespace DS
                         PrivateName="Lieli",
                         FamilyName="Ob",
                         HostId="8",
+                        numOfUnits=4,
                         CollectionClearance=true,
                         MailAddress="elielhotel2020@gmail.com",
                         PhoneNumber="0546547645",
@@ -827,6 +824,7 @@ namespace DS
                         PrivateName="Nechama",
                         FamilyName="Israel",
                         HostId="7",
+                        numOfUnits=3,
                         PhoneNumber="0548823450",
                         CollectionClearance=true,
                         MailAddress="petachtikvatzimer@gmail.com",
@@ -857,6 +855,7 @@ namespace DS
                         PrivateName="Roni",
                         FamilyName="Yaniv",
                         HostId="9",
+                        numOfUnits=1,
                         PhoneNumber="0589903450",
                         CollectionClearance=true,
                         MailAddress="RoniRamada@gmail.com",
@@ -887,6 +886,7 @@ namespace DS
                         PrivateName="Yanir",
                         FamilyName="Roman",
                         HostId="10",
+                        numOfUnits=1,
                         PhoneNumber="0549099095",
                         CollectionClearance=true,
                         MailAddress="yanirromanr@gmail.com",
@@ -917,6 +917,7 @@ namespace DS
                         PrivateName="Yoram",
                         FamilyName="Danon",
                         HostId="11",
+                        numOfUnits=1,
                         PhoneNumber="0524454598",
                         CollectionClearance=true,
                         MailAddress="mamilahotel-yoram@gmail.com",
@@ -947,6 +948,7 @@ namespace DS
                         PrivateName="Nechama",
                         FamilyName="Israel",
                         HostId="7",
+                        numOfUnits=3,
                         PhoneNumber="0548823450",
                         CollectionClearance=true,
                         MailAddress="petachtikvatzimer@gmail.com",
@@ -978,6 +980,7 @@ namespace DS
                         FamilyName="Bloch",
                         HostId="1",
                         PhoneNumber="0547648500",
+                        numOfUnits=2,
                         CollectionClearance=true,
                         MailAddress="ramidan@gmail.com",
                         BankAccountNumber="009863673795",
@@ -1008,6 +1011,7 @@ namespace DS
                         FamilyName="Ob",
                         HostId="8",
                         CollectionClearance=true,
+                        numOfUnits=4,
                         MailAddress="elielhotel2020@gmail.com",
                         PhoneNumber="0546547645",
                         BankAccountNumber="456678951232",
@@ -1037,6 +1041,7 @@ namespace DS
                         FamilyName="Ob",
                         HostId="8",
                         CollectionClearance=true,
+                        numOfUnits=4,
                         MailAddress="elielhotel2020@gmail.com",
                         PhoneNumber="0546547645",
                         BankAccountNumber="456678951232",
@@ -1066,6 +1071,7 @@ namespace DS
                         PrivateName="Yonna",
                         FamilyName="Ariel",
                         HostId="12",
+                        numOfUnits=1,
                         PhoneNumber="0533423450",
                         CollectionClearance=true,
                         MailAddress="petachtikvatYonna@gmail.com",
@@ -1096,6 +1102,7 @@ namespace DS
                         PrivateName="Anna",
                         FamilyName="Maxim",
                         HostId="13",
+                        numOfUnits=1,
                         PhoneNumber="0555564450",
                         CollectionClearance=true,
                         MailAddress="anna123345@gmail.com",
@@ -1117,7 +1124,7 @@ namespace DS
                     RateAmount=150,
                 amountOfRaters=70,
                      RateStars=150/70,
-                    HostingUnitName = "Plaza2",
+                    HostingUnitName = "Yarden Hotel",
                     SubArea = "Tal Aviv",
                     Jacuzz = false,
                     Type = UnitType.HostingUnit,
@@ -1126,10 +1133,42 @@ namespace DS
                         PrivateName="Yarden",
                         FamilyName="Harari",
                         HostId="7",
+                        numOfUnits=1,
                         PhoneNumber="0589823450",
                         CollectionClearance=true,
                         MailAddress="plazabyyardenr@gmail.com",
                         BankAccountNumber="123821454432",
+                    }
+                   },
+                 new HostingUnit
+                {
+                        Diary =BE.Utils.createMatrix(),
+                    HostingUnitKey = Configuration.HostingUnitId++,
+                    Area = Areas.Center,
+                    Pool = true,
+                    ChildrensAttractions = true,
+                     FreeParking=true,
+                    breakfastIncluded=true,
+                    AirConditoiner=true,
+                    RoomService = true,
+                    Garden=true,
+                    RateAmount=150,
+                    amountOfRaters=70,
+                     RateStars=150/70,
+                    HostingUnitName = "Plaza2",
+                    SubArea = "Tal Aviv",
+                    Jacuzz = false,
+                    Type = UnitType.HotelRoom,
+                    Owner= new Host
+                    {
+                        PrivateName="Moshe",
+                        FamilyName="lo",
+                        HostId="2",
+                        PhoneNumber="0548866123",
+                        numOfUnits=2,
+                        CollectionClearance=true,
+                        MailAddress="lomoshe@gmail.com",
+                        BankAccountNumber="345565657789",
                     }
                    }
             };

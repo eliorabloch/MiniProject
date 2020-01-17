@@ -43,10 +43,8 @@ namespace PL
                     var h = bl.GroupHostsByNumOfUnits();
                     foreach (var item in h)
                     {
-                        foreach (var host in item)
-                        {
-                            groupingDataGrid.Items.Add(host);
-                        }
+                            groupingDataGrid.Items.Add(item);
+                        
                        
                     }
                 }

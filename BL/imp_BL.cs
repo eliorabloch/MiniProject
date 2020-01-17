@@ -275,7 +275,7 @@ namespace BL
         {
             validHostingUnit(newUnit);
             dal.AddUnit(newUnit);
-            newUnit.Owner.numOfUnits++;
+            //newUnit.Owner.numOfUnits++;
         }
 
         public void UpdateUnit(HostingUnit updatedUnit)
@@ -555,12 +555,7 @@ namespace BL
 
         }
 
-        public List<List<Host>> GroupHostsByNumOfUnits()
-        {
-            return (from h in getHostsList()
-                    group h by getNumOfUnits(h.HostId) into g
-                    select g.ToList()).ToList();
-        }
+        
 
         public int getNumOfUnits(string hostID)//A function that returns the number of units each host has.
         {
@@ -675,7 +670,26 @@ namespace BL
 
         }
 
-        public List<HostingUnit> groupHostingUnitsByRates()
+        public List<Host> GroupHostsByNumOfUnits()
+        {
+            List<Host> lh = new List<Host>();
+            foreach (var item in getHostsList())
+            {
+                var x = from newItem in getHostsList()
+                        orderby newItem.numOfUnits
+                        select newItem;
+                lh = x.ToList();
+            }
+            return lh;
+        }
+            //public List<List<Host>> GroupHostsByNumOfUnits()
+            //{
+            //    return (from h in getHostsList()
+            //            group h by getNumOfUnits(h.HostId) into g
+            //            select g.ToList()).ToList();
+            //}
+
+            public List<HostingUnit> groupHostingUnitsByRates()
         {
             List<HostingUnit> lhu = new List<HostingUnit>();
             foreach (var item in GetUnitsList())
