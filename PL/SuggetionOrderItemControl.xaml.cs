@@ -69,6 +69,7 @@ namespace PL
                     HostingUnitKey = hostingUnit.HostingUnitKey
                 };
                 myBL.AddOrder(order);
+                // Task.Run(() =>
                 myBL.SendOrder(hostingUnit.Owner, order);
                 Utils.navigationService.GoBack();
             }

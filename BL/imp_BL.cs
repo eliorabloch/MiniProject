@@ -6,7 +6,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Net.Mail;
 namespace BL
 {
     public class ImpBL : IBL
@@ -267,7 +267,7 @@ namespace BL
         {
             validHostingUnit(newUnit);
             dal.AddUnit(newUnit);
-            newUnit.Owner.numOfUnits++;
+            //newUnit.Owner.numOfUnits++;
         }
 
         public void UpdateUnit(HostingUnit updatedUnit)
@@ -435,14 +435,34 @@ namespace BL
         {
             if (h.CollectionClearance)
             {
-                // TODO: send request in SMTP to Mail server
-
-
+                MailMessage mail = new MailMessage();
+                GuestRequest gr = GetRequest(o.GuestRequestKey);
+                mail.To.Add("eliora.bloch@gmail.com");
+                mail.From = new MailAddress("VacationModePlan@gmail.com");
+                mail.Body = "mailBody";
+                mail.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.Credentials = new System.Net.NetworkCredential("VacationModePlan@gmail.com",
+"vac123456");                //smtp.UseDefaultCredentials = false;                smtp.EnableSsl = true;
+               
+                // try
+                //{
+                smtp.Send(mail);
+                // }
+                // catch (Exception ex)
+                // {
+                //    txtMessage.Text = ex.ToString();
                 o.Status = OrderStatus.SentMail;
                 UpdateOrder(o);
                 return true;
             }
-            return false;
+            else
+            {
+                return false;
+            }
+          
         }
 
 
