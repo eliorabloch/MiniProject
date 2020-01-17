@@ -8,6 +8,7 @@ namespace BE
 {
      public class Host : ICloneable
     {
+        
         public string HostId { get; set; }
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
@@ -29,6 +30,7 @@ namespace BE
             toString += $"Bank accuont: {BankAccuont} \n";
             toString += $"Collection clearance: {CollectionClearance} \n";
             toString += $"Bank account number: {BankAccountNumber} \n";
+           
             return toString;
         }
         public object Clone()

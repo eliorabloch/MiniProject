@@ -98,9 +98,12 @@ namespace DAL
             {
                 throw new TzimerException($"Hosting Unit with the ID: {newUnit.HostingUnitKey} - already exists!", "dal");
             }
+          
             newUnit.HostingUnitKey = Configuration.HostingUnitId++;
             DataSource.unitList.Add((HostingUnit)newUnit.Clone());
-        }
+           
+
+       }
 
         public void UpdateUnit(HostingUnit updatedUnit)
         {

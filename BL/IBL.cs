@@ -41,8 +41,6 @@ namespace BL
         List<GuestRequest> GetAllGuestRequest(Predicate<GuestRequest> condition);//A function that can return all customer requirements that fit a particular condition.
         int GetNumOfOrders(GuestRequest gr);//A function that accepts customer demand and returns the number of orders sent to it.
         int GetNumOfSentOrders(HostingUnit hu);//A function that accepts a hosting unit and returns the number of invitations sent / the number of orders successfully closed for this unit through the site.
-        GuestRequest searchByKey(List<GuestRequest> guestRequest, int key = -1);// Fanction who search for a guest requests by its key.
-        List<GuestRequest> searchByName(string familyName);//Function who search for a guest request by its full name.
         HostingUnit searchByKey(List<HostingUnit> hostingUnit, int key = -1);// Fanction who search for a hosting units by its key.
         List<HostingUnit> searchByName(List<HostingUnit> HostingUnit, string Name);//Function who search for a hosting unit by its name.
         Order searchByKey(List<Order> order, int key = -1);// Fanction who search for a orders by its key.

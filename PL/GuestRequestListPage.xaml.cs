@@ -90,26 +90,7 @@ namespace PL
         private void searchByKeyBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            ImpBL bl = ImpBL.Instance;
-
-            List<GuestRequestItemControl> SubguestRequestItemsControl = new List<GuestRequestItemControl>();
-            try
-            {
-                int Key = int.Parse(searchByKeyTextBox.Text);
-                GuestRequest gr = bl.searchByKey(bl.GetGuestRequestList(), Key);
-
-                GuestRequestItemControl sgric = new GuestRequestItemControl(m_navigationService);
-                sgric.GuestRequestTextBlock.Content = gr.PrivateName + " " + gr.FamilyName;
-                sgric.GuestRequestKeyLable.Content = "#" + gr.GuestRequestKey;
-                SubguestRequestItemsControl.Add(sgric);
             
-
-                HostingUnitListView.ItemsSource = SubguestRequestItemsControl;
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
 
 
         }
@@ -117,7 +98,25 @@ namespace PL
         private void searchByKeyTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+            ImpBL bl = ImpBL.Instance;
 
+            List<GuestRequestItemControl> SubguestRequestItemsControl = new List<GuestRequestItemControl>();
+            try
+            {
+                var grs = bl.searchByKey(searchByKeyTextBox.Text);
+                foreach (var gr in grs)
+                {
+                    GuestRequestItemControl sgric = new GuestRequestItemControl(m_navigationService);
+                    sgric.GuestRequestTextBlock.Content = gr.PrivateName + " " + gr.FamilyName;
+                    sgric.GuestRequestKeyLable.Content = "#" + gr.GuestRequestKey;
+                    SubguestRequestItemsControl.Add(sgric);
+                }
+                HostingUnitListView.ItemsSource = SubguestRequestItemsControl;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
