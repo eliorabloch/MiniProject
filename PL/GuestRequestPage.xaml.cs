@@ -39,257 +39,260 @@ namespace PL
             {
 
 
+                if (FromDateCalender.SelectedDates.Count == 0)
                 {
-                    ImpBL bl = ImpBL.Instance;
-                    GuestRequest gr = new GuestRequest();
-                    gr.Status = RequestStatus.Open;
-                    gr.RegistrationDate=DateTime.Now;
+                    throw new TzimerException("Must choose entry date", "pl");
+                }
+                if (ToDateCalender.SelectedDates.Count == 0)
+                {
+                    throw new TzimerException("Must choose leave date", "pl");
+                }
+                ImpBL bl = ImpBL.Instance;
+                GuestRequest gr = new GuestRequest();
+                gr.Status = RequestStatus.Open;
+                gr.RegistrationDate = DateTime.Now;
+                gr.PrivateName = GuestRequestFirstNameTextBox.Text;
+                gr.FamilyName = GuestRequestlastNameTextBox.Text;
+                gr.PhoneNumber = PhoneNumbertTextBox.Text;
+                gr.Children = ChildrenTextBox.Text;
+                gr.Adults = AdultsTextBox.Text;
+                gr.MailAddress = EmailTextBox.Text;
+                gr.Area = (BE.Areas)AreaComboBox.SelectedIndex;
+                gr.Type = (BE.UnitType)AreaComboBox.SelectedIndex;
+                gr.SubArea = SubAreaTextBox.Text;
+                gr.EntryDate = FromDateCalender.SelectedDates[0];
+                gr.ReleaseDate = ToDateCalender.SelectedDates[0];
 
+                switch (AreaComboBox.SelectedIndex)
+                {
+                    case 0:
+                        gr.Area = Areas.Jerusalem;
+                        break;
+                    case 1:
+                        gr.Area = Areas.Center;
 
-                   
+                        break;
+                    case 2:
+                        gr.Area = Areas.North;
+                        break;
+                    case 3:
+                        gr.Area = Areas.South;
 
-                    gr.PrivateName = GuestRequestFirstNameTextBox.Text;
-                    gr.FamilyName = GuestRequestlastNameTextBox.Text;
-                    gr.PhoneNumber = PhoneNumbertTextBox.Text;
-                    gr.Children = ChildrenTextBox.Text;
-                    gr.Adults = AdultsTextBox.Text;
-                    gr.MailAddress = EmailTextBox.Text;
-                    gr.Area = (BE.Areas)AreaComboBox.SelectedIndex;
-                    gr.Type = (BE.UnitType)AreaComboBox.SelectedIndex;
-                    gr.SubArea = SubAreaTextBox.Text;
-                    gr.EntryDate = FromDateCalender.SelectedDates[0];
-                    gr.ReleaseDate = ToDateCalender.SelectedDates[0];
+                        break;
+                    default:
+                        break;
+                }
 
-                    switch (AreaComboBox.SelectedIndex)
-                    {
-                        case 0:
-                            gr.Area = Areas.Jerusalem;
-                            break;
-                        case 1:
-                            gr.Area = Areas.Center;
+                gr.Type = (UnitType)Enum.Parse(typeof(UnitType), TypeComboBox.SelectedValue.ToString(), true);
 
-                            break;
-                        case 2:
-                            gr.Area = Areas.North;
-                            break;
-                        case 3:
-                            gr.Area = Areas.South;
-
-                            break;
-                        default:
-                            break;
-                    }
-
-                    gr.Type = (UnitType)Enum.Parse(typeof(UnitType), TypeComboBox.SelectedValue.ToString(), true);
-
-                    #region breakfastIncluded
-                    switch (BNotintersted.IsChecked)
-                    {
-                        case true:
-                            gr.breakfastIncluded = Options.notintersted;
-                            break;
-
-                    }
-                    switch (BPossible.IsChecked)
-                    {
-                        case true:
-                            gr.breakfastIncluded = Options.possible;
-                            break;
-
-
-                    }
-                    switch (BNeccesery.IsChecked)
-                    {
-                        case true:
-                            gr.breakfastIncluded = Options.neccesery;
-                            break;
-
-
-                    }
-                    #endregion
-                    #region childrenattractions
-                    switch (CNotintersted.IsChecked)
-                    {
-                        case true:
-                            gr.ChildrensAttractions = Options.notintersted;
-                            break;
-
-                    }
-                    switch (CPossible.IsChecked)
-                    {
-                        case true:
-                            gr.ChildrensAttractions = Options.possible;
-                            break;
-
-
-                    }
-                    switch (CNeccesery.IsChecked)
-                    {
-                        case true:
-                            gr.ChildrensAttractions = Options.neccesery;
-                            break;
-
-
-                    }
-                    #endregion
-                    #region Air conditioner
-                    switch (ANotintersted.IsChecked)
-                    {
-                        case true:
-                            gr.AirConditoiner = Options.notintersted;
-                            break;
-
-                    }
-                    switch (APossible.IsChecked)
-                    {
-                        case true:
-                            gr.AirConditoiner = Options.possible;
-                            break;
-
-
-                    }
-                    switch (ANeccesery.IsChecked)
-                    {
-                        case true:
-                            gr.AirConditoiner = Options.neccesery;
-                            break;
-
-
-                    }
-                    #endregion
-                    #region Pool
-                    switch (PNotintersted.IsChecked)
-                    {
-                        case true:
-                            gr.Pool = Options.notintersted;
-                            break;
-
-                    }
-                    switch (PPossible.IsChecked)
-                    {
-                        case true:
-                            gr.Pool = Options.possible;
-                            break;
-
-
-                    }
-                    switch (PNeccesery.IsChecked)
-                    {
-                        case true:
-                            gr.Pool = Options.neccesery;
-                            break;
-
-
-                    }
-                    #endregion
-                    #region Jacuzz
-                    switch (JNotintersted.IsChecked)
-                    {
-                        case true:
-                            gr.Jacuzzi = Options.notintersted;
-                            break;
-
-                    }
-                    switch (JPossible.IsChecked)
-                    {
-                        case true:
-                            gr.Jacuzzi = Options.possible;
-                            break;
-
-
-                    }
-                    switch (JNeccesery.IsChecked)
-                    {
-                        case true:
-                            gr.Jacuzzi = Options.neccesery;
-                            break;
-
-
-                    }
-                    #endregion
-                    #region Garden
-                    switch (GNotintersted.IsChecked)
-                    {
-                        case true:
-                            gr.Garden = Options.notintersted;
-                            break;
-
-                    }
-                    switch (GPossible.IsChecked)
-                    {
-                        case true:
-                            gr.Garden = Options.possible;
-                            break;
-
-
-                    }
-                    switch (GNeccesery.IsChecked)
-                    {
-                        case true:
-                            gr.Garden = Options.neccesery;
-                            break;
-
-
-                    }
-                    #endregion
-                    #region Free Parking
-                    switch (FNotintersted.IsChecked)
-                    {
-                        case true:
-                            gr.FreeParking = Options.notintersted;
-                            break;
-
-                    }
-                    switch (FPossible.IsChecked)
-                    {
-                        case true:
-                            gr.FreeParking = Options.possible;
-                            break;
-
-
-                    }
-                    switch (FNeccesery.IsChecked)
-                    {
-                        case true:
-                            gr.FreeParking = Options.neccesery;
-                            break;
-
-
-                    }
-                    #endregion
-                    #region Room Service
-                    switch (RNotintersted.IsChecked)
-                    {
-                        case true:
-                            gr.RoomService = Options.notintersted;
-                            break;
-
-                    }
-                    switch (RPossible.IsChecked)
-                    {
-                        case true:
-                            gr.RoomService = Options.possible;
-                            break;
-
-
-                    }
-                    switch (RNeccesery.IsChecked)
-                    {
-                        case true:
-                            gr.RoomService = Options.neccesery;
-                            break;
-
-
-                    }
-                    #endregion
-
-                    bl.AddRequest(gr);
-                   
-
-                    var thankPAGE = new ThankYouPage();
-                    this.NavigationService.Navigate(thankPAGE);
+                #region breakfastIncluded
+                switch (BNotintersted.IsChecked)
+                {
+                    case true:
+                        gr.breakfastIncluded = Options.notintersted;
+                        break;
 
                 }
+                switch (BPossible.IsChecked)
+                {
+                    case true:
+                        gr.breakfastIncluded = Options.possible;
+                        break;
+
+
+                }
+                switch (BNeccesery.IsChecked)
+                {
+                    case true:
+                        gr.breakfastIncluded = Options.neccesery;
+                        break;
+
+
+                }
+                #endregion
+                #region childrenattractions
+                switch (CNotintersted.IsChecked)
+                {
+                    case true:
+                        gr.ChildrensAttractions = Options.notintersted;
+                        break;
+
+                }
+                switch (CPossible.IsChecked)
+                {
+                    case true:
+                        gr.ChildrensAttractions = Options.possible;
+                        break;
+
+
+                }
+                switch (CNeccesery.IsChecked)
+                {
+                    case true:
+                        gr.ChildrensAttractions = Options.neccesery;
+                        break;
+
+
+                }
+                #endregion
+                #region Air conditioner
+                switch (ANotintersted.IsChecked)
+                {
+                    case true:
+                        gr.AirConditoiner = Options.notintersted;
+                        break;
+
+                }
+                switch (APossible.IsChecked)
+                {
+                    case true:
+                        gr.AirConditoiner = Options.possible;
+                        break;
+
+
+                }
+                switch (ANeccesery.IsChecked)
+                {
+                    case true:
+                        gr.AirConditoiner = Options.neccesery;
+                        break;
+
+
+                }
+                #endregion
+                #region Pool
+                switch (PNotintersted.IsChecked)
+                {
+                    case true:
+                        gr.Pool = Options.notintersted;
+                        break;
+
+                }
+                switch (PPossible.IsChecked)
+                {
+                    case true:
+                        gr.Pool = Options.possible;
+                        break;
+
+
+                }
+                switch (PNeccesery.IsChecked)
+                {
+                    case true:
+                        gr.Pool = Options.neccesery;
+                        break;
+
+
+                }
+                #endregion
+                #region Jacuzz
+                switch (JNotintersted.IsChecked)
+                {
+                    case true:
+                        gr.Jacuzzi = Options.notintersted;
+                        break;
+
+                }
+                switch (JPossible.IsChecked)
+                {
+                    case true:
+                        gr.Jacuzzi = Options.possible;
+                        break;
+
+
+                }
+                switch (JNeccesery.IsChecked)
+                {
+                    case true:
+                        gr.Jacuzzi = Options.neccesery;
+                        break;
+
+
+                }
+                #endregion
+                #region Garden
+                switch (GNotintersted.IsChecked)
+                {
+                    case true:
+                        gr.Garden = Options.notintersted;
+                        break;
+
+                }
+                switch (GPossible.IsChecked)
+                {
+                    case true:
+                        gr.Garden = Options.possible;
+                        break;
+
+
+                }
+                switch (GNeccesery.IsChecked)
+                {
+                    case true:
+                        gr.Garden = Options.neccesery;
+                        break;
+
+
+                }
+                #endregion
+                #region Free Parking
+                switch (FNotintersted.IsChecked)
+                {
+                    case true:
+                        gr.FreeParking = Options.notintersted;
+                        break;
+
+                }
+                switch (FPossible.IsChecked)
+                {
+                    case true:
+                        gr.FreeParking = Options.possible;
+                        break;
+
+
+                }
+                switch (FNeccesery.IsChecked)
+                {
+                    case true:
+                        gr.FreeParking = Options.neccesery;
+                        break;
+
+
+                }
+                #endregion
+                #region Room Service
+                switch (RNotintersted.IsChecked)
+                {
+                    case true:
+                        gr.RoomService = Options.notintersted;
+                        break;
+
+                }
+                switch (RPossible.IsChecked)
+                {
+                    case true:
+                        gr.RoomService = Options.possible;
+                        break;
+
+
+                }
+                switch (RNeccesery.IsChecked)
+                {
+                    case true:
+                        gr.RoomService = Options.neccesery;
+                        break;
+
+
+                }
+                #endregion
+
+                bl.AddRequest(gr);
+
+
+                var thankPAGE = new ThankYouPage();
+                this.NavigationService.Navigate(thankPAGE);
+
+
             }
             catch (Exception err)
             {

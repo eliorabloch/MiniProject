@@ -35,17 +35,9 @@ namespace BL
 
         #region Gusets Requsts
 
-        public GuestRequest searchByKey(List<GuestRequest> guestRequest, int key = -1)
+        public List<GuestRequest> searchByKey(string key)
         {
-
-            foreach (var item in guestRequest)
-            {
-                if (item.GuestRequestKey == key)
-                {
-                    return item;
-                }
-            }
-            return null;
+            return GetGuestRequestList().Where(x => x.GuestRequestKey.ToString().StartsWith(key)).ToList();
         }
 
         public List<GuestRequest> searchByName(string familyName)

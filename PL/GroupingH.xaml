@@ -9,16 +9,29 @@
       Title="Grouping">
 
     <Grid Margin="0,0,0,-46">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="images/back.jpg"/>
         </Grid.Background>
-        <Label Content="Host" Foreground="LightCoral" FontWeight="ExtraBold" FontSize="18" HorizontalAlignment="Left" Margin="43,43,0,0" VerticalContentAlignment="Top"></Label>
-        <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="497,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupByComboBox_SelectionChanged">
+        <Label Content="Host" Foreground="Black" FontWeight="ExtraBold" FontSize="18" HorizontalAlignment="Left" Margin="16,40,0,420" VerticalContentAlignment="Top" Background="{x:Null}" FontFamily="MV Boli" RenderTransformOrigin="0.5,0.5" Width="83">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-2.793"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.951"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="556,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupByComboBox_SelectionChanged" Background="White" BorderBrush="{x:Null}" FontFamily="Lucida Sans Unicode">
             <ComboBoxItem>Group Hosts By Number Of Units</ComboBoxItem>
         </ComboBox>
         <DataGrid x:Name="groupingDataGrid"  FontWeight="ExtraBold" HorizontalAlignment="Left" Height="358" Width="780" Margin="10,82,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="HostIdColum" Binding="{Binding HostId}" Header="Host Id       " Width="SizeToHeader"     />
+                
                 <DataGridTextColumn x:Name="PrivateNameColum" Binding="{Binding PrivateName}" Header="Private Name       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="FamilyNameColum" Binding="{Binding FamilyName}" Header="Family Name       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="MailAddressColum" Binding="{Binding MailAddress}" Header="Mail Address                   " Width="SizeToHeader"     />

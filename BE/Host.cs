@@ -32,6 +32,7 @@ namespace BE
             toString += $"Number Of Units: {numOfUnits} \n";
             toString += $"Collection clearance: {CollectionClearance} \n";
             toString += $"Bank account number: {BankAccountNumber} \n";
+           
             return toString;
         }
 

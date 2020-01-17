@@ -528,6 +528,21 @@ namespace DS
             {
                 new HostingUnit
                 {
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> master
                     Diary =BE.Utils.createMatrix(),
                 RateAmount=150,
                 amountOfRaters=30,
@@ -579,6 +594,7 @@ namespace DS
                     Type = UnitType.HotelRoom,
                     Owner= new Host
                     {
+                        
                         PrivateName="Moshe",
                         FamilyName="lo",
                         HostId="2",
@@ -608,7 +624,7 @@ namespace DS
                     Jacuzz = true,
                     Type = UnitType.HotelRoom,
                     Owner= new Host
-                    {
+                    {    
                         PrivateName="Olivia",
                         FamilyName="Coch",
                         HostId="3",
@@ -617,6 +633,7 @@ namespace DS
                         CollectionClearance=true,
                         MailAddress="oliviacoch@gmail.com",
                         BankAccountNumber="905000087600",
+                        
                     }
                 },
                 new HostingUnit
