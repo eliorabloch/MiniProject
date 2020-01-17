@@ -80,45 +80,52 @@ namespace BL
             return GetUnitsList().Where(x => x.Owner.HostId == hostId).ToList();
         }
 
-        public List<GuestRequest> matchRequestToUnit(Host h)
+        public List<GuestRequest> matchRequestToUnit(HostingUnit unit)
         {
             List<GuestRequest> subGuestRequest = new List<GuestRequest>();
-            foreach (var item in GetUnitsByHost(h.HostId))
+    
+            foreach (var grItem in GetGuestRequestList())
             {
-                foreach (var itemm in GetGuestRequestList())
+                GuestRequest gr = checkIfUnitMatchToRequest(unit, grItem);
+                //Here we will send a mail to the guest that he welcome to come to out unit. - (YB: I don't think so)
+                if (gr != null)
                 {
-                    GuestRequest gr = checkIfUnitMatchToRequest(item, itemm);
-                    //Here we will send a mail to the guest that he welcome to come to out unit.
-                    if (gr != null)
-                    {
-                        subGuestRequest.Add(gr);
-                    }
+                    subGuestRequest.Add(gr);
                 }
             }
+            
             return subGuestRequest;
         }
 
         public GuestRequest checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr)
         {
-            if ((((((((((((hu.SubArea == gr.SubArea) && (hu.Area == gr.Area)) && (hu.Type == gr.Type)) && (isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate))) &&
-                    ((hu.Pool == true && (gr.Pool == Options.neccesery || gr.Pool == Options.possible)) || (hu.Pool == false && (gr.Pool == Options.notintersted || gr.Pool == Options.possible)))) &&
-                    (hu.Jacuzz == true && (gr.Jacuzzi == Options.neccesery || gr.Jacuzzi == Options.possible)) || (hu.Jacuzz == false && (gr.Jacuzzi == Options.notintersted || gr.Jacuzzi == Options.possible))) &&
-                    ((hu.Garden == true && (gr.Garden == Options.neccesery || gr.Garden == Options.possible)) || (hu.Garden == false && (gr.Garden == Options.notintersted || gr.Garden == Options.possible)))) &&
-                    ((hu.ChildrensAttractions == true && (gr.ChildrensAttractions == Options.neccesery || gr.ChildrensAttractions == Options.possible)) || (hu.ChildrensAttractions == false && (gr.ChildrensAttractions == Options.notintersted || gr.ChildrensAttractions == Options.possible)))) &&
-                    ((hu.AirConditoiner == true && (gr.AirConditoiner == Options.neccesery || gr.AirConditoiner == Options.possible)) || (hu.AirConditoiner == false && (gr.AirConditoiner == Options.notintersted || gr.AirConditoiner == Options.possible)))) &&
-                    ((hu.breakfastIncluded == true && (gr.breakfastIncluded == Options.neccesery || gr.breakfastIncluded == Options.possible)) || (hu.breakfastIncluded == false && (gr.breakfastIncluded == Options.notintersted || gr.breakfastIncluded == Options.possible)))) &&
-                    ((hu.FreeParking == true && (gr.FreeParking == Options.neccesery || gr.FreeParking == Options.possible)) || (hu.FreeParking == false && (gr.FreeParking == Options.notintersted || gr.FreeParking == Options.possible)))) &&
-                    ((hu.RoomService == true && (gr.RoomService == Options.neccesery || gr.RoomService == Options.possible)) || (hu.RoomService == false && (gr.RoomService == Options.notintersted || gr.RoomService == Options.possible))))
+            // if the guest already have order
+            if(GetOrdersList().Any(o=>o.GuestRequestKey==gr.GuestRequestKey && o.HostingUnitKey == hu.HostingUnitKey))
             {
-                //Order order = new Order();
-                //order.GuestRequestKey = gr.GuestRequestKey;
-                //order.HostingUnitKey = hu.HostingUnitKey;
-                //order.Status = OrderStatus.NotHandled;
-                //order.CreateDate = DateTime.Now;
+                return null;
+            }
+            if(
+                hu.Area == gr.Area
+                && hu.Type == gr.Type
+                && isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate)
+                && isMatchRequirment(hu.Pool, gr.Pool)
+                && isMatchRequirment(hu.Jacuzz, gr.Jacuzzi)
+                && isMatchRequirment(hu.Garden, gr.Garden)
+                && isMatchRequirment(hu.ChildrensAttractions, gr.ChildrensAttractions)
+                && isMatchRequirment(hu.breakfastIncluded, gr.breakfastIncluded)
+                && isMatchRequirment(hu.FreeParking, gr.FreeParking)
+                && isMatchRequirment(hu.RoomService, gr.RoomService)
+                )
+            {
                 return gr;
             }
 
             return null;
+        }
+
+        bool isMatchRequirment(bool hasOption, Options requrement)
+        {
+            return !(!hasOption && requrement == Options.neccesery);
         }
 
         public List<List<GuestRequest>> GroupRequesteByStatus()
@@ -392,12 +399,7 @@ namespace BL
                 updateDatesAvilable(unit, req);
                 cancelAllOtherOrders(updatedOrder);
                 req.Status = RequestStatus.ClosedDeal;
-            }
-            else if (updatedOrder.Status == OrderStatus.SentMail)
-            {
-                sendOrderRequest(req);
-                req.Status = RequestStatus.ClosedDeal;
-            }
+            } 
             if (updatedOrder.Status == OrderStatus.Canceled)
             {
                 req.Status = RequestStatus.ExpiredRequest;
@@ -470,6 +472,9 @@ namespace BL
         {
             if (h.CollectionClearance)
             {
+                // TODO: send request in SMTP to Mail server
+
+
                 o.Status = OrderStatus.SentMail;
                 UpdateOrder(o);
                 return true;
@@ -477,10 +482,7 @@ namespace BL
             return false;
         }
 
-        void sendOrderRequest(GuestRequest gr)
-        {
-            // TODO: send request in SMTP to Mail server
-        }
+
 
         bool isDatesAvilable(HostingUnit unit, DateTime start, DateTime end)//A function that checks for a particular unit is available on certain dates.
         {

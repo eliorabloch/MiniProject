@@ -21,14 +21,61 @@ namespace PL
     /// Interaction logic for SuggetionOrderItemControl.xaml
     /// </summary>
     public partial class SuggetionOrderItemControl : UserControl
-    { 
-        public SuggetionOrderItemControl(GuestRequest order)
+    {
+        GuestRequest guestRequest;
+        HostingUnit hostingUnit;
+        public SuggetionOrderItemControl(GuestRequest gr, HostingUnit hu)
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+                guestRequest = gr;
+                hostingUnit = hu;
+                GuestRequestPrivateNameLable.Content = guestRequest.PrivateName;
+                GuestRequestFamilyNameLable.Content = guestRequest.FamilyName;
+    
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void GuestRequestDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Utils.navigationService.Navigate(new GuestRequestInfoPage(guestRequest.GuestRequestKey));
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void GuestRequestInviteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var myBL = ImpBL.Instance;
+
+                var order = new Order
+                {
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = guestRequest.GuestRequestKey,
+                    OrderKey = Configuration.OrderId++,
+                    Status = OrderStatus.NotHandled,
+                    OrderDate = DateTime.Now,
+                    HostingUnitKey = hostingUnit.HostingUnitKey
+                };
+                myBL.AddOrder(order);
+                myBL.SendOrder(hostingUnit.Owner, order);
+                Utils.navigationService.GoBack();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
     }

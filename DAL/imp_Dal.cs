@@ -140,7 +140,7 @@ namespace DAL
 
         public Order GetOrder(int id)
         {
-            return (Order)DataSource.orderList.FirstOrDefault(x => x.OrderKey == id).Clone();
+            return (Order)DataSource.orderList.FirstOrDefault(x => x.OrderKey == id)?.Clone();
         }
 
         public void AddOrder(Order newOrder)

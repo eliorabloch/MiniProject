@@ -67,7 +67,7 @@ namespace DS
                     Status = RequestStatus.Open,
                     SubArea = "Tel-Aviv",
                     Type = UnitType.HostingUnit,
-                      AirConditoiner=Options.neccesery,
+                    AirConditoiner=Options.neccesery,
                     RoomService=Options.notintersted,
                     FreeParking=Options.possible,
                     breakfastIncluded=Options.notintersted,
@@ -529,14 +529,27 @@ namespace DS
             unitList = new List<HostingUnit>
             {
                 new HostingUnit
-                {  Diary=BE.Utils.createMatrix(),
+                {    
+                    
+                    
+                    
+                    
+                    
+                      
+                   
+                   
+                   
+                   
+                  
+                  
+                    Diary =BE.Utils.createMatrix(),
                 RateAmount=150,
                 amountOfRaters=70,
                    RateStars=150/70,
                     HostingUnitKey = Configuration.HostingUnitId++,
-                    Area = Areas.Center,
+                    Area = Areas.South,
                     Pool = true,
-                    ChildrensAttractions = true,
+                    ChildrensAttractions = false,
                     HostingUnitName = "Dan",
                     SubArea = "Tel-Aviv",
                     Jacuzz = true,
@@ -546,7 +559,7 @@ namespace DS
                     RoomService = false,
 
                     Garden=false,
-                    Type = UnitType.HotelRoom,
+                    Type = UnitType.Tzimer,
                     Owner= new Host
                     {
                         PrivateName="rami",

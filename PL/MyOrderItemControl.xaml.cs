@@ -37,10 +37,10 @@ namespace PL
         {
             try
             {
-               
                 m_order.Status = (OrderStatus)Enum.Parse(typeof(OrderStatus), OrderStatusComboBox.SelectedValue.ToString(), true); 
                 ImpBL bl = ImpBL.Instance;
                 bl.UpdateOrder(m_order);
+                Utils.navigationService.GoBack();
             }
             catch (Exception err)
             {
