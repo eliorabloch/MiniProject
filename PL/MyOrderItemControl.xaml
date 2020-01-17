@@ -9,18 +9,23 @@
              
              
              ">
-    <Grid Height="50" VerticalAlignment="Top" Background="#FFD9C8C2">
+    <Grid Height="50" VerticalAlignment="Top">
+        <Grid.Background>
+            <SolidColorBrush Color="White" Opacity="0.3"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="207*"/>
             <ColumnDefinition Width="173*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="OrderIdLable" Content="Label" HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Height="30" Width="139" FontFamily="Lucida Sans Unicode"/>
+        <Label x:Name="OrderIdLable" Content="Label" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Center" Height="20" Width="135" FontFamily="MV Boli" Foreground="Gray" FontSize="8"/>
         <ComboBox x:Name="OrderStatusComboBox" HorizontalAlignment="Left" Margin="158,13,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" FontFamily="Lucida Sans Unicode"/>
         <Button x:Name="SaveStatusBtn" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="90,12,0,0" VerticalAlignment="Top" Width="46" Click="SaveStatusBtn_Click" FontFamily="Lucida Sans Unicode" Height="25" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="images/blueBtn.png"/>
+                <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
+        <Label x:Name="OrderFirstName" Content="Label" HorizontalAlignment="Left" Margin="0,-2,0,32" VerticalAlignment="Center" Height="20" Width="135" FontFamily="MV Boli" Foreground="Black" FontSize="8"/>
+        <Label x:Name="OrderLastName1" Content="Label" HorizontalAlignment="Left" Margin="0,13,0,17" VerticalAlignment="Center" Height="20" Width="135" FontFamily="MV Boli" Foreground="Black" FontSize="8"/>
 
     </Grid>
 </UserControl>

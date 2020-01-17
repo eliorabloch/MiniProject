@@ -62,7 +62,14 @@ namespace PL
 
         private void OrderHostingUnitBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.m_navigationService.Navigate(new OrderListPage(m_hostingUnit));
+            try
+            {
+                this.m_navigationService.Navigate(new OrderListPage(m_hostingUnit));
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);// throws a message if cant delete unit.
+            }
         }
     }
 }

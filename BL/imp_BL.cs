@@ -37,6 +37,7 @@ namespace BL
 
         public GuestRequest searchByKey(List<GuestRequest> guestRequest, int key = -1)
         {
+
             foreach (var item in guestRequest)
             {
                 if (item.GuestRequestKey == key)
@@ -47,27 +48,10 @@ namespace BL
             return null;
         }
 
-        public List<GuestRequest> searchByName(List<GuestRequest> guestRequest, string familyName)
+        public List<GuestRequest> searchByName(string familyName)
         {
-            bool ifExist = false;
-            List<GuestRequest> nameGR = new List<GuestRequest>();
-            foreach (var item in guestRequest)
-            {
-                if (item.FamilyName == familyName)
-                {
-                    nameGR.Add(item);
-                    ifExist = true;
-                }
-
-            }
-            if (ifExist)
-            {
-                return nameGR;
-            }
-
-            throw new TzimerException($"Sorry,cant find a request with the name:{familyName}", "bl");
-
-
+            return GetGuestRequestList()
+                .Where(x=>x.FamilyName.ToLower().StartsWith(familyName.ToLower())).ToList();
         }
 
         public GuestRequest GetRequest(int id)
@@ -82,19 +66,7 @@ namespace BL
 
         public List<GuestRequest> matchRequestToUnit(HostingUnit unit)
         {
-            List<GuestRequest> subGuestRequest = new List<GuestRequest>();
-    
-            foreach (var grItem in GetGuestRequestList())
-            {
-                GuestRequest gr = checkIfUnitMatchToRequest(unit, grItem);
-                //Here we will send a mail to the guest that he welcome to come to out unit. - (YB: I don't think so)
-                if (gr != null)
-                {
-                    subGuestRequest.Add(gr);
-                }
-            }
-            
-            return subGuestRequest;
+            return GetGuestRequestList().Where(grItem => checkIfUnitMatchToRequest(unit, grItem) != null).ToList();
         }
 
         public GuestRequest checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr)
@@ -607,7 +579,8 @@ namespace BL
 
         private List<Host> getHostsList()
         {
-            return GetUnitsList().Select(x => x.Owner).Distinct().ToList();
+            var hostIds = GetUnitsList().Select(x => x.Owner.HostId).Distinct().ToList();
+            return hostIds.Select(x => (Host)GetHost(x).Clone()).ToList();
         }
 
         public void DeleteOrder(Order update)
@@ -700,13 +673,8 @@ namespace BL
 
         public int getOverallNumOfUnints()
         {
-            int sum = 0;
-            List<Host> myoveralllist = GetHostsList();
-            foreach (var item in myoveralllist)
-            {
-                sum+=getNumOfUnits(item.HostId);
-            }
-            return sum;
+            return GetUnitsList().Count;
+
         }
 
         public List<HostingUnit> groupHostingUnitsByRates()

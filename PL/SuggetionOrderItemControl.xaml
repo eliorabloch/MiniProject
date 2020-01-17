@@ -6,23 +6,25 @@
              xmlns:local="clr-namespace:PL"
              mc:Ignorable="d" 
              d:DesignHeight="50
-             " d:DesignWidth="350
-             ">
-    <Grid Background="#FFD9C8C2" Margin="0,1,0,-1" Width="360
-          ">
+             " Width="357.178">
+    <Grid Margin="0,1,0,-1">
+        <Grid.Background>
+            <SolidColorBrush Color="White" Opacity="0.3"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="364*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="GuestRequestPrivateNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Width="61"/>
-        <Label x:Name="GuestRequestFamilyNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="87"/>
-        <Button x:Name="GuestRequestDetailsBtn" Content="Information" HorizontalAlignment="Left" Margin="164,6,0,0" VerticalAlignment="Top" Width="121" Height="36" FontFamily="Lucida Sans Unicode" Click="GuestRequestDetailsBtn_Click" BorderBrush="{x:Null}">
+        <Label x:Name="GuestRequestPrivateNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="61" FontFamily="MV Boli"/>
+        <Label x:Name="GuestRequestFamilyNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="87" FontFamily="MV Boli"/>
+        <Button x:Name="GuestRequestDetailsBtn" Content="Information" HorizontalAlignment="Left" Margin="155,6,0,0" VerticalAlignment="Top" Width="121" Height="36" FontFamily="MV Boli" Click="GuestRequestDetailsBtn_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="images/infoBtn.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="GuestRequestInviteBtn" Content="Invite" HorizontalAlignment="Left" Margin="286,6,0,0" VerticalAlignment="Top" Width="60" Height="36" BorderBrush="{x:Null}" FontFamily="Lucida Sans Unicode" Click="GuestRequestInviteBtn_Click">
+        <Button x:Name="GuestRequestInviteBtn" Content="Invite" HorizontalAlignment="Left" Margin="276,6,0,0" VerticalAlignment="Top" Width="60" Height="36" BorderBrush="{x:Null}" FontFamily="MV Boli" Click="GuestRequestInviteBtn_Click">
             <Button.Background>
-                <ImageBrush ImageSource="images/blueBtn.png"/>
+                <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
 

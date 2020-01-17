@@ -27,7 +27,11 @@ namespace PL
         {
             InitializeComponent();
             m_order = order;
-            OrderIdLable.Content = order.OrderKey;
+            OrderIdLable.Content ="#"+ order.OrderKey;
+            ImpBL bl = ImpBL.Instance;
+            var gr = bl.GetRequest(order.GuestRequestKey);
+            OrderFirstName.Content = gr.PrivateName;
+            OrderLastName1.Content = gr.FamilyName;
             OrderStatusComboBox.ItemsSource = Enum.GetNames(typeof(OrderStatus)).ToList();
             OrderStatusComboBox.SelectedValue = order.Status.ToString();
             

@@ -49,7 +49,7 @@
             </Button.Background>
         </Button>
 
-        <Button Content=" gallery" HorizontalAlignment="Left" Height="80" Margin="27,376,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="Button_Click_2">
+        <Button Content="Gallery" HorizontalAlignment="Left" Height="80" Margin="27,376,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="Button_Click_2">
             <Button.Background>
                 <ImageBrush ImageSource="images/blueBtn.png"/>
             </Button.Background>

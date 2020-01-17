@@ -9,11 +9,14 @@
       Title="Grouping">
 
     <Grid Margin="0,0,0,-46">
+        <Grid.Background>
+            <ImageBrush ImageSource="images/back.jpg"/>
+        </Grid.Background>
         <Label Content="Host" Foreground="LightCoral" FontWeight="ExtraBold" FontSize="18" HorizontalAlignment="Left" Margin="43,43,0,0" VerticalContentAlignment="Top"></Label>
-        <ComboBox x:Name="groupByComboBox" Opacity="0.5" HorizontalAlignment="Left" Margin="497,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupByComboBox_SelectionChanged">
+        <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="497,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupByComboBox_SelectionChanged">
             <ComboBoxItem>Group Hosts By Number Of Units</ComboBoxItem>
         </ComboBox>
-        <DataGrid x:Name="groupingDataGrid" Opacity="0.5" FontWeight="ExtraBold" HorizontalAlignment="Left" Height="358" Width="780" Margin="10,82,0,0" VerticalAlignment="Top">
+        <DataGrid x:Name="groupingDataGrid"  FontWeight="ExtraBold" HorizontalAlignment="Left" Height="358" Width="780" Margin="10,82,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="HostIdColum" Binding="{Binding HostId}" Header="Host Id       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="PrivateNameColum" Binding="{Binding PrivateName}" Header="Private Name       " Width="SizeToHeader"     />
@@ -25,6 +28,10 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="backbutton" Content="back" HorizontalAlignment="Left" Margin="20,466,0,0" VerticalAlignment="Top" Width="75" Click="Backbutton_Click"/>
+        <Button Name="backbutton" Content="" HorizontalAlignment="Left" Margin="10,453,0,0" VerticalAlignment="Top" Width="30" Click="Backbutton_Click" Height="30" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="images/arrow.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

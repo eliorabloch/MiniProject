@@ -52,12 +52,16 @@ namespace DAL
             DataSource.requestList.Add((GuestRequest)newRequest.Clone());
         }
 
-        public void UpdateRequest(GuestRequest updatedRequest) 
+        public void UpdateRequest(GuestRequest updatedRequest)
         {
-            DataSource.requestList = (from x in GetGuestRequestList()
-                                   let Status = updatedRequest.Status
-                                   where x.GuestRequestKey == updatedRequest.GuestRequestKey
-                                   select (GuestRequest)x.Clone()).ToList();
+            DataSource.requestList.ForEach(x =>
+            {
+                if (x.GuestRequestKey == updatedRequest.GuestRequestKey)
+                {
+                    x.Status = updatedRequest.Status;
+                }
+            });
+
         }
 
         public void DeleteRequest(GuestRequest newRequest)
@@ -77,23 +81,10 @@ namespace DAL
 
         public List<Host> GetHostList()
         {
-            return (from h in DataSource.unitList
-                    select (Host)h.Owner.Clone()).ToList();
-            //List<Host> myhostlist = (from h in DataSource.unitList
-            //                         select (Host)h.Owner.Clone()).ToList();
-            //List<Host> myhostlist2 = new List<Host>();
-            //foreach (var host in myhostlist)
-            //{
-            //    myhostlist2.Add(host);
-            //    foreach (var host2 in myhostlist)
-            //    {
-            //        if (host.HostId != host2.HostId)
-            //        {
-            //            myhostlist2.Add(host2);
-            //        }
-            //    }
-            //}
-            //return myhostlist2;
+            //return (from h in DataSource.unitList
+            //        select (Host)h.Owner.Clone()).Distinct().ToList();
+            return DataSource.unitList.Select(h=> (Host)h.Owner.Clone()).Distinct().ToList();
+
         }
 
         public HostingUnit GetUnit(int id)

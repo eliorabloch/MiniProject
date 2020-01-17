@@ -62,18 +62,12 @@ namespace PL
 
         private void fullNameSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-    
-        }
-
-        private void searchByNameBtn_Click(object sender, RoutedEventArgs e)
-        {
-
             ImpBL bl = ImpBL.Instance;
 
             List<GuestRequestItemControl> SubguestRequestItemsControl = new List<GuestRequestItemControl>();
             try
             {
-                foreach (var item in bl.searchByName(bl.GetGuestRequestList(), fullNameSearchTextBox.Text))
+                foreach (var item in bl.searchByName(fullNameSearchTextBox.Text))
                 {
                     GuestRequestItemControl sgric = new GuestRequestItemControl(m_navigationService);
                     sgric.GuestRequestTextBlock.Content = item.PrivateName + " " + item.FamilyName;
@@ -87,8 +81,10 @@ namespace PL
             {
                 MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
 
-
+        private void searchByNameBtn_Click(object sender, RoutedEventArgs e)
+        {
         }
 
         private void searchByKeyBtn_Click(object sender, RoutedEventArgs e)
@@ -120,6 +116,7 @@ namespace PL
 
         private void searchByKeyTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+
 
         }
     }
