@@ -40,13 +40,11 @@ namespace PL
                     groupingDataGrid.CanUserResizeColumns = false;
                     groupingDataGrid.CanUserResizeRows = false;
                     groupingDataGrid.CanUserSortColumns = false;
-                    var h = bl.GroupHostsByNumOfUnits();
+                    var h = bl.groupHostsByNumOfUnits();
                     foreach (var item in h)
                     {
-                        foreach (var host in item)
-                        {
-                            groupingDataGrid.Items.Add(host);
-                        }
+                            groupingDataGrid.Items.Add(item);
+                        
                        
                     }
                 }

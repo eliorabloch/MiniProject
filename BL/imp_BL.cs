@@ -559,20 +559,27 @@ namespace BL
 
         }
 
-        public List<List<GuestRequest>> GroupGuestRequestByNumOfAtendees()
+        public List<GuestRequest> groupGuestRequestByNumOfAtendees()
         {
-            return (from gr in GetGuestRequestList()
-                    group gr by gr.Children + gr.Adults into g
-                    select g.ToList()).ToList();
-
+            List<GuestRequest> lgr = new List<GuestRequest>();
+            foreach (var item in GetGuestRequestList())
+            {
+                var x = from newItem in GetGuestRequestList()
+                        orderby newItem.Atendees
+                        select newItem;
+                lgr = x.ToList();
+            }
+            return lgr;
         }
+        //public List<List<GuestRequest>> GroupGuestRequestByNumOfAtendees()
+        //{ 
+        //    return (from gr in GetGuestRequestList()
+        //            group gr by gr.Children + gr.Adults into g
+        //            select g.ToList()).ToList();
 
-        public List<List<Host>> GroupHostsByNumOfUnits()
-        {
-            return (from h in getHostsList()
-                    group h by getNumOfUnits(h.HostId) into g
-                    select g.ToList()).ToList();
-        }
+        //}
+
+
 
         public int getNumOfUnits(string hostID)//A function that returns the number of units each host has.
         {
@@ -685,6 +692,19 @@ namespace BL
         {
             return GetUnitsList().Count;
 
+        }
+
+        public List<Host> groupHostsByNumOfUnits()
+        {
+            List<Host> lh = new List<Host>();
+            foreach (var item in getHostsList())
+            {
+                var x = from newItem in getHostsList()
+                        orderby newItem.numOfUnits
+                        select newItem;
+                lh = x.ToList();
+            }
+            return lh;
         }
 
         public List<HostingUnit> groupHostingUnitsByRates()

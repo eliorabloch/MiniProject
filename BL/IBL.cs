@@ -48,8 +48,6 @@ namespace BL
         GuestRequest checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr);// Check if hosting unit is fit to guest request.
         List<Tuple<DateTime, DateTime>> markTakenDatesInMatrix(HostingUnit unit);//list of taken days;
         List<List<GuestRequest>> GroupGuestRequestByAreas();//A function that returns a list of guest requirements grouped by the required area.
-        List<List<GuestRequest>> GroupGuestRequestByNumOfAtendees();//A function that returns a customer requirements list grouped by the number of vacationers.
-        List<List<Host>> GroupHostsByNumOfUnits();//A function that returns a host list grouped by the number of hosting units they hold.
         List<List<HostingUnit>> GroupHostingUnitsByArea();//A function that returns a list of hosting units grouped according to the required area.
     }
 }
