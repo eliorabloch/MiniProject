@@ -8,6 +8,7 @@ namespace BE
 {
      public class Host : ICloneable
     {
+        public static int  numOfUnits { get; set; }
         public string HostId { get; set; }
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
@@ -27,20 +28,19 @@ namespace BE
             toString += $"Phone number: {PhoneNumber} \n";
             toString += $"Mail address: {MailAddress} \n";
             toString += $"Bank accuont: {BankAccuont} \n";
+            toString += $"Number Of Units: {numOfUnits} \n";
             toString += $"Collection clearance: {CollectionClearance} \n";
             toString += $"Bank account number: {BankAccountNumber} \n";
             return toString;
         }
+
         public object Clone()
         {
             return MemberwiseClone();
         }
-        //public object Clone()
-        //{
-        //    throw new MemberAccessException();
-        //}
+       
 
-        public Host() { }//defult constructor
+        public Host() {}//defult constructor
 
     }
 }

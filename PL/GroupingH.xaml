@@ -22,7 +22,8 @@
                 <DataGridTextColumn x:Name="PrivateNameColum" Binding="{Binding PrivateName}" Header="Private Name       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="FamilyNameColum" Binding="{Binding FamilyName}" Header="Family Name       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="MailAddressColum" Binding="{Binding MailAddress}" Header="Mail Address                   " Width="SizeToHeader"     />
-                <DataGridTextColumn x:Name="PhoneNumberColum" Binding="{Binding PhoneNumber}" Header="PhoneNumber       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="PhoneNumberColum" Binding="{Binding PhoneNumber}" Header="Phone Number       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="numOfUnitsColum" Binding="{Binding numOfUnits}" Header="Number Of Units       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="CollectionClearanceColum" Binding="{Binding CollectionClearance}" Header="Collection Clearance Date       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="BankAccountNumberColum" Binding="{Binding BankAccountNumber}" Header="Bank Account Number       " Width="SizeToHeader"     />
 
