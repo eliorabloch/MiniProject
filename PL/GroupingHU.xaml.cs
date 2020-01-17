@@ -26,7 +26,7 @@ namespace PL
             ImpBL bl = ImpBL.Instance;
 
         }
-        
+
         private void GroupHUByComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ImpBL bl = ImpBL.Instance;
@@ -56,13 +56,9 @@ namespace PL
                     groupingDataGrid.CanUserResizeColumns = false;
                     groupingDataGrid.CanUserResizeRows = false;
                     groupingDataGrid.CanUserSortColumns = false;
-                    var hu = bl.GroupHostingUnitsByRates();
-                    foreach (var item in hu)
+                    foreach (var item in bl.groupHostingUnitsByRates())
                     {
-                        foreach (var hostingunit in item)
-                        {
-                            groupingDataGrid.Items.Add(hostingunit);
-                        }
+                        groupingDataGrid.Items.Add(item);
                     }
                 }
             }
