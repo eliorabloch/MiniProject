@@ -528,21 +528,6 @@ namespace DS
             {
                 new HostingUnit
                 {
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> master
                     Diary =BE.Utils.createMatrix(),
                 RateAmount=150,
                 amountOfRaters=30,
