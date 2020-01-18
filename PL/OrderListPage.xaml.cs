@@ -22,26 +22,33 @@ namespace PL
     /// </summary>
     public partial class OrderListPage : Page
     {
+        HostingUnit m_hostingUnit;
         public OrderListPage(HostingUnit hostingUnit)
         {
             InitializeComponent();
+            m_hostingUnit = hostingUnit;
+            LoadLists();
+        }
+
+        public void LoadLists()
+        {
             ImpBL bl = ImpBL.Instance;
-            List<Order> Myorders = bl.GetOrdersByUnit(hostingUnit.HostingUnitKey);
+            List<Order> Myorders = bl.GetOrdersByUnit(m_hostingUnit.HostingUnitKey);
             List<MyOrderItemControl> itemsToView = new List<MyOrderItemControl>();
             foreach (var order in Myorders)
             {
-                itemsToView.Add(new MyOrderItemControl(order));
+                itemsToView.Add(new MyOrderItemControl(order, this));
             }
 
             MyOrderListView.ItemsSource = itemsToView;
 
-          List<GuestRequest> Suggestorders = bl.matchRequestToUnit(hostingUnit);
+            List<GuestRequest> Suggestorders = bl.matchRequestToUnit(m_hostingUnit);
             List<SuggetionOrderItemControl> itemsToView2 = new List<SuggetionOrderItemControl>();
             foreach (var gr in Suggestorders)
-           {
-               itemsToView2.Add(new SuggetionOrderItemControl(gr, hostingUnit));
+            {
+                itemsToView2.Add(new SuggetionOrderItemControl(gr, m_hostingUnit, this));
             }
-           SuggestionListView.ItemsSource = itemsToView2;
+            SuggestionListView.ItemsSource = itemsToView2;
         }
 
         private void SuggestionListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

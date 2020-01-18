@@ -431,7 +431,7 @@ namespace BL
             return dal.GetBankList();
         }
 
-        public bool SendOrder(Host h, Order o)
+        public bool SendOrder(Host h, Order o,HostingUnit hostingunit)
         {
             if (h.CollectionClearance)
             {
@@ -439,7 +439,14 @@ namespace BL
                 GuestRequest gr = GetRequest(o.GuestRequestKey);
                 mail.To.Add("eliora.bloch@gmail.com");
                 mail.From = new MailAddress("VacationModePlan@gmail.com");
-                mail.Body = "mailBody";
+                mail.Body = $"Dear {gr.PrivateName}  {gr.FamilyName}, <br><br>" +
+                    $"We have found a unit that matches your request number {o.GuestRequestKey}.<br>" + 
+                    $"The unit is called {hostingunit.HostingUnitName}.<br>" +
+                    $"You may contact the units host named {h.PrivateName } {h.FamilyName} through this email address: {h.MailAddress}, or by calling this number: {h.PhoneNumber}.<br>" +
+                    $"We are looking forward to closing a deal with you.<br><br>" +
+                    
+                    $"Yours, VacationMode" ;
+            
                 mail.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";

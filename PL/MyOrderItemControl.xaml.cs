@@ -23,10 +23,12 @@ namespace PL
     public partial class MyOrderItemControl : UserControl
     {
         Order m_order;
-        public MyOrderItemControl(Order order)
+        OrderListPage orderListPage;
+        public MyOrderItemControl(Order order, OrderListPage olp)
         {
             InitializeComponent();
             m_order = order;
+            orderListPage = olp;
             OrderIdLable.Content ="#"+ order.OrderKey;
             ImpBL bl = ImpBL.Instance;
             var gr = bl.GetRequest(order.GuestRequestKey);
@@ -44,7 +46,8 @@ namespace PL
                 m_order.Status = (OrderStatus)Enum.Parse(typeof(OrderStatus), OrderStatusComboBox.SelectedValue.ToString(), true); 
                 ImpBL bl = ImpBL.Instance;
                 bl.UpdateOrder(m_order);
-                Utils.navigationService.GoBack();
+                //Utils.navigationService.GoBack();
+                orderListPage.LoadLists();
             }
             catch (Exception err)
             {

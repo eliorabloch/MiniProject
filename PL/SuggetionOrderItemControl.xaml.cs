@@ -24,13 +24,15 @@ namespace PL
     {
         GuestRequest guestRequest;
         HostingUnit hostingUnit;
-        public SuggetionOrderItemControl(GuestRequest gr, HostingUnit hu)
+        OrderListPage orderListPage;
+        public SuggetionOrderItemControl(GuestRequest gr, HostingUnit hu, OrderListPage olp)
         {
             try
             {
                 InitializeComponent();
                 guestRequest = gr;
                 hostingUnit = hu;
+                orderListPage = olp;
                 GuestRequestPrivateNameLable.Content = guestRequest.PrivateName;
                 GuestRequestFamilyNameLable.Content = guestRequest.FamilyName;
     
@@ -45,6 +47,7 @@ namespace PL
         {
             try
             {
+                    
                 Utils.navigationService.Navigate(new GuestRequestInfoPage(guestRequest.GuestRequestKey));
             }
             catch (Exception err)
@@ -70,8 +73,9 @@ namespace PL
                 };
                 myBL.AddOrder(order);
                 // Task.Run(() =>
-                myBL.SendOrder(hostingUnit.Owner, order);
-                Utils.navigationService.GoBack();
+                myBL.SendOrder(hostingUnit.Owner, order,hostingUnit);
+                //Utils.navigationService.GoBack();
+                orderListPage.LoadLists();
             }
             catch (Exception err)
             {
