@@ -9,10 +9,15 @@ namespace BE
 {
     public class Utils
     {
-        public static bool[,] createMatrix()//Filing the dairy with false valuse
+
+        /// <summary>
+        /// Filing the dairy with false valuse
+        /// </summary>
+        /// <returns>the update matrix</returns>
+        public static bool[,] createMatrix()
         {
             bool[,] mat = new bool[12, 31];
-            for (int i = 0; i < 12; i++)//This for fills the array with false values
+            for (int i = 0; i < 12; i++)
             {
                 for (int j = 1; j < 31; j++)
                 {

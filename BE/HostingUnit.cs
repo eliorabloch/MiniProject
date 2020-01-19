@@ -29,13 +29,18 @@ namespace BE
         
         public bool[,] Diary;
 
-        public HostingUnit() { }//defult constructor
+        public HostingUnit() { }
         
         public object Clone()
         {
             return MemberwiseClone();
         }
-        public override string ToString()//A print function that prints all the details of the class
+
+        /// <summary>
+        /// A print function that prints all the details of the class
+        /// </summary>
+        /// <returns>the hosting unit details./</returns>
+        public override string ToString()
         {
             string toString = "";
             toString += "This is your hostingUnit information: \n";
