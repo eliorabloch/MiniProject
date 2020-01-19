@@ -14,33 +14,77 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BL;
 using BE;
+using System.ComponentModel;
+
 namespace PL
 {
     /// <summary>
     /// Interaction logic for HostInformationWindow.xaml
     /// </summary>
     public partial class HostInformationPage : Page
-
     {
-        
+        private BackgroundWorker backgroundWorker1;
+        List<BankBranch> branches;
         public HostInformationPage()
-        {
-            InitializeComponent();
-
+        {    
+            try
+            {
+                InitializeComponent();
+                getBanks();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         public HostInformationPage(Host owner)
         {
-            InitializeComponent();
-            ImpBL bl = ImpBL.Instance;
-            FirstNameTextBox.Text = owner.PrivateName;
-            LastNameTextBox.Text = owner.FamilyName;
-            HostIdTextBox.Text = owner.HostId;
-            PhoneNumberTextBox.Text = owner.PhoneNumber;
-            EmailTextBox.Text = owner.MailAddress;
-            BankAccountNumberTextBox.Text = owner.BankAccountNumber;
-            collectoinCleearenceCheckBox.IsChecked = owner.CollectionClearance;
+            try
+            {
+                InitializeComponent();
+                ImpBL bl = ImpBL.Instance;
+                FirstNameTextBox.Text = owner.PrivateName;
+                LastNameTextBox.Text = owner.FamilyName;
+                HostIdTextBox.Text = owner.HostId;
+                PhoneNumberTextBox.Text = owner.PhoneNumber;
+                EmailTextBox.Text = owner.MailAddress;
+                BankAccountNumberTextBox.Text = owner.BankAccountNumber;
+                collectoinCleearenceCheckBox.IsChecked = owner.CollectionClearance;
+                BaranchesListComboBox.SelectedItem = owner.BankAccuont.BankName + " - " + owner.BankAccuont.BankNumber.ToString();
+
+                tostringBox.Text = owner.BankAccuont.ToString();
+                getBanks();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
+        private void getBanks()
+        {
+            backgroundWorker1 = new BackgroundWorker();
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_Completed;
+            backgroundWorker1.RunWorkerAsync();
+
+        }
+
+        private void backgroundWorker1_Completed(object sender, RunWorkerCompletedEventArgs e)
+        {
+            branches = (List<BankBranch>)e.Result;
+            foreach (var item in branches)
+            {
+                BaranchesListComboBox.Items.Add(item.BankName + " - " + item.BranchNumber);
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            ImpBL bl = ImpBL.Instance;
+            e.Result = bl.GetBankList();
+        }
 
         private void PhoneNumberTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -64,7 +108,10 @@ namespace PL
 
                 HostingUnitPage obj = new HostingUnitPage(hu.Owner, false);
                 this.NavigationService.Navigate(obj);
-                
+                string branchNumber = BaranchesListComboBox.SelectedValue.ToString().Split('-')[1].Trim();
+                int branchNum = int.Parse(branchNumber);
+                hu.Owner.BankAccuont = branches?.FirstOrDefault(x => x.BranchNumber == branchNum);
+
             }
             catch (Exception err)
             {
@@ -76,6 +123,18 @@ namespace PL
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.GoBack();
+        }
+
+        private void bankInfo_Click(object sender, RoutedEventArgs e)
+        {
+            tostringBox.Visibility = Visibility.Visible;
+            exitbtn.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            tostringBox.Visibility = Visibility.Hidden;
+            exitbtn.Visibility = Visibility.Hidden;
         }
     }
 }

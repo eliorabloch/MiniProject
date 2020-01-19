@@ -5,15 +5,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PL"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="680" d:DesignWidth="840"
       Title="Grouping">
 
     <Grid Margin="0,0,0,-46">
-        <Label Content="Order" Foreground="LightCoral" FontWeight="ExtraBold" FontSize="18" HorizontalAlignment="Left" Margin="43,43,0,0" VerticalContentAlignment="Top"></Label>
-        <ComboBox x:Name="groupByComboBox" Opacity="0.5" HorizontalAlignment="Left" Margin="497,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupByComboBox_SelectionChanged">
+        <Grid.Background>
+            <ImageBrush ImageSource="images/back.jpg"/>
+        </Grid.Background>
+        <Label Content="Order" Foreground="Black" FontWeight="ExtraBold" FontSize="18" HorizontalAlignment="Left" Margin="17,42,0,650" VerticalContentAlignment="Top" FontFamily="MV Boli"></Label>
+        <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="574,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupByComboBox_SelectionChanged">
             <ComboBoxItem>Group Orders By Status</ComboBoxItem>
         </ComboBox>
-        <DataGrid x:Name="groupingDataGrid" Opacity="0.5" FontWeight="ExtraBold" HorizontalAlignment="Left" Height="358" Width="780" Margin="10,82,0,0" VerticalAlignment="Top">
+        <DataGrid x:Name="groupingDataGrid"  FontWeight="ExtraBold" HorizontalAlignment="Left" Height="358" Width="798" Margin="10,82,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="HostingUnitKey" Binding="{Binding HostingUnitKey}" Header="Hosting Unit Key       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="GuestRequestKey" Binding="{Binding GuestRequestKey}" Header="Guest Request Key       " Width="SizeToHeader"     />
@@ -23,6 +26,10 @@
                 <DataGridTextColumn x:Name="OrderDate" Binding="{Binding OrderDate}" Header="Order Date       " Width="SizeToHeader"     />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="backbutton" Content="back" HorizontalAlignment="Left" Margin="20,466,0,0" Width="75" Click="Backbutton_Click" Height="20" VerticalAlignment="Top"/>
+        <Button Name="backbutton" Content="" HorizontalAlignment="Left" Margin="20,466,0,0" Width="30" Click="Backbutton_Click" Height="30" VerticalAlignment="Top" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="images/arrow.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

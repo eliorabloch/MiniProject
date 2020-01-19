@@ -730,6 +730,11 @@ namespace DS
                         CollectionClearance=true,
                         MailAddress="baruch@gmail.com",
                         BankAccountNumber="678787990043",
+                        BankAccuont= new BankBranch
+                        { BankName="בנק דיסקונט לישראל בע",
+                        BankNumber=12,
+
+                        }
                     }
                 },
                 new HostingUnit

@@ -6,12 +6,17 @@
              xmlns:local="clr-namespace:PL"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="730">
-    <Grid x:Name="UserControlContainer">
+    <Grid x:Name="UserControlContainer" Margin="0,0,-19,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="37*"/>
-            <ColumnDefinition Width="693*"/>
+            <ColumnDefinition Width="687*"/>
+            <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Height="100" Margin="-2,0,0,0" VerticalAlignment="Top" Width="732" Background="#FFD9C8C2"/>
+        <Label Grid.ColumnSpan="3" Content="" HorizontalAlignment="Left" Height="100" Margin="-2,0,0,0" VerticalAlignment="Top" Width="751">
+            <Label.Background>
+                <SolidColorBrush Color="White" Opacity="0.5"/>
+            </Label.Background>
+        </Label>
 
         <TextBlock x:Name="HostinUnitNameTextBlock" HorizontalAlignment="Left" Height="27" Margin="38,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" FontSize="20" FontFamily="MV Boli" Grid.Column="1"/>
         <Label x:Name="HostingUnitKeyLable" HorizontalAlignment="Left" Margin="209,40,0,0" VerticalAlignment="Top" Height="50" Width="186" Foreground="#FFA8A8A8" Grid.Column="1"/>

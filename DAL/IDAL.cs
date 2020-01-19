@@ -18,11 +18,21 @@ namespace DAL
         void AddUnit(HostingUnit newUnit);//A function that adds a hosting unit
         void UpdateUnit(HostingUnit update);//A function that updates a hosting unit.
         void DeleteUnit(HostingUnit delUnit);//A function that deletes a hosting unit.
-
+        
+        /// <summary>
+        /// Get the order
+        /// </summary>
+        /// <param name="id">the order id to get</param>
+        /// <returns>the order or null if not found</returns>
         Order GetOrder(int id);
+
         void AddOrder(Order newOrder);//A function that adds an order to the list.
         void UpdateOrder(Order update);//Function that updates an order.
-        void DeleteOrder(Order update);//Function that deletes an order.
+        /// <summary>
+        /// Function that deletes an order
+        /// </summary>
+        /// <param name="update">the order to update</param>
+        void DeleteOrder(Order update);
 
         List<Host> GetHostList();// A function that returns a hosts list.
         List<HostingUnit> GetUnitsList();// A function that returns a hosting unit list.

@@ -2,9 +2,12 @@
 using DS;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DAL
 {
@@ -172,49 +175,46 @@ namespace DAL
 
         public List<BankBranch> GetBankList() //Quick reboot of bank list.
         {
-            return new List<BankBranch>
+
+            const string xmlLocalPath = @"BankBranches.xml";
+            WebClient wc = new WebClient();
+            try
             {
-                new BankBranch
+                string xmlServerPath =
+               @"http://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
+
+                wc.DownloadFile(xmlServerPath, xmlLocalPath);
+            }
+            catch (Exception)
+            {
+                string xmlServerPath = @"http://homedir.jct.ac.il/~coshri/atm.xml";
+                wc.DownloadFile(xmlServerPath, xmlLocalPath);
+            }
+            finally
+            {
+                wc.Dispose();
+            }
+
+            if(!File.Exists(@"BankBranches.xml"))
+            {
+                throw new TzimerException("Failed to pull bank list", "dal");
+            }
+
+            List<BankBranch> branches = new List<BankBranch>();
+            XElement xElement = XElement.Load(@"BankBranches.xml");
+            foreach (var item in xElement.Elements())
+            {
+                branches.Add(new BankBranch()
                 {
-                    BankName = "Leumi",
-                    BankNumber = 1,
-                    BranchAddress = "Rechavia",
-                    BranchCity = "Jerusalem",
-                    BranchNumber = 123
-                },
-                 new BankBranch
-                {
-                    BankName = "Leumi",
-                    BankNumber = 1,
-                    BranchAddress = "Rechavia",
-                    BranchCity = "Jerusalem",
-                    BranchNumber = 123
-                },
-                  new BankBranch
-                {
-                    BankName = "Leumi",
-                    BankNumber = 1,
-                    BranchAddress = "Rechavia",
-                    BranchCity = "Jerusalem",
-                    BranchNumber = 123
-                },
-                   new BankBranch
-                {
-                    BankName = "Leumi",
-                    BankNumber = 1,
-                    BranchAddress = "Rechavia",
-                    BranchCity = "Jerusalem",
-                    BranchNumber = 123
-                },
-                    new BankBranch
-                {
-                    BankName = "Leumi",
-                    BankNumber = 1,
-                    BranchAddress = "Rechavia",
-                    BranchCity = "Jerusalem",
-                    BranchNumber = 123
-                }
-            };
+                    BranchAddress = item.Element("כתובת_ה-ATM").Value,
+                    BankNumber = int.Parse(item.Element("קוד_בנק").Value),
+                    BankName = item.Element("שם_בנק").Value,
+                    BranchCity = item.Element("ישוב").Value,
+                    BranchNumber = int.Parse(item.Element("קוד_סניף").Value)
+                });
+              
+            }
+            return branches.GroupBy(x => x.BranchNumber).Select(y => y.FirstOrDefault()).ToList();
         }
     }
 }

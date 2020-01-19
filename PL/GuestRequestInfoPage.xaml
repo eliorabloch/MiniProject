@@ -11,15 +11,16 @@
     <Grid>
         <Grid HorizontalAlignment="Left" Height="680" VerticalAlignment="Top" Width="840">
             <Grid.Background>
-                <ImageBrush ImageSource="images/main2.jpg"/>
+                <ImageBrush ImageSource="images/back.jpg"/>
             </Grid.Background>
             <Grid HorizontalAlignment="Left" Height="620" Margin="441,36,0,0" VerticalAlignment="Top" Width="389"/>
-            <Grid x:Name="informationgrid" HorizontalAlignment="Left" Height="680" Margin="219,0,0,0" VerticalAlignment="Top" Width="422">
+            <Grid x:Name="informationgrid" HorizontalAlignment="Left" Height="697" Margin="219,-17,0,0" VerticalAlignment="Top" Width="422">
                 <Grid.Background>
-                    <SolidColorBrush Color="#FFD9C8C2" Opacity="0.9"/>
+                    <SolidColorBrush Color="White" Opacity="0.8"/>
                 </Grid.Background>
-                <Label Content="Request Information:" HorizontalAlignment="Left" Height="76" Margin="22,6,-28,0" VerticalAlignment="Top" Width="428" FontFamily="MV Boli" FontSize="36"/>
-                <TextBox x:Name="infoTextBox" HorizontalAlignment="Left" Height="629" Margin="0,75,0,-24" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="422" Background="{x:Null}" TextChanged="TextBox_TextChanged" SelectionBrush="{x:Null}" FontFamily="MV Boli" FontSize="18" Padding="0" BorderBrush="{x:Null}"/>
+                <Label Content="Request Information:" HorizontalAlignment="Left" Height="76" Margin="22,10,-28,0" VerticalAlignment="Top" Width="428" FontFamily="MV Boli" FontSize="36"/>
+               
+                <TextBlock x:Name="infoTextBlock" HorizontalAlignment="Left" Height="629" Margin="0,75,0,-24" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="422" Background="{x:Null}"   FontFamily="MV Boli" FontSize="18" Padding="0" ></TextBlock>
             </Grid>
             <Button x:Name="BackBtn" Content="" HorizontalAlignment="Left" Height="30" Margin="28,606,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Click="BackBtn_Click">
                 <Button.Background>

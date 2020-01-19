@@ -13,37 +13,56 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid HorizontalAlignment="Left" Width="400" Margin="0,22,0,-108">
-            <Label  HorizontalAlignment="Left" Height="380" Margin="193,148,-268,0" VerticalAlignment="Top" Width="475">
+        <Grid HorizontalAlignment="Left" Width="400" Margin="0,-17,0,-69">
+            <Label  HorizontalAlignment="Left" Height="380" Margin="232,148,-232,0" VerticalAlignment="Top" Width="400">
                 <Label.Background>
                     <SolidColorBrush Color="#FFBEE6DF" Opacity="0.7"/>
                 </Label.Background>
             </Label>
-            <Label Content="First-Name:" HorizontalAlignment="Left" Height="30" Margin="285,239,0,0" VerticalAlignment="Top" Width="87" FontWeight="Bold" FontFamily="Lucida Sans Unicode"/>
-            <TextBox x:Name="FirstNameTextBox" HorizontalAlignment="Left" Height="30" Margin="377,237,-223,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246"/>
-            <Label Content="Last-Name:" HorizontalAlignment="Left" Height="32" Margin="289,282,0,0" VerticalAlignment="Top" Width="103" FontWeight="Bold" FontFamily="Lucida Sans Unicode"/>
-            <TextBox x:Name="LastNameTextBox" HorizontalAlignment="Left" Height="30                      " Margin="377,280,-223,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246"/>
-            <Label Content="Phone-Number:" HorizontalAlignment="Left" Height="34" Margin="268,326,0,0" VerticalAlignment="Top" Width="122" FontWeight="Bold"/>
-            <Label Content="E-Mail Address:" HorizontalAlignment="Left" Height="50" Margin="275,364,-35,0" VerticalAlignment="Top" Width="160" FontWeight="Bold"/>
-            <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Height="29" Margin="377,323,-223,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" TextChanged="PhoneNumberTextBox_TextChanged"/>
-            <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="29" Margin="377,363,-223,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" TextChanged="PhoneNumberTextBox_TextChanged"/>
-            <Label Content="Bank Account Number" HorizontalAlignment="Left" Height="49" Margin="237,408,-69,0" VerticalAlignment="Top" Width="232" FontWeight="Bold"/>
-            <TextBox x:Name="BankAccountNumberTextBox" HorizontalAlignment="Left" Height="29" Margin="377,406,-223,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" RenderTransformOrigin="0.5,0.5"/>
-            <CheckBox x:Name="collectoinCleearenceCheckBox" Content="Collection Clearance" HorizontalAlignment="Left" Height="29" Margin="407,457,-194,0" VerticalAlignment="Top" Width="187" FontSize="16" FontWeight="Bold"/>
+            <Label Content="First-Name:" HorizontalAlignment="Left" Height="30" Margin="284,212,0,0" VerticalAlignment="Top" Width="87" FontWeight="Bold" FontFamily="Lucida Sans Unicode"/>
+            <TextBox x:Name="FirstNameTextBox" HorizontalAlignment="Left" Height="30" Margin="376,212,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}"/>
+            <Label Content="Last-Name:" HorizontalAlignment="Left" Height="32" Margin="288,257,0,0" VerticalAlignment="Top" Width="103" FontWeight="Bold" FontFamily="Lucida Sans Unicode"/>
+            <TextBox x:Name="LastNameTextBox" HorizontalAlignment="Left" Height="30                      " Margin="376,255,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}"/>
+            <Label Content="Phone-Number:" HorizontalAlignment="Left" Height="34" Margin="269,298,0,0" VerticalAlignment="Top" Width="122" FontWeight="Bold"/>
+            <Label Content="E-Mail Address:" HorizontalAlignment="Left" Height="50" Margin="274,339,-34,0" VerticalAlignment="Top" Width="160" FontWeight="Bold"/>
+            <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Height="29" Margin="376,298,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" TextChanged="PhoneNumberTextBox_TextChanged" BorderBrush="{x:Null}"/>
+            <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="29" Margin="376,338,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" TextChanged="PhoneNumberTextBox_TextChanged" BorderBrush="{x:Null}"/>
+            <Label Content="Bank Account Number:" HorizontalAlignment="Left" Height="27" Margin="232,383,0,0" VerticalAlignment="Top" Width="144" FontWeight="Bold"/>
+            <TextBox x:Name="BankAccountNumberTextBox" HorizontalAlignment="Left" Height="29" Margin="376,381,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}"/>
+            <CheckBox x:Name="collectoinCleearenceCheckBox" Content="Collection Clearance" HorizontalAlignment="Left" Height="29" Margin="410,481,-197,0" VerticalAlignment="Top" Width="187" FontSize="16" FontWeight="Bold"/>
             <Button x:Name="SaveBTN" Content="Done" HorizontalAlignment="Left" Height="46" Margin="383,543,-87,0" VerticalAlignment="Top" Width="104" FontWeight="Bold" Click="SaveBTN_Click" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="images/button.png" />
                 </Button.Background>
             </Button>
-            <TextBox x:Name="HostIdTextBox" HorizontalAlignment="Left" Height="30                      " Margin="377,194,-223,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246"/>
-            <Label Content="Create New Account:" HorizontalAlignment="Left" Height="74" Margin="180,42,-365,0" VerticalAlignment="Top" Width="585" FontFamily="MV Boli" FontSize="48"/>
+            <TextBox x:Name="HostIdTextBox" HorizontalAlignment="Left" Height="30                      " Margin="376,169,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}"/>
+            <Label Content="Host information:" HorizontalAlignment="Left" Height="74" Margin="232,58,-248,0" VerticalAlignment="Top" Width="416" FontFamily="MV Boli" FontSize="48"/>
         </Grid>
-        <Label Content="Host ID:" HorizontalAlignment="Left" Height="35" Margin="301,216,0,0" VerticalAlignment="Top" Width="72" FontWeight="Bold" FontFamily="Lucida Sans Unicode"/>
+        <Label Content="Host ID:" HorizontalAlignment="Left" Height="35" Margin="300,152,0,0" VerticalAlignment="Top" Width="72" FontWeight="Bold" FontFamily="Lucida Sans Unicode"/>
 
 
-        <Button x:Name="backBtn"  HorizontalAlignment="Left" Height="30" Margin="213,571,0,-61" VerticalAlignment="Top" Width="30" Click="Button_Click" BorderBrush="{x:Null}">
+        <Button x:Name="backBtn"  HorizontalAlignment="Left" Height="30" Margin="130,555,0,-45" VerticalAlignment="Top" Width="30" Click="Button_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="images/arrow.png" />
+            </Button.Background>
+        </Button>
+        <ComboBox x:Name="BaranchesListComboBox" HorizontalAlignment="Left" Height="27" Margin="376,409,0,0" VerticalAlignment="Top" Width="243" BorderBrush="{x:Null}">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Button x:Name="bankInfo" Content="Bank Information" HorizontalAlignment="Left" Height="42" Margin="255,451,0,0" VerticalAlignment="Top" Width="117" BorderBrush="{x:Null}" Click="bankInfo_Click" FontFamily="Lucida Sans Unicode" FontSize="10">
+            <Button.Background>
+                <ImageBrush ImageSource="images/blueBtn.png"/>
+            </Button.Background>
+        </Button>
+        <TextBlock x:Name="tostringBox" HorizontalAlignment="Left" Height="446" Margin="233,130,0,-36" TextWrapping="Wrap" VerticalAlignment="Top" Width="398" FontFamily="Lucida Sans Unicode" Background="#FFDCD3C9" FontSize="20" Padding="100,0" Visibility="Collapsed"  />
+        <Button x:Name="exitbtn" Content="Exit" HorizontalAlignment="Left" Margin="414,517,0,-14" Width="54" BorderBrush="{x:Null}" Click="Button_Click_1" Visibility="Collapsed">
+            <Button.Background>
+                <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
     </Grid>

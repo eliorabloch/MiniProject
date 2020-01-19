@@ -26,17 +26,13 @@ namespace PL
         {
             Gkey = key;
             InitializeComponent();
-           
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
             ImpBL bl = ImpBL.Instance;
-           
-            infoTextBox.Text = bl.GetRequest(Gkey).ToString();
+            infoTextBlock.Text = bl.GetRequest(Gkey).ToString();
+
+
         }
+
+       
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {

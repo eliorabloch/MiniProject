@@ -10,7 +10,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="images/back.jpg" Opacity="0.8"/>
         </Grid.Background>
-        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="494" Margin="36,12,0,0" VerticalAlignment="Top" Width="768">
+        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="494" Margin="36,12,0,0" VerticalAlignment="Top" Width="768" Background="{x:Null}" BorderBrush="{x:Null}">
 
         </ListView>
         <Button x:Name="AddBtn" Content="  Add Unit" HorizontalAlignment="Left" Height="73" Margin="333,524,0,0" VerticalAlignment="Top" Width="196" Click="AddBtn_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="16">
