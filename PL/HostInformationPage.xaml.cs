@@ -50,9 +50,9 @@ namespace PL
                 EmailTextBox.Text = owner.MailAddress;
                 BankAccountNumberTextBox.Text = owner.BankAccountNumber;
                 collectoinCleearenceCheckBox.IsChecked = owner.CollectionClearance;
-                BaranchesListComboBox.SelectedItem = owner.BankAccuont.BankName + " - " + owner.BankAccuont.BankNumber.ToString();
+                BaranchesListComboBox.SelectedItem = owner.BankBranchDetails.BankName + " - " + owner.BankBranchDetails.BankNumber.ToString();
 
-                tostringBox.Text = owner.BankAccuont.ToString();
+                tostringBox.Text = owner.BankBranchDetails.ToString();
                 getBanks();
             }
             catch (Exception err)
@@ -110,7 +110,7 @@ namespace PL
                 this.NavigationService.Navigate(obj);
                 string branchNumber = BaranchesListComboBox.SelectedValue.ToString().Split('-')[1].Trim();
                 int branchNum = int.Parse(branchNumber);
-                hu.Owner.BankAccuont = branches?.FirstOrDefault(x => x.BranchNumber == branchNum);
+                hu.Owner.BankBranchDetails = branches?.FirstOrDefault(x => x.BranchNumber == branchNum);
 
             }
             catch (Exception err)

@@ -1,4 +1,4 @@
-﻿<Page x:Class="PL.GroupingO"
+﻿<Page x:Name="listview" x:Class="PL.GroupingO"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,16 +7,17 @@
       mc:Ignorable="d" 
       d:DesignHeight="680" d:DesignWidth="840"
       Title="Grouping">
+   
 
     <Grid Margin="0,0,0,-46">
         <Grid.Background>
             <ImageBrush ImageSource="images/back.jpg"/>
         </Grid.Background>
         <Label Content="Order" Foreground="Black" FontWeight="ExtraBold" FontSize="18" HorizontalAlignment="Left" Margin="17,42,0,650" VerticalContentAlignment="Top" FontFamily="MV Boli"></Label>
-        <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="574,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupByComboBox_SelectionChanged">
+        <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="596,43,0,0" VerticalAlignment="Top" Width="234" Height="33" SelectionChanged="GroupByComboBox_SelectionChanged">
             <ComboBoxItem>Group Orders By Status</ComboBoxItem>
         </ComboBox>
-        <DataGrid x:Name="groupingDataGrid"  FontWeight="ExtraBold" HorizontalAlignment="Left" Height="358" Width="798" Margin="10,82,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
+        <DataGrid x:Name="groupingDataGrid"  FontWeight="ExtraBold" HorizontalAlignment="Left" Height="358" Width="820" Margin="10,82,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="HostingUnitKey" Binding="{Binding HostingUnitKey}" Header="Hosting Unit Key       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="GuestRequestKey" Binding="{Binding GuestRequestKey}" Header="Guest Request Key       " Width="SizeToHeader"     />
