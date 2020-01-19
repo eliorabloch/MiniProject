@@ -15,9 +15,12 @@ namespace DS
 
         public DataSource() { }
 
+        /// <summary>
+        /// init guest requests list, units list and order list.
+        /// </summary>
         public static void Init()
         {
-            // init guest requests
+            
             requestList = new List<GuestRequest>
             {
                 new GuestRequest
@@ -542,8 +545,7 @@ namespace DS
                     Type = UnitType.HostingUnit
                 }
             };
-
-            // init hosting units list
+            
             unitList = new List<HostingUnit>
             {
                 new HostingUnit
@@ -1199,8 +1201,7 @@ namespace DS
                     }
                    }
             };
-
-            // init order list
+            
             orderList = new List<Order>
             {
                 new Order

@@ -15,7 +15,12 @@ namespace BE
         public DateTime CreateDate { get; set; }
         public DateTime OrderDate { get; set; }
         public Order() { }//defult constructor
-        public override string ToString()//A print function that prints all the details of the class
+
+        /// <summary>
+        /// A print function that prints all the details of the class
+        /// </summary>
+        /// <returns>the order details.</returns>
+        public override string ToString()
         {
             string toString = "";
             toString += "this is your order information: \n";

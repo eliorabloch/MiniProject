@@ -13,9 +13,12 @@ namespace DAL
 {
     public class imp_Dal : IDAL
     {
+
+        #region singleton
         
-        
-        //Using Singleton makes sure that no new instance of the class is ever created but only one instance.
+        /// <summary>
+        /// Using Singleton makes sure that no new instance of the class is ever created but only one instance.
+        /// </summary>
         private static imp_Dal instance = null;
 
         public static imp_Dal getInstance()
@@ -26,6 +29,8 @@ namespace DAL
             }
             return instance;
         }
+        #endregion
+
 
         private imp_Dal()
         {
@@ -45,6 +50,10 @@ namespace DAL
             return (GuestRequest)GetGuestRequestList().FirstOrDefault(x=>x.GuestRequestKey == id)?.Clone();
         }
 
+        /// <summary>
+        /// function who add request
+        /// </summary>
+        /// <param name="newRequest">guest reqest</param>
         public void AddRequest(GuestRequest newRequest)
         {
             if(GetGuestRequestList().Any(x => x.GuestRequestKey == newRequest.GuestRequestKey))
@@ -55,6 +64,10 @@ namespace DAL
             DataSource.requestList.Add((GuestRequest)newRequest.Clone());
         }
 
+        /// <summary>
+        /// function who update request
+        /// </summary>
+        /// <param name="updatedRequest">guest request</param>
         public void UpdateRequest(GuestRequest updatedRequest)
         {
             DataSource.requestList.ForEach(x =>
@@ -66,7 +79,11 @@ namespace DAL
             });
 
         }
-
+     
+        /// <summary>
+        /// function who delete an unit
+        /// </summary>
+        /// <param name="newRequest">guest request</param>
         public void DeleteRequest(GuestRequest newRequest)
         {
             DataSource.requestList.RemoveAll(x => x.GuestRequestKey == newRequest.GuestRequestKey);
@@ -84,8 +101,6 @@ namespace DAL
 
         public List<Host> GetHostList()
         {
-            //return (from h in DataSource.unitList
-            //        select (Host)h.Owner.Clone()).Distinct().ToList();
             return DataSource.unitList.Select(h=> (Host)h.Owner.Clone()).Distinct().ToList();
 
         }
@@ -94,7 +109,11 @@ namespace DAL
         {
             return (HostingUnit)DataSource.unitList.FirstOrDefault(x => x.HostingUnitKey == id)?.Clone();
         }
-
+    
+        /// <summary>
+        /// function who adding hosting unit
+        /// </summary>
+        /// <param name="newUnit">HostingUnit</param>
         public void AddUnit(HostingUnit newUnit)  
         {
             if (GetUnitsList().Any(x => x.HostingUnitKey == newUnit.HostingUnitKey))
@@ -108,6 +127,10 @@ namespace DAL
 
        }
 
+        /// <summary>
+        /// function who update hosting unit
+        /// </summary>
+        /// <param name="updatedUnit">hosting unit</param>
         public void UpdateUnit(HostingUnit updatedUnit)
         {
             DataSource.unitList = DataSource.unitList
@@ -121,6 +144,10 @@ namespace DAL
                .ToList();
         }
 
+        /// <summary>
+        /// function who delete an unit
+        /// </summary>
+        /// <param name="delUnit">hosting unit</param>
         public void DeleteUnit(HostingUnit delUnit)
         {
             DataSource.unitList.RemoveAll(x => x.HostingUnitKey == delUnit.HostingUnitKey);
@@ -140,6 +167,10 @@ namespace DAL
             return (Order)DataSource.orderList.FirstOrDefault(x => x.OrderKey == id)?.Clone();
         }
 
+        /// <summary>
+        /// function who adding order
+        /// </summary>
+        /// <param name="newOrder">order</param>
         public void AddOrder(Order newOrder)
         {
             if (GetOrdersList().Any(x => x.OrderKey == newOrder.OrderKey))
@@ -150,6 +181,10 @@ namespace DAL
             DataSource.orderList.Add((Order)newOrder.Clone());
         }
 
+        /// <summary>
+        /// function who update the order
+        /// </summary>
+        /// <param name="updatedOrder">order</param>
         public void UpdateOrder(Order updatedOrder)
         {
 
@@ -165,7 +200,10 @@ namespace DAL
                  .ToList();
         }
 
-
+        /// <summary>
+        /// function who delete order.
+        /// </summary>
+        /// <param name="order">order</param>
         public void DeleteOrder(Order order)
         {
             DataSource.orderList.RemoveAll(x => x.OrderKey == order.OrderKey);
@@ -173,7 +211,11 @@ namespace DAL
 
         #endregion
 
-        public List<BankBranch> GetBankList() //Quick reboot of bank list.
+        /// <summary>
+        /// Quick reboot of bank list.
+        /// </summary>
+        /// <returns></returns>
+        public List<BankBranch> GetBankList() 
         {
 
             const string xmlLocalPath = @"BankBranches.xml";

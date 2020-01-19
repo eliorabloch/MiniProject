@@ -21,7 +21,11 @@ namespace BE
             return MemberwiseClone();
         }
 
-        public override string ToString()//A print function that prints all the details of the class
+        /// <summary>
+        /// A print function that prints all the details of the class
+        /// </summary>
+        /// <returns>the bank branch details.</returns>
+        public override string ToString()
         {
             string toString = "";
             toString += "This is your bank branch information: \n";

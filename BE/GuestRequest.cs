@@ -40,8 +40,13 @@ namespace BE
         public Options Jacuzzi { get; set; }
         public Options Garden { get; set; }
         public Options ChildrensAttractions { get; set; }
-        public GuestRequest() { }// defualt constructor
-        public override string ToString()//A print function that prints all the details of the class
+        public GuestRequest() { }
+
+        /// <summary>
+        /// A print function that prints all the details of the class
+        /// </summary>
+        /// <returns>the guest request details.</returns>
+        public override string ToString()
         {
             string toString = "";
             toString += "This is your guest request information: \n";
