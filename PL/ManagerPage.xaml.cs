@@ -177,7 +177,9 @@ namespace PL
 
         private void GroupH_Click(object sender, RoutedEventArgs e)
         {
-            
+            m_navigationService = this.NavigationService;
+            var groupH = new GroupingH(); //create your new form.
+            this.NavigationService.Navigate(groupH);
         }
 
         private void NumberOfUnitsHostNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
