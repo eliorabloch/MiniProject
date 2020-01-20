@@ -567,7 +567,7 @@ namespace BL
                 MailMessage mail = new MailMessage();
                 GuestRequest gr = GetRequest(o.GuestRequestKey);
                 mail.To.Add("eliora.bloch@gmail.com");
-              
+                mail.To.Add("lielorenstein10@gmail.com");
                 mail.From = new MailAddress("VacationModePlan@gmail.com");
                 mail.Body = $"Dear {gr.PrivateName}  {gr.FamilyName}, <br><br>" +
                     $"We have found a unit that matches your request number {o.GuestRequestKey}.<br>" +
@@ -988,6 +988,48 @@ namespace BL
                     select g.ToList()).ToList();
 
         }
+
+        /// <summary>
+        /// function who arrange the hosting units by their type (grouping).
+        /// </summary>
+        /// <returns>hosting units list sorted by their type.</returns>
+        public List<List<HostingUnit>> GroupHostingUnitsByType()
+        {
+            return (from hu in GetUnitsList()
+                    group hu by hu.Type into g
+                    select g.ToList()).ToList();
+
+        }
+
+        /// <summary>
+        /// function who arrange the hosting units by their owner (grouping).
+        /// </summary>
+        /// <returns>hosting units list sorted by their owner.</returns>
+        public List<List<HostingUnit>> GroupHostingUnitsByOwner()
+        {
+            return (from hu in GetUnitsList()
+                    group hu by hu.Owner.HostId into g
+                    select g.ToList()).ToList();
+
+        }
+
+        /// <summary>
+        /// function who arrange the banks by their bank's number (grouping).
+        /// </summary>
+        /// <returns>banks list sorted by their bank's number.</returns>
+        public List<BankBranch> GroupBanksByBankNumber()
+        {
+                List<BankBranch> lbb = new List<BankBranch>();
+                foreach (var item in GetBankList())
+                {
+                    var x = from newItem in GetBankList()
+                            orderby newItem.BankNumber
+                            select newItem;
+                    lbb = x.ToList();
+                }
+                return lbb;
+            }
+        }
+    
     }
 
-}

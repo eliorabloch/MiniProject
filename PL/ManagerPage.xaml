@@ -42,17 +42,17 @@
                 <ImageBrush ImageSource="images/blueBtn.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="groupGR" Content="Guest Requests" HorizontalAlignment="Left" Margin="252,218,0,0" VerticalAlignment="Top" Width="200" Height="120" Click="GroupGRbyareas_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20">
+        <Button x:Name="groupGR" Content="Guest Requests" HorizontalAlignment="Left" Margin="252,234,0,0" VerticalAlignment="Top" Width="200" Height="120" Click="GroupGRbyareas_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20">
             <Button.Background>
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="groupHU" Content="Hosting Units" HorizontalAlignment="Left" Margin="31,90,0,0" VerticalAlignment="Top" Width="200" Height="120" Click="GroupHU_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="22">
+        <Button x:Name="groupHU" Content="Hosting Units" HorizontalAlignment="Left" Margin="31,102,0,0" VerticalAlignment="Top" Width="200" Height="120" Click="GroupHU_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="22">
             <Button.Background>
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="groupH" Content=" Hosts" HorizontalAlignment="Left" Margin="30,218,0,0" VerticalAlignment="Top" Width="200" Height="120" Click="GroupH_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="22">
+        <Button x:Name="groupH" Content=" Hosts" HorizontalAlignment="Left" Margin="30,236,0,0" VerticalAlignment="Top" Width="200" Height="120" Click="GroupH_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="22">
             <Button.Background>
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
@@ -112,7 +112,7 @@
             </TextBlock.Background>
         </TextBlock>
         <Label Content=" Manager Information:" HorizontalAlignment="Left" Height="108" Margin="41,6,0,0" VerticalAlignment="Top" Width="417" FontSize="36" FontFamily="MV Boli"/>
-        <Button Content="Orders" HorizontalAlignment="Left" Height="120" Margin="252,90,0,0" VerticalAlignment="Top" Width="200" BorderBrush="{x:Null}" Click="Button_Click_1" FontFamily="MV Boli" FontSize="22">
+        <Button Content="Orders" HorizontalAlignment="Left" Height="120" Margin="252,100,0,0" VerticalAlignment="Top" Width="200" BorderBrush="{x:Null}" Click="Button_Click_1" FontFamily="MV Boli" FontSize="22">
             <Button.Background>
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>

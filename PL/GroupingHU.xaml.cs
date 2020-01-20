@@ -61,6 +61,30 @@ namespace PL
                         groupingDataGrid.Items.Add(item);
                     }
                 }
+                if (groupByComboBox.SelectedIndex == 2)
+                {
+                    groupingDataGrid.Items.Clear();
+                    groupingDataGrid.CanUserReorderColumns = false;
+                    groupingDataGrid.CanUserResizeColumns = false;
+                    groupingDataGrid.CanUserResizeRows = false;
+                    groupingDataGrid.CanUserSortColumns = false;
+                    foreach (var item in bl.GroupHostingUnitsByType())
+                    {
+                        groupingDataGrid.Items.Add(item);
+                    }
+                }
+                if (groupByComboBox.SelectedIndex == 3)
+                {
+                    groupingDataGrid.Items.Clear();
+                    groupingDataGrid.CanUserReorderColumns = false;
+                    groupingDataGrid.CanUserResizeColumns = false;
+                    groupingDataGrid.CanUserResizeRows = false;
+                    groupingDataGrid.CanUserSortColumns = false;
+                    foreach (var item in bl.GroupHostingUnitsByOwner())
+                    {
+                        groupingDataGrid.Items.Add(item);
+                    }
+                }
             }
             catch (Exception ex)
             {

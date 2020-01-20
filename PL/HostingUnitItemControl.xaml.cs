@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-//this page is the format of how every appeerance of my list should be built.
+
 namespace PL
 {
     /// <summary>
@@ -56,7 +56,7 @@ namespace PL
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);// throws a message if cant delete unit.
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -68,7 +68,7 @@ namespace PL
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);// throws a message if cant delete unit.
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
