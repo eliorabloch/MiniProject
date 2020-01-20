@@ -57,7 +57,8 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            var welcomepage = new WelcomePage();
+            this.NavigationService.Navigate(welcomepage);
         }
 
         private void fullNameSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)

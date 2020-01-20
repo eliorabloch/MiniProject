@@ -34,7 +34,7 @@ namespace DAL
 
         private imp_Dal()
         {
-            DataSource.Init();
+          //  DataSource.Init();
         }//constractor
 
         #region Guest Requst

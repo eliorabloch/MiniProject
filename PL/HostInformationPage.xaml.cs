@@ -44,11 +44,56 @@ namespace PL
                 InitializeComponent();
                 ImpBL bl = ImpBL.Instance;
                 FirstNameTextBox.Text = owner.PrivateName;
+               
+                        
                 LastNameTextBox.Text = owner.FamilyName;
+               
                 HostIdTextBox.Text = owner.HostId;
-                PhoneNumberTextBox.Text = owner.PhoneNumber;
+                int number;
+                bool checknumber = Int32.TryParse(owner.HostId, out number);
+                if (!checknumber)
+                {
+                    throw new TzimerException("Id number must not contain letters.");
+                }
+
+
+
+                    PhoneNumberTextBox.Text = owner.PhoneNumber;
+                if (owner.PhoneNumber==""||owner.PhoneNumber==null)
+                {
+                    throw new TzimerException("Must enter a phone number!");
+                }
+                int number2;
+                bool checknumber2 = Int32.TryParse(owner.PhoneNumber, out number2);
+                if (!checknumber)
+                {
+                    throw new TzimerException("Phone number must contain only numbers.", "bl");
+
+                }
                 EmailTextBox.Text = owner.MailAddress;
+
+                if (!(owner.MailAddress.Contains("@")))
+                {
+                    throw new TzimerException("E-mail Address format is invaled.Please enter the correct format.");
+                }
+                if (string.IsNullOrEmpty(owner.MailAddress))
+                {
+                    throw new TzimerException("Please enter your e-mail address.");
+                }
+
                 BankAccountNumberTextBox.Text = owner.BankAccountNumber;
+                if (owner.BankAccountNumber==""||owner.BankAccountNumber==null)
+                {
+                    throw new TzimerException("Must enter a bank account number");
+                }
+                int number3;
+                bool checknumber3 = Int32.TryParse(owner.PhoneNumber, out number3);
+                if (!checknumber)
+                {
+                    throw new TzimerException("Bank account number must contain only numbers.");
+
+                }
+                
                 collectoinCleearenceCheckBox.IsChecked = owner.CollectionClearance;
                 BaranchesListComboBox.SelectedItem = owner.BankBranchDetails.BankName + " - " + owner.BankBranchDetails.BankNumber.ToString();
 
@@ -99,7 +144,11 @@ namespace PL
                 HostingUnit hu = new HostingUnit();
                 hu.Owner = new Host();
                 hu.Owner.PrivateName = FirstNameTextBox.Text;
+                if (hu.Owner.PrivateName == "" || hu.Owner.PrivateName == null)
+                { throw new TzimerException("Must enter a private name!"); }
                 hu.Owner.FamilyName = LastNameTextBox.Text;
+                if (hu.Owner.FamilyName == null|| hu.Owner.FamilyName == "")
+                { throw new TzimerException("Must enter a family name!"); }
                 hu.Owner.HostId = HostIdTextBox.Text;
                 hu.Owner.PhoneNumber = PhoneNumberTextBox.Text;
                 hu.Owner.MailAddress = EmailTextBox.Text;
