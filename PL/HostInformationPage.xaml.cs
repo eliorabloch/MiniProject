@@ -127,14 +127,20 @@ namespace PL
 
         private void bankInfo_Click(object sender, RoutedEventArgs e)
         {
+
             tostringBox.Visibility = Visibility.Visible;
             exitbtn.Visibility = Visibility.Visible;
+            
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+       
+
+        private void exitbtn_Click(object sender, RoutedEventArgs e)
         {
+
             tostringBox.Visibility = Visibility.Hidden;
             exitbtn.Visibility = Visibility.Hidden;
+
         }
     }
 }

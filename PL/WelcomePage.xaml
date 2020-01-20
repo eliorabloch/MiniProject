@@ -54,7 +54,7 @@
                 <ImageBrush ImageSource="images/blueBtn.png"/>
             </Button.Background>
         </Button>
-        <Button Content="About Us" HorizontalAlignment="Left" Height="80" Margin="26,538,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20">
+        <Button Content="Contact Us" HorizontalAlignment="Left" Height="80" Margin="26,538,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20">
             <Button.Background>
                 <ImageBrush ImageSource="images/blueBtn.png"/>
             </Button.Background>

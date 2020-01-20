@@ -406,5 +406,14 @@
     <Resource Include="Gimages\G19.jpg" />
     <Resource Include="Gimages\G20.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\bank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\bancbtn.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
