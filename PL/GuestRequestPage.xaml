@@ -43,7 +43,7 @@
             <ComboBoxItem Content="Tent" />-->
 
 
-        </ComboBox>
+        </ComboBox >
         <Label Content="First Name:" HorizontalAlignment="Left" Margin="32,77,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="26" Width="86" FontFamily="Lucida Sans Unicode"/>
         <TextBox x:Name="GuestRequestFirstNameTextBox" HorizontalAlignment="Left" Height="25" Margin="117,77,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="170
                  " BorderBrush="{x:Null}"/>
@@ -123,8 +123,8 @@
         <TextBox x:Name="SubAreaTextBox" HorizontalAlignment="Left" Height="25" Margin="103,466,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Grid.Row="1" BorderBrush="{x:Null}"/>
         <Label Content="Children Amount:" HorizontalAlignment="Left" Height="35" Margin="23,534,0,0" VerticalAlignment="Top" Width="125" Grid.Row="1" FontFamily="Lucida Sans Unicode"/>
         <Label Content="Adults Amount:" HorizontalAlignment="Left" Height="29" Margin="23,500,0,0" VerticalAlignment="Top" Width="138" Grid.Row="1" FontFamily="Lucida Sans Unicode"/>
-        <TextBox x:Name="ChildrenTextBox" HorizontalAlignment="Left" Height="25" Margin="141,534,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Grid.Row="1" Foreground="{x:Null}" BorderBrush="{x:Null}"/>
-        <TextBox x:Name="AdultsTextBox" HorizontalAlignment="Left" Height="25" Margin="141,500,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Grid.Row="1" RenderTransformOrigin="16.333,-0.333" SelectionBrush="Black" Foreground="{x:Null}" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="ChildrenTextBox" HorizontalAlignment="Left" Height="25" Margin="141,534,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Grid.Row="1" Foreground="Black" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="AdultsTextBox" HorizontalAlignment="Left" Height="25" Margin="141,500,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Grid.Row="1" RenderTransformOrigin="16.333,-0.333" SelectionBrush="Black" Foreground="Black" BorderBrush="{x:Null}"/>
 
         <Button x:Name="backBtn" Content="" HorizontalAlignment="Left" Height="27" Margin="37,587,0,0" VerticalAlignment="Top" Width="28" Click="Button_Click" BorderBrush="{x:Null}" Grid.Row="1">
             <Button.Background>

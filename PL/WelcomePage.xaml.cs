@@ -74,9 +74,9 @@ namespace PL
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (!(PASSWORD.Password == "206343501"))
+            if (!(PASSWORD.Password == "12345"))
             {
-                string titel = "Oops";
+                string titel = "Sorry";
                 string err = "Wrong Password,please try again!";
                 MessageBox.Show(err,titel);
                 return;

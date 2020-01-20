@@ -37,6 +37,13 @@ namespace PL
         {
             try
             {
+                ImpBL bl = ImpBL.Instance;
+                GuestRequest gr = new GuestRequest();
+                gr.Status = RequestStatus.Open;
+
+                gr.RegistrationDate = DateTime.Now;
+                gr.EntryDate = FromDateCalender.SelectedDates[0];
+                gr.ReleaseDate = ToDateCalender.SelectedDates[0];
 
 
                 if (FromDateCalender.SelectedDates.Count == 0)
@@ -47,22 +54,86 @@ namespace PL
                 {
                     throw new TzimerException("Must choose leave date", "pl");
                 }
-                ImpBL bl = ImpBL.Instance;
-                GuestRequest gr = new GuestRequest();
-                gr.Status = RequestStatus.Open;
-                gr.RegistrationDate = DateTime.Now;
+                if ((gr.ReleaseDate - gr.EntryDate).TotalDays < 1)
+                {
+                    throw new TzimerException("Sorry, the dates you chose are invalid, entry must be before leave!", "bl");
+                }
+
+
                 gr.PrivateName = GuestRequestFirstNameTextBox.Text;
+                if (gr.PrivateName == null)
+
+                {
+                    throw new TzimerException("Must enter a Private Name");
+                }
                 gr.FamilyName = GuestRequestlastNameTextBox.Text;
+                
+                if (gr.FamilyName==null)
+                {
+                    throw new TzimerException("Must enter a Family name");
+                }
                 gr.PhoneNumber = PhoneNumbertTextBox.Text;
-                gr.Children = ChildrenTextBox.Text;
-                gr.Adults = AdultsTextBox.Text;
+                if (gr.PhoneNumber == null)
+                {
+                    throw new TzimerException("Must enter a Phone number");
+                }
+                int number;
+                bool checknumber = Int32.TryParse(gr.PhoneNumber, out number);
+                if (!checknumber)
+                {
+                    throw new TzimerException("Phone number must contain only numbers.", "bl");
+
+                }
+               
+                //if (string.IsNullOrEmpty(gr.FamilyName))
+                //{
+                //    throw new TzimerException("Please enter your family name", "bl");
+                //}
+                //if (string.IsNullOrEmpty(gr.PrivateName))
+                //{
+                //    throw new TzimerException("Please enter your private name", "bl");
+                //}
+               
+                if (string.IsNullOrEmpty(gr.PhoneNumber))
+                {
+                    throw new TzimerException("Please enter your phone number", "bl");
+                }
                 gr.MailAddress = EmailTextBox.Text;
+
+                if (!(gr.MailAddress.Contains("@")))
+                {
+                    throw new TzimerException("E-mail Address format is invaled.Please enter the correct format.", "bl");
+                }
+                if (string.IsNullOrEmpty(gr.MailAddress))
+                {
+                    throw new TzimerException("Please enter your e-mail address", "bl");
+                }
+               
+               
+               
+                gr.Adults = AdultsTextBox.Text;
+                if (string.IsNullOrEmpty(gr.Adults))
+                {
+                    throw new TzimerException("Must enter the amount of adults", "bl");
+
+                }
+
+                if (gr.Adults == "0")
+                {
+                    throw new TzimerException("Cannot set request with zero adults!", "bl");
+                }
+                gr.Children = ChildrenTextBox.Text;
+                if (string.IsNullOrEmpty(gr.Children))
+                {
+                    throw new TzimerException("Please enter the amount of children", "bl");
+
+                }
+
+
                 gr.Area = (BE.Areas)AreaComboBox.SelectedIndex;
                 gr.Type = (BE.UnitType)AreaComboBox.SelectedIndex;
                 gr.SubArea = SubAreaTextBox.Text;
-                gr.EntryDate = FromDateCalender.SelectedDates[0];
-                gr.ReleaseDate = ToDateCalender.SelectedDates[0];
-
+               
                 switch (AreaComboBox.SelectedIndex)
                 {
                     case 0:

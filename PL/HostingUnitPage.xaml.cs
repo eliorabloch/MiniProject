@@ -31,100 +31,110 @@ namespace PL
             InitializeComponent();
             
             m_Owner = owner;
-            if (isEdit)
+            try
             {
-                ImpBL bl = ImpBL.Instance;
-                HostingUnit hu = bl.GetUnit(key);
-                HasChildrenAttractionsCheckBox.IsChecked = hu.ChildrensAttractions;
-                HasGardanCheckBox.IsChecked = hu.Garden;
-                HasPoolCheckBox.IsChecked = hu.Pool;
-                HasJacuzzCheckBox.IsChecked = hu.Jacuzz;
-                HostinUnitNameTextBox.Text = hu.HostingUnitName;
-                HostingUnitKeyLable.Content = "#" + hu.HostingUnitKey;
-                SubAreaTextBox.Text = hu.SubArea;
-                switch (hu.RateStars)
+                if (isEdit)
                 {
-                    case 1:
-                        oneStar.Visibility = Visibility.Visible;
-                        break;
-                    case 2:
-                        oneStar.Visibility = Visibility.Visible;
-                        TwoStar.Visibility = Visibility.Visible;
-                        break;
-                    case 3:
-                        oneStar.Visibility = Visibility.Visible;
-                       
-                        TwoStar.Visibility = Visibility.Visible;
-                        ThreeStar.Visibility = Visibility.Visible;
-                        break;
+                    ImpBL bl = ImpBL.Instance;
+                    HostingUnit hu = bl.GetUnit(key);
+                    HasChildrenAttractionsCheckBox.IsChecked = hu.ChildrensAttractions;
+                    HasGardanCheckBox.IsChecked = hu.Garden;
+                    HasPoolCheckBox.IsChecked = hu.Pool;
+                    HasJacuzzCheckBox.IsChecked = hu.Jacuzz;
+                    HostinUnitNameTextBox.Text = hu.HostingUnitName;
+                   
 
-                    case 4:
-                        oneStar.Visibility = Visibility.Visible;
-                        TwoStar.Visibility = Visibility.Visible;
-                        ThreeStar.Visibility = Visibility.Visible;
-                        FourStar.Visibility = Visibility.Visible;
-                        break;
+                    HostingUnitKeyLable.Content = "#" + hu.HostingUnitKey;
+                    SubAreaTextBox.Text = hu.SubArea;
+                   
+                    switch (hu.RateStars)
+                    {
+                        case 1:
+                            oneStar.Visibility = Visibility.Visible;
+                            break;
+                        case 2:
+                            oneStar.Visibility = Visibility.Visible;
+                            TwoStar.Visibility = Visibility.Visible;
+                            break;
+                        case 3:
+                            oneStar.Visibility = Visibility.Visible;
 
-                    case 5:
-                        oneStar.Visibility = Visibility.Visible;
-                        TwoStar.Visibility = Visibility.Visible;
-                        ThreeStar.Visibility = Visibility.Visible;
-                        FourStar.Visibility = Visibility.Visible;
-                        FiveStar.Visibility = Visibility.Visible;
+                            TwoStar.Visibility = Visibility.Visible;
+                            ThreeStar.Visibility = Visibility.Visible;
+                            break;
 
-                        break;
-                    default:
-                        break;
+                        case 4:
+                            oneStar.Visibility = Visibility.Visible;
+                            TwoStar.Visibility = Visibility.Visible;
+                            ThreeStar.Visibility = Visibility.Visible;
+                            FourStar.Visibility = Visibility.Visible;
+                            break;
+
+                        case 5:
+                            oneStar.Visibility = Visibility.Visible;
+                            TwoStar.Visibility = Visibility.Visible;
+                            ThreeStar.Visibility = Visibility.Visible;
+                            FourStar.Visibility = Visibility.Visible;
+                            FiveStar.Visibility = Visibility.Visible;
+
+                            break;
+                        default:
+                            break;
 
 
+
+                    }
+
+                    switch (hu.Area)
+                    {
+                        case Areas.South:
+                            AreaComboBox.SelectedIndex = 3;
+                            break;
+                        case Areas.North:
+                            AreaComboBox.SelectedIndex = 2;
+                            break;
+                        case Areas.Center:
+                            AreaComboBox.SelectedIndex = 1;
+                            break;
+                        case Areas.Jerusalem:
+                            AreaComboBox.SelectedIndex = 0;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    switch (hu.Type)
+                    {
+                        case UnitType.Tzimer:
+                            UnitTypeComboBox.SelectedIndex = 0;
+                            break;
+                        case UnitType.HostingUnit:
+                            UnitTypeComboBox.SelectedIndex = 1;
+                            break;
+                        case UnitType.HotelRoom:
+                            UnitTypeComboBox.SelectedIndex = 2;
+                            break;
+                        case UnitType.Tent:
+                            UnitTypeComboBox.SelectedIndex = 3;
+                            break;
+                        default:
+                            break;
+                    }
+                    m_isEdit = true;
+
+                    foreach (var item in bl.markTakenDatesInMatrix(hu))
+                    {
+                        takenDatesCalender.BlackoutDates.Add(new CalendarDateRange(item.Item1, item.Item2));
+                    }
 
                 }
-
-                switch (hu.Area)
-                {
-                    case Areas.South:
-                        AreaComboBox.SelectedIndex = 3;
-                        break;
-                    case Areas.North:
-                        AreaComboBox.SelectedIndex = 2;
-                        break;
-                    case Areas.Center:
-                        AreaComboBox.SelectedIndex = 1;
-                        break;
-                    case Areas.Jerusalem:
-                        AreaComboBox.SelectedIndex = 0;
-                        break;
-                    default:
-                        break;
-                }
-             
-                switch (hu.Type)
-                {
-                    case UnitType.Tzimer:
-                        UnitTypeComboBox.SelectedIndex = 0;
-                        break;
-                    case UnitType.HostingUnit:
-                        UnitTypeComboBox.SelectedIndex = 1;
-                        break;
-                    case UnitType.HotelRoom:
-                        UnitTypeComboBox.SelectedIndex = 2;
-                        break;
-                    case UnitType.Tent:
-                        UnitTypeComboBox.SelectedIndex = 3;
-                        break;
-                    default:
-                        break;
-                }
-                m_isEdit = true;
-
-                foreach (var item in bl.markTakenDatesInMatrix(hu))
-                {
-                    takenDatesCalender.BlackoutDates.Add(new CalendarDateRange(item.Item1,item.Item2));
-                }
-               
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-           
+
 
         }
         
@@ -138,72 +148,87 @@ namespace PL
         {
             ImpBL bl = ImpBL.Instance;
             HostingUnit hu = new HostingUnit();
-            hu.HostingUnitName = HostinUnitNameTextBox.Text;
-            hu.Area = (BE.Areas)AreaComboBox.SelectedIndex;
-            hu.Type = (BE.UnitType)AreaComboBox.SelectedIndex;
-            hu.SubArea = SubAreaTextBox.Text;
-            switch (AreaComboBox.SelectedIndex)
+            try
             {
-                case 0:
-                    hu.Area = Areas.Jerusalem;
-                    break;
-                case 1:
-                    hu.Area = Areas.Center;
+                hu.HostingUnitName = HostinUnitNameTextBox.Text;
+                if (hu.HostingUnitName == "")
+                {
+                    throw new TzimerException("Must enter a name for the unit!");
+                }
+                hu.Area = (BE.Areas)AreaComboBox.SelectedIndex;
+                hu.Type = (BE.UnitType)AreaComboBox.SelectedIndex;
+                hu.SubArea = SubAreaTextBox.Text;
+                if (hu.SubArea == "")
+                {
+                    throw new TzimerException("Must enter a sub area for your unit!");
+                }
+                switch (AreaComboBox.SelectedIndex)
+                {
+                    case 0:
+                        hu.Area = Areas.Jerusalem;
+                        break;
+                    case 1:
+                        hu.Area = Areas.Center;
 
-                    break;
-                case 2:
-                    hu.Area = Areas.North;
-                    break;
-                case 3:
-                    hu.Area = Areas.South;
+                        break;
+                    case 2:
+                        hu.Area = Areas.North;
+                        break;
+                    case 3:
+                        hu.Area = Areas.South;
 
-                    break;
-                default:
-                    break;
+                        break;
+                    default:
+                        break;
+                }
+                switch (UnitTypeComboBox.SelectedIndex)
+                {
+                    case 0:
+                        hu.Type = UnitType.Tzimer;
+                        break;
+                    case 1:
+                        hu.Type = UnitType.HostingUnit;
+
+                        break;
+                    case 2:
+                        hu.Type = UnitType.HotelRoom;
+
+                        break;
+                    case 3:
+                        hu.Type = UnitType.Tent;
+
+                        break;
+                    default:
+                        break;
+                }
+
+                hu.Pool = (bool)HasPoolCheckBox.IsChecked;
+                hu.Jacuzz = (bool)HasJacuzzCheckBox.IsChecked;
+                hu.Garden = (bool)HasGardanCheckBox.IsChecked;
+                hu.ChildrensAttractions = (bool)HasChildrenAttractionsCheckBox.IsChecked;
+                hu.Owner = m_Owner;
+
+                if (m_isEdit)
+                {
+                    int hostingUnitKey = int.Parse(HostingUnitKeyLable.Content.ToString().Substring(1));
+                    hu.HostingUnitKey = hostingUnitKey;
+                    bl.UpdateUnit(hu);
+                    HostinUnitListPage obj = new HostinUnitListPage(hu.Owner, this.NavigationService);
+                    this.NavigationService.Navigate(obj);
+                }
+
+                else
+                {
+                    bl.AddUnit(hu);
+
+                    HostinUnitListPage obj = new HostinUnitListPage(hu.Owner, this.NavigationService);
+                    this.NavigationService.Navigate(obj);
+
+                }
             }
-            switch (UnitTypeComboBox.SelectedIndex)
+            catch (Exception err)
             {
-                case 0:
-                    hu.Type = UnitType.Tzimer;
-                    break;
-                case 1:
-                    hu.Type = UnitType.HostingUnit;
-
-                    break;
-                case 2:
-                    hu.Type = UnitType.HotelRoom;
-
-                    break;
-                case 3:
-                    hu.Type = UnitType.Tent;
-
-                    break;
-                default:
-                    break;
-            }
-
-            hu.Pool = (bool)HasPoolCheckBox.IsChecked;
-            hu.Jacuzz = (bool)HasJacuzzCheckBox.IsChecked;
-            hu.Garden = (bool)HasGardanCheckBox.IsChecked;
-            hu.ChildrensAttractions = (bool)HasChildrenAttractionsCheckBox.IsChecked;
-            hu.Owner = m_Owner;
-
-            if (m_isEdit)
-            {
-                int hostingUnitKey = int.Parse(HostingUnitKeyLable.Content.ToString().Substring(1));
-                hu.HostingUnitKey = hostingUnitKey;
-                bl.UpdateUnit(hu);
-                HostinUnitListPage obj = new HostinUnitListPage(hu.Owner, this.NavigationService);
-                this.NavigationService.Navigate(obj);
-            }
-
-            else
-            {
-                bl.AddUnit(hu);
-
-                HostinUnitListPage obj = new HostinUnitListPage(hu.Owner, this.NavigationService);
-                this.NavigationService.Navigate(obj);
-
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }

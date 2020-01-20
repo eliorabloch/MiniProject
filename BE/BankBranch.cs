@@ -28,7 +28,7 @@ namespace BE
         public override string ToString()
         {
             string toString = "";
-            toString += "This is your bank branch information: \n";
+           
             toString += $"Bank number: {BankNumber} \n";
             toString += $"Bank name: {BankName} \n";
             toString += $"Branch number: {BranchNumber} \n";

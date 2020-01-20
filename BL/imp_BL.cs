@@ -567,7 +567,7 @@ namespace BL
                 MailMessage mail = new MailMessage();
                 GuestRequest gr = GetRequest(o.GuestRequestKey);
                 mail.To.Add("eliora.bloch@gmail.com");
-                mail.To.Add("lielorenstein10@gmail.com");
+              
                 mail.From = new MailAddress("VacationModePlan@gmail.com");
                 mail.Body = $"Dear {gr.PrivateName}  {gr.FamilyName}, <br><br>" +
                     $"We have found a unit that matches your request number {o.GuestRequestKey}.<br>" +
