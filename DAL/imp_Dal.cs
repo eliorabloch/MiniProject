@@ -122,6 +122,7 @@ namespace DAL
             }
           
             newUnit.HostingUnitKey = Configuration.HostingUnitId++;
+            newUnit.Diary = Utils.createMatrix();
             DataSource.unitList.Add((HostingUnit)newUnit.Clone());
            
 

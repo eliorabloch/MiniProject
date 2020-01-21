@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BE
 {
-   public class HostingUnit : ICloneable 
+    [XmlRoot(ElementName = "HostingUnits")]
+    public class HostingUnits : List<HostingUnit>
+    {
+    }
+
+
+    public class HostingUnit : ICloneable 
     {
         public int HostingUnitKey { get; set; }
         public Host Owner { get; set; }
@@ -25,10 +32,16 @@ namespace BE
         public int RateStars { get; set; }
         public int RateAmount { get; set; }
         public int amountOfRaters { get; set; }
-        
-        
-        public bool[,] Diary;
 
+        [XmlIgnore]
+        public bool[,] Diary { get; set; }
+        [XmlArray("Diary")]
+        public bool[] FlatDiary
+        {
+            get { return Diary.Flatten(); }
+            set { Diary = value.Expand(12); } //5 is the number of roes in the matrix
+        }
+    
         public HostingUnit() { }
         
         public object Clone()

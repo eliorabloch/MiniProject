@@ -8,7 +8,10 @@
       d:DesignHeight="680" d:DesignWidth="840"
       Title="GalleryPage">
 
-    <Grid Background="#FFE4D5BA">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="images/back.jpg" Opacity="0.3"/>
+        </Grid.Background>
         <Grid Width="200" Height="200" Margin="4,-2,636,482">
             <Label Content="Trump" HorizontalAlignment="Left" Margin="63,11,0,0" VerticalAlignment="Top" Width="85" FontFamily="MV Boli" FontSize="18" FontWeight="Bold"/>
             <Image  x:Name="six" Source="Gimages/G1.jpg" >

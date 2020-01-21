@@ -84,15 +84,7 @@ namespace PL
                     throw new TzimerException("Phone number must contain only numbers.", "bl");
 
                 }
-               
-                //if (string.IsNullOrEmpty(gr.FamilyName))
-                //{
-                //    throw new TzimerException("Please enter your family name", "bl");
-                //}
-                //if (string.IsNullOrEmpty(gr.PrivateName))
-                //{
-                //    throw new TzimerException("Please enter your private name", "bl");
-                //}
+              
                
                 if (string.IsNullOrEmpty(gr.PhoneNumber))
                 {

@@ -30,7 +30,7 @@ namespace BL
         static ImpBL()
         {
             string TypeDAL = ConfigurationSettings.AppSettings.Get("TypeDS");
-            //string TypeDAL = "List";
+
             dal = factoryDAL.GetDAL(TypeDAL);
         }
 
@@ -487,6 +487,7 @@ namespace BL
                 var totalDays = (req.ReleaseDate - req.EntryDate).TotalDays;
                 Configuration.Profits += (totalDays * Configuration.Commissin);
                 updateDatesAvilable(unit, req);
+                UpdateUnit(unit);
                 cancelAllOtherOrders(updatedOrder);
                 req.Status = RequestStatus.ClosedDeal;
             } 
