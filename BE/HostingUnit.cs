@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace BE
 {
-    [XmlRoot(ElementName = "HostingUnits")]
+    [XmlRoot(ElementName = "ArrayOfHostingUnit")]
     public class HostingUnits : List<HostingUnit>
     {
     }

@@ -36,7 +36,7 @@ namespace PL
             try
             {
                 int hostingUnitKey = int.Parse(HostingUnitKeyLable.Content.ToString().Substring(1));
-                HostingUnitPage huw = new HostingUnitPage(m_hostingUnit.Owner, true, hostingUnitKey);
+                HostingUnitPage huw = new HostingUnitPage(m_hostingUnit.Owner, m_hostingUnit);
                 m_navigationService.Navigate(huw);
             }
             catch (Exception err)

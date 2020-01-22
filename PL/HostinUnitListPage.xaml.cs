@@ -44,7 +44,7 @@ namespace PL
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)//this is for adding a new hosting unit
         {
-             HostingUnitPage obj =new HostingUnitPage(m_owner, false);
+             HostingUnitPage obj =new HostingUnitPage(m_owner);
             this.NavigationService.Navigate(obj);
         }
 

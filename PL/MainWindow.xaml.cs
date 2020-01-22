@@ -40,7 +40,7 @@ namespace PL
             }
             if (!File.Exists("HostingUnits.xml") || string.IsNullOrEmpty(File.ReadAllText("HostingUnits.xml")))
             {
-                XElement xElement = new XElement("HostingUnits");
+                XElement xElement = new XElement("ArrayOfHostingUnit");
                 xElement.Save("HostingUnits.xml");
             }
             if (!File.Exists("GuestRequests.xml") || string.IsNullOrEmpty(File.ReadAllText("GuestRequests.xml")))

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BL;
 using BE;
+using System.ComponentModel;
 
 namespace PL
 {
@@ -22,6 +23,8 @@ namespace PL
     /// </summary>
     public partial class SuggetionOrderItemControl : UserControl
     {
+        private BackgroundWorker backgroundWorker1;
+
         GuestRequest guestRequest;
         HostingUnit hostingUnit;
         OrderListPage orderListPage;
@@ -35,7 +38,38 @@ namespace PL
                 orderListPage = olp;
                 GuestRequestPrivateNameLable.Content = guestRequest.PrivateName;
                 GuestRequestFamilyNameLable.Content = guestRequest.FamilyName;
-    
+                backgroundWorker1 = new BackgroundWorker();
+                backgroundWorker1.DoWork += inviteAsync;
+                backgroundWorker1.RunWorkerCompleted += onInviteComplate;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void onInviteComplate(object sender, RunWorkerCompletedEventArgs e)
+        {
+            orderListPage.LoadLists();
+        }
+
+        private void inviteAsync(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                var myBL = ImpBL.Instance;
+
+                var order = new Order
+                {
+                    CreateDate = DateTime.Now,
+                    GuestRequestKey = guestRequest.GuestRequestKey,
+                    OrderKey = Configuration.OrderId++,
+                    Status = OrderStatus.NotHandled,
+                    OrderDate = DateTime.Now,
+                    HostingUnitKey = hostingUnit.HostingUnitKey
+                };
+                myBL.AddOrder(order);
+                myBL.SendOrder(hostingUnit.Owner, order, hostingUnit);
             }
             catch (Exception err)
             {
@@ -60,22 +94,7 @@ namespace PL
         {
             try
             {
-                var myBL = ImpBL.Instance;
-
-                var order = new Order
-                {
-                    CreateDate = DateTime.Now,
-                    GuestRequestKey = guestRequest.GuestRequestKey,
-                    OrderKey = Configuration.OrderId++,
-                    Status = OrderStatus.NotHandled,
-                    OrderDate = DateTime.Now,
-                    HostingUnitKey = hostingUnit.HostingUnitKey
-                };
-                myBL.AddOrder(order);
-                // Task.Run(() =>
-                myBL.SendOrder(hostingUnit.Owner, order,hostingUnit);
-                //Utils.navigationService.GoBack();
-                orderListPage.LoadLists();
+                backgroundWorker1.RunWorkerAsync();
             }
             catch (Exception err)
             {

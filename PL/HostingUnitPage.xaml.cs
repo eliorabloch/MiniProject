@@ -25,24 +25,26 @@ namespace PL
     {
         bool m_isEdit = false;
         Host m_Owner { get; set; }
-
-        public HostingUnitPage(Host owner, bool isEdit, int key=-1)
+        HostingUnit m_hostingUnit { get; set; }
+        public HostingUnitPage(Host owner, HostingUnit hu=null)
         {
             InitializeComponent();
             
             m_Owner = owner;
+            m_hostingUnit = hu;
             try
             {
-                if (isEdit)
+                if (hu != null)
                 {
-                    ImpBL bl = ImpBL.Instance;
-                    HostingUnit hu = bl.GetUnit(key);
                     HasChildrenAttractionsCheckBox.IsChecked = hu.ChildrensAttractions;
                     HasGardanCheckBox.IsChecked = hu.Garden;
                     HasPoolCheckBox.IsChecked = hu.Pool;
                     HasJacuzzCheckBox.IsChecked = hu.Jacuzz;
                     HostinUnitNameTextBox.Text = hu.HostingUnitName;
-                   
+                    AirConditionerCheckBox.IsChecked    = hu.AirConditoiner;
+                    FreeParkingCheckBox.IsChecked = hu.FreeParking;
+                    BreakFastIncludedcheckBox.IsChecked = hu.breakfastIncluded;
+                    RoomServiceCheckBox.IsChecked = hu.RoomService;
 
                     HostingUnitKeyLable.Content = "#" + hu.HostingUnitKey;
                     SubAreaTextBox.Text = hu.SubArea;
@@ -80,9 +82,6 @@ namespace PL
                             break;
                         default:
                             break;
-
-
-
                     }
 
                     switch (hu.Area)
@@ -122,6 +121,7 @@ namespace PL
                     }
                     m_isEdit = true;
 
+                    ImpBL bl = ImpBL.Instance;
                     foreach (var item in bl.markTakenDatesInMatrix(hu))
                     {
                         takenDatesCalender.BlackoutDates.Add(new CalendarDateRange(item.Item1, item.Item2));
@@ -147,7 +147,7 @@ namespace PL
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             ImpBL bl = ImpBL.Instance;
-            HostingUnit hu = new HostingUnit();
+            HostingUnit hu = m_hostingUnit == null ? new HostingUnit() : m_hostingUnit;
             try
             {
                 hu.HostingUnitName = HostinUnitNameTextBox.Text;
@@ -158,6 +158,13 @@ namespace PL
                 hu.Area = (BE.Areas)AreaComboBox.SelectedIndex;
                 hu.Type = (BE.UnitType)AreaComboBox.SelectedIndex;
                 hu.SubArea = SubAreaTextBox.Text;
+
+
+                hu.AirConditoiner =    (bool)AirConditionerCheckBox.IsChecked;
+                hu.FreeParking    =    (bool)FreeParkingCheckBox.IsChecked;
+                hu.breakfastIncluded = (bool)BreakFastIncludedcheckBox.IsChecked;
+                hu.RoomService=        (bool)RoomServiceCheckBox.IsChecked;
+
                 if (hu.SubArea == "")
                 {
                     throw new TzimerException("Must enter a sub area for your unit!");

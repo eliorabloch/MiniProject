@@ -147,14 +147,15 @@ namespace DAL
         public void UpdateUnit(HostingUnit update)
         {
             var hul = GetUnitsList();
-            hul.ForEach(x =>
+            var updatedList = hul.Select(x =>
             {
                 if (x.HostingUnitKey == update.HostingUnitKey)
                 {
                     x = update;
                 }
-            });
-            SaveToXML(hul, HOSTING_UNITS_FILENAME);
+                return x;
+            }).ToList();
+            SaveToXML(updatedList, HOSTING_UNITS_FILENAME);
         }
 
         public void DeleteUnit(HostingUnit delUnit)

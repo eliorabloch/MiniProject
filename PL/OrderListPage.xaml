@@ -25,7 +25,7 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <ListView x:Name="MyOrderListView" HorizontalAlignment="Left" Height="500" Margin="38,99,0,0" VerticalAlignment="Top" Width="380
+            <ListView x:Name="MyOrderListView" HorizontalAlignment="Left" Height="478" Margin="38,121,0,0" VerticalAlignment="Top" Width="380
                       " Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                 <ListView.View>
                     <GridView>
@@ -33,7 +33,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <ListView x:Name="SuggestionListView" HorizontalAlignment="Left" Height="500" Margin="422,99,0,0" VerticalAlignment="Top" Width="380
+            <ListView x:Name="SuggestionListView" HorizontalAlignment="Left" Height="478" Margin="422,121,0,0" VerticalAlignment="Top" Width="380
                       " SelectionChanged="SuggestionListView_SelectionChanged" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}">
                 <ListView.View>
                     <GridView>
@@ -41,6 +41,16 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+            <TextBox x:Name="SubAreaTextBox" TextChanged="SubAreaTextBox_TextChanged" HorizontalAlignment="Left" Height="21" Margin="487,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
+            <TextBlock HorizontalAlignment="Left" Height="16" Margin="432,95,0,0" TextWrapping="Wrap" Text="Sub-Area" VerticalAlignment="Top" Width="71"/>
+            <TextBox x:Name="AttendantsAmountTextBox" TextChanged="AttendantsAmountTextBox_TextChanged" HorizontalAlignment="Left" Height="21" Margin="755,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" RenderTransformOrigin="3.95,-0.905"/>
+            <TextBlock HorizontalAlignment="Left" Height="16" Margin="641,95,0,0" TextWrapping="Wrap" Text="Attendants amount" VerticalAlignment="Top" Width="114"/>
+            <Grid>
+                <RadioButton x:Name="StatusSentMailRadioBox" Checked="StatusRadioBox_Checked" Content="Sent Mail" HorizontalAlignment="Left" Margin="145,98,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="StatusCanceledRadioBox" Checked="StatusRadioBox_Checked" Content="Canceled" HorizontalAlignment="Left" Margin="232,98,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="StatusDoneDealRadioBox" Checked="StatusRadioBox_Checked" Content="Done Deal" HorizontalAlignment="Left" Margin="326,98,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="StatusAllRadioBox" IsChecked="True" Checked="StatusRadioBox_Checked" Content="All Statuses" HorizontalAlignment="Left" Margin="43,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.267,0.333"/>
+            </Grid>
         </Grid>
         <Button Content="" HorizontalAlignment="Left" Height="30" Margin="33,608,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Click="Button_Click">
             <Button.Background>

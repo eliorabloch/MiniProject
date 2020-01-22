@@ -155,7 +155,7 @@ namespace PL
                 hu.Owner.BankAccountNumber = BankAccountNumberTextBox.Text;
                 hu.Owner.CollectionClearance = (bool)collectoinCleearenceCheckBox.IsChecked;
 
-                HostingUnitPage obj = new HostingUnitPage(hu.Owner, false);
+                HostingUnitPage obj = new HostingUnitPage(hu.Owner);
                 this.NavigationService.Navigate(obj);
                 string branchNumber = BaranchesListComboBox.SelectedValue.ToString().Split('-')[1].Trim();
                 int branchNum = int.Parse(branchNumber);

@@ -80,9 +80,9 @@ namespace BL
         /// </summary>
         /// <param name="unit">hosting unit</param>
         /// <returns>guest requests list</returns>
-        public List<GuestRequest> matchRequestToUnit(HostingUnit unit)
+        public List<GuestRequest> matchRequestToUnit(HostingUnit unit, string subAreaFilter, string attendantsAmount)
         {
-            return GetGuestRequestList().Where(grItem => checkIfUnitMatchToRequest(unit, grItem) != null).ToList();
+            return GetGuestRequestList().Where(grItem => checkIfUnitMatchToRequest(unit, grItem, subAreaFilter, attendantsAmount) != null ).ToList();
         }
 
         /// <summary>
@@ -91,16 +91,22 @@ namespace BL
         /// <param name="hu">hosting unit</param>
         /// <param name="gr">guest request</param>
         /// <returns>the guest request if there is a match.</returns>
-        public GuestRequest checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr)
+        public GuestRequest checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr, string subAreaFilter, string attendantsAmount)
         {
             if(GetOrdersList().Any(o=>o.GuestRequestKey==gr.GuestRequestKey && o.HostingUnitKey == hu.HostingUnitKey))
             {
                 return null;
             }
-            if(
+
+            int attendants;
+            var filterAttendants = int.TryParse(attendantsAmount, out attendants);
+
+            if (
                 hu.Area == gr.Area
                 && hu.Type == gr.Type
                 && isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate)
+                && filterAttendants ? int.Parse(gr.Children) + int.Parse(gr.Adults) == attendants : true
+                && gr.SubArea.ToLower().StartsWith(subAreaFilter.ToLower())
                 && isMatchRequirment(hu.Pool, gr.Pool)
                 && isMatchRequirment(hu.Jacuzz, gr.Jacuzzi)
                 && isMatchRequirment(hu.Garden, gr.Garden)
@@ -182,7 +188,9 @@ namespace BL
 
             GuestRequest oldReq = getGuestRequestIfExists(updatedRequest.GuestRequestKey);
 
-            if (oldReq.Status == RequestStatus.ClosedDeal || oldReq.Status == RequestStatus.ExpiredRequest)
+            if ((updatedRequest.Status != RequestStatus.ClosedDeal && oldReq.Status == RequestStatus.ClosedDeal )
+                ||
+                (updatedRequest.Status != RequestStatus.ExpiredRequest && oldReq.Status == RequestStatus.ExpiredRequest))
             {
                 throw new TzimerException($"Cannot update a closed request, Request ID: {updatedRequest.GuestRequestKey}", "bl");
             }
