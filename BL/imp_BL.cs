@@ -5,7 +5,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Timers;
 using System.Threading.Tasks;
+using System.Threading;
+
+
 using System.Net.Mail;
 namespace BL
 {
@@ -30,8 +34,13 @@ namespace BL
         static ImpBL()
         {
             string TypeDAL = ConfigurationSettings.AppSettings.Get("TypeDS");
-
             dal = factoryDAL.GetDAL(TypeDAL);
+            
+        }
+        public ImpBL()
+        {
+            Thread thread = new Thread(() => checkAndChangeStatusOrder());
+            thread.Start();
         }
 
 
@@ -515,6 +524,59 @@ namespace BL
 
 
         /// <summary>
+        /// function who check if more then 30 days were pass from the date the mail send till now, if so- update the status.
+        /// </summary>
+        /// <param name="updatedOrderStatus">order</param>
+        public void checkAndChangeStatusOrder()
+        {
+            if (Convert.ToDateTime(Configuration.Date) != DateTime.Now)//check bug
+            {
+                Configuration.Date = DateTime.Now.ToString("yyyy/M/dd ");
+
+                foreach (var updatedOrderStatus in GetOrdersList())
+                {
+                    if ((int)AmountOfDays(updatedOrderStatus.OrderDate, DateTime.Now) > 30)
+                    {
+                        updatedOrderStatus.Status = OrderStatus.Canceled;
+                    }
+                    dal.UpdateOrder(updatedOrderStatus);
+                }
+            }
+        }
+
+        //private static System.Timers.Timer aTimer;
+        //public void timerClass()
+        //{
+        //    Timer timer = new Timer(86400);
+        //    timer.Elapsed += async (sender, e) => await HandleTimer();
+        //    timer.Start();
+        //}
+        //private static Task HandleTimer()
+        //{
+        //    throw new TzimerException("");
+        //}
+        //private static void SetTimer()
+        //{
+        //    aTimer = new System.Timers.Timer(2000);
+        //    aTimer.Elapsed += OnTimedEvent;
+        //    aTimer.AutoReset = true;
+        //    aTimer.Enabled = true;
+        //}
+        //private static void OnTimedEvent(Object source, ElapsedEventArgs e)
+        //{
+        //    throw new TzimerException("The Elapsed event was raised at {0:HH:mm:ss.fff}");
+        //}
+        //public static void Main()
+        //{
+        //    SetTimer();
+        //    Console.ReadLine();
+        //    aTimer.Stop();
+        //    aTimer.Dispose();
+
+        //    Console.WriteLine("Terminating the application...");
+        //}
+
+        /// <summary>
         /// function who goes to the DAL and give me the uest request list.
         /// </summary>
         /// <returns>guest requests lits</returns>
@@ -589,7 +651,8 @@ namespace BL
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 587;
-                smtp.Credentials = new System.Net.NetworkCredential("VacationModePlan@gmail.com", "vac123456");                smtp.EnableSsl = true;
+                smtp.Credentials = new System.Net.NetworkCredential("VacationModePlan@gmail.com", "vac123456");
+                smtp.EnableSsl = true;
 
                 smtp.Send(mail);
                 o.Status = OrderStatus.SentMail;
@@ -1039,6 +1102,8 @@ namespace BL
                 return lbb;
             }
         }
+
+
     
     }
 

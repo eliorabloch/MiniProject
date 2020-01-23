@@ -15,5 +15,6 @@ namespace BE
         public static int OrderId = 100000000;
         public static double Commissin = 10;
         public static double Profits = 0;
+        public static string Date = "2020/01/23";
     }
 }
