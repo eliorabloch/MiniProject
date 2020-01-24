@@ -36,7 +36,7 @@
                 <ImageBrush ImageSource="images/button.png" />
             </Button.Background>
         </Button>
-        <TextBox x:Name="HostIdTextBox" HorizontalAlignment="Left" Height="30                      " Margin="376,169,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="HostIdTextBox" HorizontalAlignment="Left" Height="30                      " Margin="376,169,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" TextChanged="HostIdTextBox_TextChanged"/>
 
         <Label Content="Host information:" HorizontalAlignment="Left" Height="74" Margin="232,58,-248,0" VerticalAlignment="Top" Width="416" FontFamily="MV Boli" FontSize="48"/>
 
