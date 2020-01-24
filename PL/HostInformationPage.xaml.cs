@@ -191,6 +191,11 @@ namespace PL
             exitbtn.Visibility = Visibility.Hidden;
 
         }
+
+        private void HostIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
 

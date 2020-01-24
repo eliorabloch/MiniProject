@@ -43,18 +43,37 @@ namespace PL
 
         private void AvailableU_Click(object sender, RoutedEventArgs e)
         {
-            DateTime d = DateTime.Parse(dateTextBox.Text);
-            InitializeComponent();
-            List<AvailableUnitItemControl> availableUnitItemControl = new List<AvailableUnitItemControl>();
-            ImpBL bl = ImpBL.Instance;
-            foreach (var item in bl.GetAllAvilableUnits(d, int.Parse(amountTextBox.Text)))
-            {
-                AvailableUnitItemControl auic = new AvailableUnitItemControl();
-                auic.UnitNameTextBlock.Text = item.HostingUnitName;
-                availableUnitItemControl.Add(auic);
-            }
-            AvailableUnitListView.ItemsSource = availableUnitItemControl;
+             DateTime d = DateTime.Parse(dateTextBox.Text);
+                InitializeComponent();
+                List<AvailableUnitItemControl> availableUnitItemControl = new List<AvailableUnitItemControl>();
+                ImpBL bl = ImpBL.Instance;
+                foreach (var item in bl.GetAllAvilableUnits(d, int.Parse(amountTextBox.Text)))
+                {
+                    AvailableUnitItemControl auic = new AvailableUnitItemControl();
+                    auic.UnitNameTextBlock.Text = item.HostingUnitName;
+                    availableUnitItemControl.Add(auic);
+                }
+                AvailableUnitListView.ItemsSource = availableUnitItemControl;
 
+            try
+            {
+                if (dateTextBox.Text == "" || dateTextBox.Text == null)
+                {
+                    throw new TzimerException("Must enter an wanted dates!");
+                }
+                if (dateTextBox.Text != "dd/mm/yyyy" )
+                {
+                    throw new TzimerException("Not valid dates, try again.");
+                }
+                if (amountTextBox.Text == "" || amountTextBox.Text == null)
+                {
+                    throw new TzimerException("Must enter amount of wanted days!");
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
