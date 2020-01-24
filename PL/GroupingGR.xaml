@@ -12,15 +12,14 @@
         <Grid.Background>
             <ImageBrush ImageSource="images/back.jpg"/>
         </Grid.Background>
-        <Label Content="Group Request:" Foreground="Black" FontSize="18" HorizontalAlignment="Left" Margin="43,43,0,0" VerticalContentAlignment="Top" FontFamily="MV Boli" Width="151"></Label>
-        <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="575,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupByComboBox_SelectionChanged">
-            <ComboBoxItem>Group Guest Requests By Areas</ComboBoxItem>
-            <ComboBoxItem>Group Guest Requests By Num Of Atendees</ComboBoxItem>
-            <ComboBoxItem>Group Guesr Requests By Status</ComboBoxItem>
+        <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="679,66,0,0" VerticalAlignment="Top" Width="136" Height="25" SelectionChanged="GroupByComboBox_SelectionChanged">
+            <ComboBoxItem>Area</ComboBoxItem>
+            <ComboBoxItem>Number Of Atendees</ComboBoxItem>
+            <ComboBoxItem>Status</ComboBoxItem>
         </ComboBox>
-        <DataGrid x:Name="groupingDataGrid"   HorizontalAlignment="Left" Height="496" Width="780" Margin="29,82,0,0" VerticalAlignment="Top" SelectionChanged="groupingDataGrid_SelectionChanged" FontFamily="Lucida Sans Unicode" Background="{x:Null}" BorderBrush="{x:Null}">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="GuestRequestKeyColum" Binding="{Binding GuestRequestKey}" Header="Guest Request Key       " Width="SizeToHeader" Foreground="Black"      />
+        <DataGrid x:Name="groupingDataGrid"   HorizontalAlignment="Left" Height="496" Width="797" Margin="19,100,0,0" VerticalAlignment="Top" SelectionChanged="groupingDataGrid_SelectionChanged" FontFamily="Lucida Sans Unicode" Background="{x:Null}" BorderBrush="{x:Null}">
+            <DataGrid.Columns >
+                <DataGridTextColumn x:Name="GuestRequestKeyColum" Binding="{Binding GuestRequestKey}" Header="Guest Request Key       " Width="SizeToHeader" Foreground="Black"     />
                 <DataGridTextColumn x:Name="PrivateNameColum" Binding="{Binding PrivateName}" Header="Private Name       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="FamilyNameColum" Binding="{Binding FamilyName}" Header="Family Name       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="MailAddressColum" Binding="{Binding MailAddress}" Header="Mail Address                   " Width="SizeToHeader"     />
@@ -51,6 +50,12 @@
                 <ImageBrush ImageSource="images/arrow.png"/>
             </Button.Background>
         </Button>
+        <Button x:Name="HomeBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="26,34,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="HomeBTN_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="images/home.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Sort guest requests by:" HorizontalAlignment="Left" Height="43" Margin="464,59,0,0" VerticalAlignment="Top" Width="215" FontFamily="MV Boli" FontSize="18"/>
 
     </Grid>
 </Page>

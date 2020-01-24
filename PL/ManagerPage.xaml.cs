@@ -43,19 +43,22 @@ namespace PL
 
         private void AvailableU_Click(object sender, RoutedEventArgs e)
         {
-            DateTime d = DateTime.Parse(dateTextBox.Text);
-            InitializeComponent();
-            List<AvailableUnitItemControl> availableUnitItemControl = new List<AvailableUnitItemControl>();
-            ImpBL bl = ImpBL.Instance;
-            foreach (var item in bl.GetAllAvilableUnits(d, int.Parse(amountTextBox.Text)))
-            {
-                AvailableUnitItemControl auic = new AvailableUnitItemControl();
-                auic.UnitNameTextBlock.Text = item.HostingUnitName;
-                availableUnitItemControl.Add(auic);
+           
+                DateTime d = DateTime.Parse(dateTextBox.Text);
+                InitializeComponent();
+                List<AvailableUnitItemControl> availableUnitItemControl = new List<AvailableUnitItemControl>();
+                ImpBL bl = ImpBL.Instance;
+                foreach (var item in bl.GetAllAvilableUnits(d, int.Parse(amountTextBox.Text)))
+                {
+                    AvailableUnitItemControl auic = new AvailableUnitItemControl();
+                    auic.UnitNameTextBlock.Text = item.HostingUnitName;
+                    availableUnitItemControl.Add(auic);
+                }
+                AvailableUnitListView.ItemsSource = availableUnitItemControl;
             }
-            AvailableUnitListView.ItemsSource = availableUnitItemControl;
+           
 
-        }
+       
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -74,12 +77,12 @@ namespace PL
             this.NavigationService.Navigate(groupGR);
         }
 
-        private void Hostlist_Click(object sender, RoutedEventArgs e)
-        {
-            m_navigationService = this.NavigationService;
-            var ManagerPageGetHostList = new ManagerListsPage(); //create your new form.
-            this.NavigationService.Navigate(ManagerPageGetHostList);
-        }
+        //private void Hostlist_Click(object sender, RoutedEventArgs e)
+        //{
+        //    m_navigationService = this.NavigationService;
+        //    var ManagerPageGetHostList = new ManagerListsPage(); //create your new form.
+        //    this.NavigationService.Navigate(ManagerPageGetHostList);
+        //}
 
         private void OccupancyButtom_Click(object sender, RoutedEventArgs e)
         {
@@ -227,6 +230,12 @@ namespace PL
                 banksListItemControl.Add(blic);
             }
             AvailableUnitListView.ItemsSource = banksListItemControl;
+        }
+        private void HomeBTN_Click(object sender, RoutedEventArgs e)
+        {
+            var HOMEPAGE = new WelcomePage();
+            this.NavigationService.Navigate(HOMEPAGE);
+
         }
     }
 }

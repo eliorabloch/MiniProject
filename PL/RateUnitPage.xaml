@@ -24,6 +24,12 @@
                 <ImageBrush ImageSource="images/arrow.png"/>
             </Button.Background>
         </Button>
+        <Button x:Name="HomeBTN" Content="" HorizontalAlignment="Left" Height="31" Margin="24,12,0,0" VerticalAlignment="Top" Width="33" BorderBrush="{x:Null}" Click="HomeBTN_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="images/home.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Home Page" HorizontalAlignment="Left" Height="25" Margin="6,36,0,0" VerticalAlignment="Top" Width="81" FontFamily="Lucida Sans Unicode" BorderBrush="White" Foreground="#FFE2C7B8"/>
 
     </Grid>
 </Page>

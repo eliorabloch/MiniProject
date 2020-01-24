@@ -118,6 +118,13 @@ namespace PL
             {
                 MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+           
+        }
+
+        private void HomeBTN_Click(object sender, RoutedEventArgs e)
+        {
+            var HOMEPAGE = new WelcomePage();
+            this.NavigationService.Navigate(HOMEPAGE);
         }
     }
 }

@@ -7,17 +7,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="680" d:DesignWidth="840"
       Title="Grouping">
-   
+
 
     <Grid Margin="0,0,0,-46">
         <Grid.Background>
             <ImageBrush ImageSource="images/back.jpg"/>
         </Grid.Background>
-        <Label Content="Order" Foreground="Black" FontWeight="ExtraBold" FontSize="18" HorizontalAlignment="Left" Margin="17,42,0,650" VerticalContentAlignment="Top" FontFamily="MV Boli"></Label>
-        <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="596,43,0,0" VerticalAlignment="Top" Width="234" Height="33" SelectionChanged="GroupByComboBox_SelectionChanged">
-            <ComboBoxItem>Group Orders By Status</ComboBoxItem>
+        <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="652,53,0,0" VerticalAlignment="Top" Width="142" Height="24" SelectionChanged="GroupByComboBox_SelectionChanged">
+            <ComboBoxItem FontFamily="Lucida Sans Unicode">Status</ComboBoxItem>
         </ComboBox>
-        <DataGrid x:Name="groupingDataGrid"  FontWeight="ExtraBold" HorizontalAlignment="Left" Height="358" Width="820" Margin="10,82,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
+        <DataGrid x:Name="groupingDataGrid"  FontWeight="ExtraBold" HorizontalAlignment="Left" Height="497" Width="784" Margin="10,82,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="HostingUnitKey" Binding="{Binding HostingUnitKey}" Header="Hosting Unit Key       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="GuestRequestKey" Binding="{Binding GuestRequestKey}" Header="Guest Request Key       " Width="SizeToHeader"     />
@@ -27,10 +26,16 @@
                 <DataGridTextColumn x:Name="OrderDate" Binding="{Binding OrderDate}" Header="Order Date       " Width="SizeToHeader"     />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="backbutton" Content="" HorizontalAlignment="Left" Margin="20,466,0,0" Width="30" Click="Backbutton_Click" Height="30" VerticalAlignment="Top" BorderBrush="{x:Null}">
+        <Button Name="backbutton" Content="" HorizontalAlignment="Left" Margin="10,596,0,0" Width="30" Click="Backbutton_Click" Height="30" VerticalAlignment="Top" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="images/arrow.png"/>
             </Button.Background>
         </Button>
+        <Button x:Name="HomeBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="19,25,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="HomeBTN_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="images/home.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Sort Orders by:" Foreground="Black" FontSize="18" HorizontalAlignment="Left" Margin="507,42,0,644" VerticalContentAlignment="Top" FontFamily="MV Boli"/>
     </Grid>
 </Page>

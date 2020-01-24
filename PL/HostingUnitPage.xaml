@@ -24,22 +24,22 @@
         </Grid.ColumnDefinitions>
 
 
-        <Label  HorizontalAlignment="Left" Height="698" Margin="57,-18,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="359">
+        <Label  HorizontalAlignment="Left" Height="698" Margin="245,-10,0,-8" Grid.RowSpan="2" VerticalAlignment="Top" Width="359">
             <Label.Background>
                 <SolidColorBrush Color="#FFBEE6DF" Opacity="0.8"/>
             </Label.Background>
         </Label>
 
-        <Label Content="Sub Area:" HorizontalAlignment="Left" Height="25" Margin="60,280,0,0" VerticalAlignment="Top" Width="65" Grid.Row="1" FontFamily="Lucida Sans Unicode"/>
-        <CheckBox x:Name="HasPoolCheckBox" FontWeight="Bold" Content="Pool" HorizontalAlignment="Left" Height="20" Margin="74,224,0,0" VerticalAlignment="Top" Width="111" Grid.Row="1" FontFamily="Lucida Sans Unicode"/>
-        <CheckBox x:Name="HasJacuzzCheckBox" FontWeight="Bold"  Content="Jacuzz" HorizontalAlignment="Left" Height="19" Margin="73,196,0,0" VerticalAlignment="Top" Width="85" IsChecked="False" Grid.Row="1" Checked="HasJacuzzCheckBox_Checked" FontFamily="Lucida Sans Unicode" />
-        <CheckBox x:Name="HasGardanCheckBox" FontWeight="Bold" Content="Garden" HorizontalAlignment="Left" Height="22" Margin="73,170,0,0" VerticalAlignment="Top" Width="125" IsChecked="False" Grid.Row="1" FontFamily="Lucida Sans Unicode" />
-        <CheckBox x:Name="HasChildrenAttractionsCheckBox" FontWeight="Bold" Content="ChildrenAttractions" HorizontalAlignment="Left" Height="22" Margin="73,142,0,0" VerticalAlignment="Top" Width="197" IsChecked="False" Grid.Row="1" FontFamily="Lucida Sans Unicode" />
-        <Label Content="Do you have:" HorizontalAlignment="Left" Height="25" Margin="67,114,0,0" VerticalAlignment="Top" Width="187" Grid.Row="1" RenderTransformOrigin="0.584,1.592" FontFamily="Lucida Sans Unicode"/>
-        <Label Content="Unit-Type:" HorizontalAlignment="Left" Height="26" Margin="58,250,0,0" VerticalAlignment="Top" Width="69" Grid.Row="1"/>
-        <Label Content="Area:" HorizontalAlignment="Left" Height="23" Margin="248,249,0,0" VerticalAlignment="Top" Width="52" Grid.Row="1"/>
-        <ComboBox x:Name="AreaComboBox" HorizontalAlignment="Left" Margin="288,250,0,405" Width="118" Grid.Row="1" Height="25
-                  ">
+        <Label Content="Sub Area:" HorizontalAlignment="Left" Height="25" Margin="248,288,0,0" VerticalAlignment="Top" Width="65" Grid.Row="1" FontFamily="Lucida Sans Unicode"/>
+        <CheckBox x:Name="HasPoolCheckBox" FontWeight="Bold" Content="Pool" HorizontalAlignment="Left" Height="20" Margin="262,232,0,0" VerticalAlignment="Top" Width="111" Grid.Row="1" FontFamily="Lucida Sans Unicode" BorderBrush="{x:Null}"/>
+        <CheckBox x:Name="HasJacuzzCheckBox" FontWeight="Bold"  Content="Jacuzz" HorizontalAlignment="Left" Height="19" Margin="261,204,0,0" VerticalAlignment="Top" Width="85" IsChecked="False" Grid.Row="1" Checked="HasJacuzzCheckBox_Checked" FontFamily="Lucida Sans Unicode" BorderBrush="{x:Null}" />
+        <CheckBox x:Name="HasGardanCheckBox" FontWeight="Bold" Content="Garden" HorizontalAlignment="Left" Height="22" Margin="261,178,0,0" VerticalAlignment="Top" Width="125" IsChecked="False" Grid.Row="1" FontFamily="Lucida Sans Unicode" BorderBrush="{x:Null}" />
+        <CheckBox x:Name="HasChildrenAttractionsCheckBox" FontWeight="Bold" Content="ChildrenAttractions" HorizontalAlignment="Left" Height="22" Margin="261,150,0,0" VerticalAlignment="Top" Width="197" IsChecked="False" Grid.Row="1" FontFamily="Lucida Sans Unicode" BorderBrush="{x:Null}" />
+        <Label Content="Do you have:" HorizontalAlignment="Left" Height="25" Margin="255,122,0,0" VerticalAlignment="Top" Width="187" Grid.Row="1" RenderTransformOrigin="0.584,1.592" FontFamily="Lucida Sans Unicode"/>
+        <Label Content="Unit-Type:" HorizontalAlignment="Left" Height="26" Margin="246,258,0,0" VerticalAlignment="Top" Width="69" Grid.Row="1"/>
+        <Label Content="Area:" HorizontalAlignment="Left" Height="23" Margin="436,257,0,0" VerticalAlignment="Top" Width="52" Grid.Row="1"/>
+        <ComboBox x:Name="AreaComboBox" HorizontalAlignment="Left" Margin="476,258,0,397" Width="118" Grid.Row="1" Height="25
+                  " BorderBrush="{x:Null}">
             <ComboBoxItem Content="jerusalem" />
             <ComboBoxItem Content="center" />
             <ComboBoxItem Content="north" />
@@ -49,39 +49,39 @@
         </ComboBox>
         <ComboBox x:Name="UnitTypeComboBox" Height="25
                   
-                  " Margin="125,251,597,0" VerticalAlignment="Top" Grid.Row="1" Background="White" BorderBrush="{x:Null}">
+                  " Margin="313,259,409,0" VerticalAlignment="Top" Grid.Row="1" Background="White" BorderBrush="{x:Null}">
             <ComboBoxItem Content=" Tzimer"  />
             <ComboBoxItem Content="HostingUnit" />
             <ComboBoxItem Content="HotelRoom" />
             <ComboBoxItem Content="Tent" />
         </ComboBox>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="68,86,0,0" Grid.RowSpan="2" VerticalAlignment="Top" FontFamily="Lucida Sans Unicode"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="256,94,0,0" Grid.RowSpan="2" VerticalAlignment="Top" FontFamily="Lucida Sans Unicode"/>
         <TextBox x:Name="HostinUnitNameTextBox" HorizontalAlignment="Left" Height="25
-                 " Margin="125,87,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
+                 " Margin="313,95,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderBrush="{x:Null}"/>
         <TextBox x:Name="SubAreaTextBox" HorizontalAlignment="Left" Height="25
                  
-                 " Margin="126,282,0,0" Grid.RowSpan="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="280"/>
-        <Button x:Name="SaveBtn" Content="Save" HorizontalAlignment="Left" Margin="201,321,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="77" Height="36" Click="SaveBtn_Click" BorderBrush="{x:Null}">
+                 " Margin="314,290,0,0" Grid.RowSpan="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="280" BorderBrush="{x:Null}"/>
+        <Button x:Name="SaveBtn" Content="Save" HorizontalAlignment="Left" Margin="389,329,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="77" Height="36" Click="SaveBtn_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="HostingUnitKeyLable" Content="" HorizontalAlignment="Left" Margin="115,56,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="123" Foreground="#FF939393"/>
-        <Button x:Name="HostInfoBTN" Content="" HorizontalAlignment="Left" Height="20" Margin="359,15,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="20" Click="HostInfoBTN_Click" BorderBrush="{x:Null}">
+        <Label x:Name="HostingUnitKeyLable" Content="" HorizontalAlignment="Left" Margin="303,64,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="123" Foreground="#FF939393"/>
+        <Button x:Name="HostInfoBTN" Content="" HorizontalAlignment="Left" Height="20" Margin="551,23,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="20" Click="HostInfoBTN_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="images/man.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="backBtn"  HorizontalAlignment="Left" Height="28" Margin="68,579,0,0" VerticalAlignment="Top" Width="30" Click="Back_Click" Grid.RowSpan="2" BorderBrush="{x:Null}">
+        <Button x:Name="backBtn"  HorizontalAlignment="Left" Height="28" Margin="256,587,0,0" VerticalAlignment="Top" Width="30" Click="Back_Click" Grid.RowSpan="2" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="images/arrow.png"/>
             </Button.Background>
         </Button>
-        <Label Content="     Host&#xD;&#xA;information" HorizontalAlignment="Left" Height="64" Margin="331,31,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="112" FontFamily="Lucida Sans Unicode"/>
-        <Label Content="Unit Information:" HorizontalAlignment="Left" Height="33" Margin="70,10,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="258" FontFamily="MV Boli" FontSize="18"/>
+        <Label Content="     Host&#xD;&#xA;information" HorizontalAlignment="Left" Height="64" Margin="523,39,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="112" FontFamily="Lucida Sans Unicode"/>
+        <Label Content="Unit Information:" HorizontalAlignment="Left" Height="33" Margin="258,18,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="258" FontFamily="MV Boli" FontSize="18"/>
         <Calendar x:Name="takenDatesCalender" 
                   HorizontalAlignment="Left" 
-                  Margin="144,464,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="169" Width="185" Foreground="Black">
+                  Margin="332,472,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="169" Width="185" Foreground="Black">
 
             <Calendar.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -93,10 +93,10 @@
             </Calendar.Background>
         </Calendar>
 
-        <CheckBox x:Name="AirConditionerCheckBox" Content="Air Conditioner" HorizontalAlignment="Left" Height="22" Margin="247,142,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="132" FontFamily="Lucida Sans Unicode" FontWeight="Bold"/>
-        <CheckBox x:Name="FreeParkingCheckBox" Content="Free Parking" HorizontalAlignment="Left" Height="22" Margin="247,224,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="132" FontFamily="Lucida Sans Unicode" FontWeight="Bold"/>
-        <CheckBox x:Name="BreakFastIncludedcheckBox" Content="Breakfast Included" HorizontalAlignment="Left" Height="22" Margin="247,197,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="132" FontFamily="Lucida Sans Unicode" FontWeight="Bold"/>
-        <CheckBox x:Name="RoomServiceCheckBox" Content="Room Service" HorizontalAlignment="Left" Height="15" Margin="247,170,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="132" FontFamily="Lucida Sans Unicode" FontWeight="Bold"/>
+        <CheckBox x:Name="AirConditionerCheckBox" Content="Air Conditioner" HorizontalAlignment="Left" Height="22" Margin="435,150,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="132" FontFamily="Lucida Sans Unicode" FontWeight="Bold" BorderBrush="{x:Null}"/>
+        <CheckBox x:Name="FreeParkingCheckBox" Content="Free Parking" HorizontalAlignment="Left" Height="22" Margin="435,232,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="132" FontFamily="Lucida Sans Unicode" FontWeight="Bold" BorderBrush="{x:Null}"/>
+        <CheckBox x:Name="BreakFastIncludedcheckBox" Content="Breakfast Included" HorizontalAlignment="Left" Height="22" Margin="435,205,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="132" FontFamily="Lucida Sans Unicode" FontWeight="Bold" BorderBrush="{x:Null}"/>
+        <CheckBox x:Name="RoomServiceCheckBox" Content="Room Service" HorizontalAlignment="Left" Height="15" Margin="435,178,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="132" FontFamily="Lucida Sans Unicode" FontWeight="Bold" BorderBrush="{x:Null}"/>
 
         <Label x:Name="oneStar" Content="" HorizontalAlignment="Left" Height="20" Margin="175,410,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="20" Visibility="Collapsed"  >
             <Label.Background>
@@ -125,9 +125,14 @@
                 <ImageBrush ImageSource="images/star1.png"/>
             </Label.Background>
         </Label>
-        <Label Content="Units costumer Rating:" HorizontalAlignment="Left" Height="34" Margin="167,383,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="156" FontFamily="Lucida Sans Unicode"/>
-        <Label Content="Units Occupancy:" HorizontalAlignment="Left" Margin="181,436,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="112" FontFamily="Lucida Sans Unicode"/>
-        <Label Content="Key:" HorizontalAlignment="Left" Height="25" Margin="69,56,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="32" FontFamily="Lucida Sans Unicode"/>
+        <Label Content="Units costumer Rating:" HorizontalAlignment="Left" Height="34" Margin="355,391,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="156" FontFamily="Lucida Sans Unicode"/>
+        <Label Content="Units Occupancy:" HorizontalAlignment="Left" Margin="369,444,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="112" FontFamily="Lucida Sans Unicode"/>
+        <Label Content="Key:" HorizontalAlignment="Left" Height="25" Margin="257,64,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="32" FontFamily="Lucida Sans Unicode"/>
+        <Button x:Name="HomeBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="21,20,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="HomeBTN_Click" Grid.RowSpan="2" RenderTransformOrigin="0.453,0.534">
+            <Button.Background>
+                <ImageBrush ImageSource="images/home.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 
 </Page>

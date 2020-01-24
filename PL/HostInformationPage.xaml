@@ -9,7 +9,7 @@
     <Page.Background>
         <ImageBrush ImageSource="images/back.jpg" Opacity="0.8"/>
     </Page.Background>
-    <Grid x:Name="AllPageGrid" Margin="0,-22,0,114">
+    <Grid x:Name="AllPageGrid" Margin="0,0,0,81">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -76,6 +76,11 @@
         </Button>
         <Label Content="Bank Branch:" HorizontalAlignment="Left" Margin="284,425,0,0" VerticalAlignment="Top" Width="88" FontFamily="Lucida Sans Unicode" FontWeight="Bold"/>
         <Label Content="Your Bank Information" Margin="238,472,456,0" VerticalAlignment="Top" FontFamily="Lucida Sans Unicode" FontWeight="Bold"/>
+        <Button x:Name="HomeBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="28,26,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="HomeBTN_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="images/home.png"/>
+            </Button.Background>
+        </Button>
 
 
     </Grid>

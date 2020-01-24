@@ -4,4 +4,5 @@
     {
         public static MessageBoxButtons YesNo { get; internal set; }
     }
+
 }

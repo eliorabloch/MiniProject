@@ -14,8 +14,18 @@
             <Grid.Background>
                 <ImageBrush ImageSource="images/back.jpg" Opacity="0.8"/>
             </Grid.Background>
-            <Label Content="Requests Suggestions:" HorizontalAlignment="Left" Height="63" Margin="440,27,0,0" VerticalAlignment="Top" Width="358" FontFamily="MV Boli" FontSize="36" Background="{x:Null}"/>
-            <Label Content="  My Orders:" HorizontalAlignment="Left" Height="63" Margin="90,23,0,0" VerticalAlignment="Top" Width="249" RenderTransformOrigin="0.5,0.5" FontFamily="MV Boli" FontSize="36" Background="{x:Null}">
+            <Label Content="" HorizontalAlignment="Left" Height="34" Margin="42,90,0,0" VerticalAlignment="Top" Width="372">
+                <Label.Background>
+                    <SolidColorBrush Color="#FFBEE6DF" Opacity="0.6"/>
+                </Label.Background>
+            </Label>
+            <Label Content="" HorizontalAlignment="Left" Height="34" Margin="426,90,0,0" VerticalAlignment="Top" Width="372">
+                <Label.Background>
+                    <SolidColorBrush Color="#FFBEE6DF" Opacity="0.6"/>
+                </Label.Background>
+            </Label>
+            <Label Content="Requests Suggestions:" HorizontalAlignment="Left" Height="63" Margin="421,22,0,0" VerticalAlignment="Top" Width="392" FontFamily="MV Boli" FontSize="36" Background="{x:Null}"/>
+            <Label Content="  My Orders:" HorizontalAlignment="Left" Height="63" Margin="94,22,0,0" VerticalAlignment="Top" Width="249" RenderTransformOrigin="0.5,0.5" FontFamily="MV Boli" FontSize="36" Background="{x:Null}">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -25,36 +35,43 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <ListView x:Name="MyOrderListView" HorizontalAlignment="Left" Height="478" Margin="38,121,0,0" VerticalAlignment="Top" Width="380
-                      " Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <ListView x:Name="MyOrderListView" HorizontalAlignment="Left" Height="478" Margin="38,121,0,0" VerticalAlignment="Top" Width="380                       " Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
             </ListView>
-            <ListView x:Name="SuggestionListView" HorizontalAlignment="Left" Height="478" Margin="422,121,0,0" VerticalAlignment="Top" Width="380
-                      " SelectionChanged="SuggestionListView_SelectionChanged" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}">
+            <ListView x:Name="SuggestionListView" HorizontalAlignment="Left" Height="478" Margin="422,121,0,0" VerticalAlignment="Top" Width="380                       " SelectionChanged="SuggestionListView_SelectionChanged" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
             </ListView>
-            <TextBox x:Name="SubAreaTextBox" TextChanged="SubAreaTextBox_TextChanged" HorizontalAlignment="Left" Height="21" Margin="487,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
-            <TextBlock HorizontalAlignment="Left" Height="16" Margin="432,95,0,0" TextWrapping="Wrap" Text="Sub-Area" VerticalAlignment="Top" Width="71"/>
-            <TextBox x:Name="AttendantsAmountTextBox" TextChanged="AttendantsAmountTextBox_TextChanged" HorizontalAlignment="Left" Height="21" Margin="755,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" RenderTransformOrigin="3.95,-0.905"/>
-            <TextBlock HorizontalAlignment="Left" Height="16" Margin="641,95,0,0" TextWrapping="Wrap" Text="Attendants amount" VerticalAlignment="Top" Width="114"/>
+            <TextBox x:Name="SubAreaTextBox" TextChanged="SubAreaTextBox_TextChanged" HorizontalAlignment="Left" Height="20" Margin="489,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" BorderBrush="{x:Null}"/>
+            <TextBlock HorizontalAlignment="Left" Height="16" Margin="427,98,0,0" TextWrapping="Wrap" Text="Sub-Area" VerticalAlignment="Top" Width="71" FontFamily="Lucida Sans Unicode"/>
+            <TextBox x:Name="AttendantsAmountTextBox" TextChanged="AttendantsAmountTextBox_TextChanged" HorizontalAlignment="Left" Height="20" Margin="766,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="27" RenderTransformOrigin="3.95,-0.905" Background="White" BorderBrush="{x:Null}"/>
+            <TextBlock HorizontalAlignment="Left" Height="16" Margin="646,98,0,0" TextWrapping="Wrap" Text="Attendants amount" VerticalAlignment="Top" Width="114" FontFamily="Lucida Sans Unicode"/>
             <Grid>
-                <RadioButton x:Name="StatusSentMailRadioBox" Checked="StatusRadioBox_Checked" Content="Sent Mail" HorizontalAlignment="Left" Margin="145,98,0,0" VerticalAlignment="Top"/>
-                <RadioButton x:Name="StatusCanceledRadioBox" Checked="StatusRadioBox_Checked" Content="Canceled" HorizontalAlignment="Left" Margin="232,98,0,0" VerticalAlignment="Top"/>
-                <RadioButton x:Name="StatusDoneDealRadioBox" Checked="StatusRadioBox_Checked" Content="Done Deal" HorizontalAlignment="Left" Margin="326,98,0,0" VerticalAlignment="Top"/>
-                <RadioButton x:Name="StatusAllRadioBox" IsChecked="True" Checked="StatusRadioBox_Checked" Content="All Statuses" HorizontalAlignment="Left" Margin="43,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.267,0.333"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="59*"/>
+                    <RowDefinition Height="168*"/>
+                </Grid.RowDefinitions>
+                <RadioButton x:Name="StatusSentMailRadioBox" Checked="StatusRadioBox_Checked" Content="Sent Mail" HorizontalAlignment="Left" Margin="144,99,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}"/>
+                <RadioButton x:Name="StatusCanceledRadioBox" Checked="StatusRadioBox_Checked" Content="Canceled" HorizontalAlignment="Left" Margin="235,99,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}"/>
+                <RadioButton x:Name="StatusDoneDealRadioBox" Checked="StatusRadioBox_Checked" Content="Done Deal" HorizontalAlignment="Left" Margin="326,99,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}"/>
+                <RadioButton x:Name="StatusAllRadioBox" IsChecked="True" Checked="StatusRadioBox_Checked" Content="All Statuses" HorizontalAlignment="Left" Margin="46,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.267,0.333" BorderBrush="{x:Null}"/>
             </Grid>
         </Grid>
         <Button Content="" HorizontalAlignment="Left" Height="30" Margin="33,608,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Click="Button_Click">
             <Button.Background>
                 <ImageBrush ImageSource="images/arrow.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="HomeBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="21,22,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="HomeBTN_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="images/home.png"/>
             </Button.Background>
         </Button>
 

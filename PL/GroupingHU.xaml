@@ -9,18 +9,20 @@
       Title="Grouping">
 
     <Grid Margin="0,0,0,-57">
-        <Label Content="Hosting Unit" Foreground="LightCoral" FontWeight="ExtraBold" FontSize="18" HorizontalAlignment="Left" Margin="43,43,0,0" VerticalContentAlignment="Top"></Label>
-        <ComboBox x:Name="groupByComboBox" Opacity="0.5" HorizontalAlignment="Left" Margin="497,43,0,0" VerticalAlignment="Top" Width="234" Height="34" SelectionChanged="GroupHUByComboBox_SelectionChanged">
-            <ComboBoxItem>Group Hosting Units By Area</ComboBoxItem>
-            <ComboBoxItem>Group Hosting Units By rates</ComboBoxItem>
-            <ComboBoxItem>Group Hosting Units By Type</ComboBoxItem>
-            <ComboBoxItem>Group Hosting Units By Owner</ComboBoxItem>
+        <Grid.Background>
+            <ImageBrush ImageSource="images/back.jpg"/>
+        </Grid.Background>
+        <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="662,43,0,0" VerticalAlignment="Top" Width="144" Height="28" SelectionChanged="GroupHUByComboBox_SelectionChanged">
+            <ComboBoxItem FontFamily="Lucida Sans Unicode">Area</ComboBoxItem>
+            <ComboBoxItem FontFamily="Lucida Sans Unicode">rates</ComboBoxItem>
+            <ComboBoxItem FontFamily="Lucida Sans Unicode">Unit Type</ComboBoxItem>
+            <ComboBoxItem FontFamily="Lucida Sans Unicode">Owner</ComboBoxItem>
         </ComboBox>
-        <DataGrid x:Name="groupingDataGrid" Opacity="0.5" FontWeight="ExtraBold" HorizontalAlignment="Left" Height="368" Width="780" Margin="10,94,0,-12" VerticalAlignment="Top">
+        <DataGrid x:Name="groupingDataGrid"  FontWeight="ExtraBold" HorizontalAlignment="Left" Height="489" Width="786" Margin="20,81,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="HostingUnitKeyColum" Binding="{Binding HostingUnitKey}" Header="Hosting Unit Key       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="HostingUnitNameColum" Binding="{Binding HostingUnitName}" Header="Hosting Unit Name       " Width="SizeToHeader"     />
-                <DataGridTextColumn x:Name="OwnerColum" Binding="{Binding Owner}" Header="Owner                                                                     " Width="SizeToHeader"     />
+              
                 <DataGridTextColumn x:Name="AreaColum" Binding="{Binding Area}" Header="Area       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="SubAreaColum" Binding="{Binding SubArea}" Header="Sub Area       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="TypeColum" Binding="{Binding Type}" Header="Type       " Width="SizeToHeader"     />
@@ -35,9 +37,20 @@
                 <DataGridTextColumn x:Name="RateStarsColum" Binding="{Binding RateStars}" Header="Rate Stars       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="RateAmountColum" Binding="{Binding RateAmount}" Header="Rate Amount       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="amountOfRatersColum" Binding="{Binding amountOfRaters}" Header="amount Of Raters       " Width="SizeToHeader"     />
+                <DataGridTextColumn x:Name="OwnerColum" Binding="{Binding Owner}" Header="Owner                                                                     " Width="SizeToHeader"     />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="backbutton" Content="back" HorizontalAlignment="Left" Margin="20,466,0,0" VerticalAlignment="Top" Width="75" Click="Backbutton_Click"/>
+        <Button Name="backbutton" Content="" HorizontalAlignment="Left" Margin="21,590,0,0" VerticalAlignment="Top" Width="30" Click="Backbutton_Click" Height="30" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="images/arrow.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="HomeBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="26,24,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="HomeBTN_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="images/home.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Sort Hosting Units by:" Foreground="Black" FontSize="18" HorizontalAlignment="Left" Margin="438,37,0,666" VerticalContentAlignment="Top" FontFamily="MV Boli" />
 
     </Grid>
 </Page>

@@ -34,9 +34,9 @@
                 <ImageBrush ImageSource="images/arrow.png" />
             </Button.Background>
         </Button>
-        <Label Content="Search for request:" HorizontalAlignment="Left" Height="36" Margin="46,10,0,0" VerticalAlignment="Top" Width="283" FontSize="18" FontFamily="MV Boli" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="fullNameSearchTextBox" HorizontalAlignment="Left" Height="25" Margin="332,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" TextChanged="fullNameSearchTextBox_TextChanged" Grid.ColumnSpan="2"/>
-        <Label Content="By family name:" HorizontalAlignment="Left" Height="25" Margin="222,17,0,0" VerticalAlignment="Top" Width="102" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" FontFamily="Lucida Sans Unicode">
+        <Label Content="Search for request:" HorizontalAlignment="Left" Height="36" Margin="56,10,0,0" VerticalAlignment="Top" Width="283" FontSize="18" FontFamily="MV Boli" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="fullNameSearchTextBox" HorizontalAlignment="Left" Height="25" Margin="336,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" TextChanged="fullNameSearchTextBox_TextChanged" Grid.ColumnSpan="2"/>
+        <Label Content="By family name:" HorizontalAlignment="Left" Height="25" Margin="230,17,0,0" VerticalAlignment="Top" Width="102" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" FontFamily="Lucida Sans Unicode">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -47,16 +47,21 @@
             </Label.RenderTransform>
         </Label>
         <Label Content="By key:" HorizontalAlignment="Left" Height="33" Margin="543,17,0,0" VerticalAlignment="Top" Width="125" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="searchByKeyTextBox" HorizontalAlignment="Left" Height="25" Margin="596,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175                  " TextChanged="searchByKeyTextBox_TextChanged" Grid.ColumnSpan="2"/>
-        <Label Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Height="25" Margin="512,18,0,0" VerticalAlignment="Top" Width="25">
+        <TextBox x:Name="searchByKeyTextBox" HorizontalAlignment="Left" Height="25" Margin="600,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175                  " TextChanged="searchByKeyTextBox_TextChanged" Grid.ColumnSpan="2"/>
+        <Label Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Height="25" Margin="518,18,0,0" VerticalAlignment="Top" Width="25">
             <Label.Background>
                 <ImageBrush ImageSource="images/searchBtn.png"/>
             </Label.Background>
         </Label>
-        <Label Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Height="25" Margin="776,18,0,0" VerticalAlignment="Top" Width="25">
+        <Label Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Height="25" Margin="782,18,0,0" VerticalAlignment="Top" Width="25">
             <Label.Background>
                 <ImageBrush ImageSource="images/searchBtn.png"/>
             </Label.Background>
         </Label>
+        <Button x:Name="HomeBTN2" Content="" HorizontalAlignment="Left" Height="25" Margin="17,15,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="HomeBTN_Click" Grid.ColumnSpan="2">
+            <Button.Background>
+                <ImageBrush ImageSource="images/home.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

@@ -59,6 +59,12 @@ namespace PL
         {
             this.NavigationService.GoBack();
         }
+        private void HomeBTN_Click(object sender, RoutedEventArgs e)
+        {
+            var HOMEPAGE = new WelcomePage();
+            this.NavigationService.Navigate(HOMEPAGE);
+
+        }
     }
 }
 
