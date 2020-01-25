@@ -17,11 +17,7 @@
         </Grid.ColumnDefinitions>
 
         <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="500" Margin="37,56,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="HostingUnitListView_SelectionChanged" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
+           
         </ListView>
         <Button x:Name="AddrBtn" Content="Add Request" HorizontalAlignment="Left" Height="61" Margin="326,564,0,0" VerticalAlignment="Top" Width="165" Click="AddBtn_Click" FontFamily="MV Boli" FontSize="16" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
             <Button.Background>

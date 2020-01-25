@@ -26,8 +26,8 @@
         <TextBox x:Name="LastNameTextBox" HorizontalAlignment="Left" Height="30                      " Margin="376,255,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}"/>
         <Label Content="Phone-Number:" HorizontalAlignment="Left" Height="34" Margin="269,298,0,0" VerticalAlignment="Top" Width="122" FontWeight="Bold"/>
         <Label Content="E-Mail Address:" HorizontalAlignment="Left" Height="50" Margin="274,339,-34,0" VerticalAlignment="Top" Width="160" FontWeight="Bold"/>
-        <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Height="29" Margin="376,298,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" TextChanged="PhoneNumberTextBox_TextChanged" BorderBrush="{x:Null}"/>
-        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="29" Margin="376,338,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" TextChanged="PhoneNumberTextBox_TextChanged" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Height="29" Margin="376,298,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246"  BorderBrush="{x:Null}"/>
+        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="29" Margin="376,338,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246"  BorderBrush="{x:Null}"/>
         <Label Content="Bank Account Number:" HorizontalAlignment="Left" Height="27" Margin="232,383,0,0" VerticalAlignment="Top" Width="144" FontWeight="Bold"/>
         <TextBox x:Name="BankAccountNumberTextBox" HorizontalAlignment="Left" Height="29" Margin="376,381,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}"/>
         <CheckBox x:Name="collectoinCleearenceCheckBox" Content="Collection Clearance" HorizontalAlignment="Left" Height="29" Margin="437,477,0,0" VerticalAlignment="Top" Width="187" FontSize="16" FontWeight="Bold"/>
@@ -36,7 +36,7 @@
                 <ImageBrush ImageSource="images/button.png" />
             </Button.Background>
         </Button>
-        <TextBox x:Name="HostIdTextBox" HorizontalAlignment="Left" Height="30                      " Margin="376,169,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" TextChanged="HostIdTextBox_TextChanged"/>
+        <TextBox x:Name="HostIdTextBox" HorizontalAlignment="Left" Height="30                      " Margin="376,169,-222,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}"/>
 
         <Label Content="Host information:" HorizontalAlignment="Left" Height="74" Margin="232,58,-248,0" VerticalAlignment="Top" Width="416" FontFamily="MV Boli" FontSize="48"/>
 

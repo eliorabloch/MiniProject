@@ -57,6 +57,10 @@ namespace PL
         {
             try
             {
+                if(!hostingUnit.Owner.CollectionClearance)
+                {
+                    MessageBox.Show("Cannot invite guests without enabled Collection Clearance", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 var myBL = ImpBL.Instance;
 
                 var order = new Order

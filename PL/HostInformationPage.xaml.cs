@@ -119,6 +119,10 @@ namespace PL
         private void backgroundWorker1_Completed(object sender, RunWorkerCompletedEventArgs e)
         {
             branches = (List<BankBranch>)e.Result;
+            if(branches == null)
+            {
+                return;
+            }
             foreach (var item in branches)
             {
                 BaranchesListComboBox.Items.Add(item.BankName + " - " + item.BranchNumber);
@@ -127,8 +131,20 @@ namespace PL
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            ImpBL bl = ImpBL.Instance;
-            e.Result = bl.GetBankList();
+            try
+            {
+                ImpBL bl = ImpBL.Instance;
+                e.Result = bl.GetBankList();
+            }
+            catch (Exception err)
+            {
+                string message = "There is an issue to fatch banks information from the server";
+                if(err is TzimerException)
+                {
+                    message = err.Message;
+                }
+                MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void PhoneNumberTextBox_TextChanged(object sender, TextChangedEventArgs e)

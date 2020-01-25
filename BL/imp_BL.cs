@@ -109,12 +109,12 @@ namespace BL
 
             int attendants;
             var filterAttendants = int.TryParse(attendantsAmount, out attendants);
-
+            bool enoughAttendees = filterAttendants ? int.Parse(gr.Children) + int.Parse(gr.Adults) == attendants : true;
             if (
                 hu.Area == gr.Area
                 && hu.Type == gr.Type
                 && isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate)
-                && filterAttendants ? int.Parse(gr.Children) + int.Parse(gr.Adults) == attendants : true
+                && enoughAttendees
                 && gr.SubArea.ToLower().StartsWith(subAreaFilter.ToLower())
                 && isMatchRequirment(hu.Pool, gr.Pool)
                 && isMatchRequirment(hu.Jacuzz, gr.Jacuzzi)
@@ -372,7 +372,14 @@ namespace BL
         /// <param name="delUnit">Deleted request.</param>
         public void UpdateUnit(HostingUnit updatedUnit)
         {
-            getHostingUnitsIfExists(updatedUnit.HostingUnitKey);
+            var oldUnit =  getHostingUnitsIfExists(updatedUnit.HostingUnitKey);
+            // לא ניתן לבטל הרשאה לחיוב חשבון כאשר יש הצעה הקשורה אליה במצב פתוח.
+            if (oldUnit.Owner.CollectionClearance &&
+                !updatedUnit.Owner.CollectionClearance &&
+                isHaveOpenOrder(oldUnit))
+            {
+                throw new TzimerException("Collection Clearance authorization cannot be revoked when there is an open order associated with it's host", "bl");
+            }
             dal.UpdateUnit(updatedUnit);
         }
 

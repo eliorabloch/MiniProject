@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Windows.Navigation;
 using BE;
 using BL;
+using System.Globalization;
 
 namespace PL
 {
@@ -36,18 +37,20 @@ namespace PL
             {
                 if (hu != null)
                 {
+                    DataContext = hu;
+                    //HostinUnitNameTextBox.Text = hu.HostingUnitName;
+                    //SubAreaTextBox.Text = hu.SubArea;
+                    //HostingUnitKeyLable.Content = "#" + hu.HostingUnitKey;
+
                     HasChildrenAttractionsCheckBox.IsChecked = hu.ChildrensAttractions;
                     HasGardanCheckBox.IsChecked = hu.Garden;
                     HasPoolCheckBox.IsChecked = hu.Pool;
                     HasJacuzzCheckBox.IsChecked = hu.Jacuzz;
-                    HostinUnitNameTextBox.Text = hu.HostingUnitName;
                     AirConditionerCheckBox.IsChecked    = hu.AirConditoiner;
                     FreeParkingCheckBox.IsChecked = hu.FreeParking;
                     BreakFastIncludedcheckBox.IsChecked = hu.breakfastIncluded;
                     RoomServiceCheckBox.IsChecked = hu.RoomService;
 
-                    HostingUnitKeyLable.Content = "#" + hu.HostingUnitKey;
-                    SubAreaTextBox.Text = hu.SubArea;
                    
                     switch (hu.RateStars)
                     {
@@ -265,7 +268,20 @@ namespace PL
 
         }
 
-
-    }
     }
 
+    public partial class HostingUnitKeyConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return "#" + value.ToString();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return int.Parse(value.ToString().Substring(1));
+        }
+    }
+
+
+}

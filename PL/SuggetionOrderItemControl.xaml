@@ -15,7 +15,7 @@
             <ColumnDefinition Width="364*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="GuestRequestPrivateNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="61" FontFamily="MV Boli"/>
+        <Label x:Name="GuestRequestPrivateNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="70" FontFamily="MV Boli" FontSize="14" Height="31"/>
         <Label x:Name="GuestRequestFamilyNameLable" Content="Label" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="87" FontFamily="MV Boli"/>
         <Button x:Name="GuestRequestDetailsBtn" Content="Information" HorizontalAlignment="Left" Margin="155,6,0,0" VerticalAlignment="Top" Width="121" Height="36" FontFamily="MV Boli" Click="GuestRequestDetailsBtn_Click" BorderBrush="{x:Null}">
             <Button.Background>

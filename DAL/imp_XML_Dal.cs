@@ -125,7 +125,7 @@ namespace DAL
         public void AddUnit(HostingUnit newUnit)
         {
             newUnit.HostingUnitKey = getKeyFromConfig("HostingUnitId");
-            newUnit.Diary = Utils.createMatrix();
+            newUnit.Diary = Utils.CreateMatrix();
             var hul = GetUnitsList();
             if (hul.Any(x => x.HostingUnitKey == newUnit.HostingUnitKey))
             {
@@ -166,7 +166,7 @@ namespace DAL
             {
                 throw new TzimerException($"Failed to remove Hosting Unit, ID: {delUnit.HostingUnitKey}", "dal");
             }
-            SaveToXML(hul, GUEST_REQUESTS_FILENAME);
+            SaveToXML(hul, HOSTING_UNITS_FILENAME);
         }
         #endregion
 

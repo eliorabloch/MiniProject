@@ -35,19 +35,11 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <ListView x:Name="MyOrderListView" HorizontalAlignment="Left" Height="478" Margin="38,121,0,0" VerticalAlignment="Top" Width="380                       " Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
+            <ListView x:Name="MyOrderListView" HorizontalAlignment="Left" Height="475" Margin="38,124,0,0" VerticalAlignment="Top" Width="380                       " Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+
             </ListView>
-            <ListView x:Name="SuggestionListView" HorizontalAlignment="Left" Height="478" Margin="422,121,0,0" VerticalAlignment="Top" Width="380                       " SelectionChanged="SuggestionListView_SelectionChanged" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
+            <ListView x:Name="SuggestionListView" HorizontalAlignment="Left" Height="475" Margin="422,124,0,0" VerticalAlignment="Top" Width="380                       " SelectionChanged="SuggestionListView_SelectionChanged" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}">
+
             </ListView>
             <TextBox x:Name="SubAreaTextBox" TextChanged="SubAreaTextBox_TextChanged" HorizontalAlignment="Left" Height="20" Margin="489,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" BorderBrush="{x:Null}"/>
             <TextBlock HorizontalAlignment="Left" Height="16" Margin="427,98,0,0" TextWrapping="Wrap" Text="Sub-Area" VerticalAlignment="Top" Width="71" FontFamily="Lucida Sans Unicode"/>

@@ -12,7 +12,7 @@
             <ColumnDefinition Width="687*"/>
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.ColumnSpan="3" Content="" HorizontalAlignment="Left" Height="100" Margin="-2,0,0,0" VerticalAlignment="Top" Width="751">
+        <Label Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="100" Margin="-2,0,0,0" VerticalAlignment="Top" Width="751" BorderBrush="Black">
             <Label.Background>
                 <SolidColorBrush Color="White" Opacity="0.5"/>
             </Label.Background>
@@ -35,6 +35,9 @@
                 <ImageBrush ImageSource="images/Orderbtn.png"/>
             </Button.Background>
         </Button>
+        <Label Content="Orders" Grid.Column="1" HorizontalAlignment="Left" Height="27" Margin="491,5,0,0" VerticalAlignment="Top" FontFamily="Lucida Sans Unicode"/>
+        <Label Content="Edit" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="565,5,0,0" VerticalAlignment="Top" FontFamily="Lucida Sans Unicode"/>
+        <Label Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="619,5,0,0" VerticalAlignment="Top" Width="46" FontFamily="Lucida Sans Unicode"/>
 
     </Grid>
 </UserControl>

@@ -30,11 +30,22 @@ namespace PL
         {
             InitializeComponent();
             this.m_owner = host;
+            LoadList();
+        }
+
+        private void LoadList()
+        {
             List<HostingUnitItemControl> hostingUnitsItemsControl = new List<HostingUnitItemControl>();
             ImpBL bl = ImpBL.Instance;
-            foreach (var hostingUnit in bl.GetUnitsByHost(host.HostId))
+            foreach (var hostingUnit in bl.GetUnitsByHost(m_owner.HostId))
             {
-                HostingUnitItemControl huic = new HostingUnitItemControl(hostingUnit, navigationService);
+                if(!hostingUnit.HostingUnitKey.ToString().StartsWith(HostIdFilterTextBox.Text)
+                    ||
+                    !hostingUnit.HostingUnitName.ToLower().StartsWith(HostNameFilterTextBox.Text.ToLower()))
+                {
+                    continue;
+                }
+                HostingUnitItemControl huic = new HostingUnitItemControl(hostingUnit, Utils.navigationService);
                 huic.HostinUnitNameTextBlock.Text = hostingUnit.HostingUnitName;// displayin the units name
                 huic.HostingUnitKeyLable.Content = "#" + hostingUnit.HostingUnitKey;//displaying the units key
                 hostingUnitsItemsControl.Add(huic);
@@ -57,6 +68,16 @@ namespace PL
             var HOMEPAGE = new WelcomePage();
             this.NavigationService.Navigate(HOMEPAGE);
 
+        }
+
+        private void HostNameFilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LoadList();
+        }
+
+        private void HostIdFilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LoadList();
         }
     }
 

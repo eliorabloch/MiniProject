@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-     
-       
-
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="hostingUnit" Height="680" Width="840
       ">
+    <Page.Resources>
+        <local:HostingUnitKeyConverter x:Key="hostingUnitKeyConverter"></local:HostingUnitKeyConverter>
+    </Page.Resources>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="images/back.jpg" Opacity="0.8"/>
@@ -56,9 +56,9 @@
             <ComboBoxItem Content="Tent" />
         </ComboBox>
         <Label Content="Name" HorizontalAlignment="Left" Margin="256,94,0,0" Grid.RowSpan="2" VerticalAlignment="Top" FontFamily="Lucida Sans Unicode"/>
-        <TextBox x:Name="HostinUnitNameTextBox" HorizontalAlignment="Left" Height="25
+        <TextBox x:Name="HostinUnitNameTextBox" Text="{Binding HostingUnitName}" HorizontalAlignment="Left" Height="25
                  " Margin="313,95,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderBrush="{x:Null}"/>
-        <TextBox x:Name="SubAreaTextBox" HorizontalAlignment="Left" Height="25
+        <TextBox x:Name="SubAreaTextBox" Text="{Binding SubArea}" HorizontalAlignment="Left" Height="25
                  
                  " Margin="314,290,0,0" Grid.RowSpan="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="280" BorderBrush="{x:Null}"/>
         <Button x:Name="SaveBtn" Content="Save" HorizontalAlignment="Left" Margin="389,329,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="77" Height="36" Click="SaveBtn_Click" BorderBrush="{x:Null}">
@@ -66,7 +66,7 @@
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="HostingUnitKeyLable" Content="" HorizontalAlignment="Left" Margin="303,64,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="123" Foreground="#FF939393"/>
+        <Label x:Name="HostingUnitKeyLable" Content="{Binding HostingUnitKey, Converter={StaticResource hostingUnitKeyConverter}}" HorizontalAlignment="Left" Margin="303,64,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="123" Foreground="#FF939393"/>
         <Button x:Name="HostInfoBTN" Content="" HorizontalAlignment="Left" Height="20" Margin="551,23,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="20" Click="HostInfoBTN_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="images/man.png"/>

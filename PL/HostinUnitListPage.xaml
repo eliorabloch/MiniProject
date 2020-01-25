@@ -7,13 +7,17 @@
         mc:Ignorable="d"
         Title="HostinUnitListWindow" Height="680" Width="840">
     <Grid Margin="0,-2,0,2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="157*"/>
+            <ColumnDefinition Width="263*"/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="images/back.jpg" Opacity="0.8"/>
         </Grid.Background>
-        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="408" Margin="36,98,0,0" VerticalAlignment="Top" Width="768" Background="{x:Null}" BorderBrush="{x:Null}">
+        <ListView x:Name="HostingUnitListView" HorizontalAlignment="Left" Height="418" Margin="36,88,0,0" VerticalAlignment="Top" Width="768" Background="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
 
         </ListView>
-        <Button x:Name="AddBtn" Content="  Add Unit" HorizontalAlignment="Left" Height="73" Margin="333,524,0,0" VerticalAlignment="Top" Width="196" Click="AddBtn_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="16">
+        <Button x:Name="AddBtn" Content="  Add Unit" HorizontalAlignment="Left" Height="73" Margin="19,524,0,0" VerticalAlignment="Top" Width="196" Click="AddBtn_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="16" Grid.Column="1">
             <Button.Background>
                 <ImageBrush ImageSource="images/button.png" />
             </Button.Background>
@@ -23,16 +27,31 @@
                 <ImageBrush ImageSource="images/arrow.png"/>
             </Button.Background>
         </Button>
-        <Label Content="" HorizontalAlignment="Left" Height="30" Margin="366,545,0,0" VerticalAlignment="Top" Width="29">
+        <Label Content="" HorizontalAlignment="Left" Height="30" Margin="52,545,0,0" VerticalAlignment="Top" Width="29" Grid.Column="1">
             <Label.Background>
                 <ImageBrush ImageSource="images/addunit.png"/>
             </Label.Background>
         </Label>
-        <Button x:Name="HomeBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="24,12,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="HomeBTN_Click">
+        <Button x:Name="HomeBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="20,17,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="HomeBTN_Click">
             <Button.Background>
                 <ImageBrush ImageSource="images/home.png"/>
             </Button.Background>
         </Button>
+        <TextBox x:Name="HostIdFilterTextBox" HorizontalAlignment="Left" Height="30" Margin="302,48,0,0" TextWrapping="Wrap" TextChanged="HostIdFilterTextBox_TextChanged" VerticalAlignment="Top" Width="170" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="241,52,0,0" TextWrapping="Wrap" Text="Unit ID:" VerticalAlignment="Top" Height="30" Width="74" FontFamily="MV Boli" FontSize="14" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="HostNameFilterTextBox" HorizontalAlignment="Left" Height="30" Margin="285,51,0,0" TextWrapping="Wrap" TextChanged="HostNameFilterTextBox_TextChanged" VerticalAlignment="Top" Width="170" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="193,53,0,0" TextWrapping="Wrap" Text="Units Name:" VerticalAlignment="Top" Height="30" Width="87" FontFamily="MV Boli" FontSize="14" Grid.Column="1"/>
+        <Label Content="Search for a unit by:" HorizontalAlignment="Left" Height="36" Margin="48,42,0,0" VerticalAlignment="Top" Width="191" FontSize="18" FontFamily="MV Boli"/>
+        <Label Content="" HorizontalAlignment="Left" Height="25" Margin="462,51,0,0" VerticalAlignment="Top" Width="25" Grid.Column="1">
+            <Label.Background>
+                <ImageBrush ImageSource="images/searchBtn.png"/>
+            </Label.Background>
+        </Label>
+        <Label Content="" HorizontalAlignment="Left" Height="25" Margin="163,51,0,0" VerticalAlignment="Top" Width="25" Grid.Column="1">
+            <Label.Background>
+                <ImageBrush ImageSource="images/searchBtn.png"/>
+            </Label.Background>
+        </Label>
 
     </Grid>
 </Page>

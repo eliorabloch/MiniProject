@@ -14,7 +14,7 @@ namespace BE
         /// Filing the dairy with false valuse
         /// </summary>
         /// <returns>the update matrix</returns>
-        public static bool[,] createMatrix()
+        public static bool[,] CreateMatrix()
         {
             bool[,] mat = new bool[12, 31];
             for (int i = 0; i < 12; i++)
