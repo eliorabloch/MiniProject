@@ -15,6 +15,7 @@
         </Grid.Background>
         <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="652,53,0,0" VerticalAlignment="Top" Width="142" Height="24" SelectionChanged="GroupByComboBox_SelectionChanged">
             <ComboBoxItem FontFamily="Lucida Sans Unicode">Status</ComboBoxItem>
+            <ComboBoxItem FontFamily="Lucida Sans Unicode">Unit key</ComboBoxItem>
         </ComboBox>
         <DataGrid x:Name="groupingDataGrid"  FontWeight="ExtraBold" HorizontalAlignment="Left" Height="497" Width="784" Margin="10,82,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
             <DataGrid.Columns>

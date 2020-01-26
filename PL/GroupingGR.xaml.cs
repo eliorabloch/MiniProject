@@ -56,7 +56,7 @@ namespace PL
                     groupingDataGrid.CanUserResizeColumns = false;
                     groupingDataGrid.CanUserResizeRows = false;
                     groupingDataGrid.CanUserSortColumns = false;
-                    var gr = bl.groupGuestRequestByNumOfAtendees();
+                    var gr = bl.groupGuestRequestByNumberOfAtendees();
                     foreach (var request in gr)
                     {
                         groupingDataGrid.Items.Add(request);
@@ -70,7 +70,7 @@ namespace PL
                     groupingDataGrid.CanUserResizeColumns = false;
                     groupingDataGrid.CanUserResizeRows = false;
                     groupingDataGrid.CanUserSortColumns = false;
-                    var gr = bl.GroupRequestByStatus();
+                    var gr = bl.GroupGuestRequestByStatus();
                     foreach (var item in gr)
                     {
                         foreach (var request in item)
