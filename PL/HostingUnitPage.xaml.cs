@@ -248,7 +248,7 @@ namespace PL
         {
             try
             {
-                HostInformationPage huw = new HostInformationPage(m_Owner);
+                HostInformationPage huw = new HostInformationPage(m_Owner, m_hostingUnit);
                 this.NavigationService.Navigate(huw);
             }
             catch (Exception err)

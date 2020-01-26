@@ -259,5 +259,29 @@ namespace DAL
             }
             return branches.GroupBy(x => x.BranchNumber).Select(y => y.FirstOrDefault()).ToList();
         }
+
+        public void UpdateProfits(double days)
+        {
+            Configuration.Profits += (days * Configuration.Commissin);
+        }
+
+        public void UpdateHost(Host owner)
+        {
+            var ReleventUnitKeyList = (from unit in GetUnitsList()
+                     where unit.Owner.HostId == owner.HostId
+                     let newOwner = owner
+                     select new { unitKey = unit.HostingUnitKey }).Select(x => x.unitKey).ToList();
+
+
+            foreach (var hostUnit in DataSource.unitList.Where(x => ReleventUnitKeyList.Contains(x.HostingUnitKey)))
+            {
+                hostUnit.Owner = owner;
+            } 
+        }
+
+        public double GetProfits()
+        {
+            return Configuration.Profits;
+        }
     }
 }

@@ -45,7 +45,7 @@ namespace PL
             }
             if (!File.Exists("GuestRequests.xml") || string.IsNullOrEmpty(File.ReadAllText("GuestRequests.xml")))
             {
-                XElement xElement = new XElement("GuestRequests");
+                XElement xElement = new XElement("ArrayOfGuestRequest");
                 xElement.Save("GuestRequests.xml");
             }
             if (!File.Exists("Orders.xml") || string.IsNullOrEmpty(File.ReadAllText("Orders.xml")))

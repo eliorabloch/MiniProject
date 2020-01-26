@@ -7,6 +7,10 @@ using System.Xml.Serialization;
 
 namespace BE
 {
+    /// <summary>
+    /// we create an object (guestrequests)that inherets a list of guestrequests, 
+    /// so we can serelize it. because we cant serelize a list of objects, only a object.
+    /// </summary>
     [XmlRoot(ElementName = "ArrayOfHostingUnit")]
     public class HostingUnits : List<HostingUnit>
     {
@@ -35,6 +39,7 @@ namespace BE
 
         [XmlIgnore]
         public bool[,] Diary { get; set; }
+
         [XmlArray("Diary")]
         public bool[] FlatDiary
         {
@@ -46,7 +51,7 @@ namespace BE
         
         public object Clone()
         {
-            return MemberwiseClone();
+            return this.MemberwiseClone();
         }
 
         /// <summary>

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="HostinUnitListWindow" Height="680" Width="840">
+    
     <Grid Margin="0,-2,0,2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="157*"/>

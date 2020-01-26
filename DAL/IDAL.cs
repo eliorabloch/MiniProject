@@ -38,7 +38,9 @@ namespace DAL
         List<HostingUnit> GetUnitsList();
         List<GuestRequest> GetGuestRequestList();
         List<Order> GetOrdersList();
-        List<BankBranch> GetBankList(); 
-
+        List<BankBranch> GetBankList();
+        void UpdateProfits(double days);
+        void UpdateHost(Host owner);
+        double GetProfits();
     }
 }

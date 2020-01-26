@@ -8,6 +8,14 @@
       d:DesignHeight="680" d:DesignWidth="840"
       Title="ManagerPage">
 
+    <Page.Resources>
+        <DataTemplate x:Key="MyDataTemplate" DataType="local:HostingUnit">
+            <Grid>
+                <Label Content="{Binding HostingUnitName}" FontFamily="MV Boli"/>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
     <Grid Margin="0,-8,0,8">
         <Grid.Background>
             <ImageBrush ImageSource="images/back.jpg" Opacity="0.8"/>
@@ -17,12 +25,13 @@
                 <SolidColorBrush Color="White" Opacity="0.5"/>
             </Grid.Background>
         </Grid>
-        <ListView x:Name="AvailableUnitListView" HorizontalAlignment="Left" Height="197" Margin="235,433,0,0" VerticalAlignment="Top" Width="163" SelectionChanged="AvailableUnitListView_SelectionChanged" Background="{x:Null}" BorderBrush="{x:Null}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
+        <ListView x:Name="AvailableUnitListView" 
+                  ItemsSource="{Binding}"
+                  ItemTemplate="{StaticResource MyDataTemplate}"
+                  HorizontalAlignment="Left" Height="197" Margin="235,433,0,0"
+                  VerticalAlignment="Top" Width="163" 
+                  SelectionChanged="AvailableUnitListView_SelectionChanged" Background="{x:Null}" BorderBrush="{x:Null}">
+            
         </ListView>
 
         <Grid HorizontalAlignment="Left" Margin="492,-33,0,-7" Width="312">
@@ -134,6 +143,8 @@
                 <ImageBrush ImageSource="images/home.png"/>
             </Button.Background>
         </Button>
+        <Button x:Name="ProfitsBtn" Content="Button" HorizontalAlignment="Left" Height="51" Margin="61,319,0,0" VerticalAlignment="Top" Width="60" Click="ProfitsBtn_Click"/>
+        <TextBox x:Name="profitsTextBox" HorizontalAlignment="Left" Height="44" Margin="148,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
 
     </Grid>
 </Page>

@@ -25,6 +25,7 @@ namespace PL
     {
         private BackgroundWorker backgroundWorker1;
         List<BankBranch> branches;
+        HostingUnit m_hostingUnit;
         public HostInformationPage()
         {    
             try
@@ -37,10 +38,11 @@ namespace PL
                 MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        public HostInformationPage(Host owner)
+        public HostInformationPage(Host owner, HostingUnit hostingUnit=null)
         {
             try
             {
+                m_hostingUnit = hostingUnit;
                 InitializeComponent();
                 ImpBL bl = ImpBL.Instance;
                 FirstNameTextBox.Text = owner.PrivateName;
@@ -95,7 +97,7 @@ namespace PL
                 }
                 
                 collectoinCleearenceCheckBox.IsChecked = owner.CollectionClearance;
-                BaranchesListComboBox.SelectedItem = owner.BankBranchDetails.BankName + " - " + owner.BankBranchDetails.BankNumber.ToString();
+                BaranchesListComboBox.SelectedValue = owner.BankBranchDetails.BankName + " - " + owner.BankBranchDetails.BankNumber.ToString();
 
                 tostringBox.Text = owner.BankBranchDetails.ToString();
                 getBanks();
@@ -171,11 +173,19 @@ namespace PL
                 hu.Owner.BankAccountNumber = BankAccountNumberTextBox.Text;
                 hu.Owner.CollectionClearance = (bool)collectoinCleearenceCheckBox.IsChecked;
 
-                HostingUnitPage obj = new HostingUnitPage(hu.Owner);
-                this.NavigationService.Navigate(obj);
+              
                 string branchNumber = BaranchesListComboBox.SelectedValue.ToString().Split('-')[1].Trim();
                 int branchNum = int.Parse(branchNumber);
                 hu.Owner.BankBranchDetails = branches?.FirstOrDefault(x => x.BranchNumber == branchNum);
+
+                // if unit is null there is nothing to update 
+                if(m_hostingUnit != null)
+                {
+                    bl.UpdateHostInfo(hu.Owner, m_hostingUnit.HostingUnitKey);
+                }
+
+                HostingUnitPage obj = new HostingUnitPage(hu.Owner, m_hostingUnit);
+                this.NavigationService.Navigate(obj);
 
             }
             catch (Exception err)

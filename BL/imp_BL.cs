@@ -6,8 +6,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Timers;
-using System.Threading.Tasks;
-using System.Threading;
+
 
 
 using System.Net.Mail;
@@ -15,6 +14,7 @@ namespace BL
 {
     public class ImpBL : IBL
     {
+        static Timer ExpiredOrdersThreads;
         #region singelton
         /// <summary>
         /// //Using Singleton makes sure that no new instance of the class is ever created but only one instance.
@@ -27,19 +27,26 @@ namespace BL
  
         static IDAL dal;
 
-        #endregion
 
         static ImpBL()
         {
             string TypeDAL = ConfigurationSettings.AppSettings.Get("TypeDS");
             dal = factoryDAL.GetDAL(TypeDAL);
-            
+
+            ExpiredOrdersThreads = new Timer(TimeSpan.FromDays(1).TotalMilliseconds);
+            ExpiredOrdersThreads.Elapsed += disposeExpiredOrders;
+            ExpiredOrdersThreads.Start();
         }
 
-        public ImpBL()
+        #endregion
+
+        private static void disposeExpiredOrders(object sender, ElapsedEventArgs e)
         {
-            Thread thread = new Thread(() => checkAndChangeStatusOrder());
-            thread.Start();
+            Instance.GetOldOrders(30).Where(x=>x.Status == OrderStatus.SentMail).Select(x => {
+                    x.Status = OrderStatus.Canceled;
+                    Instance.UpdateOrder(x);
+                    return x;
+                });
         }
 
         #region Host
@@ -209,6 +216,23 @@ namespace BL
             return null;
         }
 
+        public void UpdateHostInfo(Host owner, int unitKey)
+        {
+            var oldHost = GetHost(owner.HostId);
+            if (oldHost.CollectionClearance &&
+                !owner.CollectionClearance &&
+                isHaveOpenOrder(unitKey))
+            {
+                throw new TzimerException("Collection Clearance authorization cannot be revoked when there is an open order associated with it's host", "bl");
+            }
+            dal.UpdateHost(owner);
+        }
+
+        public double GetProfits()
+        {
+            return dal.GetProfits();
+        }
+
         /// <summary>
         /// function who matching between property to unit.
         /// </summary>
@@ -304,17 +328,17 @@ namespace BL
         /// <param name="newRequest">Deleted request.</param>
         public void DeleteRequest(GuestRequest deleteRequest)
         {
-            getGuestRequestIfExists(request.GuestRequestKey);
-            if(isHaveDoneDealOrder(request))
+            getGuestRequestIfExists(deleteRequest.GuestRequestKey);
+            if(isHaveDoneDealOrder(deleteRequest))
             {
                 throw new TzimerException("Cannot delete a request with a done deal order.", "bl");
             }
-            List<Order> releatedOrders = getOrdersByRequestNotDoneDeal(request.GuestRequestKey);
+            List<Order> releatedOrders = getOrdersByRequestNotDoneDeal(deleteRequest.GuestRequestKey);
             foreach (var order in releatedOrders)
             {
                 DeleteOrder(order);
             }
-            dal.DeleteRequest(request);
+            dal.DeleteRequest(deleteRequest);
         }
 
         private List<Order> getOrdersByRequestNotDoneDeal(int guestRequestKey)
@@ -547,13 +571,7 @@ namespace BL
         /// <param name="delUnit">Deleted request.</param>
         public void UpdateUnit(HostingUnit updatedHostingUnit)
         {
-            var oldHostingUnit =  getHostingUnitsIfExists(updatedHostingUnit.HostingUnitKey);
-            if (oldHostingUnit.Owner.CollectionClearance &&
-                !updatedHostingUnit.Owner.CollectionClearance &&
-                isHaveOpenOrder(oldHostingUnit))
-            {
-                throw new TzimerException("Collection Clearance authorization cannot be revoked when there is an open order associated with it's host", "bl");
-            }
+            getHostingUnitsIfExists(updatedHostingUnit.HostingUnitKey);
             dal.UpdateUnit(updatedHostingUnit);
         }
 
@@ -564,7 +582,7 @@ namespace BL
         public void DeleteUnit(HostingUnit delHostingUnit)
         {
             getHostingUnitsIfExists(delHostingUnit.HostingUnitKey);
-            if (isHaveOpenOrder(delHostingUnit))
+            if (isHaveOpenOrder(delHostingUnit.HostingUnitKey))
             {
                 throw new TzimerException("Cannot delete Host Unit that has active deals", "bl");
             }
@@ -576,9 +594,9 @@ namespace BL
         /// </summary>
         /// <param name="unit">hosting unit</param>
         /// <returns>if there is an open order</returns>
-        private static bool isHaveOpenOrder(HostingUnit hostingUnit)
+        private static bool isHaveOpenOrder(int HostingUnitKey)
         {
-            return dal.GetOrdersList().Any(x => x.HostingUnitKey == hostingUnit.HostingUnitKey && (x.Status == OrderStatus.NotHandled || x.Status == OrderStatus.SentMail));
+            return dal.GetOrdersList().Any(x => x.HostingUnitKey == HostingUnitKey && (x.Status == OrderStatus.NotHandled || x.Status == OrderStatus.SentMail));
         }
 
         /// <summary>
@@ -722,7 +740,7 @@ namespace BL
             if (updatedOrder.Status == OrderStatus.DoneDeal)
             {
                 var totalDays = (request.ReleaseDate - request.EntryDate).TotalDays;
-                Configuration.Profits += (totalDays * Configuration.Commissin);
+                dal.UpdateProfits(totalDays);
                 updateDatesAvilable(hostingUnit, request);
                 UpdateUnit(hostingUnit);
                 cancelAllOtherOrders(updatedOrder);
@@ -822,7 +840,7 @@ namespace BL
         /// <param name="start">start date</param>
         /// <param name="end">end date</param>
         /// <returns>the amount of dates between two dates.</returns>
-        public double AmountOfDays(DateTime start, DateTime end)
+        public static double AmountOfDays(DateTime start, DateTime end)
         {
             end = end == null ? DateTime.Now : end;
             return (end - start).TotalDays;
@@ -1155,13 +1173,13 @@ namespace BL
         /// function who check if more then 30 days were pass from the date the mail send till now, if so- update the status.
         /// </summary>
         /// <param name="updatedOrderStatus">order</param>
-        public void checkAndChangeStatusOrder()
+        public static void checkAndChangeStatusOrder()
         {
             if (Convert.ToDateTime(Configuration.Date) != DateTime.Now)
             {
                 Configuration.Date = DateTime.Now.ToString("yyyy/M/dd ");
 
-                foreach (var updatedOrderStatus in GetOrdersList())
+                foreach (var updatedOrderStatus in dal.GetOrdersList())
                 {
                     if ((int)AmountOfDays(updatedOrderStatus.OrderDate, DateTime.Now) > 30)
                     {

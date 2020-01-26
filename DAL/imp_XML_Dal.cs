@@ -47,6 +47,22 @@ namespace DAL
             return newKey;
         }
 
+        public double GetProfits()
+        {
+            var conf = XElement.Load(CONFIG_FILENAME);
+            var res = double.Parse(conf.Element("Profits").Value);
+            conf.Save(CONFIG_FILENAME);
+            return res;
+        }
+
+        public void UpdateProfits(double days)
+        {
+            var conf = XElement.Load(CONFIG_FILENAME);
+            double newCommition = double.Parse(conf.Element("Profits").Value) + (days * Configuration.Commissin);
+            conf.Element("Profits").Value = newCommition.ToString();
+            conf.Save(CONFIG_FILENAME);
+        }
+
         public static void SaveToXML<T>(T source, string path)
         {
             FileStream file = new FileStream(path, FileMode.Create);
@@ -299,5 +315,26 @@ namespace DAL
             return GetUnitsList().Select(h => h.Owner).Distinct().ToList();
         }
 
+        public void UpdateHost(Host owner)
+        {
+            var ReleventUnitKeyList = (from unit in GetUnitsList()
+                                       where unit.Owner.HostId == owner.HostId
+                                       let newOwner = owner
+                                       select new { unitKey = unit.HostingUnitKey }).Select(x => x.unitKey).ToList();
+
+
+            var updatedList = GetUnitsList().Select(x =>
+            {
+                if (ReleventUnitKeyList.Contains(x.HostingUnitKey))
+                {
+                    x.Owner = owner;
+                }
+                return x;
+            }).ToList();
+
+            SaveToXML(updatedList, HOSTING_UNITS_FILENAME);
+        }
+
+      
     }
 }

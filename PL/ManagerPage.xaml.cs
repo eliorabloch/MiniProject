@@ -63,13 +63,13 @@ namespace PL
                     throw new TzimerException("Must enter amount of wanted days!");
                 }
                 InitializeComponent();
-                List<AvailableUnitItemControl> availableUnitItemControl = new List<AvailableUnitItemControl>();
+                List<HostingUnit> availableUnitItemControl = new List<HostingUnit>();
                 ImpBL bl = ImpBL.Instance;
                 foreach (var item in bl.GetAllAvilableUnits(d, int.Parse(amountTextBox.Text)))
                 {
-                    AvailableUnitItemControl auic = new AvailableUnitItemControl();
-                    auic.UnitNameTextBlock.Text = item.HostingUnitName;
-                    availableUnitItemControl.Add(auic);
+                    //AvailableUnitItemControl auic = new AvailableUnitItemControl();
+                    //auic.UnitNameTextBlock.Text = item.HostingUnitName;
+                    availableUnitItemControl.Add(item);
                 }
                 AvailableUnitListView.ItemsSource = availableUnitItemControl;
             }
@@ -256,6 +256,20 @@ namespace PL
             var HOMEPAGE = new WelcomePage();
             this.NavigationService.Navigate(HOMEPAGE);
 
+        }
+
+        private void ProfitsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ImpBL bl = ImpBL.Instance;
+                double profits = bl.GetProfits();
+                profitsTextBox.Text = profits.ToString();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

@@ -89,5 +89,20 @@ namespace PL
             var ManagerPage = new ManagerPage(m_navigationService); //create your new form.
             this.NavigationService.Navigate(ManagerPage);
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            ContactGrid.Visibility = Visibility.Visible;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void exutBTN_Click(object sender, RoutedEventArgs e)
+        {
+            ContactGrid.Visibility = Visibility.Collapsed;
+        }
     }
 }

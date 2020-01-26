@@ -7,7 +7,11 @@ using System.Xml.Serialization;
 
 namespace BE
 {
-    [XmlRoot(ElementName = "GuestRequests")]
+    /// <summary>
+    /// we create an object (guestrequests)that inherets a list of guestrequests, 
+    /// so we can serelize it. because we cant serelize a list of objects, only a object.
+    /// </summary>
+    [XmlRoot(ElementName = "ArrayOfGuestRequest")]
     public class GuestRequests : List<GuestRequest>
     {
     }

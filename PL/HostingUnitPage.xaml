@@ -31,10 +31,12 @@
         </Label>
 
         <Label Content="Sub Area:" HorizontalAlignment="Left" Height="25" Margin="248,288,0,0" VerticalAlignment="Top" Width="65" Grid.Row="1" FontFamily="Lucida Sans Unicode"/>
+        
         <CheckBox x:Name="HasPoolCheckBox" FontWeight="Bold" Content="Pool" HorizontalAlignment="Left" Height="20" Margin="262,232,0,0" VerticalAlignment="Top" Width="111" Grid.Row="1" FontFamily="Lucida Sans Unicode" BorderBrush="{x:Null}"/>
         <CheckBox x:Name="HasJacuzzCheckBox" FontWeight="Bold"  Content="Jacuzz" HorizontalAlignment="Left" Height="19" Margin="261,204,0,0" VerticalAlignment="Top" Width="85" IsChecked="False" Grid.Row="1" Checked="HasJacuzzCheckBox_Checked" FontFamily="Lucida Sans Unicode" BorderBrush="{x:Null}" />
         <CheckBox x:Name="HasGardanCheckBox" FontWeight="Bold" Content="Garden" HorizontalAlignment="Left" Height="22" Margin="261,178,0,0" VerticalAlignment="Top" Width="125" IsChecked="False" Grid.Row="1" FontFamily="Lucida Sans Unicode" BorderBrush="{x:Null}" />
         <CheckBox x:Name="HasChildrenAttractionsCheckBox" FontWeight="Bold" Content="ChildrenAttractions" HorizontalAlignment="Left" Height="22" Margin="261,150,0,0" VerticalAlignment="Top" Width="197" IsChecked="False" Grid.Row="1" FontFamily="Lucida Sans Unicode" BorderBrush="{x:Null}" />
+
         <Label Content="Do you have:" HorizontalAlignment="Left" Height="25" Margin="255,122,0,0" VerticalAlignment="Top" Width="187" Grid.Row="1" RenderTransformOrigin="0.584,1.592" FontFamily="Lucida Sans Unicode"/>
         <Label Content="Unit-Type:" HorizontalAlignment="Left" Height="26" Margin="246,258,0,0" VerticalAlignment="Top" Width="69" Grid.Row="1"/>
         <Label Content="Area:" HorizontalAlignment="Left" Height="23" Margin="436,257,0,0" VerticalAlignment="Top" Width="52" Grid.Row="1"/>

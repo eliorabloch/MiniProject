@@ -13,6 +13,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS", "DS\DS.csproj", "{4C63
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BE", "BE\BE.csproj", "{4D20A032-1774-4579-80D6-D4A11B7ECC4D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{67262F29-0FD4-4D12-84C5-F1F74646427E}"
+	ProjectSection(SolutionItems) = preProject
+		PL\bin\Debug\BankBranches.xml = PL\bin\Debug\BankBranches.xml
+		PL\bin\Debug\Config.xml = PL\bin\Debug\Config.xml
+		PL\bin\Debug\GuestRequests.xml = PL\bin\Debug\GuestRequests.xml
+		PL\bin\Debug\HostingUnits.xml = PL\bin\Debug\HostingUnits.xml
+		PL\bin\Debug\Orders.xml = PL\bin\Debug\Orders.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

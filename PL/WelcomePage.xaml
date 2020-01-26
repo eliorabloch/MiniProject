@@ -54,7 +54,7 @@
                 <ImageBrush ImageSource="images/blueBtn.png"/>
             </Button.Background>
         </Button>
-        <Button Content="Contact Us" HorizontalAlignment="Left" Height="80" Margin="26,538,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20">
+        <Button Content="Contact Us" HorizontalAlignment="Left" Height="80" Margin="26,538,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="Button_Click_3">
             <Button.Background>
                 <ImageBrush ImageSource="images/blueBtn.png"/>
             </Button.Background>
@@ -75,6 +75,18 @@
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
+        <Grid x:Name="ContactGrid" HorizontalAlignment="Left" Height="291" Margin="0,365,0,0" VerticalAlignment="Top" Width="824" Background="#FFD4C1AE" Visibility="Collapsed">
+            <Label Content="Phone number:" HorizontalAlignment="Left" Height="42" Margin="10,186,0,0" VerticalAlignment="Top" Width="258" FontSize="22"/>
+            <Label Content="0546345291" HorizontalAlignment="Left" Height="66" Margin="175,190,0,0" VerticalAlignment="Top" Width="306" FontSize="18"/>
+           
+            <Label Content="Dear costumer,&#xD;&#xA;&#xD;&#xA;you may contact us with anything you would like. we will do our best to get back to you as soon as we can.&#xD;&#xA;please leave your phone number or email address in the note you send us.&#xD;&#xA;&#xD;&#xA;yours, VacationMode Support team!" HorizontalAlignment="Left" Height="171" Margin="10,0,0,0" VerticalAlignment="Top" Width="792" FontFamily="Lucida Sans Unicode" FontSize="18"/>
+            <Button x:Name="exutBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="789,10,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="exutBTN_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/x.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+        
     </Grid>
 
 </Page>
