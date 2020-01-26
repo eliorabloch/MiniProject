@@ -308,6 +308,11 @@ namespace BL
             dal.DeleteGuestRequest(deleteRequest);
         }
 
+        private List<Order> getOrdersByRequestNotDoneDeal(int guestRequestKey)
+        {
+           return GetOrdersList().Where(x => x.GuestRequestKey == guestRequestKey && x.Status != OrderStatus.DoneDeal).ToList();
+        }
+
         /// <summary>
         /// Function that checks the integrity of the guest request.
         /// </summary>
@@ -565,6 +570,16 @@ namespace BL
         private static bool isHaveOpenOrder(HostingUnit hostingUnit)
         {
             return dal.GetOrdersList().Any(x => x.HostingUnitKey == hostingUnit.HostingUnitKey && (x.Status == OrderStatus.NotHandled || x.Status == OrderStatus.SentMail));
+        }
+
+        /// <summary>
+        ///A function that goes through the order list and checks for an open order. 
+        /// </summary>
+        /// <param name="req">Guest Request</param>
+        /// <returns>if there is an open order</returns>
+        private static bool isHaveDoneDealOrder(GuestRequest req)
+        {
+            return dal.GetOrdersList().Any(x => x.GuestRequestKey == req.GuestRequestKey && x.Status == OrderStatus.DoneDeal);
         }
 
         /// <summary>

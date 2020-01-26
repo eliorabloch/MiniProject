@@ -265,6 +265,10 @@ namespace DAL
                @"http://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
 
                 wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                if(!File.Exists(xmlLocalPath) || !File.ReadAllText(xmlLocalPath).ToLower().Contains("<atms"))
+                {
+                    throw new Exception("try again");
+                }
             }
             catch (Exception)
             {
@@ -276,13 +280,13 @@ namespace DAL
                 wc.Dispose();
             }
 
-            if (!File.Exists(@"BankBranches.xml"))
+            if (!File.Exists(xmlLocalPath))
             {
                 throw new TzimerException("Failed to pull bank list", "dal");
             }
 
             List<BankBranch> branches = new List<BankBranch>();
-            XElement xElement = XElement.Load(@"BankBranches.xml");
+            XElement xElement = XElement.Load(xmlLocalPath);
             foreach (var item in xElement.Elements())
             {
                 branches.Add(new BankBranch()
