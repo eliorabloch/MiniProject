@@ -322,13 +322,13 @@ namespace DAL
 
         public void UpdateHost(Host owner)
         {
-            var ReleventUnitKeyList = (from unit in GetUnitsList()
+            var ReleventUnitKeyList = (from unit in GetHostingUnitsList()
                                        where unit.Owner.HostId == owner.HostId
                                        let newOwner = owner
                                        select new { unitKey = unit.HostingUnitKey }).Select(x => x.unitKey).ToList();
 
 
-            var updatedList = GetUnitsList().Select(x =>
+            var updatedList = GetHostingUnitsList().Select(x =>
             {
                 if (ReleventUnitKeyList.Contains(x.HostingUnitKey))
                 {

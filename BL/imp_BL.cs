@@ -338,7 +338,7 @@ namespace BL
             {
                 DeleteOrder(order);
             }
-            dal.DeleteRequest(deleteRequest);
+            dal.DeleteGuestRequest(deleteRequest);
         }
 
         private List<Order> getOrdersByRequestNotDoneDeal(int guestRequestKey)
@@ -572,7 +572,7 @@ namespace BL
         public void UpdateHostingUnit(HostingUnit updatedHostingUnit)
         {
             getHostingUnitsIfExists(updatedHostingUnit.HostingUnitKey);
-            dal.UpdateUnit(updatedHostingUnit);
+            dal.UpdateHostingUnit(updatedHostingUnit);
         }
 
         /// <summary>

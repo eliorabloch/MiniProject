@@ -265,6 +265,7 @@ namespace DAL
             }
             return branches.GroupBy(x => x.BranchNumber).Select(y => y.FirstOrDefault()).ToList();
         }
+        #endregion
 
         public void UpdateProfits(double days)
         {
@@ -273,7 +274,7 @@ namespace DAL
 
         public void UpdateHost(Host owner)
         {
-            var ReleventUnitKeyList = (from unit in GetUnitsList()
+            var ReleventUnitKeyList = (from unit in GetHostingUnitsList()
                      where unit.Owner.HostId == owner.HostId
                      let newOwner = owner
                      select new { unitKey = unit.HostingUnitKey }).Select(x => x.unitKey).ToList();
