@@ -8,9 +8,7 @@ using System.Xml.Serialization;
 namespace BE
 {
     [XmlRoot(ElementName = "ArrayOfHostingUnit")]
-    public class HostingUnits : List<HostingUnit>
-    {
-    }
+    public class HostingUnits : List<HostingUnit> { }
 
 
     public class HostingUnit : ICloneable 

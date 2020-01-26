@@ -31,7 +31,7 @@ namespace PL
             orderListPage = olp;
             OrderIdLable.Content ="#"+ order.OrderKey;
             ImpBL bl = ImpBL.Instance;
-            var gr = bl.GetRequest(order.GuestRequestKey);
+            var gr = bl.GetGuestRequest(order.GuestRequestKey);
             OrderFirstName.Content = gr.PrivateName;
             OrderLastName1.Content = gr.FamilyName;
             OrderStatusComboBox.ItemsSource = Enum.GetNames(typeof(OrderStatus)).ToList();

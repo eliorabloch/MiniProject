@@ -107,7 +107,7 @@ namespace PL
         private void OccupancyButtom_Click(object sender, RoutedEventArgs e)
         {
             bool flag = false;
-            List<HostingUnit> mylist = bl.GetUnitsList();
+            List<HostingUnit> mylist = bl.GetHostingUnitsList();
             foreach (var item in mylist)
             {
                 if (UnitTextBox.Text == item.HostingUnitName)

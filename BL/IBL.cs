@@ -10,31 +10,31 @@ namespace BL
 {
     public interface IBL
     {
-        GuestRequest GetRequest(int id);
+        GuestRequest GetGuestRequest(int id);
         
-        void AddRequest(GuestRequest newRequest);
+        void AddRequest(GuestRequest newGuestRequest);
         
-        void UpdateRequest(GuestRequest update);
+        void UpdateRequest(GuestRequest updateGuestRequest);
         
-        void DeleteRequest(GuestRequest newRequest);
+        void DeleteRequest(GuestRequest newGuestRequest);
 
-        HostingUnit GetUnit(int id);
+        HostingUnit GetHostingUnit(int id);
         
-        void AddUnit(HostingUnit newUnit);
+        void AddHostingUnit(HostingUnit newHostingUnit);
         
-        void UpdateUnit(HostingUnit update);
+        void UpdateHostingUnit(HostingUnit updateHostingUnit);
         
-        void DeleteUnit(HostingUnit delUnit);
+        void DeleteHostingUnit(HostingUnit deleteHostingUnit);
 
         Order GetOrder(int id);
         
         void AddOrder(Order newOrder);
         
-        void UpdateOrder(Order update);
+        void UpdateOrder(Order updateOrder);
         
-        void DeleteOrder(Order update);
+        void DeleteOrder(Order deleteOrder);
         
-        List<HostingUnit> GetUnitsList();
+        List<HostingUnit> GetHostingUnitsList();
         
         List<GuestRequest> GetGuestRequestList();
         

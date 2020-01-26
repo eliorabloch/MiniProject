@@ -9,15 +9,15 @@ namespace DAL
 {
     public interface IDAL
     {
-        GuestRequest GetRequest(int id);
-        void AddRequest(GuestRequest newRequest);
-        void UpdateRequest(GuestRequest update);
-        void DeleteRequest(GuestRequest newRequest);
+        GuestRequest GetGuestRequest(int id);
+        void AddGuestRequest(GuestRequest newGuestRequest);
+        void UpdateGuestRequest(GuestRequest updateGuestRequest);
+        void DeleteGuestRequest(GuestRequest newGuestRequest);
 
-        HostingUnit GetUnit(int id);
-        void AddUnit(HostingUnit newUnit);//A function that adds a hosting unit
-        void UpdateUnit(HostingUnit update);//A function that updates a hosting unit.
-        void DeleteUnit(HostingUnit delUnit);//A function that deletes a hosting unit.
+        HostingUnit GetHostingUnit(int id);
+        void AddHostingUnit(HostingUnit newHostingUnit);
+        void UpdateHostingUnit(HostingUnit updateHostingUnit);
+        void DeleteHostingUnit(HostingUnit deleteHostingUnit);
         
         /// <summary>
         /// Get the order
@@ -26,8 +26,8 @@ namespace DAL
         /// <returns>the order or null if not found</returns>
         Order GetOrder(int id);
 
-        void AddOrder(Order newOrder);//A function that adds an order to the list.
-        void UpdateOrder(Order update);//Function that updates an order.
+        void AddOrder(Order newOrder);
+        void UpdateOrder(Order update);
         /// <summary>
         /// Function that deletes an order
         /// </summary>
@@ -35,7 +35,7 @@ namespace DAL
         void DeleteOrder(Order update);
 
         List<Host> GetHostList();
-        List<HostingUnit> GetUnitsList();
+        List<HostingUnit> GetHostingUnitsList();
         List<GuestRequest> GetGuestRequestList();
         List<Order> GetOrdersList();
         List<BankBranch> GetBankList(); 

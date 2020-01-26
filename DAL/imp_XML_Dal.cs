@@ -54,6 +54,7 @@ namespace DAL
             xmlSer.Serialize(file, source);
             file.Close();
         }
+
         public static T LoadFromXML<T>(string path)
         {
             FileStream file = new FileStream(path, FileMode.Open);
@@ -64,109 +65,106 @@ namespace DAL
         }
 
         #region Guest Requests
+
         public List<GuestRequest> GetGuestRequestList()
         {
             return LoadFromXML<GuestRequests>(GUEST_REQUESTS_FILENAME);
         }
 
-        public GuestRequest GetRequest(int id)
+        public GuestRequest GetGuestRequest(int GuestRequestID)
         {
-            return GetGuestRequestList().FirstOrDefault(x => x.GuestRequestKey == id);
+            return GetGuestRequestList().FirstOrDefault(x => x.GuestRequestKey == GuestRequestID);
         }
 
-        public void AddRequest(GuestRequest newRequest)
+        public void AddGuestRequest(GuestRequest newGuestRequest)
         {
-            newRequest.GuestRequestKey = getKeyFromConfig("GuestRequestId");
+            newGuestRequest.GuestRequestKey = getKeyFromConfig("GuestRequestId");
             var grl = GetGuestRequestList();
-            if (grl.Any(x => x.GuestRequestKey == newRequest.GuestRequestKey))
+            if (grl.Any(x => x.GuestRequestKey == newGuestRequest.GuestRequestKey))
             {
-                throw new TzimerException($"Guest Request with the ID: {newRequest.GuestRequestKey} - already exists!", "dal");
+                throw new TzimerException($"Guest Request with the ID: {newGuestRequest.GuestRequestKey} - already exists!", "dal");
             }
-            grl.Add(newRequest);
+            grl.Add(newGuestRequest);
             SaveToXML(grl, GUEST_REQUESTS_FILENAME);
         }
 
-
-
-        public void DeleteRequest(GuestRequest newRequest)
+        public void DeleteGuestRequest(GuestRequest newGuestRequest)
         {
-            var grl = GetGuestRequestList();
-            var succeed = grl.RemoveAll(x => x.GuestRequestKey == newRequest.GuestRequestKey);
+            var guestRequestsList = GetGuestRequestList();
+            var succeed = guestRequestsList.RemoveAll(x => x.GuestRequestKey == newGuestRequest.GuestRequestKey);
             if (succeed == 0)
             {
-                throw new TzimerException($"Failed to remove Guest Request, ID: {newRequest.GuestRequestKey}", "dal");
+                throw new TzimerException($"Failed to remove Guest Request, ID: {newGuestRequest.GuestRequestKey}", "dal");
             }
-            SaveToXML(grl, GUEST_REQUESTS_FILENAME);
+            SaveToXML(guestRequestsList, GUEST_REQUESTS_FILENAME);
         }
 
-        public void UpdateRequest(GuestRequest updatedRequest)
+        public void UpdateGuestRequest(GuestRequest updatedGuestRequest)
         {
-            var grl = GetGuestRequestList();
-            grl.ForEach(x =>
+            var guestRequestsList = GetGuestRequestList();
+            guestRequestsList.ForEach(x =>
             {
-                if (x.GuestRequestKey == updatedRequest.GuestRequestKey)
+                if (x.GuestRequestKey == updatedGuestRequest.GuestRequestKey)
                 {
-                    x.Status = updatedRequest.Status;
+                    x.Status = updatedGuestRequest.Status;
                 }
             });
-            SaveToXML(grl, GUEST_REQUESTS_FILENAME);
+            SaveToXML(guestRequestsList, GUEST_REQUESTS_FILENAME);
         }
 
         #endregion
 
-        #region HostingUnits
-
-   
-        public HostingUnit GetUnit(int id)
+        #region Hosting Units
+        
+        public HostingUnit GetHostingUnit(int HostingUnitID)
         {
-            return GetUnitsList().FirstOrDefault(x => x.HostingUnitKey == id);
+            return GetHostingUnitsList().FirstOrDefault(x => x.HostingUnitKey == HostingUnitID);
         }
 
-        public void AddUnit(HostingUnit newUnit)
+        public void AddHostingUnit(HostingUnit newHostingUnit)
         {
-            newUnit.HostingUnitKey = getKeyFromConfig("HostingUnitId");
-            newUnit.Diary = Utils.CreateMatrix();
-            var hul = GetUnitsList();
-            if (hul.Any(x => x.HostingUnitKey == newUnit.HostingUnitKey))
+            newHostingUnit.HostingUnitKey = getKeyFromConfig("HostingUnitId");
+            newHostingUnit.Diary = Utils.CreateMatrix();
+            var hostingUnitsList = GetHostingUnitsList();
+            if (hostingUnitsList.Any(x => x.HostingUnitKey == newHostingUnit.HostingUnitKey))
             {
-                throw new TzimerException($"Hosting Unit with the ID: {newUnit.HostingUnitKey} - already exists!", "dal");
+                throw new TzimerException($"Hosting Unit with the ID: {newHostingUnit.HostingUnitKey} - already exists!", "dal");
             }
 
-            HostingUnits hostingUnitsList = (HostingUnits)GetUnitsList();
-            hostingUnitsList.Add(newUnit);
-            SaveToXML(hostingUnitsList, HOSTING_UNITS_FILENAME);
+            HostingUnits hostingUnitsLists = (HostingUnits)GetHostingUnitsList();
+            hostingUnitsLists.Add(newHostingUnit);
+            SaveToXML(hostingUnitsLists, HOSTING_UNITS_FILENAME);
         }
 
-
-        public List<HostingUnit> GetUnitsList()
+        public List<HostingUnit> GetHostingUnitsList()
         {
             List<HostingUnit> hostingUnitsList = LoadFromXML<HostingUnits>(HOSTING_UNITS_FILENAME);
             return hostingUnitsList;
         }
 
-        public void UpdateUnit(HostingUnit update)
+        public void UpdateHostingUnit(HostingUnit updateHostingUnit)
         {
-            var hul = GetUnitsList();
-            var updatedList = hul.Select(x =>
+            var hostingUnitsList = GetHostingUnitsList();
+            var updatedList = hostingUnitsList.Select(x =>
             {
-                if (x.HostingUnitKey == update.HostingUnitKey)
+                if (x.HostingUnitKey == updateHostingUnit.HostingUnitKey)
                 {
-                    x = update;
+                    x = updateHostingUnit;
                 }
                 return x;
             }).ToList();
             SaveToXML(updatedList, HOSTING_UNITS_FILENAME);
         }
 
-        public void DeleteUnit(HostingUnit delUnit)
+        public void DeleteHostingUnit(HostingUnit deleteHostingUnit)
         {
-            var hul = GetUnitsList();
-            var succeed = hul.RemoveAll(x => x.HostingUnitKey == delUnit.HostingUnitKey);
+            var hostingUnitsList = GetHostingUnitsList();
+            var succeed = hostingUnitsList.RemoveAll(x => x.HostingUnitKey == deleteHostingUnit.HostingUnitKey);
             if (succeed == 0)
             {
-                throw new TzimerException($"Failed to remove Hosting Unit, ID: {delUnit.HostingUnitKey}", "dal");
+                throw new TzimerException($"Failed to remove Hosting Unit, ID: {deleteHostingUnit.HostingUnitKey}", "dal");
             }
-            SaveToXML(hul, HOSTING_UNITS_FILENAME);
+            SaveToXML(hostingUnitsList, HOSTING_UNITS_FILENAME);
         }
         #endregion
 
@@ -246,6 +244,17 @@ namespace DAL
 
         #endregion
 
+        #region Host
+
+        public List<Host> GetHostList()
+        {
+            return GetHostingUnitsList().Select(h => h.Owner).Distinct().ToList();
+        }
+
+        #endregion
+
+        #region Bank Branch
+
         public List<BankBranch> GetBankList()
         {
             const string xmlLocalPath = @"BankBranches.xml";
@@ -289,11 +298,7 @@ namespace DAL
             return branches.GroupBy(x => x.BranchNumber).Select(y => y.FirstOrDefault()).ToList();
         }
 
-
-        public List<Host> GetHostList()
-        {
-            return GetUnitsList().Select(h => h.Owner).Distinct().ToList();
-        }
+        #endregion
 
     }
 }

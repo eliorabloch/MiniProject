@@ -27,7 +27,7 @@ namespace PL
             Gkey = key;
             InitializeComponent();
             ImpBL bl = ImpBL.Instance;
-            infoTextBlock.Text = bl.GetRequest(Gkey).ToString();
+            infoTextBlock.Text = bl.GetGuestRequest(Gkey).ToString();
 
 
         }

@@ -24,6 +24,6 @@ namespace BE
     }
     public enum Options
     {
-        neccesery, possible, notintersted
+        necessary, possible, notInterested
     }
 }

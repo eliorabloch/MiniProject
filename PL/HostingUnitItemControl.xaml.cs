@@ -51,7 +51,7 @@ namespace PL
             {
                 ImpBL bl = ImpBL.Instance;
                 int unitKey = int.Parse(HostingUnitKeyLable.Content.ToString().Substring(1));
-                bl.DeleteUnit(bl.GetUnit(unitKey));
+                bl.DeleteHostingUnit(bl.GetHostingUnit(unitKey));
                 UserControlContainer.Visibility = Visibility.Collapsed;
             }
             catch (Exception err)
