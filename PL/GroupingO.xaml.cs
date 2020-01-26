@@ -51,6 +51,23 @@ namespace PL
                         groupingDataGrid.Items.Add(0);
                     }
                 }
+                if (groupByComboBox.SelectedIndex == 1)
+                {
+                    groupingDataGrid.Items.Clear();
+                    groupingDataGrid.CanUserReorderColumns = false;
+                    groupingDataGrid.CanUserResizeColumns = false;
+                    groupingDataGrid.CanUserResizeRows = false;
+                    groupingDataGrid.CanUserSortColumns = false;
+                    var o = bl.GroupOrdersByHostingUnit();
+                    foreach (var item in o)
+                    {
+                        foreach (var order in item)
+                        {
+                            groupingDataGrid.Items.Add(order);
+                        }
+                        groupingDataGrid.Items.Add(0);
+                    }
+                }
             }
             catch (Exception ex)
             {

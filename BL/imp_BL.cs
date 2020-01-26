@@ -15,9 +15,7 @@ namespace BL
 {
     public class ImpBL : IBL
     {
-
-        #region Singleton
-
+        #region singelton
         /// <summary>
         /// //Using Singleton makes sure that no new instance of the class is ever created but only one instance.
         /// </summary>
@@ -26,10 +24,10 @@ namespace BL
         {
             get { return instance; }
         }
+ 
+        static IDAL dal;
 
         #endregion
-
-        static IDAL dal;
 
         static ImpBL()
         {
@@ -37,12 +35,52 @@ namespace BL
             dal = factoryDAL.GetDAL(TypeDAL);
             
         }
+
         public ImpBL()
         {
             Thread thread = new Thread(() => checkAndChangeStatusOrder());
             thread.Start();
         }
 
+        #region Host
+
+        /// <summary>
+        /// function who goes to the DAL and give me the host list.
+        /// </summary>
+        /// <returns>hosts lits</returns>
+        public List<Host> GetHostsList()
+        {
+            return dal.GetHostList();
+        }
+
+        /// <summary>
+        /// function who arrange the hosts by number of units they has (grouping).
+        /// </summary>
+        /// <returns>hosts list sorted by the number of units each host has.</returns>
+        public List<Host> groupHostsByNumberOfUnits()
+        {
+            List<Host> hostsList = new List<Host>();
+            foreach (var host in getHostsList())
+            {
+                var x = from newItem in getHostsList()
+                        orderby newItem.numOfUnits
+                        select newItem;
+                hostsList = x.ToList();
+            }
+            return hostsList;
+        }
+
+        /// <summary>
+        /// function who goes over the units list and return the hosts.
+        /// </summary>
+        /// <returns>hosts list</returns>
+        private List<Host> getHostsList()
+        {
+            var hostIds = GetUnitsList().Select(x => x.Owner.HostId).Distinct().ToList();
+            return hostIds.Select(x => (Host)GetHost(x).Clone()).ToList();
+        }
+
+        #endregion 
 
         #region Gusets Requsts
 
@@ -52,9 +90,9 @@ namespace BL
         /// <param name="hostingUnit">list of guest requests</param>
         /// <param name="key">unit key</param>
         /// <returns>guest request when given his request key.</returns>
-        public List<GuestRequest> searchByKey(string key)
+        public List<GuestRequest> searchByKey(string guestRequestKey)
         {
-            return GetGuestRequestList().Where(x => x.GuestRequestKey.ToString().StartsWith(key)).ToList();
+            return GetGuestRequestList().Where(x => x.GuestRequestKey.ToString().StartsWith(guestRequestKey)).ToList();
         }
 
         /// <summary>
@@ -68,6 +106,56 @@ namespace BL
             return GetGuestRequestList()
                 .Where(x=>x.FamilyName.ToLower().StartsWith(familyName.ToLower())).ToList();
         }
+        
+        /// <summary>
+        /// function who arrange the guest requests by their status (grouping).
+        /// </summary>
+        /// <returns>guest requests list sorted by their status.</returns>
+        public List<List<GuestRequest>> GroupGuestRequestByStatus()
+        {
+            return (from guestRequest in GetGuestRequestList()
+                    group guestRequest by guestRequest.Status into g
+                    select g.ToList()).ToList();
+        }
+
+        /// <summary>
+        /// Function who checks wheter the requests are fit to some condition.
+        /// </summary>
+        /// <param name="condition">predicate of guest request</param>
+        /// <returns>all the guest request who fit to the condition.</returns>
+        public List<GuestRequest> GetAllGuestRequest(Predicate<GuestRequest> condition)
+        {
+            return GetGuestRequestList().Where(x => condition(x)).ToList();
+        }
+
+        /// <summary>
+        /// A function that returns a list of guest requirements grouped by the required area.
+        /// </summary>
+        /// <returns>guest requests list sorted by the request's area. </returns>
+        public List<List<GuestRequest>> GroupGuestRequestByAreas()
+        {
+            return (from guestRequest in GetGuestRequestList()
+                    group guestRequest by guestRequest.Area into g
+                    select g.ToList()).ToList();
+
+        }
+
+        /// <summary>
+        /// A function that returns a list of guest requirements grouped by the atendees.
+        /// </summary>
+        /// <returns>guest requests list sorted by the request's atendees. </returns>
+        public List<GuestRequest> groupGuestRequestByNumberOfAtendees()
+        {
+            List<GuestRequest> guestRequestList = new List<GuestRequest>();
+            foreach (var request in GetGuestRequestList())
+            {
+                var x = from newItem in GetGuestRequestList()
+                        orderby newItem.Atendees
+                        select newItem;
+                guestRequestList = x.ToList();
+            }
+            return guestRequestList;
+        }
 
         public GuestRequest GetRequest(int id)
         {
@@ -75,23 +163,13 @@ namespace BL
         }
 
         /// <summary>
-        /// function who get the all units one host has.
-        /// </summary>
-        /// <param name="hostId">string</param>
-        /// <returns>hosting units list</returns>
-        public List<HostingUnit> GetUnitsByHost(string hostId)
-        {
-            return GetUnitsList().Where(x => x.Owner.HostId == hostId).ToList();
-        }
-
-        /// <summary>
         /// function who match between request to unit.
         /// </summary>
         /// <param name="unit">hosting unit</param>
         /// <returns>guest requests list</returns>
-        public List<GuestRequest> matchRequestToUnit(HostingUnit unit, string subAreaFilter, string attendantsAmount)
+        public List<GuestRequest> matchRequestToUnit(HostingUnit hostingUnit, string subAreaFilter, string attendantsAmount)
         {
-            return GetGuestRequestList().Where(grItem => checkIfUnitMatchToRequest(unit, grItem, subAreaFilter, attendantsAmount) != null ).ToList();
+            return GetGuestRequestList().Where(guestRequestItem => checkIfUnitMatchToRequest(hostingUnit, guestRequestItem, subAreaFilter, attendantsAmount) != null ).ToList();
         }
 
         /// <summary>
@@ -100,32 +178,32 @@ namespace BL
         /// <param name="hu">hosting unit</param>
         /// <param name="gr">guest request</param>
         /// <returns>the guest request if there is a match.</returns>
-        public GuestRequest checkIfUnitMatchToRequest(HostingUnit hu, GuestRequest gr, string subAreaFilter, string attendantsAmount)
+        public GuestRequest checkIfUnitMatchToRequest(HostingUnit hostingUnit, GuestRequest guestRequest, string subAreaFilter, string attendantsAmount)
         {
-            if(GetOrdersList().Any(o=>o.GuestRequestKey==gr.GuestRequestKey && o.HostingUnitKey == hu.HostingUnitKey))
+            if(GetOrdersList().Any(order=>order.GuestRequestKey== guestRequest.GuestRequestKey && order.HostingUnitKey == hostingUnit.HostingUnitKey))
             {
                 return null;
             }
 
             int attendants;
             var filterAttendants = int.TryParse(attendantsAmount, out attendants);
-            bool enoughAttendees = filterAttendants ? int.Parse(gr.Children) + int.Parse(gr.Adults) == attendants : true;
+            bool enoughAttendees = filterAttendants ? int.Parse(guestRequest.Children) + int.Parse(guestRequest.Adults) == attendants : true;
             if (
-                hu.Area == gr.Area
-                && hu.Type == gr.Type
-                && isDatesAvilable(hu, gr.EntryDate, gr.ReleaseDate)
+                hostingUnit.Area == guestRequest.Area
+                && hostingUnit.Type == guestRequest.Type
+                && isDatesAvilable(hostingUnit, guestRequest.EntryDate, guestRequest.ReleaseDate)
                 && enoughAttendees
-                && gr.SubArea.ToLower().StartsWith(subAreaFilter.ToLower())
-                && isMatchRequirment(hu.Pool, gr.Pool)
-                && isMatchRequirment(hu.Jacuzz, gr.Jacuzzi)
-                && isMatchRequirment(hu.Garden, gr.Garden)
-                && isMatchRequirment(hu.ChildrensAttractions, gr.ChildrensAttractions)
-                && isMatchRequirment(hu.breakfastIncluded, gr.breakfastIncluded)
-                && isMatchRequirment(hu.FreeParking, gr.FreeParking)
-                && isMatchRequirment(hu.RoomService, gr.RoomService)
+                && guestRequest.SubArea.ToLower().StartsWith(subAreaFilter.ToLower())
+                && isMatchRequirment(hostingUnit.Pool, guestRequest.Pool)
+                && isMatchRequirment(hostingUnit.Jacuzz, guestRequest.Jacuzzi)
+                && isMatchRequirment(hostingUnit.Garden, guestRequest.Garden)
+                && isMatchRequirment(hostingUnit.ChildrensAttractions, guestRequest.ChildrensAttractions)
+                && isMatchRequirment(hostingUnit.breakfastIncluded, guestRequest.breakfastIncluded)
+                && isMatchRequirment(hostingUnit.FreeParking, guestRequest.FreeParking)
+                && isMatchRequirment(hostingUnit.RoomService, guestRequest.RoomService)
                 )
             {
-                return gr;
+                return guestRequest;
             }
 
             return null;
@@ -148,8 +226,8 @@ namespace BL
         /// <returns>guest requests list sorted by theie status.</returns>
         public List<List<GuestRequest>> GroupRequesteByStatus()
         {
-            return (from gr in GetGuestRequestList()
-                    group gr by gr.Status into g
+            return (from guestRequest in GetGuestRequestList()
+                    group guestRequest by guestRequest.Status into g
                     select g.ToList()).ToList();
 
         }
@@ -161,10 +239,10 @@ namespace BL
         /// <returns>host</returns>
         public Host GetHost(string hostId)
         {
-            var hu = GetUnitsList().FirstOrDefault(x => x.Owner.HostId == hostId);
-            if (hu != null)
+            var hostingUnit = GetUnitsList().FirstOrDefault(x => x.Owner.HostId == hostId);
+            if (hostingUnit != null)
             {
-                return hu.Owner;
+                return hostingUnit.Owner;
             }
             else
             {
@@ -195,11 +273,11 @@ namespace BL
         {
             validGuestRequest(updatedRequest);
 
-            GuestRequest oldReq = getGuestRequestIfExists(updatedRequest.GuestRequestKey);
+            GuestRequest oldRequest = getGuestRequestIfExists(updatedRequest.GuestRequestKey);
 
-            if ((updatedRequest.Status != RequestStatus.ClosedDeal && oldReq.Status == RequestStatus.ClosedDeal )
+            if ((updatedRequest.Status != RequestStatus.ClosedDeal && oldRequest.Status == RequestStatus.ClosedDeal )
                 ||
-                (updatedRequest.Status != RequestStatus.ExpiredRequest && oldReq.Status == RequestStatus.ExpiredRequest))
+                (updatedRequest.Status != RequestStatus.ExpiredRequest && oldRequest.Status == RequestStatus.ExpiredRequest))
             {
                 throw new TzimerException($"Cannot update a closed request, Request ID: {updatedRequest.GuestRequestKey}", "bl");
             }
@@ -210,21 +288,21 @@ namespace BL
         /// <summary>
         /// A delegate function that accepts any guest request and checks by its ID whether it already exists, if it does not throw an exception, else returns the request.
         /// </summary>
-        static Func<int, GuestRequest> getGuestRequestIfExists = delegate (int id)
+        static Func<int, GuestRequest> getGuestRequestIfExists = delegate (int guestRequestID)
         {
-            var oldReq = dal.GetRequest(id);
-            if (oldReq == null)
+            var oldRequest = dal.GetRequest(guestRequestID);
+            if (oldRequest == null)
             {
-                throw new TzimerException($"Cannot find Requst with ID: {id}", "bl");
+                throw new TzimerException($"Cannot find Requst with ID: {guestRequestID}", "bl");
             }
-            return oldReq;
+            return oldRequest;
         };
 
         /// <summary>
         /// A function that deletes a new hosting requirement
         /// </summary>
         /// <param name="newRequest">Deleted request.</param>
-        public void DeleteRequest(GuestRequest request)
+        public void DeleteRequest(GuestRequest deleteRequest)
         {
             getGuestRequestIfExists(request.GuestRequestKey);
             if(isHaveDoneDealOrder(request))
@@ -299,10 +377,81 @@ namespace BL
             }
         }
 
+        /// <summary>
+        /// function who goes to the DAL and give me the uest request list.
+        /// </summary>
+        /// <returns>guest requests lits</returns>
+        public List<GuestRequest> GetGuestRequestList()
+        {
+            return dal.GetGuestRequestList();
+        }
+
         #endregion
 
         #region Hosting Units
-        
+
+        /// <summary>
+        /// function who arrange the hosting units by number of rates they has (grouping).
+        /// </summary>
+        /// <returns>hosting units list sorted by the number of rates each hosting unit has.</returns>
+        public List<HostingUnit> groupHostingUnitsByRates()
+        {
+            List<HostingUnit> hostingUnitsList = new List<HostingUnit>();
+            foreach (var hostingUnit in GetUnitsList())
+            {
+                var x = from newItem in GetUnitsList()
+                        orderby newItem.RateStars
+                        select newItem;
+                hostingUnitsList = x.ToList();
+            }
+            return hostingUnitsList;
+        }
+
+        /// <summary>
+        /// function who get the all units one host has.
+        /// </summary>
+        /// <param name="hostId">string</param>
+        /// <returns>hosting units list</returns>
+        public List<HostingUnit> GetUnitsByHost(string hostId)
+        {
+            return GetUnitsList().Where(x => x.Owner.HostId == hostId).ToList();
+        }
+
+        /// <summary>
+        /// function who arrange the hosting units by their type (grouping).
+        /// </summary>
+        /// <returns>hosting units list sorted by their type.</returns>
+        public List<List<HostingUnit>> GroupHostingUnitsByType()
+        {
+            return (from hostingUnit in GetUnitsList()
+                    group hostingUnit by hostingUnit.Type into g
+                    select g.ToList()).ToList();
+
+        }
+
+        /// <summary>
+        /// function who arrange the hosting units by their owner (grouping).
+        /// </summary>
+        /// <returns>hosting units list sorted by their owner.</returns>
+        public List<List<HostingUnit>> GroupHostingUnitsByOwner()
+        {
+            return (from hostingUnit in GetUnitsList()
+                    group hostingUnit by hostingUnit.Owner.HostId into g
+                    select g.ToList()).ToList();
+
+        }
+
+        /// <summary>
+        /// A function that returns a list of hosting units grouped by the required area.
+        /// </summary>
+        /// <returns>guest requests list sorted by the hosting unit's area. </returns>
+        public List<List<HostingUnit>> GroupHostingUnitsByArea()
+        {
+            return (from hostingUnit in GetUnitsList()
+                    group hostingUnit by hostingUnit.Area into g
+                    select g.ToList()).ToList();
+
+        }
 
         /// <summary>
         /// Fanction who search for a hosting units by its key.
@@ -310,16 +459,28 @@ namespace BL
         /// <param name="hostingUnit">hosting unit</param>
         /// <param name="key">int</param>
         /// <returns>hosting units when given his unit key.</returns>
-        public HostingUnit searchByKey(List<HostingUnit> hostingUnit, int key = -1)
+        public HostingUnit searchByKey(List<HostingUnit> hostingUnitsList, int hostingUnitKey = -1)
         {
-            foreach (var item in hostingUnit)
+            foreach (var hostingUnit in hostingUnitsList)
             {
-                if (item.HostingUnitKey == key)
+                if (hostingUnit.HostingUnitKey == hostingUnitKey)
                 {
-                    return item;
+                    return hostingUnit;
                 }
             }
-            throw new TzimerException($"Sorry,cant find a request with the key{key}", "bl");
+            throw new TzimerException($"Sorry,cant find a request with the key{hostingUnitKey}", "bl");
+        }
+
+        /// <summary>
+        /// A function that accepts a date and number of vacation days and returns the list of all available accommodation units on that date.
+        /// </summary>
+        /// <param name="start">Start date</param>
+        /// <param name="amountOfDAys">Amount of dates the guest want to stay at the hostingUnit.</param>
+        /// <returns>List with all the available units at some dates.</returns>
+        public List<HostingUnit> GetAllAvilableUnits(DateTime start, int amountOfDays)
+        {
+            DateTime end = start.AddDays(amountOfDays);
+            return GetUnitsList().Where(x => isDatesAvilable(x, start, end)).ToList();
         }
 
         /// <summary>
@@ -328,28 +489,28 @@ namespace BL
         /// <param name="hostingUnit">hosting unit</param>
         /// <param name="key">int</param>
         /// <returns>hosting units when given his unit name.</returns>
-        public List<HostingUnit> searchByName(List<HostingUnit> HostingUnit, string Name)
+        public List<HostingUnit> searchByName(List<HostingUnit> HostingUnit, string HostingUnitName)
         {
             bool ifExist = false;
-            List<HostingUnit> nameHU = new List<HostingUnit>();
+            List<HostingUnit> HostingUnitNames = new List<HostingUnit>();
             foreach (var item in HostingUnit)
             {
-                if (item.HostingUnitName == Name)
+                if (item.HostingUnitName == HostingUnitName)
                 {
-                    nameHU.Add(item);
+                    HostingUnitNames.Add(item);
                     ifExist = true;
                 }
 
             }
-
-
             if (ifExist)
             {
-                return nameHU;
+                return HostingUnitNames;
             }
 
             else
-                throw new TzimerException($"Sorry,cant find a request with the name:{Name}", "bl");
+            {
+                throw new TzimerException($"Sorry,cant find a request with the name:{HostingUnitName}", "bl");
+            }
         }
         
         /// <summary>
@@ -357,12 +518,12 @@ namespace BL
         /// </summary>
         static Func<int, HostingUnit> getHostingUnitsIfExists = delegate (int id)
         {
-            var oldUnit = dal.GetUnit(id);
-            if (oldUnit == null)
+            var oldHostingUnit = dal.GetUnit(id);
+            if (oldHostingUnit == null)
             {
                 throw new TzimerException($"Cannot find Unit with ID: {id}", "bl");
             }
-            return oldUnit;
+            return oldHostingUnit;
         };
 
         public HostingUnit GetUnit(int id)
@@ -374,41 +535,40 @@ namespace BL
         /// A function that adds a hosting unit.
         /// </summary>
         /// <param name="update">Updating hostingunit.</param>
-        public void AddUnit(HostingUnit newUnit)
+        public void AddUnit(HostingUnit newHostingUnit)
         {
-            validHostingUnit(newUnit);
-            dal.AddUnit(newUnit);
+            validHostingUnit(newHostingUnit);
+            dal.AddUnit(newHostingUnit);
         }
 
         /// <summary>
         /// A function that updates a hosting unit.
         /// </summary>
         /// <param name="delUnit">Deleted request.</param>
-        public void UpdateUnit(HostingUnit updatedUnit)
+        public void UpdateUnit(HostingUnit updatedHostingUnit)
         {
-            var oldUnit =  getHostingUnitsIfExists(updatedUnit.HostingUnitKey);
-            // לא ניתן לבטל הרשאה לחיוב חשבון כאשר יש הצעה הקשורה אליה במצב פתוח.
-            if (oldUnit.Owner.CollectionClearance &&
-                !updatedUnit.Owner.CollectionClearance &&
-                isHaveOpenOrder(oldUnit))
+            var oldHostingUnit =  getHostingUnitsIfExists(updatedHostingUnit.HostingUnitKey);
+            if (oldHostingUnit.Owner.CollectionClearance &&
+                !updatedHostingUnit.Owner.CollectionClearance &&
+                isHaveOpenOrder(oldHostingUnit))
             {
                 throw new TzimerException("Collection Clearance authorization cannot be revoked when there is an open order associated with it's host", "bl");
             }
-            dal.UpdateUnit(updatedUnit);
+            dal.UpdateUnit(updatedHostingUnit);
         }
 
         /// <summary>
         /// A function that deletes a hosting unit.
         /// </summary>
         /// <param name="delUnit">Deleted hostingunit</param>
-        public void DeleteUnit(HostingUnit delUnit)
+        public void DeleteUnit(HostingUnit delHostingUnit)
         {
-            getHostingUnitsIfExists(delUnit.HostingUnitKey);
-            if (isHaveOpenOrder(delUnit))
+            getHostingUnitsIfExists(delHostingUnit.HostingUnitKey);
+            if (isHaveOpenOrder(delHostingUnit))
             {
                 throw new TzimerException("Cannot delete Host Unit that has active deals", "bl");
             }
-            dal.DeleteUnit(delUnit);
+            dal.DeleteUnit(delHostingUnit);
         }
 
         /// <summary>
@@ -416,9 +576,9 @@ namespace BL
         /// </summary>
         /// <param name="unit">hosting unit</param>
         /// <returns>if there is an open order</returns>
-        private static bool isHaveOpenOrder(HostingUnit unit)
+        private static bool isHaveOpenOrder(HostingUnit hostingUnit)
         {
-            return dal.GetOrdersList().Any(x => x.HostingUnitKey == unit.HostingUnitKey && (x.Status == OrderStatus.NotHandled || x.Status == OrderStatus.SentMail));
+            return dal.GetOrdersList().Any(x => x.HostingUnitKey == hostingUnit.HostingUnitKey && (x.Status == OrderStatus.NotHandled || x.Status == OrderStatus.SentMail));
         }
 
         /// <summary>
@@ -465,41 +625,70 @@ namespace BL
         {
             return GetOrdersList().Where(x => x.HostingUnitKey == hostingUnitKey).ToList();
         }
-       
+
         /// <summary>
-        /// Fanction who search for a orders by its key.
+        /// function who goes to the DAL and give me the order list.
         /// </summary>
-        /// <param name="order">order</param>
-        /// <param name="key">int</param>
-        /// <returns>order when given his order key.</returns>
-        public Order searchByKey(List<Order> order, int key = -1)
+        /// <returns>orders lits</returns>
+        public List<Order> GetOrdersList()
         {
-            foreach (var item in order)
-            {
-                if (item.OrderKey == key)
-                {
-                    return item;
-                }
-            }
-            return null;
+            return dal.GetOrdersList();
+        }
+
+        /// <summary>
+        /// function who arrange the orders by their unitws key (grouping).
+        /// </summary>
+        /// <returns>orders list sorted by their unit.</returns>
+        public List<List<Order>> GroupOrdersByHostingUnit()
+        {
+            return (from order in GetOrdersList()
+                    group order by order.HostingUnitKey into g
+                    select g.ToList()).ToList();
+        }
+
+        public List<Order> GetOldOrders(int amountOfDays)
+        {
+            return GetOrdersList().Where(x => isOldOrder(x, amountOfDays)).ToList();
         }
 
         /// <summary>
         /// A delegate function that accepts any order and checks by its ID whether it already exists, if it does not throw an exception, else returns the order.
         /// </summary>
-        static Func<int, Order> getOrderIfExists = delegate (int id)
+        static Func<int, Order> getOrderIfExists = delegate (int orderID)
         {
-            var oldOrder = dal.GetOrder(id);
+            var oldOrder = dal.GetOrder(orderID);
             if (oldOrder == null)
             {
-                throw new TzimerException($"Cannot find Order with ID: {id}", "bl");
+                throw new TzimerException($"Cannot find Order with ID: {orderID}", "bl");
             }
             return oldOrder;
         };
 
-        public Order GetOrder(int id)
+        /// <summary>
+        /// A function that accepts several days, and returns all orders that have elapsed since they were created / since the email was sent to a customer greater than or equal to the number of days the function received.
+        /// </summary>
+        Func<Order, int, bool> isOldOrder = delegate (Order order, int amountOfDays)
         {
-            return getOrderIfExists(id);
+            DateTime start = order.OrderDate > order.CreateDate ? order.CreateDate : order.OrderDate;
+            DateTime end = DateTime.Now;
+            return (end - start).TotalDays >= amountOfDays;
+        };
+
+        /// <summary>
+        /// function who arrange the orders by their status (grouping).
+        /// </summary>
+        /// <returns>orders list sorted by theie status.</returns>
+        public List<List<Order>> GroupOrdersByStatus()
+        {
+            return (from order in GetOrdersList()
+                    group order by order.Status into g
+                    select g.ToList()).ToList();
+
+        }
+
+        public Order GetOrder(int orderID)
+        {
+            return getOrderIfExists(orderID);
         }
 
         /// <summary>
@@ -508,9 +697,9 @@ namespace BL
         /// <param name="newOrder">Adding order</param>
         public void AddOrder(Order newOrder)
         {
-            var req = getGuestRequestIfExists(newOrder.GuestRequestKey);
-            var unit = getHostingUnitsIfExists(newOrder.HostingUnitKey);
-            if (!AvailableDate(unit, req))
+            var request = getGuestRequestIfExists(newOrder.GuestRequestKey);
+            var hostingUnit = getHostingUnitsIfExists(newOrder.HostingUnitKey);
+            if (!AvailableDate(hostingUnit, request))
             {
                 throw new TzimerException("Sorry, those dates are taken, please choose a new date", "bl");
             }
@@ -524,115 +713,36 @@ namespace BL
         public void UpdateOrder(Order updatedOrder)
         {
             var oldOrder = getOrderIfExists(updatedOrder.OrderKey);
-            var req = getGuestRequestIfExists(updatedOrder.GuestRequestKey);
-            var unit = getHostingUnitsIfExists(updatedOrder.HostingUnitKey);
+            var request = getGuestRequestIfExists(updatedOrder.GuestRequestKey);
+            var hostingUnit = getHostingUnitsIfExists(updatedOrder.HostingUnitKey);
             if (oldOrder.Status == OrderStatus.Canceled || oldOrder.Status == OrderStatus.DoneDeal)
             {
                 throw new TzimerException("Sorry, this order already closed", "bl");
             }
             if (updatedOrder.Status == OrderStatus.DoneDeal)
             {
-                var totalDays = (req.ReleaseDate - req.EntryDate).TotalDays;
+                var totalDays = (request.ReleaseDate - request.EntryDate).TotalDays;
                 Configuration.Profits += (totalDays * Configuration.Commissin);
-                updateDatesAvilable(unit, req);
-                UpdateUnit(unit);
+                updateDatesAvilable(hostingUnit, request);
+                UpdateUnit(hostingUnit);
                 cancelAllOtherOrders(updatedOrder);
-                req.Status = RequestStatus.ClosedDeal;
+                request.Status = RequestStatus.ClosedDeal;
             } 
             if (updatedOrder.Status == OrderStatus.Canceled)
             {
-                req.Status = RequestStatus.ExpiredRequest;
+                request.Status = RequestStatus.ExpiredRequest;
             }
             if (updatedOrder.Status == OrderStatus.NotHandled)
             {
-                req.Status = RequestStatus.Open;
+                request.Status = RequestStatus.Open;
             }
-            UpdateRequest(req);
+            UpdateRequest(request);
             dal.UpdateOrder(updatedOrder);
         }
 
         #endregion
 
-
-        /// <summary>
-        /// function who check if more then 30 days were pass from the date the mail send till now, if so- update the status.
-        /// </summary>
-        /// <param name="updatedOrderStatus">order</param>
-        public void checkAndChangeStatusOrder()
-        {
-            if (Convert.ToDateTime(Configuration.Date) != DateTime.Now)//check bug
-            {
-                Configuration.Date = DateTime.Now.ToString("yyyy/M/dd ");
-
-                foreach (var updatedOrderStatus in GetOrdersList())
-                {
-                    if ((int)AmountOfDays(updatedOrderStatus.OrderDate, DateTime.Now) > 30)
-                    {
-                        updatedOrderStatus.Status = OrderStatus.Canceled;
-                    }
-                    dal.UpdateOrder(updatedOrderStatus);
-                }
-            }
-        }
-
-        //private static System.Timers.Timer aTimer;
-        //public void timerClass()
-        //{
-        //    Timer timer = new Timer(86400);
-        //    timer.Elapsed += async (sender, e) => await HandleTimer();
-        //    timer.Start();
-        //}
-        //private static Task HandleTimer()
-        //{
-        //    throw new TzimerException("");
-        //}
-        //private static void SetTimer()
-        //{
-        //    aTimer = new System.Timers.Timer(2000);
-        //    aTimer.Elapsed += OnTimedEvent;
-        //    aTimer.AutoReset = true;
-        //    aTimer.Enabled = true;
-        //}
-        //private static void OnTimedEvent(Object source, ElapsedEventArgs e)
-        //{
-        //    throw new TzimerException("The Elapsed event was raised at {0:HH:mm:ss.fff}");
-        //}
-        //public static void Main()
-        //{
-        //    SetTimer();
-        //    Console.ReadLine();
-        //    aTimer.Stop();
-        //    aTimer.Dispose();
-
-        //    Console.WriteLine("Terminating the application...");
-        //}
-
-        /// <summary>
-        /// function who goes to the DAL and give me the uest request list.
-        /// </summary>
-        /// <returns>guest requests lits</returns>
-        public List<GuestRequest> GetGuestRequestList()
-        {
-            return dal.GetGuestRequestList();
-        }
-
-        /// <summary>
-        /// function who goes to the DAL and give me the order list.
-        /// </summary>
-        /// <returns>orders lits</returns>
-        public List<Order> GetOrdersList()
-        {
-            return dal.GetOrdersList();
-        }
-
-        /// <summary>
-        /// function who goes to the DAL and give me the host list.
-        /// </summary>
-        /// <returns>hosts lits</returns>
-        public List<Host> GetHostsList()
-        {
-            return dal.GetHostList();
-        }
+        #region Bank Branch
 
         /// <summary>
         /// function who goes to the DAL and give me the bank list.
@@ -642,19 +752,28 @@ namespace BL
         {
             return dal.GetBankList();
         }
-        
+
         /// <summary>
-        /// A function that accepts a date and number of vacation days and returns the list of all available accommodation units on that date.
+        /// function who arrange the banks by their bank's number (grouping).
         /// </summary>
-        /// <param name="start">Start date</param>
-        /// <param name="amountOfDAys">Amount of dates the guest want to stay at the hostingUnit.</param>
-        /// <returns>List with all the available units at some dates.</returns>
-        public List<HostingUnit> GetAllAvilableUnits(DateTime start, int amountOfDAys)
+        /// <returns>banks list sorted by their bank's number.</returns>
+        public List<BankBranch> GroupBanksByBankNumber()
         {
-            DateTime end = start.AddDays(amountOfDAys);
-            return GetUnitsList().Where(x => isDatesAvilable(x, start, end)).ToList();
+            List<BankBranch> bankBranchesList = new List<BankBranch>();
+            foreach (var bank in GetBankList())
+            {
+                var x = from newItem in GetBankList()
+                        orderby newItem.BankNumber
+                        select newItem;
+                bankBranchesList = x.ToList();
+            }
+            return bankBranchesList;
         }
-      
+
+        #endregion
+
+        #region More
+        
         /// <summary>
         /// A function that checks whether an order can be sent to a customer. Only if the client has signed a host bank authorization form can he send an order.
         /// </summary>
@@ -662,19 +781,19 @@ namespace BL
         /// <param name="o">order</param>
         /// <param name="hu">hosting unit</param>
         /// <returns>if the hostingUnit fit to guest requst, send mail.</returns>
-        public bool SendOrder(Host h, Order o, HostingUnit hostingunit)
+        public bool SendOrder(Host host, Order order, HostingUnit hostingunit)
         {
-            if (h.CollectionClearance)
+            if (host.CollectionClearance)
             {
                 MailMessage mail = new MailMessage();
-                GuestRequest gr = GetRequest(o.GuestRequestKey);
+                GuestRequest gr = GetRequest(order.GuestRequestKey);
                 mail.To.Add("eliora.bloch@gmail.com");
                 mail.To.Add("lielorenstein10@gmail.com");
                 mail.From = new MailAddress("VacationModePlan@gmail.com");
                 mail.Body = $"Dear {gr.PrivateName}  {gr.FamilyName}, <br><br>" +
-                    $"We have found a unit that matches your request number {o.GuestRequestKey}.<br>" +
+                    $"We have found a unit that matches your request number {order.GuestRequestKey}.<br>" +
                     $"The unit is called {hostingunit.HostingUnitName}.<br>" +
-                    $"You may contact the units host named {h.PrivateName } {h.FamilyName} through this email address: {h.MailAddress}, or by calling this number: {h.PhoneNumber}.<br>" +
+                    $"You may contact the units host named {host.PrivateName } {host.FamilyName} through this email address: {host.MailAddress}, or by calling this number: {host.PhoneNumber}.<br>" +
                     $"We are looking forward to closing a deal with you.<br><br>" +
                     $"Yours, VacationMode";
 
@@ -686,8 +805,8 @@ namespace BL
                 smtp.EnableSsl = true;
 
                 smtp.Send(mail);
-                o.Status = OrderStatus.SentMail;
-                UpdateOrder(o);
+                order.Status = OrderStatus.SentMail;
+                UpdateOrder(order);
                 return true;
             }
             else
@@ -715,41 +834,15 @@ namespace BL
         /// <param name="h">hosting unit</param>
         /// <param name="g">guest request</param>
         /// <returns> All available dates at hosting unit.</returns>
-        public bool AvailableDate(HostingUnit h, GuestRequest g)
+        public bool AvailableDate(HostingUnit hostingunit, GuestRequest guestrequest)
         {
-            return isDatesAvilable(h, g.EntryDate, g.ReleaseDate);
+            return isDatesAvilable(hostingunit, guestrequest.EntryDate, guestrequest.ReleaseDate);
         }
 
-        bool availableDate(HostingUnit h, DateTime start, int amount)
+        bool availableDate(HostingUnit hostingunit, DateTime start, int amountOfDays)
         {
-            DateTime end = start.AddDays(amount);
-            return isDatesAvilable(h, start, end);
-        }
-
-        /// <summary>
-        /// Function who checks wheter the requests are fit to some condition.
-        /// </summary>
-        /// <param name="condition">predicate of guest request</param>
-        /// <returns>all the guest request who fit to the condition.</returns>
-        public List<GuestRequest> GetAllGuestRequest(Predicate<GuestRequest> condition)
-        {
-            return GetGuestRequestList().Where(x => condition(x)).ToList();
-        }
-        
-        /// <summary>
-        /// function who calculate the number of sent orders.
-        /// </summary>
-        /// <param name="hu">hosting unit</param>
-        /// <returns>the number of sent orders.</returns>
-        public int GetNumOfSentOrders(HostingUnit hu)
-        {
-            return GetOrdersList().Where(x => x.HostingUnitKey == hu.HostingUnitKey &&
-            (x.Status == OrderStatus.SentMail || x.Status == OrderStatus.DoneDeal)).Count();
-        }
-        
-        public List<Order> GetOldOrders(int amountOfDays)
-        {
-            return GetOrdersList().Where(x => isOldOrder(x, amountOfDays)).ToList();
+            DateTime end = start.AddDays(amountOfDays);
+            return isDatesAvilable(hostingunit, start, end);
         }
 
         /// <summary>
@@ -758,12 +851,12 @@ namespace BL
         /// <param name="order">order</param>
         static void cancelAllOtherOrders(Order order)
         {
-            dal.GetOrdersList().ForEach(o =>
+            dal.GetOrdersList().ForEach(Order =>
             {
-                if (o.GuestRequestKey == order.GuestRequestKey && o.OrderKey != order.OrderKey)
+                if (Order.GuestRequestKey == order.GuestRequestKey && Order.OrderKey != order.OrderKey)
                 {
-                    o.Status = OrderStatus.Canceled;
-                    dal.UpdateOrder(o);
+                    Order.Status = OrderStatus.Canceled;
+                    dal.UpdateOrder(Order);
                 }
             });
         }
@@ -773,12 +866,12 @@ namespace BL
         /// </summary>
         /// <param name="unit">hosting unit</param>
         /// <param name="req">guest request</param>
-        void updateDatesAvilable(HostingUnit unit, GuestRequest req)
+        void updateDatesAvilable(HostingUnit hostingunit, GuestRequest guestrequest)
         {
-            DateTime tempDate = req.EntryDate;
-            while (tempDate < req.ReleaseDate)
+            DateTime tempDate = guestrequest.EntryDate;
+            while (tempDate < guestrequest.ReleaseDate)
             {
-                unit.Diary[tempDate.Month - 1, tempDate.Day - 1] = true;
+                hostingunit.Diary[tempDate.Month - 1, tempDate.Day - 1] = true;
                 tempDate = tempDate.AddDays(1);
             }
         }
@@ -790,12 +883,12 @@ namespace BL
         /// <param name="start">start date</param>
         /// <param name="end">end date</param>
         /// <returns>true if the date are available and false if not.</returns>
-        bool isDatesAvilable(HostingUnit unit, DateTime start, DateTime end)
+        bool isDatesAvilable(HostingUnit hostingunit, DateTime start, DateTime end)
         {
             DateTime tempDate = start;
             while (tempDate < end)
             {
-                if (unit.Diary[tempDate.Month - 1, tempDate.Day - 1])
+                if (hostingunit.Diary[tempDate.Month - 1, tempDate.Day - 1])
                 {
                     return false;
                 }
@@ -806,148 +899,44 @@ namespace BL
         }
 
         /// <summary>
-        /// function who goes over the orders list and count how many orders there are.
-        /// </summary>
-        /// <param name="gr">guest request</param>
-        /// <returns>the number of orders we have</returns>
-        public int GetNumOfOrders(GuestRequest gr)
-        {
-            return GetOrdersList().Where(x => x.GuestRequestKey == gr.GuestRequestKey).Count();
-        }
-
-        /// <summary>
-        /// A function that accepts several days, and returns all orders that have elapsed since they were created / since the email was sent to a customer greater than or equal to the number of days the function received.
-        /// </summary>
-        Func<Order, int, bool> isOldOrder = delegate (Order order, int amountOfDays)
-        {
-            DateTime start = order.OrderDate > order.CreateDate ? order.CreateDate : order.OrderDate;
-            DateTime end = DateTime.Now;
-            return (end - start).TotalDays >= amountOfDays;
-        };
-
-        /// <summary>
-        /// A function that goes through the order list and checks for each unit how many orders it has closed.
-        /// </summary>
-        /// <param name="h">hosting unit</param>
-        /// <param name="orderList">list of orders</param>
-        /// <returns>the amount of cloesed order for each unit.</returns>
-        int amountOfOrders(HostingUnit h, List<Order> orderList)
-        {
-            int sum = 0;
-            foreach (var item in orderList)
-            {
-                if (item.HostingUnitKey == h.HostingUnitKey)
-                {
-                    if (item.Status == OrderStatus.Canceled || item.Status == OrderStatus.DoneDeal)
-                    {
-                        sum++;
-                    }
-                }
-            }
-            return sum;
-        }
-
-        /// <summary>
-        /// A function that returns a list of guest requirements grouped by the required area.
-        /// </summary>
-        /// <returns>guest requests list sorted by the request's area. </returns>
-        public List<List<GuestRequest>> GroupGuestRequestByAreas()
-        {
-            return (from gr in GetGuestRequestList()
-                    group gr by gr.Area into g
-                    select g.ToList()).ToList();
-
-        }
-
-        /// <summary>
-        /// A function that returns a list of hosting units grouped by the required area.
-        /// </summary>
-        /// <returns>guest requests list sorted by the hosting unit's area. </returns>
-        public List<List<HostingUnit>> GroupHostingUnitsByArea()
-        {
-            return (from hu in GetUnitsList()
-                    group hu by hu.Area into g
-                    select g.ToList()).ToList();
-
-        }
-
-        /// <summary>
-        /// A function that returns a list of guest requirements grouped by the atendees.
-        /// </summary>
-        /// <returns>guest requests list sorted by the request's atendees. </returns>
-        public List<GuestRequest> groupGuestRequestByNumOfAtendees()
-        {
-            List<GuestRequest> lgr = new List<GuestRequest>();
-            foreach (var item in GetGuestRequestList())
-            {
-                var x = from newItem in GetGuestRequestList()
-                        orderby newItem.Atendees
-                        select newItem;
-                lgr = x.ToList();
-            }
-            return lgr;
-        }
-
-        /// <summary>
         /// A function that returns the number of units each host has.
         /// </summary>
         /// <param name="hostID">string</param>
         /// <returns>the number of units each host has</returns>
         public int getNumOfUnits(string hostID)
         {
-            int sum = 0;
-            foreach (var item in getHostsList())
+            int NumOfUnits = 0;
+            foreach (var host in getHostsList())
             {
-                if(hostID==item.HostId)
+                if(hostID==host.HostId)
                 {
-                    sum= GetUnitsList().Sum(x => x.Owner.HostId == item.HostId ? 1 : 0);
+                    NumOfUnits = GetUnitsList().Sum(x => x.Owner.HostId == host.HostId ? 1 : 0);
                 }
             }
-            return sum;
+            return NumOfUnits;
         }
-
-        /// <summary>
-        /// function who goes over the units list and return the hosts.
-        /// </summary>
-        /// <returns>hosts list</returns>
-        private List<Host> getHostsList()
-        {
-            var hostIds = GetUnitsList().Select(x => x.Owner.HostId).Distinct().ToList();
-            return hostIds.Select(x => (Host)GetHost(x).Clone()).ToList();
-        }
-
+        
         /// <summary>
         /// Function that deletes an order.
         /// </summary>
         /// <param name="update">Deleted order</param>
-        public void DeleteOrder(Order update)
+        public void DeleteOrder(Order updateorder)
         {
 
         }
-
-        /// <summary>
-        /// function who arrange the guest requests by their status (grouping).
-        /// </summary>
-        /// <returns>guest requests list sorted by their status.</returns>
-        public List<List<GuestRequest>> GroupRequestByStatus()
-        {
-            return (from gr in GetGuestRequestList()
-                    group gr by gr.Status into g
-                    select g.ToList()).ToList();
-        }
-
+        
         /// <summary>
         /// list of taken days.
         /// </summary>
         /// <param name="unit">hosting unit</param>
         /// <returns>mark the dates are taken in the hosting unit matrix.</returns>
-        public List<Tuple<DateTime, DateTime>> markTakenDatesInMatrix(HostingUnit unit)
+        public List<Tuple<DateTime, DateTime>> markTakenDatesInMatrix(HostingUnit hostingunit)
         {
             List<Tuple<DateTime, DateTime>> res = new List<Tuple<DateTime, DateTime>>();
-            var allReleventOrders = GetOrdersByUnit(unit.HostingUnitKey)
+            var allReleventOrders = GetOrdersByUnit(hostingunit.HostingUnitKey)
                 .Where(order => order.Status == OrderStatus.DoneDeal)
                 .Select(x => x.GuestRequestKey);
-            return GetGuestRequestList().Where(gr => allReleventOrders.Contains(gr.GuestRequestKey))
+            return GetGuestRequestList().Where(guestrequest => allReleventOrders.Contains(guestrequest.GuestRequestKey))
                 .Select(item => new Tuple<DateTime, DateTime>(item.EntryDate, item.ReleaseDate)).ToList();
 
         }
@@ -959,18 +948,18 @@ namespace BL
         /// <returns>the number of ocuupied days in a yeat at a specepic unit.</returns>
         public int GetNumberOfTakenDays(HostingUnit hostingUnit)
         {
-            int counter = 0;
+            int NumberOfTakenDays = 0;
             for (int i = 0; i < 11; i++)
             {
                 for (int j = 0; j < 30; j++)
                 {
                     if (hostingUnit.Diary[i, j])
                     {
-                        counter++;
+                        NumberOfTakenDays++;
                     }
                 }
             }
-            return counter;
+            return NumberOfTakenDays;
         }
 
         /// <summary>
@@ -978,19 +967,19 @@ namespace BL
         /// </summary>
         /// <param name="UnitName">string</param>
         /// <returns>the ocuupancy precentege fot unit</returns>
-        public float GetAnnualBusyPercentage(string UnitName)
+        public float GetAnnualBusyPercentage(string hostingUnitName)
         {
-            double precent = 0.0, counter=0.0;
-            List<HostingUnit> mylist =  GetUnitsList();
-            foreach (var item in mylist)
+            double precentAnnualBusy = 0.0, counterAnnualBusy = 0.0;
+            List<HostingUnit> hostnigUnitsList =  GetUnitsList();
+            foreach (var hostnigUnit in hostnigUnitsList)
             {
-                if (UnitName == item.HostingUnitName)
+                if (hostingUnitName == hostnigUnit.HostingUnitName)
                 {
-                    counter = GetNumberOfTakenDays(item);
-                    precent = (counter / 365) * (100);
+                    counterAnnualBusy = GetNumberOfTakenDays(hostnigUnit);
+                    precentAnnualBusy = (counterAnnualBusy / 365) * (100);
                 }
             }
-            return (float)precent;
+            return (float)precentAnnualBusy;
         }
 
         /// <summary>
@@ -1000,23 +989,23 @@ namespace BL
         /// <returns>the occupancy precentege for host</returns>
         public float GetAnnualBusyPercentageForAllUnitsForOneHost(string HostID)
         {
-            List<Host> myHostList = GetHostsList();
-            float sum = 0, counter = 0, precent = 0;
-            foreach (var item in myHostList)
+            List<Host> HostList = GetHostsList();
+            float sumAnnualBusy = 0, counterAnnualBusy = 0, precentAnnualBusy = 0;
+            foreach (var host in HostList)
             {
-                if (HostID == (item.HostId))
+                if (HostID == (host.HostId))
                 {
-                    List<HostingUnit> listhu = GetUnitsByHost(item.HostId);
-                    foreach (var itemm in listhu)
+                    List<HostingUnit> hostingUnitsList = GetUnitsByHost(host.HostId);
+                    foreach (var hostingunit in hostingUnitsList)
                     {
-                        counter = GetAnnualBusyPercentage(itemm.HostingUnitName);
-                        sum += counter;
+                        counterAnnualBusy = GetAnnualBusyPercentage(hostingunit.HostingUnitName);
+                        sumAnnualBusy += counterAnnualBusy;
                     }
-                    precent = (sum / 365) * (100);
+                    precentAnnualBusy = (sumAnnualBusy / 365) * (100);
                     
                 }
             }
-            return precent;
+            return precentAnnualBusy;
         }
 
         /// <summary>
@@ -1025,15 +1014,15 @@ namespace BL
         /// <returns>the overall occupancy precentege </returns>
         public float GetAnnualBusyPercentageForAllUnitsForTheAdministor()
         {
-            float sum = 0, precent = 0;
-            List<Host> listH = GetHostsList();
-            foreach (var item in listH)
+            float sumAnnualBusy = 0, precentAnnualBusy = 0;
+            List<Host> hostsList = GetHostsList();
+            foreach (var host in hostsList)
             {
-                float counter = GetAnnualBusyPercentageForAllUnitsForOneHost(item.HostId);
-                sum += counter;
+                float counter = GetAnnualBusyPercentageForAllUnitsForOneHost(host.HostId);
+                sumAnnualBusy += counter;
             }
-            precent = (sum / 365) * (100);
-            return precent;
+            precentAnnualBusy = (sumAnnualBusy / 365) * (100);
+            return precentAnnualBusy;
         }
 
         /// <summary>
@@ -1043,98 +1032,145 @@ namespace BL
         public int getOverallNumOfUnints()
         {
             return GetUnitsList().Count;
-
         }
-
+        
         /// <summary>
-        /// function who arrange the hosts by number of units they has (grouping).
+        /// function who calcukate how mach profits guest has to pay.
         /// </summary>
-        /// <returns>hosts list sorted by the number of units each host has.</returns>
-        public List<Host> groupHostsByNumOfUnits()
+        /// <returns>double</returns>
+        public double profits()
         {
-            List<Host> lh = new List<Host>();
-            foreach (var item in getHostsList())
+            foreach (var order in GetOrdersList())
             {
-                var x = from newItem in getHostsList()
-                        orderby newItem.numOfUnits
-                        select newItem;
-                lh = x.ToList();
-            }
-            return lh;
-        }
-
-        /// <summary>
-        /// function who arrange the hosting units by number of rates they has (grouping).
-        /// </summary>
-        /// <returns>hosting units list sorted by the number of rates each hosting unit has.</returns>
-        public List<HostingUnit> groupHostingUnitsByRates()
-        {
-            List<HostingUnit> lhu = new List<HostingUnit>();
-            foreach (var item in GetUnitsList())
-            {
-                var x = from newItem in GetUnitsList()
-                        orderby newItem.RateStars
-                        select newItem;
-                lhu = x.ToList();
-            }
-            return lhu;
-        }
-
-        /// <summary>
-        /// function who arrange the orders by their status (grouping).
-        /// </summary>
-        /// <returns>orders list sorted by theie status.</returns>
-        public List<List<Order>> GroupOrdersByStatus()
-        {
-            return (from o in GetOrdersList()
-                    group o by o.Status into g
-                    select g.ToList()).ToList();
-
-        }
-
-        /// <summary>
-        /// function who arrange the hosting units by their type (grouping).
-        /// </summary>
-        /// <returns>hosting units list sorted by their type.</returns>
-        public List<List<HostingUnit>> GroupHostingUnitsByType()
-        {
-            return (from hu in GetUnitsList()
-                    group hu by hu.Type into g
-                    select g.ToList()).ToList();
-
-        }
-
-        /// <summary>
-        /// function who arrange the hosting units by their owner (grouping).
-        /// </summary>
-        /// <returns>hosting units list sorted by their owner.</returns>
-        public List<List<HostingUnit>> GroupHostingUnitsByOwner()
-        {
-            return (from hu in GetUnitsList()
-                    group hu by hu.Owner.HostId into g
-                    select g.ToList()).ToList();
-
-        }
-
-        /// <summary>
-        /// function who arrange the banks by their bank's number (grouping).
-        /// </summary>
-        /// <returns>banks list sorted by their bank's number.</returns>
-        public List<BankBranch> GroupBanksByBankNumber()
-        {
-                List<BankBranch> lbb = new List<BankBranch>();
-                foreach (var item in GetBankList())
+                foreach (var request in GetGuestRequestList())
                 {
-                    var x = from newItem in GetBankList()
-                            orderby newItem.BankNumber
-                            select newItem;
-                    lbb = x.ToList();
+                    if (order.GuestRequestKey == request.GuestRequestKey)
+                    {
+                        if (order.Status == OrderStatus.DoneDeal)
+                        {
+                            Configuration.Profits = (AmountOfDays(request.EntryDate, request.ReleaseDate)) * 10;
+                            return Configuration.Profits;
+                        }
+                    }
                 }
-                return lbb;
             }
+            return 0.0;
         }
 
+        /// <summary>
+        /// function who calculate how mach profits some host has to get.
+        /// </summary>
+        /// <returns>double</returns>
+        public double profitsForHost(Host host)
+        {
+            double sumprofits = 0;
+            foreach (var hostingunit in GetUnitsList())
+            {
+                if (host.HostId == hostingunit.Owner.HostId)
+                {
+                    sumprofits += profits();
+                }
+            }
+            return sumprofits;
+        }
 
-    
+        /// <summary>
+        /// function who calculate the total profits.
+        /// </summary>
+        /// <returns>double</returns>
+        public double totalProfits()
+        {
+            double sumProfits = 0;
+            foreach (var host in GetHostsList())
+            {
+                sumProfits += profitsForHost(host);
+            }
+            return sumProfits;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// function who calculate the number of sent orders.
+        /// </summary>
+        /// <param name="hu">hosting unit</param>
+        /// <returns>the number of sent orders.</returns>
+        public int GetNumOfSentOrders(HostingUnit hostingunit)
+        {
+            return GetOrdersList().Where(x => x.HostingUnitKey == hostingunit.HostingUnitKey &&
+            (x.Status == OrderStatus.SentMail || x.Status == OrderStatus.DoneDeal)).Count();
+        }
+
+        /// <summary>
+        /// function who goes over the orders list and count how many orders there are.
+        /// </summary>
+        /// <param name="gr">guest request</param>
+        /// <returns>the number of orders we have</returns>
+        public int GetNumOfOrders(GuestRequest guestrequest)
+        {
+            return GetOrdersList().Where(x => x.GuestRequestKey == guestrequest.GuestRequestKey).Count();
+        }
+
+        /// <summary>
+        /// A function that goes through the order list and checks for each unit how many orders it has closed.
+        /// </summary>
+        /// <param name="h">hosting unit</param>
+        /// <param name="orderList">list of orders</param>
+        /// <returns>the amount of cloesed order for each unit.</returns>
+        int amountOfOrders(HostingUnit hostingunit, List<Order> orderList)
+        {
+            int sumOfOrders = 0;
+            foreach (var order in orderList)
+            {
+                if (order.HostingUnitKey == hostingunit.HostingUnitKey)
+                {
+                    if (order.Status == OrderStatus.Canceled || order.Status == OrderStatus.DoneDeal)
+                    {
+                        sumOfOrders++;
+                    }
+                }
+            }
+            return sumOfOrders;
+        }
+
+        /// <summary>
+        /// Fanction who search for a orders by its key.
+        /// </summary>
+        /// <param name="order">order</param>
+        /// <param name="key">int</param>
+        /// <returns>order when given his order key.</returns>
+        public Order searchByKey(List<Order> order, int orderKey = -1)
+        {
+            foreach (var Order in order)
+            {
+                if (Order.OrderKey == orderKey)
+                {
+                    return Order;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// function who check if more then 30 days were pass from the date the mail send till now, if so- update the status.
+        /// </summary>
+        /// <param name="updatedOrderStatus">order</param>
+        public void checkAndChangeStatusOrder()
+        {
+            if (Convert.ToDateTime(Configuration.Date) != DateTime.Now)
+            {
+                Configuration.Date = DateTime.Now.ToString("yyyy/M/dd ");
+
+                foreach (var updatedOrderStatus in GetOrdersList())
+                {
+                    if ((int)AmountOfDays(updatedOrderStatus.OrderDate, DateTime.Now) > 30)
+                    {
+                        updatedOrderStatus.Status = OrderStatus.Canceled;
+                    }
+                    dal.UpdateOrder(updatedOrderStatus);
+                }
+            }
+        }
     }
+}
 
