@@ -227,7 +227,21 @@ namespace BL
         public void DeleteRequest(GuestRequest request)
         {
             getGuestRequestIfExists(request.GuestRequestKey);
+            if(isHaveDoneDealOrder(request))
+            {
+                throw new TzimerException("Cannot delete a request with a done deal order.", "bl");
+            }
+            List<Order> releatedOrders = getOrdersByRequestNotDoneDeal(request.GuestRequestKey);
+            foreach (var order in releatedOrders)
+            {
+                DeleteOrder(order);
+            }
             dal.DeleteRequest(request);
+        }
+
+        private List<Order> getOrdersByRequestNotDoneDeal(int guestRequestKey)
+        {
+           return GetOrdersList().Where(x => x.GuestRequestKey == guestRequestKey && x.Status != OrderStatus.DoneDeal).ToList();
         }
 
         /// <summary>
@@ -405,6 +419,16 @@ namespace BL
         private static bool isHaveOpenOrder(HostingUnit unit)
         {
             return dal.GetOrdersList().Any(x => x.HostingUnitKey == unit.HostingUnitKey && (x.Status == OrderStatus.NotHandled || x.Status == OrderStatus.SentMail));
+        }
+
+        /// <summary>
+        ///A function that goes through the order list and checks for an open order. 
+        /// </summary>
+        /// <param name="req">Guest Request</param>
+        /// <returns>if there is an open order</returns>
+        private static bool isHaveDoneDealOrder(GuestRequest req)
+        {
+            return dal.GetOrdersList().Any(x => x.GuestRequestKey == req.GuestRequestKey && x.Status == OrderStatus.DoneDeal);
         }
 
         /// <summary>
