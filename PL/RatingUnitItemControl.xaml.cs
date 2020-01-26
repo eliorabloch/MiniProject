@@ -59,11 +59,11 @@ namespace PL
             ImpBL bl = ImpBL.Instance;
             int Key = int.Parse(idLable.Content.ToString());
 
-            HostingUnit hu = bl.GetUnit(Key);
+            HostingUnit hu = bl.GetHostingUnit(Key);
             hu.amountOfRaters++;
             hu.RateAmount += numStars;
             hu.RateStars = hu.RateAmount / hu.amountOfRaters;
-            bl.UpdateUnit(hu);
+            bl.UpdateHostingUnit(hu);
             oneStarBTN.Visibility = Visibility.Collapsed;
             twoStarBTN.Visibility = Visibility.Collapsed;
             threeStarBTN.Visibility = Visibility.Collapsed;

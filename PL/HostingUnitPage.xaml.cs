@@ -222,14 +222,14 @@ namespace PL
                 {
                     int hostingUnitKey = int.Parse(HostingUnitKeyLable.Content.ToString().Substring(1));
                     hu.HostingUnitKey = hostingUnitKey;
-                    bl.UpdateUnit(hu);
+                    bl.UpdateHostingUnit(hu);
                     HostinUnitListPage obj = new HostinUnitListPage(hu.Owner, this.NavigationService);
                     this.NavigationService.Navigate(obj);
                 }
 
                 else
                 {
-                    bl.AddUnit(hu);
+                    bl.AddHostingUnit(hu);
 
                     HostinUnitListPage obj = new HostinUnitListPage(hu.Owner, this.NavigationService);
                     this.NavigationService.Navigate(obj);

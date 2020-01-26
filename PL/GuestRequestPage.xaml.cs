@@ -152,7 +152,7 @@ namespace PL
                 switch (BNotintersted.IsChecked)
                 {
                     case true:
-                        gr.breakfastIncluded = Options.notintersted;
+                        gr.breakfastIncluded = Options.notInterested;
                         break;
 
                 }
@@ -167,7 +167,7 @@ namespace PL
                 switch (BNeccesery.IsChecked)
                 {
                     case true:
-                        gr.breakfastIncluded = Options.neccesery;
+                        gr.breakfastIncluded = Options.necessary;
                         break;
 
 
@@ -177,7 +177,7 @@ namespace PL
                 switch (CNotintersted.IsChecked)
                 {
                     case true:
-                        gr.ChildrensAttractions = Options.notintersted;
+                        gr.ChildrensAttractions = Options.notInterested;
                         break;
 
                 }
@@ -192,7 +192,7 @@ namespace PL
                 switch (CNeccesery.IsChecked)
                 {
                     case true:
-                        gr.ChildrensAttractions = Options.neccesery;
+                        gr.ChildrensAttractions = Options.necessary;
                         break;
 
 
@@ -202,7 +202,7 @@ namespace PL
                 switch (ANotintersted.IsChecked)
                 {
                     case true:
-                        gr.AirConditoiner = Options.notintersted;
+                        gr.AirConditoiner = Options.notInterested;
                         break;
 
                 }
@@ -217,7 +217,7 @@ namespace PL
                 switch (ANeccesery.IsChecked)
                 {
                     case true:
-                        gr.AirConditoiner = Options.neccesery;
+                        gr.AirConditoiner = Options.necessary;
                         break;
 
 
@@ -227,7 +227,7 @@ namespace PL
                 switch (PNotintersted.IsChecked)
                 {
                     case true:
-                        gr.Pool = Options.notintersted;
+                        gr.Pool = Options.notInterested;
                         break;
 
                 }
@@ -242,7 +242,7 @@ namespace PL
                 switch (PNeccesery.IsChecked)
                 {
                     case true:
-                        gr.Pool = Options.neccesery;
+                        gr.Pool = Options.necessary;
                         break;
 
 
@@ -252,7 +252,7 @@ namespace PL
                 switch (JNotintersted.IsChecked)
                 {
                     case true:
-                        gr.Jacuzzi = Options.notintersted;
+                        gr.Jacuzzi = Options.notInterested;
                         break;
 
                 }
@@ -267,7 +267,7 @@ namespace PL
                 switch (JNeccesery.IsChecked)
                 {
                     case true:
-                        gr.Jacuzzi = Options.neccesery;
+                        gr.Jacuzzi = Options.necessary;
                         break;
 
 
@@ -277,7 +277,7 @@ namespace PL
                 switch (GNotintersted.IsChecked)
                 {
                     case true:
-                        gr.Garden = Options.notintersted;
+                        gr.Garden = Options.notInterested;
                         break;
 
                 }
@@ -292,7 +292,7 @@ namespace PL
                 switch (GNeccesery.IsChecked)
                 {
                     case true:
-                        gr.Garden = Options.neccesery;
+                        gr.Garden = Options.necessary;
                         break;
 
 
@@ -302,7 +302,7 @@ namespace PL
                 switch (FNotintersted.IsChecked)
                 {
                     case true:
-                        gr.FreeParking = Options.notintersted;
+                        gr.FreeParking = Options.notInterested;
                         break;
 
                 }
@@ -317,7 +317,7 @@ namespace PL
                 switch (FNeccesery.IsChecked)
                 {
                     case true:
-                        gr.FreeParking = Options.neccesery;
+                        gr.FreeParking = Options.necessary;
                         break;
 
 
@@ -327,7 +327,7 @@ namespace PL
                 switch (RNotintersted.IsChecked)
                 {
                     case true:
-                        gr.RoomService = Options.notintersted;
+                        gr.RoomService = Options.notInterested;
                         break;
 
                 }
@@ -342,7 +342,7 @@ namespace PL
                 switch (RNeccesery.IsChecked)
                 {
                     case true:
-                        gr.RoomService = Options.neccesery;
+                        gr.RoomService = Options.necessary;
                         break;
 
 

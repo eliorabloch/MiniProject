@@ -83,7 +83,7 @@ namespace BL
         /// <returns>hosts list</returns>
         private List<Host> getHostsList()
         {
-            var hostIds = GetUnitsList().Select(x => x.Owner.HostId).Distinct().ToList();
+            var hostIds = GetHostingUnitsList().Select(x => x.Owner.HostId).Distinct().ToList();
             return hostIds.Select(x => (Host)GetHost(x).Clone()).ToList();
         }
 
@@ -164,7 +164,7 @@ namespace BL
             return guestRequestList;
         }
 
-        public GuestRequest GetRequest(int id)
+        public GuestRequest GetGuestRequest(int id)
         {
             return getGuestRequestIfExists(id);
         }
@@ -241,7 +241,7 @@ namespace BL
         /// <returns>true if there is a match and false if not.</returns>
         bool isMatchRequirment(bool hasOption, Options requrement)
         {
-            return !(!hasOption && requrement == Options.neccesery);
+            return !(!hasOption && requrement == Options.necessary);
         }
 
         /// <summary>
@@ -263,7 +263,7 @@ namespace BL
         /// <returns>host</returns>
         public Host GetHost(string hostId)
         {
-            var hostingUnit = GetUnitsList().FirstOrDefault(x => x.Owner.HostId == hostId);
+            var hostingUnit = GetHostingUnitsList().FirstOrDefault(x => x.Owner.HostId == hostId);
             if (hostingUnit != null)
             {
                 return hostingUnit.Owner;
@@ -286,7 +286,7 @@ namespace BL
             {
                 throw new TzimerException("Sorry, new request must be in status - 'open'", "bl");
             }
-            dal.AddRequest(newRequest);
+            dal.AddGuestRequest(newRequest);
         }
 
         /// <summary>
@@ -306,7 +306,7 @@ namespace BL
                 throw new TzimerException($"Cannot update a closed request, Request ID: {updatedRequest.GuestRequestKey}", "bl");
             }
 
-            dal.UpdateRequest(updatedRequest);
+            dal.UpdateGuestRequest(updatedRequest);
         }
 
         /// <summary>
@@ -314,7 +314,7 @@ namespace BL
         /// </summary>
         static Func<int, GuestRequest> getGuestRequestIfExists = delegate (int guestRequestID)
         {
-            var oldRequest = dal.GetRequest(guestRequestID);
+            var oldRequest = dal.GetGuestRequest(guestRequestID);
             if (oldRequest == null)
             {
                 throw new TzimerException($"Cannot find Requst with ID: {guestRequestID}", "bl");
@@ -421,9 +421,9 @@ namespace BL
         public List<HostingUnit> groupHostingUnitsByRates()
         {
             List<HostingUnit> hostingUnitsList = new List<HostingUnit>();
-            foreach (var hostingUnit in GetUnitsList())
+            foreach (var hostingUnit in GetHostingUnitsList())
             {
-                var x = from newItem in GetUnitsList()
+                var x = from newItem in GetHostingUnitsList()
                         orderby newItem.RateStars
                         select newItem;
                 hostingUnitsList = x.ToList();
@@ -436,9 +436,9 @@ namespace BL
         /// </summary>
         /// <param name="hostId">string</param>
         /// <returns>hosting units list</returns>
-        public List<HostingUnit> GetUnitsByHost(string hostId)
+        public List<HostingUnit> GetHostingUnitsByHost(string hostId)
         {
-            return GetUnitsList().Where(x => x.Owner.HostId == hostId).ToList();
+            return GetHostingUnitsList().Where(x => x.Owner.HostId == hostId).ToList();
         }
 
         /// <summary>
@@ -447,7 +447,7 @@ namespace BL
         /// <returns>hosting units list sorted by their type.</returns>
         public List<List<HostingUnit>> GroupHostingUnitsByType()
         {
-            return (from hostingUnit in GetUnitsList()
+            return (from hostingUnit in GetHostingUnitsList()
                     group hostingUnit by hostingUnit.Type into g
                     select g.ToList()).ToList();
 
@@ -459,7 +459,7 @@ namespace BL
         /// <returns>hosting units list sorted by their owner.</returns>
         public List<List<HostingUnit>> GroupHostingUnitsByOwner()
         {
-            return (from hostingUnit in GetUnitsList()
+            return (from hostingUnit in GetHostingUnitsList()
                     group hostingUnit by hostingUnit.Owner.HostId into g
                     select g.ToList()).ToList();
 
@@ -471,7 +471,7 @@ namespace BL
         /// <returns>guest requests list sorted by the hosting unit's area. </returns>
         public List<List<HostingUnit>> GroupHostingUnitsByArea()
         {
-            return (from hostingUnit in GetUnitsList()
+            return (from hostingUnit in GetHostingUnitsList()
                     group hostingUnit by hostingUnit.Area into g
                     select g.ToList()).ToList();
 
@@ -504,7 +504,7 @@ namespace BL
         public List<HostingUnit> GetAllAvilableUnits(DateTime start, int amountOfDays)
         {
             DateTime end = start.AddDays(amountOfDays);
-            return GetUnitsList().Where(x => isDatesAvilable(x, start, end)).ToList();
+            return GetHostingUnitsList().Where(x => isDatesAvilable(x, start, end)).ToList();
         }
 
         /// <summary>
@@ -542,7 +542,7 @@ namespace BL
         /// </summary>
         static Func<int, HostingUnit> getHostingUnitsIfExists = delegate (int id)
         {
-            var oldHostingUnit = dal.GetUnit(id);
+            var oldHostingUnit = dal.GetHostingUnit(id);
             if (oldHostingUnit == null)
             {
                 throw new TzimerException($"Cannot find Unit with ID: {id}", "bl");
@@ -550,7 +550,7 @@ namespace BL
             return oldHostingUnit;
         };
 
-        public HostingUnit GetUnit(int id)
+        public HostingUnit GetHostingUnit(int id)
         {
             return getHostingUnitsIfExists(id);
         }
@@ -559,17 +559,17 @@ namespace BL
         /// A function that adds a hosting unit.
         /// </summary>
         /// <param name="update">Updating hostingunit.</param>
-        public void AddUnit(HostingUnit newHostingUnit)
+        public void AddHostingUnit(HostingUnit newHostingUnit)
         {
             validHostingUnit(newHostingUnit);
-            dal.AddUnit(newHostingUnit);
+            dal.AddHostingUnit(newHostingUnit);
         }
 
         /// <summary>
         /// A function that updates a hosting unit.
         /// </summary>
         /// <param name="delUnit">Deleted request.</param>
-        public void UpdateUnit(HostingUnit updatedHostingUnit)
+        public void UpdateHostingUnit(HostingUnit updatedHostingUnit)
         {
             getHostingUnitsIfExists(updatedHostingUnit.HostingUnitKey);
             dal.UpdateUnit(updatedHostingUnit);
@@ -579,14 +579,14 @@ namespace BL
         /// A function that deletes a hosting unit.
         /// </summary>
         /// <param name="delUnit">Deleted hostingunit</param>
-        public void DeleteUnit(HostingUnit delHostingUnit)
+        public void DeleteHostingUnit(HostingUnit delHostingUnit)
         {
             getHostingUnitsIfExists(delHostingUnit.HostingUnitKey);
             if (isHaveOpenOrder(delHostingUnit.HostingUnitKey))
             {
                 throw new TzimerException("Cannot delete Host Unit that has active deals", "bl");
             }
-            dal.DeleteUnit(delHostingUnit);
+            dal.DeleteHostingUnit(delHostingUnit);
         }
 
         /// <summary>
@@ -625,9 +625,9 @@ namespace BL
         ///  A function that returns a hosting unit list.
         /// </summary>
         /// <returns>All hosting units list.</returns>
-        public List<HostingUnit> GetUnitsList()
+        public List<HostingUnit> GetHostingUnitsList()
         {
-            return dal.GetUnitsList();
+            return dal.GetHostingUnitsList();
         }
 
         #endregion
@@ -742,7 +742,7 @@ namespace BL
                 var totalDays = (request.ReleaseDate - request.EntryDate).TotalDays;
                 dal.UpdateProfits(totalDays);
                 updateDatesAvilable(hostingUnit, request);
-                UpdateUnit(hostingUnit);
+                UpdateHostingUnit(hostingUnit);
                 cancelAllOtherOrders(updatedOrder);
                 request.Status = RequestStatus.ClosedDeal;
             } 
@@ -804,7 +804,7 @@ namespace BL
             if (host.CollectionClearance)
             {
                 MailMessage mail = new MailMessage();
-                GuestRequest gr = GetRequest(order.GuestRequestKey);
+                GuestRequest gr = GetGuestRequest(order.GuestRequestKey);
                 mail.To.Add("eliora.bloch@gmail.com");
                 mail.To.Add("lielorenstein10@gmail.com");
                 mail.From = new MailAddress("VacationModePlan@gmail.com");
@@ -928,7 +928,7 @@ namespace BL
             {
                 if(hostID==host.HostId)
                 {
-                    NumOfUnits = GetUnitsList().Sum(x => x.Owner.HostId == host.HostId ? 1 : 0);
+                    NumOfUnits = GetHostingUnitsList().Sum(x => x.Owner.HostId == host.HostId ? 1 : 0);
                 }
             }
             return NumOfUnits;
@@ -988,7 +988,7 @@ namespace BL
         public float GetAnnualBusyPercentage(string hostingUnitName)
         {
             double precentAnnualBusy = 0.0, counterAnnualBusy = 0.0;
-            List<HostingUnit> hostnigUnitsList =  GetUnitsList();
+            List<HostingUnit> hostnigUnitsList = GetHostingUnitsList();
             foreach (var hostnigUnit in hostnigUnitsList)
             {
                 if (hostingUnitName == hostnigUnit.HostingUnitName)
@@ -1013,7 +1013,7 @@ namespace BL
             {
                 if (HostID == (host.HostId))
                 {
-                    List<HostingUnit> hostingUnitsList = GetUnitsByHost(host.HostId);
+                    List<HostingUnit> hostingUnitsList = GetHostingUnitsByHost(host.HostId);
                     foreach (var hostingunit in hostingUnitsList)
                     {
                         counterAnnualBusy = GetAnnualBusyPercentage(hostingunit.HostingUnitName);
@@ -1049,7 +1049,7 @@ namespace BL
         /// <returns>the overall number of units.</returns>
         public int getOverallNumOfUnints()
         {
-            return GetUnitsList().Count;
+            return GetHostingUnitsList().Count;
         }
         
         /// <summary>
@@ -1082,7 +1082,7 @@ namespace BL
         public double profitsForHost(Host host)
         {
             double sumprofits = 0;
-            foreach (var hostingunit in GetUnitsList())
+            foreach (var hostingunit in GetHostingUnitsList())
             {
                 if (host.HostId == hostingunit.Owner.HostId)
                 {

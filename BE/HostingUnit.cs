@@ -12,9 +12,7 @@ namespace BE
     /// so we can serelize it. because we cant serelize a list of objects, only a object.
     /// </summary>
     [XmlRoot(ElementName = "ArrayOfHostingUnit")]
-    public class HostingUnits : List<HostingUnit>
-    {
-    }
+    public class HostingUnits : List<HostingUnit> { }
 
 
     public class HostingUnit : ICloneable 

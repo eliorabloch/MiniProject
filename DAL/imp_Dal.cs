@@ -30,8 +30,7 @@ namespace DAL
             return instance;
         }
         #endregion
-
-
+        
         private imp_Dal()
         {
           //  DataSource.Init();
@@ -41,11 +40,11 @@ namespace DAL
 
         public List<GuestRequest> GetGuestRequestList()
         {
-            return (from gr in DataSource.requestList
-                   select (GuestRequest)gr.Clone()).ToList();
+            return (from guestrequest in DataSource.requestList
+                    select (GuestRequest)guestrequest.Clone()).ToList();
         }
 
-        public GuestRequest GetRequest(int id)
+        public GuestRequest GetGuestRequest(int id)
         {
             return (GuestRequest)GetGuestRequestList().FirstOrDefault(x=>x.GuestRequestKey == id)?.Clone();
         }
@@ -54,27 +53,27 @@ namespace DAL
         /// function who add request
         /// </summary>
         /// <param name="newRequest">guest reqest</param>
-        public void AddRequest(GuestRequest newRequest)
+        public void AddGuestRequest(GuestRequest newGuestRequest)
         {
-            if(GetGuestRequestList().Any(x => x.GuestRequestKey == newRequest.GuestRequestKey))
+            if(GetGuestRequestList().Any(x => x.GuestRequestKey == newGuestRequest.GuestRequestKey))
             {
-                throw new TzimerException($"Guest Request with the ID: {newRequest.GuestRequestKey} - already exists!", "dal");
+                throw new TzimerException($"Guest Request with the ID: {newGuestRequest.GuestRequestKey} - already exists!", "dal");
             }
-            newRequest.GuestRequestKey = Configuration.GuestRequestId++;
-            DataSource.requestList.Add((GuestRequest)newRequest.Clone());
+            newGuestRequest.GuestRequestKey = Configuration.GuestRequestId++;
+            DataSource.requestList.Add((GuestRequest)newGuestRequest.Clone());
         }
 
         /// <summary>
         /// function who update request
         /// </summary>
         /// <param name="updatedRequest">guest request</param>
-        public void UpdateRequest(GuestRequest updatedRequest)
+        public void UpdateGuestRequest(GuestRequest updatedGuestRequest)
         {
             DataSource.requestList.ForEach(x =>
             {
-                if (x.GuestRequestKey == updatedRequest.GuestRequestKey)
+                if (x.GuestRequestKey == updatedGuestRequest.GuestRequestKey)
                 {
-                    x.Status = updatedRequest.Status;
+                    x.Status = updatedGuestRequest.Status;
                 }
             });
 
@@ -84,28 +83,22 @@ namespace DAL
         /// function who delete an unit
         /// </summary>
         /// <param name="newRequest">guest request</param>
-        public void DeleteRequest(GuestRequest newRequest)
+        public void DeleteGuestRequest(GuestRequest newGuestRequest)
         {
-            DataSource.requestList.RemoveAll(x => x.GuestRequestKey == newRequest.GuestRequestKey);
+            DataSource.requestList.RemoveAll(x => x.GuestRequestKey == newGuestRequest.GuestRequestKey);
         }
 
         #endregion
 
         #region Hosting Units
 
-        public List<HostingUnit> GetUnitsList()
+        public List<HostingUnit> GetHostingUnitsList()
         {
-            return (from gr in DataSource.unitList
-                    select (HostingUnit)gr.Clone()).ToList();
+            return (from hostingunit in DataSource.unitList
+                    select (HostingUnit)hostingunit.Clone()).ToList();
         }
 
-        public List<Host> GetHostList()
-        {
-            return DataSource.unitList.Select(h=> (Host)h.Owner.Clone()).Distinct().ToList();
-
-        }
-
-        public HostingUnit GetUnit(int id)
+        public HostingUnit GetHostingUnit(int id)
         {
             return (HostingUnit)DataSource.unitList.FirstOrDefault(x => x.HostingUnitKey == id)?.Clone();
         }
@@ -114,16 +107,16 @@ namespace DAL
         /// function who adding hosting unit
         /// </summary>
         /// <param name="newUnit">HostingUnit</param>
-        public void AddUnit(HostingUnit newUnit)  
+        public void AddHostingUnit(HostingUnit newHostingUnit)  
         {
-            if (GetUnitsList().Any(x => x.HostingUnitKey == newUnit.HostingUnitKey))
+            if (GetHostingUnitsList().Any(x => x.HostingUnitKey == newHostingUnit.HostingUnitKey))
             {
-                throw new TzimerException($"Hosting Unit with the ID: {newUnit.HostingUnitKey} - already exists!", "dal");
+                throw new TzimerException($"Hosting Unit with the ID: {newHostingUnit.HostingUnitKey} - already exists!", "dal");
             }
-          
-            newUnit.HostingUnitKey = Configuration.HostingUnitId++;
-            newUnit.Diary = Utils.CreateMatrix();
-            DataSource.unitList.Add((HostingUnit)newUnit.Clone());
+
+            newHostingUnit.HostingUnitKey = Configuration.HostingUnitId++;
+            newHostingUnit.Diary = Utils.CreateMatrix();
+            DataSource.unitList.Add((HostingUnit)newHostingUnit.Clone());
            
 
        }
@@ -132,13 +125,13 @@ namespace DAL
         /// function who update hosting unit
         /// </summary>
         /// <param name="updatedUnit">hosting unit</param>
-        public void UpdateUnit(HostingUnit updatedUnit)
+        public void UpdateHostingUnit(HostingUnit updatedHostingUnit)
         {
             DataSource.unitList = DataSource.unitList
                .Select(x => {
-                   if(x.HostingUnitKey == updatedUnit.HostingUnitKey)
+                   if(x.HostingUnitKey == updatedHostingUnit.HostingUnitKey)
                    {
-                       x = updatedUnit;
+                       x = updatedHostingUnit;
                    }
                     return (HostingUnit)x.Clone();
                })
@@ -149,18 +142,29 @@ namespace DAL
         /// function who delete an unit
         /// </summary>
         /// <param name="delUnit">hosting unit</param>
-        public void DeleteUnit(HostingUnit delUnit)
+        public void DeleteHostingUnit(HostingUnit deleteHostingUnit)
         {
-            DataSource.unitList.RemoveAll(x => x.HostingUnitKey == delUnit.HostingUnitKey);
+            DataSource.unitList.RemoveAll(x => x.HostingUnitKey == deleteHostingUnit.HostingUnitKey);
         }
+    
+        #endregion
+
+        #region Host
+
+        public List<Host> GetHostList()
+        {
+            return DataSource.unitList.Select(h => (Host)h.Owner.Clone()).Distinct().ToList();
+
+        }
+
         #endregion
 
         #region Orders
 
         public List<Order> GetOrdersList()
         {
-            return (from d in DataSource.orderList
-                    select (Order)d.Clone()).ToList();
+            return (from order in DataSource.orderList
+                    select (Order)order.Clone()).ToList();
         }
 
         public Order GetOrder(int id)
@@ -211,6 +215,8 @@ namespace DAL
         }
 
         #endregion
+
+        #region Bank Branch 
 
         /// <summary>
         /// Quick reboot of bank list.
