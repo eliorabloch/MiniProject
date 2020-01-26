@@ -27,7 +27,7 @@ namespace PL
             InitializeComponent();
             List<RatingUnitItemControl> RatingControl = new List<RatingUnitItemControl>();
             ImpBL bl = ImpBL.Instance;
-            foreach (var item in bl.GetUnitsList())
+            foreach (var item in bl.GetHostingUnitsList())
             {
                 RatingUnitItemControl uic = new RatingUnitItemControl();
                 uic.idLable.Content = item.HostingUnitKey;

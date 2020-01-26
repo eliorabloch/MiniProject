@@ -37,7 +37,7 @@ namespace PL
         {
             List<HostingUnitItemControl> hostingUnitsItemsControl = new List<HostingUnitItemControl>();
             ImpBL bl = ImpBL.Instance;
-            foreach (var hostingUnit in bl.GetUnitsByHost(m_owner.HostId))
+            foreach (var hostingUnit in bl.GetHostingUnitsByHost(m_owner.HostId))
             {
                 if(!hostingUnit.HostingUnitKey.ToString().StartsWith(HostIdFilterTextBox.Text)
                     ||

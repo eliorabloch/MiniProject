@@ -38,7 +38,7 @@ namespace PL
             {
                 ImpBL bl = ImpBL.Instance;
                 int GuestRequestKey = int.Parse(GuestRequestKeyLable.Content.ToString().Substring(1));
-                bl.DeleteRequest(bl.GetRequest(GuestRequestKey));
+                bl.DeleteRequest(bl.GetGuestRequest(GuestRequestKey));
                 UserControlContainer.Visibility = Visibility.Collapsed;
             }
             catch (Exception err)
