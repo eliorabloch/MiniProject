@@ -93,6 +93,10 @@ namespace PL
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             ContactGrid.Visibility = Visibility.Visible;
+            contactBtn.Visibility = Visibility.Collapsed;
+            rateunitsBTN.Visibility = Visibility.Collapsed;
+            galleryBtn.Visibility = Visibility.Collapsed;
+
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -103,6 +107,9 @@ namespace PL
         private void exutBTN_Click(object sender, RoutedEventArgs e)
         {
             ContactGrid.Visibility = Visibility.Collapsed;
+            contactBtn.Visibility = Visibility.Visible;
+            rateunitsBTN.Visibility = Visibility.Visible;
+            galleryBtn.Visibility = Visibility.Visible;
         }
     }
 }

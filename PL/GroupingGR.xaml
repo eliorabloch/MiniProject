@@ -14,7 +14,7 @@
         </Grid.Background>
         <ComboBox x:Name="groupByComboBox"  HorizontalAlignment="Left" Margin="679,66,0,0" VerticalAlignment="Top" Width="136" Height="25" SelectionChanged="GroupByComboBox_SelectionChanged">
             <ComboBoxItem>Area</ComboBoxItem>
-            <ComboBoxItem>Number Of Atendees</ComboBoxItem>
+           
             <ComboBoxItem>Status</ComboBoxItem>
         </ComboBox>
         <DataGrid x:Name="groupingDataGrid"   HorizontalAlignment="Left" Height="496" Width="797" Margin="19,100,0,0" VerticalAlignment="Top" SelectionChanged="groupingDataGrid_SelectionChanged" FontFamily="Lucida Sans Unicode" Background="{x:Null}" BorderBrush="{x:Null}">
@@ -33,7 +33,7 @@
                 <DataGridTextColumn x:Name="TypeColum" Binding="{Binding Type}" Header="Type       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="AdultsColum" Binding="{Binding Adults}" Header="Adults       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="ChildrenColum" Binding="{Binding Children}" Header="Children       " Width="SizeToHeader"     />
-                <DataGridTextColumn x:Name="AtendeesColum" Binding="{Binding Atendees}" Header="Atendees       " Width="SizeToHeader"     />
+                
                 <DataGridTextColumn x:Name="PoolColum" Binding="{Binding Pool}" Header="Pool       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="FreeParkingColum" Binding="{Binding FreeParking}" Header="Free Parking       " Width="SizeToHeader"     />
                 <DataGridTextColumn x:Name="breakfastIncludedColum" Binding="{Binding breakfastIncluded}" Header="breakfast Included       " Width="SizeToHeader"     />

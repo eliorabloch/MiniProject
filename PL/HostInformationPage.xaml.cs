@@ -165,12 +165,42 @@ namespace PL
                 if (hu.Owner.PrivateName == "" || hu.Owner.PrivateName == null)
                 { throw new TzimerException("Must enter a private name!"); }
                 hu.Owner.FamilyName = LastNameTextBox.Text;
-                if (hu.Owner.FamilyName == null|| hu.Owner.FamilyName == "")
-                { throw new TzimerException("Must enter a family name!"); }
+                
                 hu.Owner.HostId = HostIdTextBox.Text;
+                if (hu.Owner.HostId == "" || hu.Owner.HostId == null)
+                { throw new TzimerException("Must enter a Host Id!"); }
+                hu.Owner.FamilyName = LastNameTextBox.Text;
+                if (hu.Owner.FamilyName == null || hu.Owner.FamilyName == "")
+                { throw new TzimerException("Must enter a family name!"); }
                 hu.Owner.PhoneNumber = PhoneNumberTextBox.Text;
+                if (hu.Owner.PhoneNumber == null)
+                {
+                    throw new TzimerException("Must enter a Phone number");
+                }
+                int number;
+                bool checknumber = Int32.TryParse(hu.Owner.PhoneNumber, out number);
+                if (!checknumber)
+                {
+                    throw new TzimerException("Phone number must contain only numbers.", "bl");
+
+                }
                 hu.Owner.MailAddress = EmailTextBox.Text;
+                if (!(hu.Owner.MailAddress.Contains("@")))
+                {
+                    throw new TzimerException("E-mail Address format is invaled.Please enter the correct format.", "bl");
+                }
+                if (string.IsNullOrEmpty(hu.Owner.MailAddress))
+                {
+                    throw new TzimerException("Please enter your e-mail address", "bl");
+                }
                 hu.Owner.BankAccountNumber = BankAccountNumberTextBox.Text;
+                int number2;
+                bool checknumber2 = Int32.TryParse(hu.Owner.BankAccountNumber, out number2);
+                if (!checknumber)
+                {
+                    throw new TzimerException("Account number must contain only numbers.", "bl");
+
+                }
                 hu.Owner.CollectionClearance = (bool)collectoinCleearenceCheckBox.IsChecked;
 
               

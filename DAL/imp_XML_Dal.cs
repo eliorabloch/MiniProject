@@ -278,7 +278,7 @@ namespace DAL
             try
             {
                 string xmlServerPath =
-               @"http://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
+               @"https://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
 
                 wc.DownloadFile(xmlServerPath, xmlLocalPath);
                 if(!File.Exists(xmlLocalPath) || !File.ReadAllText(xmlLocalPath).ToLower().Contains("<atms"))

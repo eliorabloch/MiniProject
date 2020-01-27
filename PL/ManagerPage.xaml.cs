@@ -123,7 +123,7 @@ namespace PL
             else
             {
                 string titel = "Oops";
-                string err = "Cannot find an HostingUnit with this name.";
+                string err = "Cannot find a HostingUnit with this name.";
                 MessageBox.Show(err, titel);
             }
             
@@ -148,7 +148,7 @@ namespace PL
             else
             {
                 string titel = "Oops";
-                string err = "Cannot find an Host with this ID.";
+                string err = "Cannot find a Host with this ID.";
                 MessageBox.Show(err, titel);
             }
             
@@ -186,7 +186,7 @@ namespace PL
             else
             {
                 string titel = "Oops";
-                string err = "Cannot find an Host with this ID.";
+                string err = "Cannot find a Host with this ID.";
                 MessageBox.Show(err, titel);
             }
         }

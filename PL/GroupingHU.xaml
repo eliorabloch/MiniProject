@@ -16,7 +16,7 @@
             <ComboBoxItem FontFamily="Lucida Sans Unicode">Area</ComboBoxItem>
             <ComboBoxItem FontFamily="Lucida Sans Unicode">rates</ComboBoxItem>
             <ComboBoxItem FontFamily="Lucida Sans Unicode">Unit Type</ComboBoxItem>
-            <ComboBoxItem FontFamily="Lucida Sans Unicode">Owner</ComboBoxItem>
+            
         </ComboBox>
         <DataGrid x:Name="groupingDataGrid"  FontWeight="ExtraBold" HorizontalAlignment="Left" Height="489" Width="786" Margin="20,81,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
             <DataGrid.Columns>

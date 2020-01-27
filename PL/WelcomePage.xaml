@@ -43,18 +43,18 @@
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
-        <Button Content="Rate Units" HorizontalAlignment="Left" Height="80" Margin="27,452,0,0" VerticalAlignment="Top" Width="169" Click="Button_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20">
+        <Button x:Name="rateunitsBTN" Content="Rate Units" HorizontalAlignment="Left" Height="80" Margin="27,452,0,0" VerticalAlignment="Top" Width="169" Click="Button_Click" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20">
             <Button.Background>
                 <ImageBrush ImageSource="images/blueBtn.png"/>
             </Button.Background>
         </Button>
 
-        <Button Content="Gallery" HorizontalAlignment="Left" Height="80" Margin="27,365,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="Button_Click_2">
+        <Button x:Name="galleryBtn" Content="Gallery" HorizontalAlignment="Left" Height="80" Margin="27,365,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="Button_Click_2">
             <Button.Background>
                 <ImageBrush ImageSource="images/blueBtn.png"/>
             </Button.Background>
         </Button>
-        <Button Content="Contact Us" HorizontalAlignment="Left" Height="80" Margin="26,538,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="Button_Click_3">
+        <Button x:Name="contactBtn" Content="Contact Us" HorizontalAlignment="Left" Height="80" Margin="26,538,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" FontFamily="MV Boli" FontSize="20" Click="Button_Click_3">
             <Button.Background>
                 <ImageBrush ImageSource="images/blueBtn.png"/>
             </Button.Background>
@@ -75,18 +75,28 @@
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
-        <Grid x:Name="ContactGrid" HorizontalAlignment="Left" Height="291" Margin="0,365,0,0" VerticalAlignment="Top" Width="824" Background="#FFD4C1AE" Visibility="Collapsed">
-            <Label Content="Phone number:" HorizontalAlignment="Left" Height="42" Margin="10,186,0,0" VerticalAlignment="Top" Width="258" FontSize="22"/>
-            <Label Content="0546345291" HorizontalAlignment="Left" Height="66" Margin="175,190,0,0" VerticalAlignment="Top" Width="306" FontSize="18"/>
-           
-            <Label Content="Dear costumer,&#xD;&#xA;&#xD;&#xA;you may contact us with anything you would like. we will do our best to get back to you as soon as we can.&#xD;&#xA;please leave your phone number or email address in the note you send us.&#xD;&#xA;&#xD;&#xA;yours, VacationMode Support team!" HorizontalAlignment="Left" Height="171" Margin="10,0,0,0" VerticalAlignment="Top" Width="792" FontFamily="Lucida Sans Unicode" FontSize="18"/>
-            <Button x:Name="exutBTN" Content="" HorizontalAlignment="Left" Height="25" Margin="789,10,0,0" VerticalAlignment="Top" Width="25" BorderBrush="{x:Null}" Click="exutBTN_Click">
+        <Grid x:Name="ContactGrid" HorizontalAlignment="Left" Height="341" Margin="0,315,0,0" VerticalAlignment="Top" Width="824" Visibility="Collapsed" >
+            <Grid.Background>
+                <SolidColorBrush Color="#FFD4C1AE" Opacity="0.5"/>
+            </Grid.Background>
+
+
+            <Label Content="" HorizontalAlignment="Left" Height="321" Margin="149,10,0,0" VerticalAlignment="Top" Width="582">
+                <Label.Background>
+                    <SolidColorBrush Color="White" Opacity="0.7"/>
+                </Label.Background>
+            </Label>
+
+            <Label Content="E-Mail Address: vacationmode12345@gmail.com" Margin="379,277,93,29" FontFamily="Lucida Sans Unicode" FontSize="14" />
+            <Label Content="                                         Dear costumer,&#xA;&#xA;               you may contact us with anything you would like. &#xA;         we will do our best to get back to you as soon as we can&#xD;&#xA;          We will do our best to support your wishes or questions.&#xD;&#xA;&#xA;                 &#xD;&#xA;                        yours, VacationMode Support team!" HorizontalAlignment="Left" Height="291" Margin="140,21,0,0" VerticalAlignment="Top" Width="569" FontFamily="Lucida Sans Unicode" FontSize="18"/>
+            <Button x:Name="exutBTN" Content="" HorizontalAlignment="Left" Height="24" Margin="691,21,0,0" VerticalAlignment="Top" Width="24" BorderBrush="{x:Null}" Click="exutBTN_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="images/x.png"/>
                 </Button.Background>
             </Button>
+            <Label Content="Phone number: 0546345291" HorizontalAlignment="Left" Margin="163,277,0,0" VerticalAlignment="Top" Width="242" FontFamily="Lucida Sans Unicode" FontSize="14"/>
         </Grid>
-        
+
     </Grid>
 
 </Page>

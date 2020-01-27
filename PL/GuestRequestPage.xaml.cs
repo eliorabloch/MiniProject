@@ -42,18 +42,21 @@ namespace PL
                 gr.Status = RequestStatus.Open;
 
                 gr.RegistrationDate = DateTime.Now;
-                gr.EntryDate = FromDateCalender.SelectedDates[0];
-                gr.ReleaseDate = ToDateCalender.SelectedDates[0];
-
-
                 if (FromDateCalender.SelectedDates.Count == 0)
                 {
                     throw new TzimerException("Must choose entry date", "pl");
                 }
+
                 if (ToDateCalender.SelectedDates.Count == 0)
                 {
                     throw new TzimerException("Must choose leave date", "pl");
                 }
+                gr.EntryDate = FromDateCalender.SelectedDates[0];
+               
+                gr.ReleaseDate = ToDateCalender.SelectedDates[0];
+
+
+              
                 if ((gr.ReleaseDate - gr.EntryDate).TotalDays < 1)
                 {
                     throw new TzimerException("Sorry, the dates you chose are invalid, entry must be before leave!", "bl");
@@ -73,7 +76,7 @@ namespace PL
                     throw new TzimerException("Must enter a Family name");
                 }
                 gr.PhoneNumber = PhoneNumbertTextBox.Text;
-                if (gr.PhoneNumber == null)
+                if (gr.PhoneNumber == null||gr.PhoneNumber=="")
                 {
                     throw new TzimerException("Must enter a Phone number");
                 }
@@ -125,7 +128,13 @@ namespace PL
                 gr.Area = (BE.Areas)AreaComboBox.SelectedIndex;
                 gr.Type = (BE.UnitType)AreaComboBox.SelectedIndex;
                 gr.SubArea = SubAreaTextBox.Text;
-               
+                if (string.IsNullOrEmpty(gr.Children))
+                {
+                    throw new TzimerException("Please enter the sub Area you would like", "bl");
+
+                }
+
+
                 switch (AreaComboBox.SelectedIndex)
                 {
                     case 0:

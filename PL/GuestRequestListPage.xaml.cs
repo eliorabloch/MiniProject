@@ -29,18 +29,25 @@ namespace PL
 
         public GuestRequestListPage(NavigationService navigationService)
         {
-            InitializeComponent();
-            m_navigationService = navigationService;
-            List<GuestRequestItemControl> guestRequestItemsControl = new List<GuestRequestItemControl>();
-             ImpBL bl = ImpBL.Instance;
-            foreach (var item in bl.GetGuestRequestList())
+            try
             {
-                GuestRequestItemControl gric = new GuestRequestItemControl( navigationService);
-                gric.GuestRequestTextBlock.Content = item.PrivateName+ " " + item.FamilyName;
-                gric.GuestRequestKeyLable.Content = "#" + item.GuestRequestKey;
-                guestRequestItemsControl.Add(gric);
+                InitializeComponent();
+                m_navigationService = navigationService;
+                List<GuestRequestItemControl> guestRequestItemsControl = new List<GuestRequestItemControl>();
+                ImpBL bl = ImpBL.Instance;
+                foreach (var item in bl.GetGuestRequestList())
+                {
+                    GuestRequestItemControl gric = new GuestRequestItemControl(navigationService);
+                    gric.GuestRequestTextBlock.Content = item.PrivateName + " " + item.FamilyName;
+                    gric.GuestRequestKeyLable.Content = "#" + item.GuestRequestKey;
+                    guestRequestItemsControl.Add(gric);
+                }
+                HostingUnitListView.ItemsSource = guestRequestItemsControl;
             }
-            HostingUnitListView.ItemsSource = guestRequestItemsControl;
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
 

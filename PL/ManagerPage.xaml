@@ -31,7 +31,7 @@
                   HorizontalAlignment="Left" Height="197" Margin="235,433,0,0"
                   VerticalAlignment="Top" Width="163" 
                   SelectionChanged="AvailableUnitListView_SelectionChanged" Background="{x:Null}" BorderBrush="{x:Null}">
-            
+
         </ListView>
 
         <Grid HorizontalAlignment="Left" Margin="492,-33,0,-7" Width="312">
@@ -66,10 +66,10 @@
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
-        <TextBox x:Name="GetNumOfU" HorizontalAlignment="Left" Height="28" Margin="496,11,0,0" TextWrapping="Wrap" Text="Number Of Units per Host:" VerticalAlignment="Top" Width="283" FontSize="16" TextChanged="GetNumOfU_TextChanged" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Lucida Sans Unicode"/>
+        <TextBlock x:Name="GetNumOfU" HorizontalAlignment="Left" Height="28" Margin="496,11,0,0" TextWrapping="Wrap" Text="Number Of Units per Host:" VerticalAlignment="Top" Width="283" FontSize="16"  Background="{x:Null}"  FontFamily="Lucida Sans Unicode"/>
         <Label x:Name="numberOfU" Content="Host ID:" HorizontalAlignment="Left" Margin="498,48,0,0" VerticalAlignment="Top" Width="63" Height="39"/>
-        <TextBox x:Name="OccupancyforU" HorizontalAlignment="Left" Height="34" Margin="494,135,0,0" TextWrapping="Wrap" Text="Occupancy for Unit:" VerticalAlignment="Top" Width="197" FontSize="16" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Lucida Sans Unicode"/>
-        <TextBox x:Name="OverallOccupancy" HorizontalAlignment="Left" Height="41" Margin="496,397,0,0" TextWrapping="Wrap" Text="Overall Occupancy:" VerticalAlignment="Top" Width="185" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Lucida Sans Unicode"/>
+        <TextBlock x:Name="OccupancyforU" HorizontalAlignment="Left" Height="34" Margin="494,135,0,0" TextWrapping="Wrap" Text="Occupancy for Unit:" VerticalAlignment="Top" Width="197" FontSize="16"  Background="{x:Null}" FontFamily="Lucida Sans Unicode"/>
+        <TextBlock x:Name="OverallOccupancy" HorizontalAlignment="Left" Height="41" Margin="496,397,0,0" TextWrapping="Wrap" Text="Overall Occupancy:" VerticalAlignment="Top" Width="185" FontSize="16" Background="{x:Null}"  FontFamily="Lucida Sans Unicode"/>
         <TextBox x:Name="dateTextBox" HorizontalAlignment="Left" Height="40" Margin="101,480,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}"/>
         <Label Content="Dates Wanted:" HorizontalAlignment="Left" Height="74" Margin="2,489,0,0" VerticalAlignment="Top" Width="98"/>
         <Label Content="Amount Of Days:" HorizontalAlignment="Left" Height="29" Margin="2,531,0,0" VerticalAlignment="Top" Width="98"/>
@@ -93,7 +93,7 @@
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
-        <TextBox x:Name="OcuupancyforhostTextBox" HorizontalAlignment="Left" Height="45" Margin="496,262,0,0" TextWrapping="Wrap" Text="Occupancy for Host:" VerticalAlignment="Top" Width="198" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Lucida Sans Unicode"/>
+        <TextBlock x:Name="OcuupancyforhostTextBox" HorizontalAlignment="Left" Height="45" Margin="496,262,0,0" TextWrapping="Wrap" Text="Occupancy for Host:" VerticalAlignment="Top" Width="198" FontSize="16" Background="{x:Null}"  FontFamily="Lucida Sans Unicode"/>
         <TextBlock x:Name="answerUnitOccupancyTextBlock" HorizontalAlignment="Left" Margin="502,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="40" Width="288">
             <TextBlock.Background>
                 <SolidColorBrush Color="White" Opacity="0.5"/>
@@ -126,7 +126,7 @@
                 <ImageBrush ImageSource="images/button.png"/>
             </Button.Background>
         </Button>
-        <Label Content="Overall Units Amount:" HorizontalAlignment="Left" Height="100" Margin="492,492,0,0" VerticalAlignment="Top" Width="233" FontSize="16" FontFamily="Lucida Sans Unicode"/>
+        <Label Content="Overall Units Amount:" HorizontalAlignment="Left" Height="40" Margin="492,492,0,0" VerticalAlignment="Top" Width="189" FontSize="16" FontFamily="Lucida Sans Unicode"/>
 
         <TextBlock x:Name="answerAllOccupancyTextBlock_Copy" HorizontalAlignment="Left" Margin="502,540,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="40" Width="288">
             <TextBlock.Background>
@@ -143,8 +143,17 @@
                 <ImageBrush ImageSource="images/home.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="ProfitsBtn" Content="Button" HorizontalAlignment="Left" Height="51" Margin="61,319,0,0" VerticalAlignment="Top" Width="60" Click="ProfitsBtn_Click"/>
-        <TextBox x:Name="profitsTextBox" HorizontalAlignment="Left" Height="44" Margin="148,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
+        <Button x:Name="ProfitsBtn" Content="" HorizontalAlignment="Left" Height="51" Margin="587,586,0,0" VerticalAlignment="Top" Width="50" Click="ProfitsBtn_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="images/bancbtn.png"/>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="profitsTextBox" HorizontalAlignment="Left" Height="40" Margin="655,592,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" BorderBrush="{x:Null}" >
+            <TextBox.Background>
+                <SolidColorBrush Color="White" Opacity="0.5"/>
+            </TextBox.Background>
+        </TextBox>
+        <Label Content="Check your&#xD;&#xA;   profits:" HorizontalAlignment="Left" Height="52" Margin="493,587,0,0" VerticalAlignment="Top" Width="91" FontFamily="Lucida Sans Unicode" FontSize="14"/>
 
     </Grid>
 </Page>

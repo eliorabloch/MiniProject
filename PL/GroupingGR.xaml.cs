@@ -49,20 +49,7 @@ namespace PL
                         }
                     }
                 }
-                if (groupByComboBox.SelectedIndex == 1)
-                {
-                    groupingDataGrid.Items.Clear();
-                    groupingDataGrid.CanUserReorderColumns = false;
-                    groupingDataGrid.CanUserResizeColumns = false;
-                    groupingDataGrid.CanUserResizeRows = false;
-                    groupingDataGrid.CanUserSortColumns = false;
-                    var gr = bl.groupGuestRequestByNumberOfAtendees();
-                    foreach (var request in gr)
-                    {
-                        groupingDataGrid.Items.Add(request);
-
-                    }
-                }
+               
                 if (groupByComboBox.SelectedIndex == 2)
                 {
                     groupingDataGrid.Items.Clear();
