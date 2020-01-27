@@ -50,7 +50,7 @@ namespace PL
                     }
                 }
                
-                if (groupByComboBox.SelectedIndex == 2)
+                if (groupByComboBox.SelectedIndex == 1)
                 {
                     groupingDataGrid.Items.Clear();
                     groupingDataGrid.CanUserReorderColumns = false;

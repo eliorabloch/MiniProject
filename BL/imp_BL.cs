@@ -66,14 +66,11 @@ namespace BL
         /// <returns>hosts list sorted by the number of units each host has.</returns>
         public List<Host> groupHostsByNumberOfUnits()
         {
-            List<Host> hostsList = new List<Host>();
-            foreach (var host in getHostsList())
-            {
-                var x = from newItem in getHostsList()
-                        orderby newItem.numOfUnits
-                        select newItem;
-                hostsList = x.ToList();
-            }
+            List<Host> hostsList = (
+                from newItem in getHostsList().Select(x=> { x.numOfUnits = getNumOfUnits(x.HostId); return x; })
+                    orderby newItem.numOfUnits
+                    select newItem).ToList();
+
             return hostsList;
         }
 
@@ -201,6 +198,7 @@ namespace BL
                 && isDatesAvilable(hostingUnit, guestRequest.EntryDate, guestRequest.ReleaseDate)
                 && enoughAttendees
                 && guestRequest.SubArea.ToLower().StartsWith(subAreaFilter.ToLower())
+                && guestRequest.Status == RequestStatus.Open
                 && isMatchRequirment(hostingUnit.Pool, guestRequest.Pool)
                 && isMatchRequirment(hostingUnit.Jacuzz, guestRequest.Jacuzzi)
                 && isMatchRequirment(hostingUnit.Garden, guestRequest.Garden)

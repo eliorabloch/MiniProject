@@ -16,7 +16,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="OrderIdLable" Content="Label" HorizontalAlignment="Left" Margin="114,13,0,12" VerticalAlignment="Center" Height="25" Width="71" FontFamily="MV Boli" Foreground="Black" FontSize="10" BorderBrush="#FFD8B5A7">
+        <Label x:Name="OrderIdLable" Content="Label" HorizontalAlignment="Left" Margin="114,13,0,12" VerticalAlignment="Center" Height="25" Width="100" FontFamily="MV Boli" Foreground="Black" FontSize="10" BorderBrush="#FFD8B5A7">
             <Label.Background>
                 <SolidColorBrush Color="#FFD8B5A7" Opacity="0.52"/>
             </Label.Background>

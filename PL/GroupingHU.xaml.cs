@@ -70,7 +70,10 @@ namespace PL
                     groupingDataGrid.CanUserSortColumns = false;
                     foreach (var item in bl.GroupHostingUnitsByType())
                     {
-                        groupingDataGrid.Items.Add(item);
+                        foreach (var item2 in item)
+                        {
+                            groupingDataGrid.Items.Add(item2);
+                        }
                     }
                 }
                

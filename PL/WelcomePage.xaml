@@ -77,18 +77,18 @@
         </Button>
         <Grid x:Name="ContactGrid" HorizontalAlignment="Left" Height="341" Margin="0,315,0,0" VerticalAlignment="Top" Width="824" Visibility="Collapsed" >
             <Grid.Background>
-                <SolidColorBrush Color="#FFD4C1AE" Opacity="0.5"/>
+                <SolidColorBrush Color="#FFD4C1AE" Opacity="0.7"/>
             </Grid.Background>
 
-
+            
             <Label Content="" HorizontalAlignment="Left" Height="321" Margin="149,10,0,0" VerticalAlignment="Top" Width="582">
                 <Label.Background>
                     <SolidColorBrush Color="White" Opacity="0.7"/>
                 </Label.Background>
             </Label>
-
-            <Label Content="E-Mail Address: vacationmode12345@gmail.com" Margin="379,277,93,29" FontFamily="Lucida Sans Unicode" FontSize="14" />
-            <Label Content="                                         Dear costumer,&#xA;&#xA;               you may contact us with anything you would like. &#xA;         we will do our best to get back to you as soon as we can&#xD;&#xA;          We will do our best to support your wishes or questions.&#xD;&#xA;&#xA;                 &#xD;&#xA;                        yours, VacationMode Support team!" HorizontalAlignment="Left" Height="291" Margin="140,21,0,0" VerticalAlignment="Top" Width="569" FontFamily="Lucida Sans Unicode" FontSize="18"/>
+            <Label Content="- - - - " Margin="348,131,281,130" FontSize="72" Background="{x:Null}" Foreground="#FF67A7DC"/>
+            <Label Content="E-Mail Address: vacationmodeplan@gmail.com" Margin="379,277,93,29" FontFamily="Lucida Sans Unicode" FontSize="14" />
+            <Label Content="                                         Dear costumer,&#xA;&#xA;               You may contact us with anything you would like. &#xA;         we will do our best to get back to you as soon as we can&#xA;          We will do our best to support your wishes or questions.&#xA;                             &#xA;                                  &#xA;                          yours, VacationMode Support team!" HorizontalAlignment="Left" Height="291" Margin="140,21,0,0" VerticalAlignment="Top" Width="569" FontFamily="Lucida Sans Unicode" FontSize="18"/>
             <Button x:Name="exutBTN" Content="" HorizontalAlignment="Left" Height="24" Margin="691,21,0,0" VerticalAlignment="Top" Width="24" BorderBrush="{x:Null}" Click="exutBTN_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="images/x.png"/>

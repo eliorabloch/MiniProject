@@ -48,6 +48,7 @@ namespace PL
                 bl.UpdateOrder(m_order);
                 //Utils.navigationService.GoBack();
                 orderListPage.LoadLists();
+                MessageBox.Show("Your new status has bean saved", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception err)
             {

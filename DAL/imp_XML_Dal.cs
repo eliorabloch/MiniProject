@@ -274,26 +274,29 @@ namespace DAL
         public List<BankBranch> GetBankList()
         {
             const string xmlLocalPath = @"BankBranches.xml";
-            WebClient wc = new WebClient();
-            try
+            if (!File.Exists(xmlLocalPath) || !File.ReadAllText(xmlLocalPath).ToLower().Contains("<atms"))
             {
-                string xmlServerPath =
-               @"https://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
-
-                wc.DownloadFile(xmlServerPath, xmlLocalPath);
-                if(!File.Exists(xmlLocalPath) || !File.ReadAllText(xmlLocalPath).ToLower().Contains("<atms"))
+                WebClient wc = new WebClient();
+                try
                 {
-                    throw new Exception("try again");
+                    string xmlServerPath =
+                   @"https://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
+
+                    wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                    if (!File.Exists(xmlLocalPath) || !File.ReadAllText(xmlLocalPath).ToLower().Contains("<atms"))
+                    {
+                        throw new Exception("try again");
+                    }
                 }
-            }
-            catch (Exception)
-            {
-                string xmlServerPath = @"http://homedir.jct.ac.il/~coshri/atm.xml";
-                wc.DownloadFile(xmlServerPath, xmlLocalPath);
-            }
-            finally
-            {
-                wc.Dispose();
+                catch (Exception)
+                {
+                    string xmlServerPath = @"http://homedir.jct.ac.il/~coshri/atm.xml";
+                    wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                }
+                finally
+                {
+                    wc.Dispose();
+                }
             }
 
             if (!File.Exists(xmlLocalPath))

@@ -42,6 +42,7 @@ namespace PL
         {
             try
             {
+                getBanks();
                 m_hostingUnit = hostingUnit;
                 InitializeComponent();
                 ImpBL bl = ImpBL.Instance;
@@ -97,10 +98,13 @@ namespace PL
                 }
                 
                 collectoinCleearenceCheckBox.IsChecked = owner.CollectionClearance;
-                BaranchesListComboBox.SelectedValue = owner.BankBranchDetails.BankName + " - " + owner.BankBranchDetails.BankNumber.ToString();
 
-                tostringBox.Text = owner.BankBranchDetails.ToString();
-                getBanks();
+                if(owner.BankBranchDetails != null)
+                {
+                    BaranchesListComboBox.SelectedValue = owner.BankBranchDetails.BankName + " - " + owner.BankBranchDetails.BankNumber.ToString();
+
+                    tostringBox.Text = owner.BankBranchDetails.ToString();
+                }
             }
             catch (Exception err)
             {
@@ -187,23 +191,26 @@ namespace PL
                 hu.Owner.MailAddress = EmailTextBox.Text;
                 if (!(hu.Owner.MailAddress.Contains("@")))
                 {
-                    throw new TzimerException("E-mail Address format is invaled.Please enter the correct format.", "bl");
+                    throw new TzimerException("E-mail Address format is invaled.Please enter the correct format.", "pl");
                 }
                 if (string.IsNullOrEmpty(hu.Owner.MailAddress))
                 {
-                    throw new TzimerException("Please enter your e-mail address", "bl");
+                    throw new TzimerException("Please enter your e-mail address", "pl");
                 }
                 hu.Owner.BankAccountNumber = BankAccountNumberTextBox.Text;
                 int number2;
                 bool checknumber2 = Int32.TryParse(hu.Owner.BankAccountNumber, out number2);
                 if (!checknumber)
                 {
-                    throw new TzimerException("Account number must contain only numbers.", "bl");
+                    throw new TzimerException("Account number must contain only numbers.", "pl");
 
                 }
                 hu.Owner.CollectionClearance = (bool)collectoinCleearenceCheckBox.IsChecked;
 
-              
+                if(BaranchesListComboBox.SelectedValue == null)
+                {
+                    throw new TzimerException("Bank branch must be selected", "pl");
+                }
                 string branchNumber = BaranchesListComboBox.SelectedValue.ToString().Split('-')[1].Trim();
                 int branchNum = int.Parse(branchNumber);
                 hu.Owner.BankBranchDetails = branches?.FirstOrDefault(x => x.BranchNumber == branchNum);
