@@ -15,7 +15,7 @@ namespace DAL
     {
 
         #region singleton
-        
+
         /// <summary>
         /// Using Singleton makes sure that no new instance of the class is ever created but only one instance.
         /// </summary>
@@ -30,11 +30,11 @@ namespace DAL
             return instance;
         }
         #endregion
-        
+
         private imp_Dal()
         {
-          //  DataSource.Init();
-        }//constractor
+            //  DataSource.Init();
+        }
 
         #region Guest Requst
 
@@ -46,27 +46,19 @@ namespace DAL
 
         public GuestRequest GetGuestRequest(int id)
         {
-            return (GuestRequest)GetGuestRequestList().FirstOrDefault(x=>x.GuestRequestKey == id)?.Clone();
+            return (GuestRequest)GetGuestRequestList().FirstOrDefault(x => x.GuestRequestKey == id)?.Clone();
         }
 
-        /// <summary>
-        /// function who add request
-        /// </summary>
-        /// <param name="newRequest">guest reqest</param>
-        public void AddGuestRequest(GuestRequest newGuestRequest)
+         public void AddGuestRequest(GuestRequest newGuestRequest)
         {
-            if(GetGuestRequestList().Any(x => x.GuestRequestKey == newGuestRequest.GuestRequestKey))
+            if (GetGuestRequestList().Any(x => x.GuestRequestKey == newGuestRequest.GuestRequestKey))
             {
                 throw new TzimerException($"Guest Request with the ID: {newGuestRequest.GuestRequestKey} - already exists!", "dal");
             }
             newGuestRequest.GuestRequestKey = Configuration.GuestRequestId++;
             DataSource.requestList.Add((GuestRequest)newGuestRequest.Clone());
         }
-
-        /// <summary>
-        /// function who update request
-        /// </summary>
-        /// <param name="updatedRequest">guest request</param>
+        
         public void UpdateGuestRequest(GuestRequest updatedGuestRequest)
         {
             DataSource.requestList.ForEach(x =>
@@ -78,11 +70,7 @@ namespace DAL
             });
 
         }
-     
-        /// <summary>
-        /// function who delete an unit
-        /// </summary>
-        /// <param name="newRequest">guest request</param>
+        
         public void DeleteGuestRequest(GuestRequest newGuestRequest)
         {
             DataSource.requestList.RemoveAll(x => x.GuestRequestKey == newGuestRequest.GuestRequestKey);
@@ -102,12 +90,8 @@ namespace DAL
         {
             return (HostingUnit)DataSource.unitList.FirstOrDefault(x => x.HostingUnitKey == id)?.Clone();
         }
-    
-        /// <summary>
-        /// function who adding hosting unit
-        /// </summary>
-        /// <param name="newUnit">HostingUnit</param>
-        public void AddHostingUnit(HostingUnit newHostingUnit)  
+        
+        public void AddHostingUnit(HostingUnit newHostingUnit)
         {
             if (GetHostingUnitsList().Any(x => x.HostingUnitKey == newHostingUnit.HostingUnitKey))
             {
@@ -117,36 +101,28 @@ namespace DAL
             newHostingUnit.HostingUnitKey = Configuration.HostingUnitId++;
             newHostingUnit.Diary = Utils.CreateMatrix();
             DataSource.unitList.Add((HostingUnit)newHostingUnit.Clone());
-           
 
-       }
 
-        /// <summary>
-        /// function who update hosting unit
-        /// </summary>
-        /// <param name="updatedUnit">hosting unit</param>
+        }
+        
         public void UpdateHostingUnit(HostingUnit updatedHostingUnit)
         {
             DataSource.unitList = DataSource.unitList
                .Select(x => {
-                   if(x.HostingUnitKey == updatedHostingUnit.HostingUnitKey)
+                   if (x.HostingUnitKey == updatedHostingUnit.HostingUnitKey)
                    {
                        x = updatedHostingUnit;
                    }
-                    return (HostingUnit)x.Clone();
+                   return (HostingUnit)x.Clone();
                })
                .ToList();
         }
-
-        /// <summary>
-        /// function who delete an unit
-        /// </summary>
-        /// <param name="delUnit">hosting unit</param>
+        
         public void DeleteHostingUnit(HostingUnit deleteHostingUnit)
         {
             DataSource.unitList.RemoveAll(x => x.HostingUnitKey == deleteHostingUnit.HostingUnitKey);
         }
-    
+
         #endregion
 
         #region Host
@@ -154,7 +130,6 @@ namespace DAL
         public List<Host> GetHostList()
         {
             return DataSource.unitList.Select(h => (Host)h.Owner.Clone()).Distinct().ToList();
-
         }
 
         #endregion
@@ -171,11 +146,7 @@ namespace DAL
         {
             return (Order)DataSource.orderList.FirstOrDefault(x => x.OrderKey == id)?.Clone();
         }
-
-        /// <summary>
-        /// function who adding order
-        /// </summary>
-        /// <param name="newOrder">order</param>
+        
         public void AddOrder(Order newOrder)
         {
             if (GetOrdersList().Any(x => x.OrderKey == newOrder.OrderKey))
@@ -185,14 +156,9 @@ namespace DAL
             newOrder.OrderKey = Configuration.OrderId++;
             DataSource.orderList.Add((Order)newOrder.Clone());
         }
-
-        /// <summary>
-        /// function who update the order
-        /// </summary>
-        /// <param name="updatedOrder">order</param>
+        
         public void UpdateOrder(Order updatedOrder)
         {
-
             DataSource.orderList = DataSource.orderList
                  .Select(x =>
                  {
@@ -204,11 +170,7 @@ namespace DAL
                  })
                  .ToList();
         }
-
-        /// <summary>
-        /// function who delete order.
-        /// </summary>
-        /// <param name="order">order</param>
+        
         public void DeleteOrder(Order order)
         {
             DataSource.orderList.RemoveAll(x => x.OrderKey == order.OrderKey);
@@ -217,14 +179,9 @@ namespace DAL
         #endregion
 
         #region Bank Branch 
-
-        /// <summary>
-        /// Quick reboot of bank list.
-        /// </summary>
-        /// <returns></returns>
-        public List<BankBranch> GetBankList() 
+        
+        public List<BankBranch> GetBankList()
         {
-
             const string xmlLocalPath = @"BankBranches.xml";
             WebClient wc = new WebClient();
             try
@@ -244,7 +201,7 @@ namespace DAL
                 wc.Dispose();
             }
 
-            if(!File.Exists(@"BankBranches.xml"))
+            if (!File.Exists(@"BankBranches.xml"))
             {
                 throw new TzimerException("Failed to pull bank list", "dal");
             }
@@ -261,11 +218,14 @@ namespace DAL
                     BranchCity = item.Element("ישוב").Value,
                     BranchNumber = int.Parse(item.Element("קוד_סניף").Value)
                 });
-              
+
             }
             return branches.GroupBy(x => x.BranchNumber).Select(y => y.FirstOrDefault()).ToList();
         }
+
         #endregion
+
+        #region More
 
         public void UpdateProfits(double days)
         {
@@ -275,20 +235,23 @@ namespace DAL
         public void UpdateHost(Host owner)
         {
             var ReleventUnitKeyList = (from unit in GetHostingUnitsList()
-                     where unit.Owner.HostId == owner.HostId
-                     let newOwner = owner
-                     select new { unitKey = unit.HostingUnitKey }).Select(x => x.unitKey).ToList();
+                                       where unit.Owner.HostId == owner.HostId
+                                       let newOwner = owner
+                                       select new { unitKey = unit.HostingUnitKey }).Select(x => x.unitKey).ToList();
 
 
             foreach (var hostUnit in DataSource.unitList.Where(x => ReleventUnitKeyList.Contains(x.HostingUnitKey)))
             {
                 hostUnit.Owner = owner;
-            } 
+            }
         }
 
         public double GetProfits()
         {
             return Configuration.Profits;
         }
+
+        #endregion
+
     }
 }

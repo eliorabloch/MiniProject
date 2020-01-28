@@ -15,6 +15,7 @@ namespace BL
     public class ImpBL : IBL
     {
         static Timer ExpiredOrdersThreads;
+      
         #region singelton
         /// <summary>
         /// //Using Singleton makes sure that no new instance of the class is ever created but only one instance.
@@ -24,10 +25,9 @@ namespace BL
         {
             get { return instance; }
         }
- 
+
         static IDAL dal;
-
-
+        
         static ImpBL()
         {
             string TypeDAL = ConfigurationSettings.AppSettings.Get("TypeDS");
@@ -40,21 +40,8 @@ namespace BL
 
         #endregion
 
-        private static void disposeExpiredOrders(object sender, ElapsedEventArgs e)
-        {
-            Instance.GetOldOrders(30).Where(x=>x.Status == OrderStatus.SentMail).Select(x => {
-                    x.Status = OrderStatus.Canceled;
-                    Instance.UpdateOrder(x);
-                    return x;
-                });
-        }
-
         #region Host
-
-        /// <summary>
-        /// function who goes to the DAL and give me the host list.
-        /// </summary>
-        /// <returns>hosts lits</returns>
+        
         public List<Host> GetHostsList()
         {
             return dal.GetHostList();
@@ -66,11 +53,14 @@ namespace BL
         /// <returns>hosts list sorted by the number of units each host has.</returns>
         public List<Host> groupHostsByNumberOfUnits()
         {
-            List<Host> hostsList = (
-                from newItem in getHostsList().Select(x=> { x.numOfUnits = getNumOfUnits(x.HostId); return x; })
-                    orderby newItem.numOfUnits
-                    select newItem).ToList();
-
+            List<Host> hostsList = new List<Host>();
+            foreach (var host in getHostsList())
+            {
+                var x = from newItem in getHostsList()
+                        orderby newItem.numOfUnits
+                        select newItem;
+                hostsList = x.ToList();
+            }
             return hostsList;
         }
 
@@ -82,6 +72,18 @@ namespace BL
         {
             var hostIds = GetHostingUnitsList().Select(x => x.Owner.HostId).Distinct().ToList();
             return hostIds.Select(x => (Host)GetHost(x).Clone()).ToList();
+        }
+
+        public void UpdateHostInfo(Host owner, int unitKey)
+        {
+            var oldHost = GetHost(owner.HostId);
+            if (oldHost.CollectionClearance &&
+                !owner.CollectionClearance &&
+                isHaveOpenOrder(unitKey))
+            {
+                throw new TzimerException("Collection Clearance authorization cannot be revoked when there is an open order associated with it's host", "bl");
+            }
+            dal.UpdateHost(owner);
         }
 
         #endregion 
@@ -108,9 +110,9 @@ namespace BL
         public List<GuestRequest> searchByName(string familyName)
         {
             return GetGuestRequestList()
-                .Where(x=>x.FamilyName.ToLower().StartsWith(familyName.ToLower())).ToList();
+                .Where(x => x.FamilyName.ToLower().StartsWith(familyName.ToLower())).ToList();
         }
-        
+
         /// <summary>
         /// function who arrange the guest requests by their status (grouping).
         /// </summary>
@@ -122,11 +124,6 @@ namespace BL
                     select g.ToList()).ToList();
         }
 
-        /// <summary>
-        /// Function who checks wheter the requests are fit to some condition.
-        /// </summary>
-        /// <param name="condition">predicate of guest request</param>
-        /// <returns>all the guest request who fit to the condition.</returns>
         public List<GuestRequest> GetAllGuestRequest(Predicate<GuestRequest> condition)
         {
             return GetGuestRequestList().Where(x => condition(x)).ToList();
@@ -173,7 +170,7 @@ namespace BL
         /// <returns>guest requests list</returns>
         public List<GuestRequest> matchRequestToUnit(HostingUnit hostingUnit, string subAreaFilter, string attendantsAmount)
         {
-            return GetGuestRequestList().Where(guestRequestItem => checkIfUnitMatchToRequest(hostingUnit, guestRequestItem, subAreaFilter, attendantsAmount) != null ).ToList();
+            return GetGuestRequestList().Where(guestRequestItem => checkIfUnitMatchToRequest(hostingUnit, guestRequestItem, subAreaFilter, attendantsAmount) != null).ToList();
         }
 
         /// <summary>
@@ -184,7 +181,7 @@ namespace BL
         /// <returns>the guest request if there is a match.</returns>
         public GuestRequest checkIfUnitMatchToRequest(HostingUnit hostingUnit, GuestRequest guestRequest, string subAreaFilter, string attendantsAmount)
         {
-            if(GetOrdersList().Any(order=>order.GuestRequestKey== guestRequest.GuestRequestKey && order.HostingUnitKey == hostingUnit.HostingUnitKey))
+            if (GetOrdersList().Any(order => order.GuestRequestKey == guestRequest.GuestRequestKey && order.HostingUnitKey == hostingUnit.HostingUnitKey))
             {
                 return null;
             }
@@ -198,7 +195,6 @@ namespace BL
                 && isDatesAvilable(hostingUnit, guestRequest.EntryDate, guestRequest.ReleaseDate)
                 && enoughAttendees
                 && guestRequest.SubArea.ToLower().StartsWith(subAreaFilter.ToLower())
-                && guestRequest.Status == RequestStatus.Open
                 && isMatchRequirment(hostingUnit.Pool, guestRequest.Pool)
                 && isMatchRequirment(hostingUnit.Jacuzz, guestRequest.Jacuzzi)
                 && isMatchRequirment(hostingUnit.Garden, guestRequest.Garden)
@@ -213,19 +209,7 @@ namespace BL
 
             return null;
         }
-
-        public void UpdateHostInfo(Host owner, int unitKey)
-        {
-            var oldHost = GetHost(owner.HostId);
-            if (oldHost.CollectionClearance &&
-                !owner.CollectionClearance &&
-                isHaveOpenOrder(unitKey))
-            {
-                throw new TzimerException("Collection Clearance authorization cannot be revoked when there is an open order associated with it's host", "bl");
-            }
-            dal.UpdateHost(owner);
-        }
-
+     
         public double GetProfits()
         {
             return dal.GetProfits();
@@ -297,7 +281,7 @@ namespace BL
 
             GuestRequest oldRequest = getGuestRequestIfExists(updatedRequest.GuestRequestKey);
 
-            if ((updatedRequest.Status != RequestStatus.ClosedDeal && oldRequest.Status == RequestStatus.ClosedDeal )
+            if ((updatedRequest.Status != RequestStatus.ClosedDeal && oldRequest.Status == RequestStatus.ClosedDeal)
                 ||
                 (updatedRequest.Status != RequestStatus.ExpiredRequest && oldRequest.Status == RequestStatus.ExpiredRequest))
             {
@@ -327,7 +311,7 @@ namespace BL
         public void DeleteRequest(GuestRequest deleteRequest)
         {
             getGuestRequestIfExists(deleteRequest.GuestRequestKey);
-            if(isHaveDoneDealOrder(deleteRequest))
+            if (isHaveDoneDealOrder(deleteRequest))
             {
                 throw new TzimerException("Cannot delete a request with a done deal order.", "bl");
             }
@@ -341,7 +325,7 @@ namespace BL
 
         private List<Order> getOrdersByRequestNotDoneDeal(int guestRequestKey)
         {
-           return GetOrdersList().Where(x => x.GuestRequestKey == guestRequestKey && x.Status != OrderStatus.DoneDeal).ToList();
+            return GetOrdersList().Where(x => x.GuestRequestKey == guestRequestKey && x.Status != OrderStatus.DoneDeal).ToList();
         }
 
         /// <summary>
@@ -493,12 +477,6 @@ namespace BL
             throw new TzimerException($"Sorry,cant find a request with the key{hostingUnitKey}", "bl");
         }
 
-        /// <summary>
-        /// A function that accepts a date and number of vacation days and returns the list of all available accommodation units on that date.
-        /// </summary>
-        /// <param name="start">Start date</param>
-        /// <param name="amountOfDAys">Amount of dates the guest want to stay at the hostingUnit.</param>
-        /// <returns>List with all the available units at some dates.</returns>
         public List<HostingUnit> GetAllAvilableUnits(DateTime start, int amountOfDays)
         {
             DateTime end = start.AddDays(amountOfDays);
@@ -534,7 +512,7 @@ namespace BL
                 throw new TzimerException($"Sorry,cant find a request with the name:{HostingUnitName}", "bl");
             }
         }
-        
+
         /// <summary>
         /// A delegate function that accepts any hosting unit and checks by its ID whether it already exists, if it does not throw an exception, else returns the unit.
         /// </summary>
@@ -743,7 +721,7 @@ namespace BL
                 UpdateHostingUnit(hostingUnit);
                 cancelAllOtherOrders(updatedOrder);
                 request.Status = RequestStatus.ClosedDeal;
-            } 
+            }
             if (updatedOrder.Status == OrderStatus.Canceled)
             {
                 request.Status = RequestStatus.ExpiredRequest;
@@ -754,6 +732,24 @@ namespace BL
             }
             UpdateRequest(request);
             dal.UpdateOrder(updatedOrder);
+        }
+
+        /// <summary>
+        /// Fanction who search for a orders by its key.
+        /// </summary>
+        /// <param name="order">order</param>
+        /// <param name="key">int</param>
+        /// <returns>order when given his order key.</returns>
+        public Order searchByKey(List<Order> order, int orderKey = -1)
+        {
+            foreach (var Order in order)
+            {
+                if (Order.OrderKey == orderKey)
+                {
+                    return Order;
+                }
+            }
+            return null;
         }
 
         #endregion
@@ -789,7 +785,16 @@ namespace BL
         #endregion
 
         #region More
-        
+
+        private static void disposeExpiredOrders(object sender, ElapsedEventArgs e)
+        {
+            Instance.GetOldOrders(30).Where(x => x.Status == OrderStatus.SentMail).Select(x => {
+                x.Status = OrderStatus.Canceled;
+                Instance.UpdateOrder(x);
+                return x;
+            });
+        }
+
         /// <summary>
         /// A function that checks whether an order can be sent to a customer. Only if the client has signed a host bank authorization form can he send an order.
         /// </summary>
@@ -803,10 +808,10 @@ namespace BL
             {
                 MailMessage mail = new MailMessage();
                 GuestRequest gr = GetGuestRequest(order.GuestRequestKey);
-               // mail.To.Add(gr.MailAddress);
-                    
+                // mail.To.Add(gr.MailAddress);
+
                 mail.To.Add("eliora.bloch@gmail.com");
-               
+
                 mail.From = new MailAddress("VacationModePlan@gmail.com");
                 mail.Body = $"Dear {gr.PrivateName}  {gr.FamilyName}, <br><br>" +
                     $"We have found a unit that matches your request number {order.GuestRequestKey}.<br>" +
@@ -833,13 +838,7 @@ namespace BL
             }
 
         }
-       
-        /// <summary>
-        /// A function that accepts two dates and checks the time difference between them. If the function has only received one date, it will check how much time has passed from that date until now.
-        /// </summary>
-        /// <param name="start">start date</param>
-        /// <param name="end">end date</param>
-        /// <returns>the amount of dates between two dates.</returns>
+
         public static double AmountOfDays(DateTime start, DateTime end)
         {
             end = end == null ? DateTime.Now : end;
@@ -893,7 +892,7 @@ namespace BL
                 tempDate = tempDate.AddDays(1);
             }
         }
-        
+
         /// <summary>
         /// A function that checks for a particular unit is available on certain dates.
         /// </summary>
@@ -926,14 +925,14 @@ namespace BL
             int NumOfUnits = 0;
             foreach (var host in getHostsList())
             {
-                if(hostID==host.HostId)
+                if (hostID == host.HostId)
                 {
                     NumOfUnits = GetHostingUnitsList().Sum(x => x.Owner.HostId == host.HostId ? 1 : 0);
                 }
             }
             return NumOfUnits;
         }
-        
+
         /// <summary>
         /// Function that deletes an order.
         /// </summary>
@@ -942,7 +941,7 @@ namespace BL
         {
 
         }
-        
+
         /// <summary>
         /// list of taken days.
         /// </summary>
@@ -1020,7 +1019,7 @@ namespace BL
                         sumAnnualBusy += counterAnnualBusy;
                     }
                     precentAnnualBusy = (sumAnnualBusy / 365) * (100);
-                    
+
                 }
             }
             return precentAnnualBusy;
@@ -1051,63 +1050,7 @@ namespace BL
         {
             return GetHostingUnitsList().Count;
         }
-        
-        /// <summary>
-        /// function who calcukate how mach profits guest has to pay.
-        /// </summary>
-        /// <returns>double</returns>
-        public double profits()
-        {
-            foreach (var order in GetOrdersList())
-            {
-                foreach (var request in GetGuestRequestList())
-                {
-                    if (order.GuestRequestKey == request.GuestRequestKey)
-                    {
-                        if (order.Status == OrderStatus.DoneDeal)
-                        {
-                            Configuration.Profits = (AmountOfDays(request.EntryDate, request.ReleaseDate)) * 10;
-                            return Configuration.Profits;
-                        }
-                    }
-                }
-            }
-            return 0.0;
-        }
-
-        /// <summary>
-        /// function who calculate how mach profits some host has to get.
-        /// </summary>
-        /// <returns>double</returns>
-        public double profitsForHost(Host host)
-        {
-            double sumprofits = 0;
-            foreach (var hostingunit in GetHostingUnitsList())
-            {
-                if (host.HostId == hostingunit.Owner.HostId)
-                {
-                    sumprofits += profits();
-                }
-            }
-            return sumprofits;
-        }
-
-        /// <summary>
-        /// function who calculate the total profits.
-        /// </summary>
-        /// <returns>double</returns>
-        public double totalProfits()
-        {
-            double sumProfits = 0;
-            foreach (var host in GetHostsList())
-            {
-                sumProfits += profitsForHost(host);
-            }
-            return sumProfits;
-        }
-
-        #endregion
-
+      
         /// <summary>
         /// function who calculate the number of sent orders.
         /// </summary>
@@ -1119,11 +1062,6 @@ namespace BL
             (x.Status == OrderStatus.SentMail || x.Status == OrderStatus.DoneDeal)).Count();
         }
 
-        /// <summary>
-        /// function who goes over the orders list and count how many orders there are.
-        /// </summary>
-        /// <param name="gr">guest request</param>
-        /// <returns>the number of orders we have</returns>
         public int GetNumOfOrders(GuestRequest guestrequest)
         {
             return GetOrdersList().Where(x => x.GuestRequestKey == guestrequest.GuestRequestKey).Count();
@@ -1152,24 +1090,6 @@ namespace BL
         }
 
         /// <summary>
-        /// Fanction who search for a orders by its key.
-        /// </summary>
-        /// <param name="order">order</param>
-        /// <param name="key">int</param>
-        /// <returns>order when given his order key.</returns>
-        public Order searchByKey(List<Order> order, int orderKey = -1)
-        {
-            foreach (var Order in order)
-            {
-                if (Order.OrderKey == orderKey)
-                {
-                    return Order;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
         /// function who check if more then 30 days were pass from the date the mail send till now, if so- update the status.
         /// </summary>
         /// <param name="updatedOrderStatus">order</param>
@@ -1189,6 +1109,7 @@ namespace BL
                 }
             }
         }
+
+        #endregion
     }
 }
-
